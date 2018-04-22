@@ -1,0 +1,13 @@
+global:
+  type: color
+  category: background-color
+  cssProperties:
+  - 'background*'
+  - 'border*'
+  - box-shadow
+
+props:
+  # body background
+  # =============================================
+  body-bg:
+    value: "#FFFFFF"

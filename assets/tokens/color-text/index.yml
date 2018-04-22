@@ -1,0 +1,34 @@
+global:
+  type: color
+  category: text-color
+  cssProperties:
+  - color
+  - fill
+
+imports:
+- ../aliases/color.yml
+
+props:
+  # text color on body
+  # =============================================
+  text-color:
+    value: "{!gray-dark}"
+
+  # link color
+  # =============================================
+  link-color:
+    value: "{!brand-primary}"
+
+  # link color hover
+  # =============================================
+  link-hover-color:
+    value: "#23527c"
+
+  text-muted:
+    value: "{!gray-light}"
+
+  headings-small-color:
+    value: "{!gray-light}"
+
+  blockquote-small-color:
+    value: "{!gray-light}"
