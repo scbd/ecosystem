@@ -1,0 +1,50 @@
+
+:root {
+  --border-radius-base: 4px;
+  /* Icons in lists, record home icon, unbound input elements */
+  --border-radius-large: 6px;
+  --border-radius-small: 3px;
+  --body-bg: rgb(255, 255, 255);
+  --hr-border: rgb(238, 238, 238);
+  --blockquote-border-color: rgb(238, 238, 238);
+  --page-header-border-color: rgb(238, 238, 238);
+  --abbr-border-color: rgb(238, 238, 238);
+  --text-color: rgb(51, 51, 51);
+  --link-color: rgb(51, 122, 183);
+  --link-hover-color: rgb(35, 82, 124);
+  --text-muted: rgb(119, 119, 119);
+  --headings-small-color: rgb(119, 119, 119);
+  --blockquote-small-color: rgb(119, 119, 119);
+  --headings-color: rgb(119, 119, 119);
+  --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+  --font-family-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+  --font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default;;
+  --font-family-base: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+  --headings-font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+  --headings-font-weight: 500;
+  --blockquote-font-size: 1.25em;
+  --font-size-large: 1.25em;
+  --font-size-h1: 2.6em;
+  --font-size-h2: 2.15em;
+  --font-size-small: 85em;
+  --font-size-h3: 1.7em;
+  --font-size-h4: 1.25em;
+  --font-size-h5: 16px;
+  --font-size-h6: .85em;
+  --font-size-base: 16px;
+  /* Unitless line-heights for reusability */
+  --line-height-base: 1.45;
+  /* Unitless line-heights for reusability */
+  --line-height-computed: 1.45;
+  --headings-line-height: 1.1;
+  --line-height-large: 1.3333333;
+  --line-height-small: 1.5;
+  --padding-base-vertical: 6px;
+  --padding-base-horizontal: 12px;
+  --padding-large-vertical: 10px;
+  --padding-large-horizontal: 16px;
+  --padding-small-vertical: 5px;
+  --padding-small-horizontal: 10px;
+  --padding-xs-vertical: 1px;
+  --padding-xs-horizontal: 5px;
+}

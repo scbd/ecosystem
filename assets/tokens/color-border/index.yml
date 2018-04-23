@@ -5,12 +5,14 @@ global:
   - 'border*'
   - box-shadow
 imports:
-- ./aliases/color.yml
+- ../aliases/color.yml
 
-# $hr-border:                   $gray-lighter !default;
-# //** Blockquote border color
-# $blockquote-border-color:     $gray-lighter !default;
-# //** Page header border color
-# $page-header-border-color:    $gray-lighter !default;
-# //** Abbreviations and acronyms border color
-# $abbr-border-color:           $gray-light !default;
+props:
+  hr-border:
+    value: "{!gray-lighter}"
+  blockquote-border-color:
+    value: "{!gray-lighter}"
+  page-header-border-color:
+    value: "{!gray-lighter}"
+  abbr-border-color:
+    value: "{!gray-lighter}"

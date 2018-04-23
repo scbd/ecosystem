@@ -1,0 +1,19 @@
+global:
+  category: line-height
+  type: number
+  cssProperties:
+  - font
+  - '*height'
+props:
+  line-height-base:
+    value: 1.45
+    comment: Unitless line-heights for reusability
+  line-height-computed:
+    value: 1.45
+    comment: Unitless line-heights for reusability
+  headings-line-height:
+    value: 1.1
+  line-height-large:
+    value: 1.3333333
+  line-height-small:
+    value: 1.5

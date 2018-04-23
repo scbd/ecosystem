@@ -5,9 +5,6 @@ global:
   - 'background*'
   - 'border*'
   - box-shadow
-
 props:
-  # body background
-  # =============================================
   body-bg:
     value: "#FFFFFF"

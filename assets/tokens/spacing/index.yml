@@ -1,23 +1,35 @@
 
-
-# //first line for bootstrap scss
-# $bootstrap-sass-asset-helper: false !default;
-
-# $padding-base-vertical:     6px !default;
-# $padding-base-horizontal:   12px !default;
-#
-# $padding-large-vertical:    10px !default;
-# $padding-large-horizontal:  16px !default;
-#
-# $padding-small-vertical:    5px !default;
-# $padding-small-horizontal:  10px !default;
-#
-# $padding-xs-vertical:       1px !default;
-# $padding-xs-horizontal:     5px !default;
-#
-# $line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
-# $line-height-small:         1.5 !default;
-#
-# $border-radius-base:        4px !default;
-# $border-radius-large:       6px !default;
-# $border-radius-small:       3px !default;
+global:
+  category: spacing
+  type: size
+  comment: ''
+  cssProperties:
+  - top
+  - right
+  - bottom
+  - left
+  - 'margin*'
+  - 'padding*'
+  - 'border*'
+  - '*width'
+  - '*height'
+  - box-shadow
+  - stroke
+  - stroke-width
+props:
+  padding-base-vertical:
+    value: 6px
+  padding-base-horizontal:
+    value: 12px
+  padding-large-vertical:
+    value: 10px
+  padding-large-horizontal::
+    value: 16px
+  padding-small-vertical:
+    value: 5px
+  padding-small-horizontal:
+    value: 10px
+  padding-xs-vertical:
+    value: 1px
+  padding-xs-horizontal:
+    value: 5px

@@ -1,0 +1,48 @@
+
+@value border-radius-base: 4px;
+/* Icons in lists, record home icon, unbound input elements */
+@value border-radius-large: 6px;
+@value border-radius-small: 3px;
+@value body-bg: rgb(255, 255, 255);
+@value hr-border: rgb(238, 238, 238);
+@value blockquote-border-color: rgb(238, 238, 238);
+@value page-header-border-color: rgb(238, 238, 238);
+@value abbr-border-color: rgb(238, 238, 238);
+@value text-color: rgb(51, 51, 51);
+@value link-color: rgb(51, 122, 183);
+@value link-hover-color: rgb(35, 82, 124);
+@value text-muted: rgb(119, 119, 119);
+@value headings-small-color: rgb(119, 119, 119);
+@value blockquote-small-color: rgb(119, 119, 119);
+@value headings-color: rgb(119, 119, 119);
+@value font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+@value font-family-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+@value font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default;;
+@value font-family-base: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+@value headings-font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+@value headings-font-weight: 500;
+@value blockquote-font-size: 1.25em;
+@value font-size-large: 1.25em;
+@value font-size-h1: 2.6em;
+@value font-size-h2: 2.15em;
+@value font-size-small: 85em;
+@value font-size-h3: 1.7em;
+@value font-size-h4: 1.25em;
+@value font-size-h5: 16px;
+@value font-size-h6: .85em;
+@value font-size-base: 16px;
+/* Unitless line-heights for reusability */
+@value line-height-base: 1.45;
+/* Unitless line-heights for reusability */
+@value line-height-computed: 1.45;
+@value headings-line-height: 1.1;
+@value line-height-large: 1.3333333;
+@value line-height-small: 1.5;
+@value padding-base-vertical: 6px;
+@value padding-base-horizontal: 12px;
+@value padding-large-vertical: 10px;
+@value padding-large-horizontal: 16px;
+@value padding-small-vertical: 5px;
+@value padding-small-horizontal: 10px;
+@value padding-xs-vertical: 1px;
+@value padding-xs-horizontal: 5px;

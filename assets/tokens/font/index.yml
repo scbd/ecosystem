@@ -1,23 +1,23 @@
 global:
-  type: color
-  category: text-color
+  category: font
+  type: font
   cssProperties:
-  - color
-  - fill
+  - 'font'
+  - 'font-family'
 
 imports:
-- ../aliases/color.yml
+- ../aliases/font-family.yml
 
 props:
-  # text color on body
-  # =============================================
-  text-color:
-    value: "{!gray-dark}"
-
-
-
-# $font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-# $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
-# //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-# $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
-# $font-family-base:        $font-family-sans-serif !default;
+  font-family-sans-serif:
+    value: "{!NATIVE-FONT}"
+  font-family-serif:
+    value: "{!NATIVE-FONT}"
+  font-family-monospace:
+    value: Menlo, Monaco, Consolas, "Courier New", monospace !default;
+  font-family-base:
+    value: "{!NATIVE-FONT}"
+  headings-font-family:
+    value: "{!NATIVE-FONT}"
+  headings-font-weight:
+    value: "500"

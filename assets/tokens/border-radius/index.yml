@@ -1,0 +1,13 @@
+global:
+  type: size
+  category: radius
+  cssProperties:
+  - 'border*radius'
+props:
+  border-radius-base:
+    value: 4px
+  border-radius-large:
+    value: 6px
+    comment: 'Icons in lists, record home icon, unbound input elements'
+  border-radius-small:
+    value: 3px

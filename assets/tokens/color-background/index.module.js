@@ -1,0 +1,1 @@
+export const bodyBg = "rgb(255, 255, 255)";

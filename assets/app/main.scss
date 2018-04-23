@@ -1,0 +1,16 @@
+// # //first line for bootstrap scss
+// # $bootstrap-sass-asset-helper: false !default;
+
+@import 'assets/style/_mixins/_box-sizing.scss';
+@import 'assets/style/_mixins/_clearfix.scss';
+@import 'assets/tokens/breakpoints/_variables-media.scss';
+@import 'assets/tokens/grid/_variables-grid.scss';
+
+// @import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding.scss';
+
+@import '~assets/style/layouts/container/_mixin.scss';
+@import '~assets/style/layouts/container/_index.scss';
+
+@import '~assets/style/layouts/grid/_grid-framework-mixin.scss';
+@import '~assets/style/layouts/grid/_mixin.scss';
+@import '~assets/style/layouts/grid/_index.scss';

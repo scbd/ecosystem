@@ -2,8 +2,8 @@
 
 ## V0.1 - Alpha
 
-### Sections
-Living System
+
+### Living System
 
 >Principals
 
@@ -13,26 +13,19 @@ Living System
 
 >Audiences
 
-Communications
+### Communications
 
->Grammar & Mechanics
+> Grammar & Mechanics
 
->Tone & Voice
+> Tone & Voice
 
->Typography
-
->Icons
-
->Brand
+> Brand
 
 >>Colors
 
 >>Logos
 
-Ontology
->Naming
-
-User Experience & SEO
+### User Experience & SEO
 > Why Combined?
 
 > Key Word Phrase
@@ -47,21 +40,57 @@ User Experience & SEO
 
 > Accessibility
 
-Style
-> Normalize.css
+### Ontology
+>Naming
+
+### Tokens
+> Colors
+
+> Font
+
 > Grid
 
-Components
+> Breakpoints
+
+> Spacing
+
+### Style
+> Normalize.css
+
+> Typography
+
+> Icons
+
+> Modifiers
+
 > Elements
 
 > Patterns
 
 > Layouts
 
+### Components
+> Elements
 
-Inspiration
+> Patterns
 
-###Features:
+> Layouts
+
+### Inspiration
+[Taco](https://design.trello.com/style/brand)
+
+[Vue System](https://vueds.com/example/#!/Getting%20Started)
+
+[Salesforce](https://www.lightningdesignsystem.com/design-tokens/#category-background-color)
+
+[atlassian](atlassian)
+
+[IBM](https://www.ibm.com/design/language/)
+
+[material](https://material.io/guidelines/)
+
+[Firefox](https://design.firefox.com/)
+### Features:
 > Version select
 
 > Theme select
@@ -74,15 +103,15 @@ Inspiration
 
 > Audience
 
-###Tools:
+### Tools:
 > SEO
 
 > Text Analysis
 
 
-##V 1.1
-###Sections
-Communications
+## V 1.1
+
+### Communications
 >Branding
 >>Sub Brand
 >Campaigns
@@ -91,28 +120,23 @@ Communications
 
 >>>Logos
 
-Ontology
+### Ontology
 >Vocabulary
 
-Tools
+### Tools
 > create onpage seo tool
 > create media monitoring Tool
 > create backlink monitoring tool
 
 
-##V 2.0
-###Features:
+## V 2.0
+### Features:
 > Inline editing of text as git resource
-> React Components
-> External Components
-> Web Components
-> Plugable Authentication
 
-Inspiration:
-https://design.trello.com/style/brand
-https://vueds.com/example/#!/Getting%20Started
-https://www.lightningdesignsystem.com/design-tokens/#category-background-color
-https://atlassian.design/
-https://www.ibm.com/design/language/ (open source)
-https://material.io/guidelines/ (open source)
-https://design.firefox.com/
+> React Components
+
+> External Components
+
+> Web Components
+
+> Plugable Authentication

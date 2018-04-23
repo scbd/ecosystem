@@ -1,0 +1,10 @@
+export const blockquoteFontSize = "1.25em";
+export const fontSizeLarge = "1.25em";
+export const fontSizeH1 = "2.6em";
+export const fontSizeH2 = "2.15em";
+export const fontSizeSmall = "85em";
+export const fontSizeH3 = "1.7em";
+export const fontSizeH4 = "1.25em";
+export const fontSizeH5 = "16px";
+export const fontSizeH6 = ".85em";
+export const fontSizeBase = "16px";

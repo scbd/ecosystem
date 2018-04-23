@@ -4,13 +4,15 @@
   "description": "Design system built with nuxtjs",
   "author": "Randy Houlahan <randy.houlahan@cbd.int>",
   "private": true,
+  "workspaces": ["assets/tokens/*"],
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "tokens": "./build-tokens.sh"
   },
   "dependencies": {
     "@nuxtjs/component-cache": "^0.1.3",
@@ -21,7 +23,8 @@
     "normalize.css": "^8.0.0",
     "nuxt": "npm:nuxt-edge",
     "vue-i18n": "^7.6.0",
-    "vue-lazyload": "^1.1.4"
+    "vue-lazyload": "^1.1.4",
+    "vue-particles": "^1.0.9"
   },
   "engines": {
     "node": ">=8",
@@ -30,12 +33,18 @@
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "eslint": "^4.15.0",
+    "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.0.0",
     "json-loader": "^0.5.7",
     "node-sass": "^4.8.3",
     "purgecss-webpack-plugin": "^0.22.0",
+    "sass-loader": "^7.0.1",
     "theo": "^7.0.1",
     "vue-i18n-extensions": "^0.1.0"
   }

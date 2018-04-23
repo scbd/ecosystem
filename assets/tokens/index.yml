@@ -1,7 +1,12 @@
 imports:
-  ./color-text/color-text.yml
-
-
+  - ./border-radius/index.yml
+  - ./color-background/index.yml
+  - ./color-border/index.yml
+  - ./color-text/index.yml
+  - ./font/index.yml
+  - ./font-size/index.yml
+  - ./line-height/index.yml
+  - ./spacing/index.yml
 
 
 # not categorized
