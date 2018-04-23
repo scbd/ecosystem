@@ -1,0 +1,33 @@
+{
+  "name": "@houlagins/ds-tokens",
+  "version": "0.0.0",
+  "description": "Design system tokens",
+  "license": "MIT",
+  "author": "Randy Houlahan <randy.houlahan@cbd.int>",
+  "main": "index.module.js",
+  "repository": "https://github.com/houlagins/design-system/tree/master/assets/tokens",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "release": "yarn version && git push --follow-tags && yarn publish"
+  },
+  "files": [
+    "spacing",
+    "line-height",
+    "grid",
+    "font-size",
+    "color-text",
+    "color-border",
+    "color-background",
+    "breakpoints",
+    "border-radius",
+    "aliases",
+    "index.yml",
+    "index.scss",
+    "index.module.js",
+    "index.custom-properties.css",
+    "index.cssmodules.css",
+    "index.common.js"
+  ]
+}
