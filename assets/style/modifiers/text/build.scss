@@ -1,0 +1,22 @@
+@import 'node_modules/@houlagins/ds-tokens/color-text/index.scss';
+
+@import './modifiers/text/_hide-text.scss';
+
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+// Contextual colors
+.text-muted {
+  color: $text-muted;
+}
+.text-hide {
+  @include text-hide;
+}

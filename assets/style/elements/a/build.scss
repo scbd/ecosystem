@@ -1,0 +1,18 @@
+@import 'node_modules/@houlagins/ds-tokens/color-text/index.scss';
+
+@import '../../_mixins/_tab-focus.scss';
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include tab-focus;
+  }
+}

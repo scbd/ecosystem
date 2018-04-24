@@ -1,0 +1,21 @@
+@import 'node_modules/@houlagins/ds-tokens/border-radius/index.scss';
+@import './_mixins/_image.scss';
+img {
+  vertical-align: middle;
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  @include img-responsive;
+}
+
+// Rounded corners
+.img-rounded {
+  border-radius: $border-radius-large;
+}
+
+
+// Perfect circle
+.img-circle {
+  border-radius: 50%; // set radius in percents
+}

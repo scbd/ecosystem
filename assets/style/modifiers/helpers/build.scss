@@ -1,7 +1,9 @@
-//
-// Utility classes
-// --------------------------------------------------
-
+@import './_mixins/_clearfix.scss';
+@import './_mixins/_center-block.scss';
+small,
+.small {
+  font-size: .85em;
+}
 
 // Floats
 // -------------------------
@@ -19,23 +21,11 @@
   float: left !important;
 }
 
-
-// Toggling content
-// -------------------------
-
-// Note: Deprecated .hide in favor of .hidden or .sr-only (as appropriate) in v3.0.1
-.hide {
-  display: none !important;
-}
-.show {
-  display: block !important;
-}
 .invisible {
   visibility: hidden;
 }
-.text-hide {
-  @include text-hide;
-}
+
+
 
 
 // Hide from screenreaders and browsers

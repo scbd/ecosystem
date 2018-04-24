@@ -1,0 +1,42 @@
+@import 'node_modules/@houlagins/ds-tokens/color-text/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/color-background/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/line-height/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/breakpoints/_variables-media.scss';
+// @import 'node_modules/@houlagins/ds-tokens/font/index.scss';
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+
+//** Padding for `<th>`s and `<td>`s.
+$table-cell-padding:            8px !default;
+//** Padding for cells in `.table-condensed`.
+$table-condensed-cell-padding:  5px !default;
+
+//** Default background color used for all tables.
+$table-bg:                      transparent !default;
+//** Background color used for `.table-striped`.
+$table-bg-accent:               #f9f9f9 !default;
+//** Background color used for `.table-hover`.
+$table-bg-hover:                #f5f5f5 !default;
+$table-bg-active:               $table-bg-hover !default;
+
+$state-success-text:             #3c763d !default;
+$state-success-bg:               #dff0d8 !default;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text:                #31708f !default;
+$state-info-bg:                  #d9edf7 !default;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text:             #8a6d3b !default;
+$state-warning-bg:               #fcf8e3 !default;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text:              #a94442 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
+//** Border color for table and cell borders.
+$table-border-color:            #ddd !default;
+@import './elements/tables/_table-row.scss';
+@import './elements/tables/_tables.scss';

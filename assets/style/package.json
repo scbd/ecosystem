@@ -1,0 +1,36 @@
+{
+  "name": "@houlagins/ds-style",
+  "version": "0.0.1",
+  "description": "Design system style",
+  "license": "MIT",
+  "author": "Randy Houlahan <randy.houlahan@cbd.int>",
+  "repository": "https://github.com/houlagins/design-system/tree/master/assets/style",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "sh build-style.sh",
+    "release": "yarn publish"
+  },
+  "files": [
+    "_mixins",
+    "elements",
+    "layouts",
+    "modifiers",
+    "patterns/alerts",
+    "patterns/badges",
+    "patterns/breadcrumbs",
+    "patterns/button-groups",
+    "patterns/carousel",
+    "patterns/dropdowns",
+    "patterns/forms",
+    "patterns/sr-only",
+    "readme.md"
+  ],
+  "dependencies": {
+    "@houlagins/ds-tokens": "^0.0.4"
+  },
+  "devDependencies": {
+    "node-sass": "^4.8.3"
+  }
+}

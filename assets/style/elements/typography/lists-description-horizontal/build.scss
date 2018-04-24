@@ -1,0 +1,12 @@
+@import 'node_modules/@houlagins/ds-tokens/line-height/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/breakpoints/_variables-media.scss';
+@import 'node_modules/@houlagins/ds-tokens/grid/_variables-grid.scss';
+@import '../../../_mixins/_clearfix.scss';
+@import './elements/typography/lists-description-horizontal/_text-overflow.scss';
+
+
+$component-offset-horizontal: 180px !default;
+$dl-horizontal-offset:        $component-offset-horizontal !default;
+$dl-horizontal-breakpoint:    $grid-float-breakpoint !default;
+
+@import './elements/typography/lists-description-horizontal/_type.scss';

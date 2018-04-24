@@ -4,7 +4,7 @@
 // Print styles.
 // Inlined to avoid the additional HTTP request: h5bp.com/r
 // ==========================================================================
-
+@import './_mixins/_responsive-visibility';
 @media print {
     *,
     *:before,
@@ -98,4 +98,7 @@
     }
 
     // Bootstrap specific changes end
+}
+@media print {
+  @include responsive-invisibility('.hidden-print');
 }

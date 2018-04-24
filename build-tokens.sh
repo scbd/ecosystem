@@ -6,4 +6,5 @@ yarn theo ./assets/tokens/font/index.yml --transform web --format scss,cssmodule
 yarn theo ./assets/tokens/font-size/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./assets/tokens/font-size/
 yarn theo ./assets/tokens/line-height/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./assets/tokens/line-height/
 yarn theo ./assets/tokens/spacing/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./assets/tokens/spacing/
+yarn theo ./assets/tokens/z-index/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./assets/tokens/z-index/
 yarn theo ./assets/tokens/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./assets/tokens/

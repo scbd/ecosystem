@@ -1,0 +1,27 @@
+@import 'node_modules/@houlagins/ds-tokens/line-height/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/border-radius/index.scss';
+
+
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: $line-height-computed;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: $border-radius-base;
+
+  > li {
+    display: inline-block;
+
+    + li:before {
+      // [converter] Workaround for https://github.com/sass/libsass/issues/1115
+      $nbsp: "\00a0";
+      content: "/#{$nbsp}"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: #cccccc;
+    }
+  }
+
+  > .active {
+    color: #777777;
+  }
+}

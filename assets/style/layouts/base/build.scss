@@ -1,0 +1,39 @@
+@import 'node_modules/@houlagins/ds-tokens/color-text/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/font-size/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/color-background/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/line-height/index.scss';
+@import 'node_modules/@houlagins/ds-tokens/font/index.scss';
+
+@import '../../_mixins/_box-sizing.scss';
+
+* {
+  @include box-sizing(border-box);
+}
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $body-bg;
+}
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+// Links
