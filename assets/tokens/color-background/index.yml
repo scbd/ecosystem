@@ -8,3 +8,11 @@ global:
 props:
   body-bg:
     value: "#FFFFFF"
+  state-success-bg:
+    value: "#dff0d8"
+  state-info-bg:
+    value: "#d9edf7"
+  state-warning-bg:
+    value: "#fcf8e3"
+  state-danger-bg:
+    value: "#f2dede"

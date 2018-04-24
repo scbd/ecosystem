@@ -1,2 +1,6 @@
 
 @value body-bg: rgb(255, 255, 255);
+@value state-success-bg: rgb(223, 240, 216);
+@value state-info-bg: rgb(217, 237, 247);
+@value state-warning-bg: rgb(252, 248, 227);
+@value state-danger-bg: rgb(242, 222, 222);

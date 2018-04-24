@@ -1,7 +1,10 @@
-export const textColor = "rgb(51, 51, 51)";
-export const linkColor = "rgb(51, 122, 183)";
-export const linkHoverColor = "rgb(35, 82, 124)";
-export const textMuted = "rgb(119, 119, 119)";
 export const headingsSmallColor = "rgb(119, 119, 119)";
-export const blockquoteSmallColor = "rgb(119, 119, 119)";
-export const headingsColor = "rgb(119, 119, 119)";
+export const textColor = "rgb(51, 51, 51)";
+export const textMuted = "rgb(119, 119, 119)";
+export const textColorLight = "rgb(119, 119, 119)";
+export const stateInfoText = "rgb(49, 112, 143)";
+export const linkColor = "rgb(51, 122, 183)";
+export const stateSuccessText = "rgb(60, 118, 61)";
+export const stateWarningText = "rgb(138, 109, 59)";
+export const stateDangerText = "rgb(169, 68, 66)";
+export const linkHoverColor = "rgb(35, 82, 124)";

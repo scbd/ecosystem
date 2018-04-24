@@ -1,9 +1,9 @@
 module.exports = {
   // Unitless line-heights for reusability
-  lineHeightBase: 1.45,
+  lineHeightBase: "1.45em",
   // Unitless line-heights for reusability
-  lineHeightComputed: 1.45,
-  headingsLineHeight: 1.1,
-  lineHeightLarge: 1.3333333,
-  lineHeightSmall: 1.5,
+  lineHeightComputed: "1.45em",
+  headingsLineHeight: "1.1em",
+  lineHeightLarge: "1.3333333em",
+  lineHeightSmall: "1.5em",
 };

@@ -49,11 +49,15 @@ aliases:
   # =============================================
   body-bg: "#ffffff"
 
-  # text color on body
-  # =============================================
-  # text-color:
-  #   value: "{!gray-dark}"
 
+  SUCCESS:
+    value: "#3c763d"
+  INFO:
+    value: "#31708f"
+  WARNING:
+    value: "#8a6d3b"
+  DANGER:
+    value: "#a94442"
   # link color
   # =============================================
   # link-color:

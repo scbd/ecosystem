@@ -1,8 +1,11 @@
 
-@value text-color: rgb(51, 51, 51);
-@value link-color: rgb(51, 122, 183);
-@value link-hover-color: rgb(35, 82, 124);
-@value text-muted: rgb(119, 119, 119);
 @value headings-small-color: rgb(119, 119, 119);
-@value blockquote-small-color: rgb(119, 119, 119);
-@value headings-color: rgb(119, 119, 119);
+@value text-color: rgb(51, 51, 51);
+@value text-muted: rgb(119, 119, 119);
+@value text-color-light: rgb(119, 119, 119);
+@value state-info-text: rgb(49, 112, 143);
+@value link-color: rgb(51, 122, 183);
+@value state-success-text: rgb(60, 118, 61);
+@value state-warning-text: rgb(138, 109, 59);
+@value state-danger-text: rgb(169, 68, 66);
+@value link-hover-color: rgb(35, 82, 124);

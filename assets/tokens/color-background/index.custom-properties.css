@@ -1,4 +1,8 @@
 
 :root {
   --body-bg: rgb(255, 255, 255);
+  --state-success-bg: rgb(223, 240, 216);
+  --state-info-bg: rgb(217, 237, 247);
+  --state-warning-bg: rgb(252, 248, 227);
+  --state-danger-bg: rgb(242, 222, 222);
 }

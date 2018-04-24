@@ -15,11 +15,17 @@ props:
     value: "{!brand-primary}"
   link-hover-color:
     value: "#23527c"
+  text-color-light:
+    value: "{!gray-light}"
   text-muted:
     value: "{!gray-light}"
   headings-small-color:
     value: "{!gray-light}"
-  blockquote-small-color:
-    value: "{!gray-light}"
-  headings-color:
-    value: "{!gray-light}"
+  state-success-text:
+    value: "{!SUCCESS}"
+  state-info-text:
+    value: "{!INFO}"
+  state-warning-text:
+    value: "{!WARNING}"
+  state-danger-text:
+    value: "{!DANGER}"

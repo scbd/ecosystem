@@ -1,0 +1,20 @@
+global:
+  type: z-index
+  category: z-index
+  cssProperties:
+  - z-index
+props:
+  zindex-navbar:
+    value: 1000
+  zindex-dropdown:
+    value: 1000
+  zindex-popover:
+    value: 1060
+  zindex-tooltip:
+    value: 1070
+  zindex-navbar-fixed:
+    value: 1030
+  zindex-modal-background:
+    value: 1040
+  zindex-modal:
+    value: 1050

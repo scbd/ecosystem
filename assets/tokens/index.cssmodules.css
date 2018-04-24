@@ -4,17 +4,24 @@
 @value border-radius-large: 6px;
 @value border-radius-small: 3px;
 @value body-bg: rgb(255, 255, 255);
+@value state-success-bg: rgb(223, 240, 216);
+@value state-info-bg: rgb(217, 237, 247);
+@value state-warning-bg: rgb(252, 248, 227);
+@value state-danger-bg: rgb(242, 222, 222);
 @value hr-border: rgb(238, 238, 238);
 @value blockquote-border-color: rgb(238, 238, 238);
 @value page-header-border-color: rgb(238, 238, 238);
 @value abbr-border-color: rgb(238, 238, 238);
-@value text-color: rgb(51, 51, 51);
-@value link-color: rgb(51, 122, 183);
-@value link-hover-color: rgb(35, 82, 124);
-@value text-muted: rgb(119, 119, 119);
 @value headings-small-color: rgb(119, 119, 119);
-@value blockquote-small-color: rgb(119, 119, 119);
-@value headings-color: rgb(119, 119, 119);
+@value text-color: rgb(51, 51, 51);
+@value text-muted: rgb(119, 119, 119);
+@value text-color-light: rgb(119, 119, 119);
+@value state-info-text: rgb(49, 112, 143);
+@value link-color: rgb(51, 122, 183);
+@value state-success-text: rgb(60, 118, 61);
+@value state-warning-text: rgb(138, 109, 59);
+@value state-danger-text: rgb(169, 68, 66);
+@value link-hover-color: rgb(35, 82, 124);
 @value font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
 @value font-family-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
 @value font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default;;
@@ -32,12 +39,12 @@
 @value font-size-h6: .85em;
 @value font-size-base: 16px;
 /* Unitless line-heights for reusability */
-@value line-height-base: 1.45;
+@value line-height-base: 1.45em;
 /* Unitless line-heights for reusability */
-@value line-height-computed: 1.45;
-@value headings-line-height: 1.1;
-@value line-height-large: 1.3333333;
-@value line-height-small: 1.5;
+@value line-height-computed: 1.45em;
+@value headings-line-height: 1.1em;
+@value line-height-large: 1.3333333em;
+@value line-height-small: 1.5em;
 @value padding-base-vertical: 6px;
 @value padding-base-horizontal: 12px;
 @value padding-large-vertical: 10px;

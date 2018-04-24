@@ -5,17 +5,24 @@
   --border-radius-large: 6px;
   --border-radius-small: 3px;
   --body-bg: rgb(255, 255, 255);
+  --state-success-bg: rgb(223, 240, 216);
+  --state-info-bg: rgb(217, 237, 247);
+  --state-warning-bg: rgb(252, 248, 227);
+  --state-danger-bg: rgb(242, 222, 222);
   --hr-border: rgb(238, 238, 238);
   --blockquote-border-color: rgb(238, 238, 238);
   --page-header-border-color: rgb(238, 238, 238);
   --abbr-border-color: rgb(238, 238, 238);
-  --text-color: rgb(51, 51, 51);
-  --link-color: rgb(51, 122, 183);
-  --link-hover-color: rgb(35, 82, 124);
-  --text-muted: rgb(119, 119, 119);
   --headings-small-color: rgb(119, 119, 119);
-  --blockquote-small-color: rgb(119, 119, 119);
-  --headings-color: rgb(119, 119, 119);
+  --text-color: rgb(51, 51, 51);
+  --text-muted: rgb(119, 119, 119);
+  --text-color-light: rgb(119, 119, 119);
+  --state-info-text: rgb(49, 112, 143);
+  --link-color: rgb(51, 122, 183);
+  --state-success-text: rgb(60, 118, 61);
+  --state-warning-text: rgb(138, 109, 59);
+  --state-danger-text: rgb(169, 68, 66);
+  --link-hover-color: rgb(35, 82, 124);
   --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
   --font-family-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue", Arial, sans-serif,"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
   --font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default;;
@@ -33,12 +40,12 @@
   --font-size-h6: .85em;
   --font-size-base: 16px;
   /* Unitless line-heights for reusability */
-  --line-height-base: 1.45;
+  --line-height-base: 1.45em;
   /* Unitless line-heights for reusability */
-  --line-height-computed: 1.45;
-  --headings-line-height: 1.1;
-  --line-height-large: 1.3333333;
-  --line-height-small: 1.5;
+  --line-height-computed: 1.45em;
+  --headings-line-height: 1.1em;
+  --line-height-large: 1.3333333em;
+  --line-height-small: 1.5em;
   --padding-base-vertical: 6px;
   --padding-base-horizontal: 12px;
   --padding-large-vertical: 10px;
