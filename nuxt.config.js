@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   css: [
-    { src: '@/assets/app/main.scss', lang: 'scss' }
+    { src: '@/assets/app/main.css', lang: 'css' }
   ],
 
   plugins: [

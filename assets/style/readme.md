@@ -1,15 +1,15 @@
 
-# @houlagins/ds-style
+# scbd/ecosystem
 
 Design tokens from @houlagins/design-system.
 
 ## Setup
-- Add `@houlagins/ds-style` dependency using yarn or npm to your project
+- Add `scbd/ecosystem` dependency using yarn or npm to your project
 ```bash
-  yarn add @houlagins/ds-style
+  yarn add scbd/ecosystem
 ```
 ```bash
-  npm install @houlagins/ds-style
+  npm install scbd/ecosystem
 ```
 ## Usage
 SCSS
@@ -18,5 +18,5 @@ SCSS
 ```
 CSS
 ```css
-  @import path-to-file/index.css;
+  @import url(path-to-file/index.css);
 ```

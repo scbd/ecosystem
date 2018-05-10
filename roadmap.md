@@ -133,10 +133,12 @@
 ### Features:
 > Inline editing of text as git resource
 
-> React Components
+> Angularjs Components (if needed)
 
-> External Components
+> React Components (if needed)
 
-> Web Components
+> External Components (if needed)
 
-> Plugable Authentication
+> Web Components (if needed)
+
+> Plugable Authentication (if needed)

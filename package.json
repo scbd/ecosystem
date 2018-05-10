@@ -1,10 +1,10 @@
 {
-  "name": "nuxtjs-design-system",
-  "version": "1.0.0",
-  "description": "Design system built with nuxtjs",
-  "author": "Randy Houlahan <randy.houlahan@cbd.int>",
+  "name": "ecosystem",
+  "version": "0.0.1",
+  "description": "Design System for the Secretariat of the Convention on Biological Diversity",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "private": true,
-  "workspaces": ["assets/tokens/*"],
+  "workspaces": ["assets/tokens/*","assets/style/*"],
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

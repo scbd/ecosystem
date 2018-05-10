@@ -1,9 +1,9 @@
 {
-  "name": "@houlagins/ds-style",
+  "name": "@biodiversity/ecosystem-style",
   "version": "0.0.1",
   "description": "Design system style",
   "license": "MIT",
-  "author": "Randy Houlahan <randy.houlahan@cbd.int>",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "repository": "https://github.com/houlagins/design-system/tree/master/assets/style",
   "publishConfig": {
     "access": "public"

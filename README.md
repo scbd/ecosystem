@@ -1,4 +1,4 @@
-# nuxtjs-design-system
+# Design Ecosystem
 
 > Design system platform built with nuxtjs
 
@@ -18,15 +18,16 @@ $ yarn  start
 
 
 Features:
-- built for your org
+- built for our org
+- Modular styles
 - Consistent  communication
 - terminology
 - statuses
 - living document
 - NPM publishable
 - faster workflow
-- story boardish
+- storyboard-ish
 - Partially self documenting
 - versioning
 - theming
-- inline editing of text as git resource
+- inline editing of text as git resource (later)
