@@ -36,27 +36,27 @@ export const fontSizeH3 = "1.7em";
 export const fontSizeH4 = "1.25em";
 export const fontSizeH5 = "16px";
 export const fontSizeH6 = ".85em";
-export const fontSizeBase = "16px";
+export const fontSizeBase = "1em";
 // Unitless line-heights for reusability
 export const lineHeightBase = "1.45em";
 // Unitless line-heights for reusability
 export const lineHeightComputed = "1.45em";
 export const headingsLineHeight = "1.1em";
 export const lineHeightLarge = "1.3333333em";
-export const lineHeightSmall = "1.5em";
+export const lineHeightSmall = "1.055em";
 // 
-export const paddingBaseVertical = "6px";
+export const paddingBaseVertical = "0.375em";
 // 
-export const paddingBaseHorizontal = "12px";
+export const paddingBaseHorizontal = "0.75em";
 // 
-export const paddingLargeVertical = "10px";
+export const paddingLargeVertical = "0.625em";
 // 
-export const paddingLargeHorizontal = "16px";
+export const paddingLargeHorizontal = "1em";
 // 
-export const paddingSmallVertical = "5px";
+export const paddingSmallVertical = "0.3125em";
 // 
-export const paddingSmallHorizontal = "10px";
+export const paddingSmallHorizontal = "0.625em";
 // 
-export const paddingXsVertical = "1px";
+export const paddingXsVertical = "0.0625em";
 // 
-export const paddingXsHorizontal = "5px";
+export const paddingXsHorizontal = "0.3125em";

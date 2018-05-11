@@ -7,4 +7,4 @@ export const fontSizeH3 = "1.7em";
 export const fontSizeH4 = "1.25em";
 export const fontSizeH5 = "16px";
 export const fontSizeH6 = ".85em";
-export const fontSizeBase = "16px";
+export const fontSizeBase = "1em";

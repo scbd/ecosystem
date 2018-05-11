@@ -23,6 +23,12 @@ small,
 .invisible {
   visibility: hidden; }
 
+.marginless {
+  margin: 0; }
+
+.paddingless {
+  padding: 0; }
+
 .hidden {
   display: none !important; }
 

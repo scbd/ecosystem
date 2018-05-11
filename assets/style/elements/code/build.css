@@ -26,10 +26,10 @@ kbd {
 
 pre {
   display: block;
-  padding: 0.225;
-  margin: 0 0 0.725;
-  font-size: 15px;
-  line-height: 1.45;
+  padding: 0.225em;
+  margin: 0 0 0.725em;
+  font-size: 0em;
+  line-height: 1.45em;
   word-break: break-all;
   word-wrap: break-word;
   color: #333333;

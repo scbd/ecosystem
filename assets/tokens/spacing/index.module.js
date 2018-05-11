@@ -1,16 +1,16 @@
 // 
-export const paddingBaseVertical = "6px";
+export const paddingBaseVertical = "0.375em";
 // 
-export const paddingBaseHorizontal = "12px";
+export const paddingBaseHorizontal = "0.75em";
 // 
-export const paddingLargeVertical = "10px";
+export const paddingLargeVertical = "0.625em";
 // 
-export const paddingLargeHorizontal = "16px";
+export const paddingLargeHorizontal = "1em";
 // 
-export const paddingSmallVertical = "5px";
+export const paddingSmallVertical = "0.3125em";
 // 
-export const paddingSmallHorizontal = "10px";
+export const paddingSmallHorizontal = "0.625em";
 // 
-export const paddingXsVertical = "1px";
+export const paddingXsVertical = "0.0625em";
 // 
-export const paddingXsHorizontal = "5px";
+export const paddingXsHorizontal = "0.3125em";

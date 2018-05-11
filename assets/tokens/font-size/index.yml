@@ -8,7 +8,7 @@ imports:
 - ../aliases/font-size.yml
 props:
   font-size-base:
-    value: "{!font-size-base}"
+    value: "1em"
   font-size-large:
     value: "1.25em"
   font-size-small:

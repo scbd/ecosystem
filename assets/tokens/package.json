@@ -1,16 +1,17 @@
 {
   "name": "@biodiversity/ecosystem-tokens",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Design system tokens",
   "license": "MIT",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "main": "index.module.js",
-  "repository": "https://github.com/houlagins/design-system/tree/master/assets/tokens",
+  "repository": "https://github.com/scbd/ecosystem/tree/master/assets/tokens",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "release": "yarn version && git push --follow-tags && yarn publish"
+    "release": "yarn publish",
+    "build": "sh build-tokens.sh"
   },
   "files": [
     "spacing",
@@ -29,5 +30,8 @@
     "index.custom-properties.css",
     "index.cssmodules.css",
     "index.common.js"
-  ]
+  ],
+  "devDependencies": {
+    "theo": "^7.0.1"
+  }
 }

@@ -1,0 +1,10 @@
+yarn theo ./border-radius/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./border-radius/
+yarn theo ./color-background/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./color-background/
+yarn theo ./color-border/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./color-border/
+yarn theo ./color-text/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./color-text/
+yarn theo ./font/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./font/
+yarn theo ./font-size/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./font-size/
+yarn theo ./line-height/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./line-height/
+yarn theo ./spacing/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./spacing/
+yarn theo ./z-index/index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./z-index/
+yarn theo ./index.yml --transform web --format scss,cssmodules.css,module.js,common.js,custom-properties.css --dest ./

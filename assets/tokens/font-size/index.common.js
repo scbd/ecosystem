@@ -8,5 +8,5 @@ module.exports = {
   fontSizeH4: "1.25em",
   fontSizeH5: "16px",
   fontSizeH6: ".85em",
-  fontSizeBase: "16px",
+  fontSizeBase: "1em",
 };

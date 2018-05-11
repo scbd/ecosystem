@@ -24,11 +24,11 @@ $container-desktop:            (940px + $grid-gutter-width) !default;
 $container-md:                 $container-desktop !default;
 
 // Large screen / wide desktop
-$container-large-desktop:      (1140px + $grid-gutter-width) !default;
+$container-large-desktop:      (1200px + $grid-gutter-width) !default;
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop !default;
 
 // Large screen / wide desktop
-$container-large-hd:      (1348px + $grid-gutter-width) !default;
+$container-large-hd:      (2600px + $grid-gutter-width) !default;
 //** For `$screen-lg-min` and up.
 $container-hd:                 $container-large-hd !default;

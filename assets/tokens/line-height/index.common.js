@@ -5,5 +5,5 @@ module.exports = {
   lineHeightComputed: "1.45em",
   headingsLineHeight: "1.1em",
   lineHeightLarge: "1.3333333em",
-  lineHeightSmall: "1.5em",
+  lineHeightSmall: "1.055em",
 };

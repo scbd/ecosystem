@@ -1,18 +1,18 @@
 module.exports = {
   // 
-  paddingBaseVertical: "6px",
+  paddingBaseVertical: "0.375em",
   // 
-  paddingBaseHorizontal: "12px",
+  paddingBaseHorizontal: "0.75em",
   // 
-  paddingLargeVertical: "10px",
+  paddingLargeVertical: "0.625em",
   // 
-  paddingLargeHorizontal: "16px",
+  paddingLargeHorizontal: "1em",
   // 
-  paddingSmallVertical: "5px",
+  paddingSmallVertical: "0.3125em",
   // 
-  paddingSmallHorizontal: "10px",
+  paddingSmallHorizontal: "0.625em",
   // 
-  paddingXsVertical: "1px",
+  paddingXsVertical: "0.0625em",
   // 
-  paddingXsHorizontal: "5px",
+  paddingXsHorizontal: "0.3125em",
 };

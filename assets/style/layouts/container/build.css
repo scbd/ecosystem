@@ -16,10 +16,10 @@
       width: 970px; } }
   @media (min-width: 1200px) {
     .container {
-      width: 1170px; } }
-  @media (min-width: 1408px) {
+      width: 1230px; } }
+  @media (min-width: 1608px) {
     .container {
-      width: 1378px; } }
+      width: 2630px; } }
 
 .container-fluid {
   margin-right: auto;

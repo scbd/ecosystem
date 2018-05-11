@@ -16,4 +16,4 @@ props:
   line-height-large:
     value: 1.3333333em
   line-height-small:
-    value: 1.5em
+    value: 1.055em

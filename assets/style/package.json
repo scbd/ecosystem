@@ -4,7 +4,7 @@
   "description": "Design system style",
   "license": "MIT",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
-  "repository": "https://github.com/houlagins/design-system/tree/master/assets/style",
+  "repository": "https://github.com/scbd/ecosystem/tree/master/assets/style",
   "publishConfig": {
     "access": "public"
   },
@@ -13,7 +13,6 @@
     "release": "yarn publish"
   },
   "files": [
-    "_mixins",
     "elements",
     "layouts",
     "modifiers",
@@ -24,11 +23,12 @@
     "patterns/carousel",
     "patterns/dropdowns",
     "patterns/forms",
+    "patterns/navs",
     "patterns/sr-only",
     "readme.md"
   ],
   "dependencies": {
-    "@houlagins/ds-tokens": "^0.0.4"
+    "@biodiversity/ecosystem-tokens": "^0.0.3"
   },
   "devDependencies": {
     "node-sass": "^4.8.3"

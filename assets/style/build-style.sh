@@ -28,8 +28,8 @@ yarn node-sass patterns/button-groups/build.scss patterns/button-groups/build.cs
 yarn node-sass patterns/carousel/build.scss patterns/carousel/build.css
 yarn node-sass patterns/dropdowns/build.scss patterns/dropdowns/build.css
 yarn node-sass patterns/forms/build.scss patterns/forms/build.css
-
-
+yarn node-sass patterns/navs/build.scss patterns/navs/build.css
+yarn node-sass patterns/navbar/build.scss patterns/navbar/build.css
 
 
 yarn node-sass layouts/base/build.scss layouts/base/build.min.css --output-style compressed
@@ -60,3 +60,6 @@ yarn node-sass patterns/badges/build.scss patterns/badges/build.min.css --output
 yarn node-sass patterns/breadcrumbs/build.scss patterns/breadcrumbs/build.min.css --output-style compressed
 yarn node-sass patterns/carousel/build.scss patterns/carousel/build.css --output-style compressed
 yarn node-sass patterns/dropdowns/build.scss patterns/dropdowns/build.min.css --output-style compressed
+yarn node-sass patterns/forms/build.scss patterns/forms/build.min.css --output-style compressed
+yarn node-sass patterns/navs/build.scss patterns/navs/build.min.css --output-style compressed
+yarn node-sass patterns/navbar/build.scss patterns/navbar/build.min.css --output-style compressed

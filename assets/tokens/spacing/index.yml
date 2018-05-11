@@ -18,18 +18,18 @@ global:
   - stroke-width
 props:
   padding-base-vertical:
-    value: 6px
+    value: 0.375em
   padding-base-horizontal:
-    value: 12px
+    value: 0.75em
   padding-large-vertical:
-    value: 10px
+    value: 0.625em
   padding-large-horizontal::
-    value: 16px
+    value: 1em
   padding-small-vertical:
-    value: 5px
+    value: 0.3125em
   padding-small-horizontal:
-    value: 10px
+    value: 0.625em
   padding-xs-vertical:
-    value: 1px
+    value: 0.0625em
   padding-xs-horizontal:
-    value: 5px
+    value: 0.3125em
