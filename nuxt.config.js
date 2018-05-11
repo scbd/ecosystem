@@ -14,6 +14,7 @@ module.exports = {
     ]
   },
   css: [
+    { src: 'normalize.css', lang: 'css' },
     { src: '@/assets/app/main.css', lang: 'css' }
   ],
 
