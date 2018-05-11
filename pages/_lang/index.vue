@@ -46,9 +46,6 @@
 </template>
 
 <script>
-import Vue            from 'vue'
-import VueLazyload    from 'vue-lazyload'
-Vue.use(VueLazyload,{preload:1.5})
 
 export default {
   name:'index'
@@ -59,7 +56,7 @@ export default {
 
 </style>
 <style module>
-@import url('assets/style/patterns/button-groups/build.css');
+
 .noUnderLine {text-decoration: none;}
 .outer-cont {
   position: relative;
