@@ -1,3 +1,4 @@
+// import path from 'path'
 module.exports = {
   /*
   ** Headers of the page
@@ -84,8 +85,12 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, client }) {
+    extend (config, { isDev, client, server }) {
+      if (server)
+        config.resolve.alias['hammerjs$'] = this.srcDir + 'node_modules/vue-touch/dist/hammer-ssr.js'
+
       if (isDev && client) {
+
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,

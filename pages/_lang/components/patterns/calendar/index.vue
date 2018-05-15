@@ -1,13 +1,13 @@
 <template>
   <section >
 
-    <Calendar/>
+    <Calendar :options="{locale:'en'}"/>
 
   </section>
 </template>
 
 <script>
-import Calendar from '~/components/patterns/calendar/Calendar'
+import {Calendar} from '~/components/patterns/calendar'
 export default {
   name:'ComponentPatternsCalendarPage',
   components:{Calendar}

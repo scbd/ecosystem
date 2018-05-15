@@ -1,17 +1,22 @@
 // path should translate into view . week/day/meeting/list
-import CalDayRow             from '~/components/patterns/CalDayRow'
-import CalWeekRow            from '~/components/patterns/CalWeekRow'
-import CalMeetingRow         from '~/components/patterns/CalMeetingRow'
+import CalWeekRow            from './components/body/CalWeekRow'
+import CalBody               from './components/body/CalBody'
 
-import CalEvent              from '~/components/patterns/CalEvent'
-import CalHeader             from '~/components/patterns/CalHeader'
-import CalFooter             from '~/components/patterns/CalFooter'
-import Calendar              from '~/components/patterns/Calendar'
+import CalEvent              from './components/event/CalEvent'
+import CalHeader             from './components/header/CalHeader'
+import CalFooter             from './components/footer/CalFooter'
+import Calendar              from './components/Calendar'
+
+import CalTouch              from './directives/Touch'
+
+import CalWeeks              from './modules/CalWeeksService'
+
 
 export {
-  CalDayRow,
+  CalBody ,
+  CalTouch,
+  CalWeeks,
   CalWeekRow,
-  CalMeetingRow,
   CalEvent,
   CalHeader,
   CalFooter,
