@@ -1,0 +1,14 @@
+{
+  "name": "@biodiversity/ecosystem-icons",
+  "version": "0.0.8",
+  "description": "Design system icons",
+  "license": "MIT",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "repository": "https://github.com/scbd/ecosystem/tree/master/assets/icons",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "release": "yarn publish"
+  }
+}
