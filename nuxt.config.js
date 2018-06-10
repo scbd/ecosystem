@@ -1,4 +1,5 @@
-// import path from 'path'
+// const nodeExternals = require('webpack-node-externals')
+// const path = require('path')
 module.exports = {
   /*
   ** Headers of the page
@@ -60,15 +61,27 @@ module.exports = {
   // ============================================================
   modules: [
     ['@nuxtjs/pwa'],
-    ['@nuxtjs/component-cache', { maxAge: 24 * 1000 * 60 * 60 * 4 }]  // cache rendered componenents server side for 1 hour
-
+    ['@nuxtjs/component-cache', { maxAge: 24 * 1000 * 60 * 60 * 4 }], // cache rendered componenents server side for 1 hour
+    ['@nuxtjs/proxy']
   ],
-
+  proxy: {
+    '/api': {
+      target: 'https://api.cbddev.xyz',
+      ws: true,
+      changeOrigin: true
+    }
+  },
   /*
   ** Build configuration
   */
   build: {
     extractCSS:true,
+    // loaders: [
+    //   {
+    //     test: /\.md$/,
+    //     loaders: ['html-loader', 'markdownit-loader']
+    //   }
+    // ],
     babel: {
       presets({isServer}) {
           return [
@@ -86,8 +99,7 @@ module.exports = {
     ** Run ESLint on save
     */
     extend (config, { isDev, client, server }) {
-      if (server)
-        config.resolve.alias['hammerjs$'] = this.srcDir + 'node_modules/vue-touch/dist/hammer-ssr.js'
+
 
       if (isDev && client) {
 
@@ -95,8 +107,9 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules(?![\\/]@biodiversity[\\/]))/
         })
+
       }
     }
   }

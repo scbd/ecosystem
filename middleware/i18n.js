@@ -48,7 +48,9 @@ async function lazyLoadPage(app,store,route) {
   let pageName = route.name.replace(/lang-/gi,'')
   let pageLocales = store.state.locale.pageMessages[pageName] || {}
 
-  if(pageName==='lang')pageName = 'index'
+  if(pageName==='lang') pageName = 'index'
+
+  if(pageName!=='index') return
 
   if(!pageLocales['en'] || isLocalHost)
     pageLocales.en = await import(`~/locales/pages/${pageName}/en.json`)

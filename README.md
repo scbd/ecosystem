@@ -1,6 +1,6 @@
 # Design Ecosystem
 
-> Design system platform built with nuxtjs
+> Design system  built with nuxtjs & vuepress
 
 ## Build Setup
 
@@ -15,19 +15,3 @@ $ yarn  run dev
 $ yarn  run build
 $ yarn  start
 ```
-
-
-Features:
-- built for our org
-- Modular styles
-- Consistent  communication
-- terminology
-- statuses
-- living document
-- NPM publishable
-- faster workflow
-- storyboard-ish
-- Partially self documenting
-- versioning
-- theming
-- inline editing of text as git resource (later)

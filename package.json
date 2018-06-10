@@ -1,6 +1,6 @@
 {
   "name": "ecosystem",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Design System for the Secretariat of the Convention on Biological Diversity",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "private": true,
@@ -18,15 +18,21 @@
     "tokens": "./build-tokens.sh"
   },
   "dependencies": {
+    "@biodiversity/add-to-calendar-molecule": "^0.0.1",
+    "@biodiversity/calendar": "^0.0.2",
+    "@biodiversity/eco-molecule-add-to-calendar": "^0.0.3",
     "@nuxtjs/component-cache": "^0.1.3",
     "@nuxtjs/markdownit-loader": "^1.1.1",
+    "@nuxtjs/proxy": "^1.2.4",
     "@nuxtjs/pwa": "^2.0.5",
     "babel-polyfill": "^6.26.0",
+    "ecosystem-docs": "github:scbd/ecosystem-docs#0.0.01",
     "normalize.css": "^8.0.0",
     "nuxt": "npm:nuxt-edge",
     "vue-i18n": "^7.6.0",
     "vue-lazyload": "^1.1.4",
-    "vue-particles": "^1.0.9"
+    "vue-particles": "^1.0.9",
+    "webpack-node-externals": "^1.7.2"
   },
   "engines": {
     "node": ">=8",
