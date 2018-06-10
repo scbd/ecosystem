@@ -12,7 +12,7 @@ props:
   font-size-large:
     value: "1.25em"
   font-size-small:
-    value: "85em"
+    value: ".85em"
   font-size-h1:
     value: "2.6em"
   font-size-h2:
