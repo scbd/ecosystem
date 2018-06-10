@@ -55,11 +55,11 @@ yarn node-sass modifiers/responsive/build.scss modifiers/responsive/build.min.cs
 yarn node-sass modifiers/states/build.scss modifiers/states/build.min.css --output-style compressed
 yarn node-sass modifiers/text/build.scss modifiers/text/build.min.css --output-style compressed
 
-yarn node-sass patterns/sr-only/build.scss patterns/sr-only/build.css --output-style compressed
+yarn node-sass patterns/sr-only/build.scss patterns/sr-only/build.min.css --output-style compressed
 yarn node-sass patterns/alerts/build.scss patterns/alerts/build.min.css --output-style compressed
 yarn node-sass patterns/badges/build.scss patterns/badges/build.min.css --output-style compressed
 yarn node-sass patterns/breadcrumbs/build.scss patterns/breadcrumbs/build.min.css --output-style compressed
-yarn node-sass patterns/carousel/build.scss patterns/carousel/build.css --output-style compressed
+yarn node-sass patterns/carousel/build.scss patterns/carousel/build.min.css --output-style compressed
 yarn node-sass patterns/dropdowns/build.scss patterns/dropdowns/build.min.css --output-style compressed
 yarn node-sass patterns/forms/build.scss patterns/forms/build.min.css --output-style compressed
 yarn node-sass patterns/navs/build.scss patterns/navs/build.min.css --output-style compressed

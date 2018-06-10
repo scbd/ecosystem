@@ -1,3 +1,4 @@
+[![codebeat badge](https://codebeat.co/badges/ba4f7ea3-bc29-4d29-94ae-e410423f575a)](https://codebeat.co/projects/github-com-scbd-ecosystem-master)
 # Design Ecosystem
 
 > Design system  built with nuxtjs & vuepress

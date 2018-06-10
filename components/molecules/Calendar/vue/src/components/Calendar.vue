@@ -163,10 +163,4 @@
     color: #23527c;
     text-decoration: underline;
   }
-  .debugB {
-    border: 1px solid blue;
-  }
-  .debug {
-    border: 1px solid red;
-  }
 </style>
