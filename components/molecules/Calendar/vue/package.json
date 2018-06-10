@@ -1,0 +1,57 @@
+{
+  "name": "@biodiversity/eco-molecule-calendar-vue",
+  "version": "0.0.1",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "yarn build:lib && yarn build:wc && yarn build:wca",
+    "build:lib": "vue-cli-service build src/components/Calendar.vue --target lib --name Calendar",
+    "build:wc": "vue-cli-service build src/components/Calendar.vue --target wc --name Eco-Calendar --dest ../wc/",
+    "build:wca": "vue-cli-service build src/components/Calendar.vue --target wc-async --name Eco-Calendar --dest ../wca/",
+    "lint": "vue-cli-service lint",
+    "release": "yarn publish --access=public"
+  },
+  "dependencies": {
+    "@biodiversity/eco-molecule-add-to-calendar": "^0.0.4",
+    "@biodiversity/ecosystem-icons": "^0.0.8",
+    "@biodiversity/ecosystem-style": "^0.0.9",
+    "@biodiversity/vue-authentication": "0.0.5",
+    "lodash.debounce": "^4.0.8",
+    "luxon": "^1.2.1",
+    "normalize.css": "^8.0.0",
+    "vue": "^2.5.16",
+    "vue-i18n": "^7.7.0",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "glob-all": "^3.1.0",
+    "purgecss-webpack-plugin": "^1.1.0",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
