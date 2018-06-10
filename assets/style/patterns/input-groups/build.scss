@@ -1,9 +1,15 @@
-//
-// Input groups
-// --------------------------------------------------
-
-// Base styles
-// -------------------------
+@import 'node_modules/@biodiversity/ecosystem-tokens/line-height/index.scss';
+@import 'node_modules/@biodiversity/ecosystem-tokens/spacing/index.scss';
+@import 'node_modules/@biodiversity/ecosystem-tokens/border-radius/index.scss';
+@import 'node_modules/@biodiversity/ecosystem-tokens/font-size/index.scss';
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
 .input-group {
   position: relative; // For dropdowns
   display: table;
@@ -79,22 +85,22 @@
   font-size: $font-size-base;
   font-weight: normal;
   line-height: 1;
-  color: $input-color;
+  color: #555555;
   text-align: center;
-  background-color: $input-group-addon-bg;
-  border: 1px solid $input-group-addon-border-color;
-  border-radius: $input-border-radius;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+  border-radius: $border-radius-base;
 
   // Sizing
   &.input-sm {
     padding: $padding-small-vertical $padding-small-horizontal;
     font-size: $font-size-small;
-    border-radius: $input-border-radius-small;
+    border-radius: $border-radius-small;
   }
   &.input-lg {
     padding: $padding-large-vertical $padding-large-horizontal;
     font-size: $font-size-large;
-    border-radius: $input-border-radius-large;
+    border-radius: $border-radius-large;
   }
 
   // Nuke default margins from checkboxes and radios to vertically center within.

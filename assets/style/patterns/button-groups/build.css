@@ -294,13 +294,13 @@ fieldset[disabled] a.btn {
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.3125em 0.625em;
-  font-size: 85em;
+  font-size: 0.85em;
   line-height: 1.055em;
   border-radius: 3px; }
 
 .btn-xs, .btn-group-xs > .btn {
   padding: 0.0625em 0.3125em;
-  font-size: 85em;
+  font-size: 0.85em;
   line-height: 1.055em;
   border-radius: 3px; }
 

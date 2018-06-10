@@ -119,7 +119,7 @@ input[type="search"] {
   input[type="month"].input-sm,
   .input-group-sm
   input[type="month"] {
-    line-height: 91.625em; }
+    line-height: 2.625em; }
   input[type="date"].input-lg,
   .input-group-lg input[type="date"],
   input[type="time"].input-lg,
@@ -209,40 +209,40 @@ fieldset[disabled]
     padding-right: 0; }
 
 .input-sm {
-  height: 91.625em;
+  height: 2.625em;
   padding: 0.3125em 0.625em;
-  font-size: 85em;
+  font-size: 0.85em;
   line-height: 1.055em;
   border-radius: 3px; }
 
 select.input-sm {
-  height: 91.625em;
-  line-height: 91.625em; }
+  height: 2.625em;
+  line-height: 2.625em; }
 
 textarea.input-sm,
 select[multiple].input-sm {
   height: auto; }
 
 .form-group-sm .form-control {
-  height: 91.625em;
+  height: 2.625em;
   padding: 0.3125em 0.625em;
-  font-size: 85em;
+  font-size: 0.85em;
   line-height: 1.055em;
   border-radius: 3px; }
 
 .form-group-sm select.form-control {
-  height: 91.625em;
-  line-height: 91.625em; }
+  height: 2.625em;
+  line-height: 2.625em; }
 
 .form-group-sm textarea.form-control,
 .form-group-sm select[multiple].form-control {
   height: auto; }
 
 .form-group-sm .form-control-static {
-  height: 91.625em;
-  min-height: 86.45em;
+  height: 2.625em;
+  min-height: 2.3em;
   padding: 1.3125em 0.625em;
-  font-size: 85em;
+  font-size: 0.85em;
   line-height: 1.055em; }
 
 .input-lg {
@@ -309,9 +309,9 @@ select[multiple].input-lg {
 .input-sm + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
 .form-group-sm .form-control + .form-control-feedback {
-  width: 91.625em;
-  height: 91.625em;
-  line-height: 91.625em; }
+  width: 2.625em;
+  height: 2.625em;
+  line-height: 2.625em; }
 
 .has-success .help-block,
 .has-success .control-label,
@@ -489,4 +489,4 @@ select[multiple].input-lg {
 @media (min-width: 768px) {
   .form-horizontal .form-group-sm .control-label {
     padding-top: 1.3125em;
-    font-size: 85em; } }
+    font-size: 0.85em; } }

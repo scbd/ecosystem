@@ -1,6 +1,6 @@
 {
   "name": "@biodiversity/ecosystem-style",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "Design system style",
   "license": "MIT",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
@@ -16,19 +16,11 @@
     "elements",
     "layouts",
     "modifiers",
-    "patterns/alerts",
-    "patterns/badges",
-    "patterns/breadcrumbs",
-    "patterns/button-groups",
-    "patterns/carousel",
-    "patterns/dropdowns",
-    "patterns/forms",
-    "patterns/navs",
-    "patterns/sr-only",
+    "patterns",
     "readme.md"
   ],
   "dependencies": {
-    "@biodiversity/ecosystem-tokens": "^0.0.3"
+    "@biodiversity/ecosystem-tokens": "^0.0.6"
   },
   "devDependencies": {
     "node-sass": "^4.8.3"

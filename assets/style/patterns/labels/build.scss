@@ -1,6 +1,15 @@
-//
-// Labels
-// --------------------------------------------------
+
+@import 'node_modules/@biodiversity/ecosystem-tokens/color-text/index.scss';
+@mixin label-variant($color) {
+  background-color: $color;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($color, 10%);
+    }
+  }
+}
 
 .label {
   display: inline;
@@ -8,7 +17,7 @@
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
-  color: $label-color;
+  color: #ffffff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -32,7 +41,7 @@
 a.label {
   &:hover,
   &:focus {
-    color: $label-link-hover-color;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
   }
@@ -40,7 +49,17 @@ a.label {
 
 // Colors
 // Contextual variations (linked labels get darker on :hover)
-
+$label-default-bg:            $text-color-light !default;
+//** Primary label background color
+$label-primary-bg:            $link-color !default;
+//** Success label background color
+$label-success-bg:            $state-success-text !default;
+//** Info label background color
+$label-info-bg:               $state-info-text !default;
+//** Warning label background color
+$label-warning-bg:            $state-warning-text !default;
+//** Danger label background color
+$label-danger-bg:             $state-danger-text !default;
 .label-default {
   @include label-variant($label-default-bg);
 }
