@@ -13,10 +13,10 @@
           </div>
           <div class="row">
             <div class="col-xs-4 text-center">
-              <button type="button" class="btn btn-default disabled" :class="$style.noUnderLine">Get Started</button>
+              <button href="https://scbd.github.io/ecosystem-docs/proposal/" type="button" class="btn btn-default disabled" :class="$style.noUnderLine">Get Started</button>
             </div>
             <div class="col-xs-4 text-center ">
-              <button type="button" class="btn btn-default disabled" :class="$style.noUnderLine">Road Map</button>
+              <button href="https://scbd.github.io/ecosystem-docs/proposal/#roadmap" type="button" class="btn btn-default disabled" :class="$style.noUnderLine">Road Map</button>
             </div>
             <div class="col-xs-4 text-center">
               <a href="https://github.com/scbd/ecosystem" class="btn btn-default" :class="$style.noUnderLine">GitHub</a>
