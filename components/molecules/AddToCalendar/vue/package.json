@@ -1,0 +1,35 @@
+{
+  "name": "@biodiversity/eco-molecule-add-to-calendar",
+  "version": "0.0.4",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "yarn build:comp ",
+    "lint": "vue-cli-service lint",
+    "build:comp": "vue-cli-service build src/components/index.vue --target lib --name AddToCalendar --dest dist/",
+    "release": "yarn publish --access=public"
+  },
+  "main": "dist/AddToCalendar.umd.min.js",
+  "dependencies": {
+    "@biodiversity/ecosystem-icons": "^0.0.6 ",
+    "@biodiversity/ecosystem-style": "^0.0.9",
+    "vue": "^2.5.16",
+    "vue-i18n": "^7.6.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.14",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.14",
+    "@vue/cli-service": "^3.0.0-beta.14",
+    "glob-all": "^3.1.0",
+    "purgecss-webpack-plugin": "^1.1.0",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "description": "Vue component to display 'subscribe to events' or 'event streams' into popular calendar clients.",
+  "files": [
+    "dist"
+  ]
+}
