@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.9.3
+FROM mhart/alpine-node:8.11.2
 
 ENV HOST 0.0.0.0
 ARG COMMIT
