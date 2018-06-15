@@ -1,4 +1,5 @@
 FROM mhart/alpine-node:8.11.2
+FROM mhart/alpine-node:8.9.3
 
 ENV HOST 0.0.0.0
 ARG COMMIT
@@ -17,10 +18,10 @@ RUN apk update && apk upgrade && \
 
 COPY . /usr/src/app/
 
-RUN npm install
-RUN npm build
+RUN yarn
+RUN yarn build
 
-EXPOSE 3000
+EXPOSE 3333
 
 # start command
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
