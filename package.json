@@ -50,11 +50,5 @@
     "sass-loader": "^7.0.1",
     "theo": "^7.0.1",
     "vue-i18n-extensions": "^0.1.0"
-  },
-  "config": {
- "nuxt": {
-   "host": "localhost",
-   "port": "3000"
- }
-}
+  }
 }
