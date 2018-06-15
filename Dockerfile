@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:8.11.2
 
-ENV HOST localhost
+ENV HOST 0.0.0.0
 ARG COMMIT
 ENV COMMIT $COMMIT
 ARG apiUrl
@@ -17,10 +17,10 @@ RUN apk update && apk upgrade && \
 
 COPY . /usr/src/app/
 
-RUN yarn
-RUN yarn build
+RUN npm install
+RUN npm build
 
-EXPOSE 3000
+EXPOSE 3333
 
 # start command
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
