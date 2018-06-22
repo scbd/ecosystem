@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:8.11.2
 
-ENV HOST 0.0.0.0
+ENV HOST localhost
 ARG COMMIT
 ENV COMMIT $COMMIT
 ARG apiUrl
