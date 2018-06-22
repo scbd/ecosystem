@@ -1,6 +1,6 @@
 {
-  "name": "@biodiversity/ecosystem-style",
-  "version": "0.0.9",
+  "name": "@scbd/ecosystem-style",
+  "version": "0.0.1",
   "description": "Design system style",
   "license": "MIT",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
