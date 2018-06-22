@@ -1,5 +1,5 @@
 {
-  "name": "@biodiversity/eco-molecule-calendar-vue",
+  "name": "@scbd/eco-molecule-calendar-vue",
   "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -11,10 +11,10 @@
     "release": "yarn publish --access=public"
   },
   "dependencies": {
-    "@biodiversity/eco-molecule-add-to-calendar": "^0.0.4",
-    "@biodiversity/ecosystem-icons": "^0.0.8",
-    "@biodiversity/ecosystem-style": "^0.0.9",
-    "@biodiversity/vue-authentication": "0.0.5",
+    "@scbd/eco-molecule-add-to-calendar": "^0.0.2",
+    "@scbd/ecosystem-icons": "^0.0.1",
+    "@scbd/ecosystem-style": "^0.0.1",
+    "@scbd/vue-authentication": "0.0.4",
     "lodash.debounce": "^4.0.8",
     "luxon": "^1.2.1",
     "normalize.css": "^8.0.0",

@@ -18,16 +18,16 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <!-- <button class="btn btn-default btn-xs"><span :class="$style.pointer" class="text-primary"><small><a v-on:click.stop="goTo(`webcal://localhost:8000/api/v2018/iCal/${calEvent.conference}/${stream}`)">Subscribe to {{stream}}</a></small></span></button> -->
           </span>
-          <AddToCalendar :event="calEvent" style="display:inline-block;" v-on:click.stop=""/>
+          <AddToCalendar :event="calEvent" style="display:inline-block;"/>
         </div>
 
         <div ><span class="eco-location"></span> {{location}}</div>
-        <div v-if="(organizer || organizerEmail) && $isStaff">
+        <div v-if="organizer || organizerEmail">
           <span class="eco-address-card" ></span>
           <a :href="`${organizerEmail}`">{{organizer || organizerEmail}}</a>
-          <div :key="i" v-for="(o, i) in calEvent.organizers">{{o}}</div>
+          <div v-for="(o, i) in calEvent.organizers">{{o}}</div>
         </div>
-        <div v-if="calEvent.item_ss && calEvent.item_ss.length">
+        <div >
           <table  >
             <tr>
               <td style="vertical-align:top;">
@@ -35,7 +35,7 @@
               </td>
               <td>
                 <table >
-                  <tr :key="index" v-for="(item, index) in calEvent.item_ss">
+                  <tr v-for="(item, index) in calEvent.item_ss">
                     <td>
                       <AgendaItem :body="'SBI'" :item="item" />
 
@@ -47,7 +47,7 @@
                       <CalEventDetailsFile v-if="files(index)._id" :file="files(index)"/>
                     </td>
                     <td>
-                      <FileStatus v-if="files(index)._id && $isStaff" :file="files(index)"/>
+                      <!-- <FileStatus v-if="files(index)._id" :file="files(index)"/> -->
                     </td>
                   </tr>
                 </table>
@@ -64,22 +64,20 @@
 
 <script>
 
-  import AddToCalendar        from '@biodiversity/eco-molecule-add-to-calendar'//'@biodiversity/eco-molecule-add-to-calendar'
-  import events               from '../../modules/Bus'
-  import AgendaItem           from './AgendaItem'
-  import FileStatus           from   './CalEventDetailsFileStatus'
-  import {DateTime}           from 'luxon'
-  import CalEventDetailsFile  from './CalEventDetailsFile'
-
-  import '@biodiversity/ecosystem-style/modifiers/helpers/build.min.css'
-  import '@biodiversity/ecosystem-style/modifiers/states/build.min.css'
-  import '@biodiversity/ecosystem-style/patterns/button-groups/build.css'
-  import '@biodiversity/eco-molecule-add-to-calendar/dist/AddToCalendar.css'
+  import AddToCalendar from '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.umd.min'
+  import events from '../../modules/Bus'
+  import AgendaItem from './AgendaItem'
+  // import FileStatus from   './CalEventDetailsFileStatus'
+  import {DateTime}  from 'luxon'
+  import CalEventDetailsFile from './CalEventDetailsFile'
+  import '@scbd/ecosystem-style/modifiers/states/build.min.css'
+  import '@scbd/ecosystem-style/patterns/button-groups/build.css'
+  import '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.css'
 
   export default {
     name: 'Details',
     props:['event'],
-    components:{AgendaItem,CalEventDetailsFile,FileStatus,AddToCalendar},
+    components:{CalEventDetailsFile,AgendaItem,AddToCalendar},//FileStatus,CalEventDetailsFile,
     methods:{
       showDetails:showDetails,
       files:files,
@@ -92,20 +90,21 @@
       location:location,
       organizer:organizer,
       organizerEmail:organizerEmail
+
     }
   }
-
   function goTo(url){
+
     if(typeof window !== 'undefined')
       window.open(url,'_blank')
-  }
 
+  }
   function itemTextArr (i){
+
       if(this.calEvent.itemText)
         return this.calEvent.itemText[i]
       return''
   }
-
   function showDetails (e){
     e.stopPropagation()
     e.data ={data:true}
@@ -189,6 +188,9 @@
   }
   .body {
     padding: 5px 15px 5px 15px;
+  }
+  .title{
+
   }
   .footer{
       border-top: 1px solid #eee;

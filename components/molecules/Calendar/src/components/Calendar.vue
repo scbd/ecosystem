@@ -20,10 +20,10 @@
 <script>
 
   import 'normalize.css/normalize.css'
-  import '@biodiversity/ecosystem-icons/all/all.css'
-  import "@biodiversity/ecosystem-style/layouts/base/build.min.css"
-  import "@biodiversity/ecosystem-style/layouts/container/build.min.css"
-  import "@biodiversity/ecosystem-style/layouts/grid/build.min.css"
+  import '@scbd/ecosystem-icons/all/all.css'
+  import "@scbd/ecosystem-style/layouts/base/build.min.css"
+  import "@scbd/ecosystem-style/layouts/container/build.min.css"
+  import "@scbd/ecosystem-style/layouts/grid/build.min.css"
 
   import {DateTime}         from 'luxon'
   import events             from '../modules/Bus'
@@ -32,9 +32,10 @@
   import CalFooter          from './footer/CalFooter'
   import CalWeeks           from '../modules/CalWeeksService'
   import messages           from '../locales'
-  import VueAuthentication  from '@biodiversity/vue-authentication'
+  import VueAuthentication  from '@scbd/vue-authentication/src/Authentication'
   import Vue from 'vue'
   Vue.use(VueAuthentication,{env:process.env.NODE_ENV})
+
 
   export default {
     name: 'Calendar',
@@ -55,13 +56,16 @@
       changeDateTime:changeDateTime,
       setIterationsService:setIterationsService,
       getEvents:function(){
-        return this.options.queryFn(this.queryObject).then((e)=>{ this.events = e})
+        return this.options.queryFn(this.queryObject).then((e)=>{
+          this.events = e
+        })
       },
       setQueryString:setQueryString,
       applyFilter:applyFilter
     },
     mounted:function(){
       events.$on('showFilter', this.applyFilter)
+
     },
     created: function(){
       if(!this.$route.query || !this.$route.query.selected)
