@@ -718,16 +718,6 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
-"@biodiversity/ecosystem-icons@^0.0.6 ":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@biodiversity/ecosystem-icons/-/ecosystem-icons-0.0.6.tgz#cbe2985c982e30c639ede98a2f82a3bf5b52b0a9"
-
-"@biodiversity/ecosystem-style@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@biodiversity/ecosystem-style/-/ecosystem-style-0.0.9.tgz#4f202692e5ca1409e630bed217d4fa7681bfc277"
-  dependencies:
-    "@biodiversity/ecosystem-tokens" "^0.0.6"
-
 "@biodiversity/ecosystem-tokens@^0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@biodiversity/ecosystem-tokens/-/ecosystem-tokens-0.0.6.tgz#f09f076e47d87d7cacae46dada812824f7463171"
@@ -742,6 +732,16 @@
 "@nodelib/fs.stat@^1.0.1":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
+
+"@scbd/ecosystem-icons@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@scbd/ecosystem-icons/-/ecosystem-icons-0.0.1.tgz#0dc3ef55e4b6a33cb4bc13361bdf523fbc30e512"
+
+"@scbd/ecosystem-style@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@scbd/ecosystem-style/-/ecosystem-style-0.0.1.tgz#5580639c6e2344b77e36dce902af5793f223f064"
+  dependencies:
+    "@biodiversity/ecosystem-tokens" "^0.0.6"
 
 "@vue/babel-preset-app@^3.0.0-beta.15":
   version "3.0.0-beta.15"

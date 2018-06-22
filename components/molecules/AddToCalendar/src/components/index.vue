@@ -3,7 +3,7 @@
     <div  :class="[$style.main]">
       <div class="btn-group">
         <button type="button" :class="$style.but" class="btn btn-xs btn-default" v-on:click.stop="drop">
-          {{$t('title')}}
+          {{$tr('title')}}
           <span class="caret"></span>
         </button>
         <div :class="[$style.arrowBorder]" v-if="showDrop"></div>
@@ -12,7 +12,9 @@
           <ul ref="dropdown"   v-if="showDrop" class="dropdown-menu" v-on:click.stop="drop">
             <li v-if="hasStreams">
               <div :class="[$style.formGroup]" class="form-group form-group-sm">
-                  <label><small>{{$t('selectStream')}}</small></label>
+                  <label><small>
+                    {{$tr('selectStream')}}
+                  </small></label>
                   <select class="form-control input-sm" v-model="stream" v-on:click.stop="">
                     <option value="event">This Event</option>
                     <option  :key="s" v-for="s in event.stream" :value="s" style="text-transform: capitalize;">{{s}}</option>
@@ -20,7 +22,9 @@
               </div>
             </li>
             <li role="separator" class="divider" v-if="hasStreams"></li>
-             <li ><div :class="[$style.title]"><small>{{$t('calendarClient')}}</small></div></li>
+             <li ><div :class="[$style.title]"><small>
+               {{$tr('calendarClient')}}
+             </small></div></li>
              <li><a :class="[$style.option]" v-on:click="goToWebcal"><span class="eco-apple"></span>  Apple</a></li>
              <li><a :class="[$style.option]" v-on:click="goToGoogleCal"><span class="eco-google"></span>  Google</a></li>
              <li><a :class="[$style.option]" v-on:click="goToWebcal"><span class="eco-windows"></span>  Outlook</a></li>
@@ -29,8 +33,12 @@
              <li role="separator" class="divider"></li>
              <li>
                <div :class="[$style.formGroup]" class="form-group form-group-sm">
-                 <label><small>{{$t('subscribeManually')}}</small></label>
-                 <p :class="[$style.formGroupPara]"><small>{{$t('subscribeManuallyDescription')}}</small></p>
+                 <label><small>
+                   {{$tr('subscribeManually')}}
+                 </small></label>
+                 <p :class="[$style.formGroupPara]"><small>
+                   {{$tr('subscribeManuallyDescription')}}
+                 </small></p>
                  <div class="input-group">
 
                   <input ref="icsInput" type="input"   class="form-control input-sm" :value="ics" v-on:click.stop="">
@@ -45,36 +53,27 @@
 </template>
 
 <script>
+  import i18nMixin    from '../mixin/i18n'
   import querystring  from 'querystring'
-  import messages     from '../locales'
 
-  import '@biodiversity/ecosystem-icons/all/all.css'
-  import "@biodiversity/ecosystem-style/layouts/base/build.min.css"
-  import "@biodiversity/ecosystem-style/patterns/button-groups/build.css"
-  import "@biodiversity/ecosystem-style/elements/buttons/build.min.css"
-  import "@biodiversity/ecosystem-style/patterns/dropdowns/build.min.css"
-  import "@biodiversity/ecosystem-style/patterns/forms/build.min.css"
-  import "@biodiversity/ecosystem-style/patterns/input-groups/build.min.css"
+  import '@scbd/ecosystem-icons/all/all.css'
+  import "@scbd/ecosystem-style/layouts/base/build.min.css"
+  import "@scbd/ecosystem-style/patterns/button-groups/build.css"
+  import "@scbd/ecosystem-style/elements/buttons/build.min.css"
+  import "@scbd/ecosystem-style/patterns/dropdowns/build.min.css"
+  import "@scbd/ecosystem-style/patterns/forms/build.min.css"
+  import "@scbd/ecosystem-style/patterns/input-groups/build.min.css"
 
   export default {
     name: 'AddToCalendar',
     props:['event','options'],
+    mixins:[i18nMixin],
     data:function(){
       return{
         showDrop:false,
         stream:'event'
     }},
-    beforeCreate:function(){
 
-      if(!this.$i18n)
-        throw new Error('$i18n must be installed')
-
-      if(this.$i18n)
-        for (let locale in messages){
-          let msgs = this.$i18n.getLocaleMessage( locale )
-          this.$i18n.setLocaleMessage( locale, Object.assign(msgs,messages[locale]) )
-        }
-    },
     created:function(){
       /* eslint-disable */
       if(this.options && this.options.icsFunction && typeof this.options.icsFunction === "function")
