@@ -20,7 +20,7 @@ COPY . /usr/src/app/
 RUN yarn
 RUN yarn build
 
-EXPOSE 3333
+EXPOSE 3000
 
 # start command
 CMD [ "yarn", "start" ]
