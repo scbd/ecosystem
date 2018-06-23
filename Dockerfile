@@ -20,8 +20,7 @@ COPY . /usr/src/app/
 RUN yarn
 RUN yarn build
 # tree shake
-RUN rm -rf /usr/src/app/node_modules
-RUN yarn --production=true
+
 
 EXPOSE 3000
 
