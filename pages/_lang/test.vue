@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueAuthentication  from '~/components/src/Authentication'
+// import Vue from 'vue'
+// import VueAuthentication  from '~/components/src/Authentication'
 import {DateTime}            from 'luxon'
 import axios from 'axios'
 import AddToCal from '~/components/molecules/Calendar/src/components/Calendar.vue'
 
-Vue.use(VueAuthentication,{env:process.env.NODE_ENV})
+// Vue.use(VueAuthentication,{env:process.env.NODE_ENV})
 export default {
   name:'index',
   data:function (){

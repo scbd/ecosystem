@@ -26,7 +26,7 @@
     "@scbd/ecosystem-icons": "^0.0.1",
     "@scbd/ecosystem-style": "^0.0.1",
     "@scbd/ecosystem-tokens": "^0.0.1",
-    "@scbd/vue-authentication": "^0.0.4",
+    "@scbd/vue-authentication": "^0.0.7",
     "babel-polyfill": "^6.26.0",
     "normalize.css": "^8.0.0",
     "nuxt-edge": "^2.0.0-25494410.e993616",

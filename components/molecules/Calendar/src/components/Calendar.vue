@@ -32,7 +32,7 @@
   import CalFooter          from './footer/CalFooter'
   import CalWeeks           from '../modules/CalWeeksService'
   import messages           from '../locales'
-  import VueAuthentication  from '@scbd/vue-authentication/src/Authentication'
+  import VueAuthentication  from '../modules/Authentication'
   import Vue from 'vue'
   Vue.use(VueAuthentication,{env:process.env.NODE_ENV})
 

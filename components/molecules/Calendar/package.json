@@ -14,7 +14,7 @@
     "@scbd/eco-molecule-add-to-calendar": "^0.0.2",
     "@scbd/ecosystem-icons": "^0.0.1",
     "@scbd/ecosystem-style": "^0.0.1",
-    "@scbd/vue-authentication": "0.0.4",
+    "@scbd/vue-authentication": "0.0.7",
     "lodash.debounce": "^4.0.8",
     "luxon": "^1.2.1",
     "normalize.css": "^8.0.0",

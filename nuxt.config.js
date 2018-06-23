@@ -101,14 +101,18 @@ module.exports = {
     extend (config, { isDev, client, server }) {
 
 
+        const babelLoader = config.module.rules.find(rule => rule.loader === 'babel-loader')
+        const babelLoaderEs6 = Object.assign({}, babelLoader, { exclude: undefined, test: /vue-authentication/ })
+        config.module.rules.push(babelLoaderEs6)
+
       if (isDev && client) {
 
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules(?![\\/]@biodiversity[\\/]))/
-        })
+        // config.module.rules.push({
+        //   enforce: 'pre',
+        //   test: /\.(js|vue)$/,
+        //   loader: 'eslint-loader',
+        //   include: /(node_modules(?![\\/]@scbd[\\/]))/
+        // })
 
       }
     }
