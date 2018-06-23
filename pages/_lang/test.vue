@@ -14,7 +14,7 @@ import AddToCal from '~/components/molecules/Calendar/src/components/Calendar.vu
 // Vue.use(VueAuthentication,{env:process.env.NODE_ENV})
 export default {
   name:'index',
-  data:function (){
+  asyncData:function (){
     let conference
     this.getConference().then((r)=>{conference=r.data})
     return {
