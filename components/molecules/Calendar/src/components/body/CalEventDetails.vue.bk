@@ -18,7 +18,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <!-- <button class="btn btn-default btn-xs"><span :class="$style.pointer" class="text-primary"><small><a v-on:click.stop="goTo(`webcal://localhost:8000/api/v2018/iCal/${calEvent.conference}/${stream}`)">Subscribe to {{stream}}</a></small></span></button> -->
           </span>
-          <AddToCalendar :event="calEvent" style="display:inline-block;"/>
+          <!-- <AddToCalendar :event="calEvent" style="display:inline-block;"/> -->
         </div>
 
         <div ><span class="eco-location"></span> {{location}}</div>
@@ -72,8 +72,8 @@
   import CalEventDetailsFile from './CalEventDetailsFile'
   import '@scbd/ecosystem-style/modifiers/states/build.min.css'
   import '@scbd/ecosystem-style/patterns/button-groups/build.css'
-  import '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.css'
-
+  // import '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.css'
+  import '@scbd/ecosystem-icons/all/all.css'
   export default {
     name: 'Details',
     props:['event'],

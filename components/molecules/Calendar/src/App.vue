@@ -5,9 +5,11 @@
 </template>
 
 <script>
-import Calendar from './components/Calendar.vue'
+import Calendar from './components/index.vue'
 import {DateTime}            from 'luxon'
 import axios from 'axios'
+  import '@scbd/ecosystem-icons/all/all.css'
+
 export default {
   name: 'app',
   data:function (){
@@ -118,7 +120,7 @@ export default {
     }
     return days
   }
-  
+
   function mapByWeek(days){
     let weeks = {}
 

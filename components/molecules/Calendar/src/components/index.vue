@@ -7,7 +7,17 @@
     </div>
   </section>
 </template>
-
+<style>
+  a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: #23527c;
+    text-decoration: underline;
+  }
+</style>
 <style module>
   .calComponent{
     position: relative;
@@ -20,10 +30,11 @@
 <script>
 
   import 'normalize.css/normalize.css'
-  import '@scbd/ecosystem-icons/all/all.css'
   import "@scbd/ecosystem-style/layouts/base/build.min.css"
   import "@scbd/ecosystem-style/layouts/container/build.min.css"
   import "@scbd/ecosystem-style/layouts/grid/build.min.css"
+  import '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.css'
+
 
   import {DateTime}         from 'luxon'
   import events             from '../modules/Bus'
@@ -156,15 +167,3 @@
       return new CalWeeks($i18n,date,locale)
   }
 </script>
-
-<style>
-  a {
-    color: #337ab7;
-    text-decoration: none;
-  }
-  a:hover,
-  a:focus {
-    color: #23527c;
-    text-decoration: underline;
-  }
-</style>

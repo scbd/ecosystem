@@ -64,7 +64,7 @@
 
 <script>
 
-  import AddToCalendar        from '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.umd.min'
+  import AddToCalendar        from '@scbd/eco-molecule-add-to-calendar/src/components/index.vue'
   import events               from '../../modules/Bus'
   import AgendaItem           from './AgendaItem'
   import FileStatus           from   './CalEventDetailsFileStatus'
@@ -74,7 +74,6 @@
   import '@scbd/ecosystem-style/modifiers/helpers/build.min.css'
   import '@scbd/ecosystem-style/modifiers/states/build.min.css'
   import '@scbd/ecosystem-style/patterns/button-groups/build.css'
-  import '@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.css'
 
   export default {
     name: 'Details',
@@ -156,7 +155,7 @@
   }
 </script>
 <style>
-
+/* @import url('@scbd/eco-molecule-add-to-calendar/dist/vue/AddToCalendar.css') */
   .slide-details-leave-active, .slide-details-enter-active  {
     transition: all .4s ease;
   }

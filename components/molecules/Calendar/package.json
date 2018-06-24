@@ -1,20 +1,20 @@
 {
   "name": "@scbd/eco-molecule-calendar-vue",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "yarn build:lib && yarn build:wc && yarn build:wca",
-    "build:lib": "vue-cli-service build src/components/Calendar.vue --target lib --name Calendar",
-    "build:wc": "vue-cli-service build src/components/Calendar.vue --target wc --name Eco-Calendar --dest ../wc/",
-    "build:wca": "vue-cli-service build src/components/Calendar.vue --target wc-async --name Eco-Calendar --dest ../wca/",
+    "build": "yarn build:lib  && yarn build:wca && yarn build:wc",
+    "build:lib": "vue-cli-service build src/components/index.vue --target lib --name Calendar --dest dist/vue",
+    "build:wc": "vue-cli-service build src/components/index.vue --target wc --name Eco-Calendar --dest dist/wc",
+    "build:wca": "vue-cli-service build src/components/index.vue --target wc-async --name Eco-Calendar --dest dist/wca",
     "lint": "vue-cli-service lint",
     "release": "yarn publish --access=public"
   },
+  "main": "dist/vue/Calendar.umd.min.js",
   "dependencies": {
-    "@scbd/eco-molecule-add-to-calendar": "^0.0.2",
+    "@scbd/eco-molecule-add-to-calendar": "^0.0.6",
     "@scbd/ecosystem-icons": "^0.0.1",
-    "@scbd/ecosystem-style": "^0.0.1",
-    "@scbd/vue-authentication": "0.0.7",
+    "@scbd/ecosystem-style": "^0.0.2",
     "lodash.debounce": "^4.0.8",
     "luxon": "^1.2.1",
     "normalize.css": "^8.0.0",
@@ -23,6 +23,7 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.51",
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
     "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
@@ -53,5 +54,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
+  ],
+  "files": [
+    "*"
   ]
 }
