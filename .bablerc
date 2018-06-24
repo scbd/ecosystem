@@ -1,0 +1,13 @@
+{
+  "presets": ["vue-app"],
+  "plugins": ["transform-runtime"]
+  ],
+  "comments": false,
+  "env": {
+    "development": {
+      "retainLines": true,
+      "sourceMaps": true,
+      "comments": true
+    }
+  }
+}

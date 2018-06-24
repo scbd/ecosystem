@@ -83,6 +83,7 @@ module.exports = {
     //   }
     // ],
     babel: {
+      babelrc: true,
       presets({isServer}) {
           return [
               [
@@ -92,7 +93,8 @@ module.exports = {
                       targets: isServer ? { node: 'current' } : {ie: 10, uglify: true}
                   }]
           ];
-      }
+      },
+      plugins: ["transform-runtime"]
     },
 
     /*
