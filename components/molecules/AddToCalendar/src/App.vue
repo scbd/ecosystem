@@ -7,6 +7,7 @@
 <script>
   import AddToCalendar      from './components/'
   import calEvent           from './mock-event.json'
+  import '@scbd/ecosystem-icons/all/all.css'
 
   export default {
     name: 'app',

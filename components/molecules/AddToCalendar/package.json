@@ -1,6 +1,6 @@
 {
   "name": "@scbd/eco-molecule-add-to-calendar",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "@scbd/ecosystem-icons": "^0.0.1",
-    "@scbd/ecosystem-style": "^0.0.1",
+    "@scbd/ecosystem-style": "^0.0.2",
     "vue": "^2.5.16",
     "vue-i18n": "^7.6.0"
   },

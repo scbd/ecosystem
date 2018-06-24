@@ -56,7 +56,6 @@
   import i18nMixin    from '../mixin/i18n'
   import querystring  from 'querystring'
 
-  import '@scbd/ecosystem-icons/all/all.css'
   import "@scbd/ecosystem-style/layouts/base/build.min.css"
   import "@scbd/ecosystem-style/patterns/button-groups/build.css"
   import "@scbd/ecosystem-style/elements/buttons/build.min.css"
