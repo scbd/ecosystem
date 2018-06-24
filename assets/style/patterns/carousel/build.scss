@@ -2,7 +2,7 @@
 @import '../../_mixins/_image.scss';
 @import '../../_mixins/_opacity.scss';
 @import '../../_mixins/_gradients.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/breakpoints/_variables-media.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/breakpoints/_variables-media.scss';
 
 @mixin backface-visibility($visibility) {
   -webkit-backface-visibility: $visibility;

@@ -1,8 +1,8 @@
-@import 'node_modules/@biodiversity/ecosystem-tokens/spacing/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/color-text/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/color-background/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/line-height/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/border-radius/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/spacing/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/color-text/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/color-background/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/line-height/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/border-radius/index.scss';
 
 $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
 $state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%) !default;

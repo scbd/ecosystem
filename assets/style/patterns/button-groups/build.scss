@@ -1,7 +1,7 @@
 @import '../../_mixins/_clearfix.scss';
 @import '../../_mixins/_border-radius.scss';
 @import '../../elements/buttons/build.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/border-radius/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/border-radius/index.scss';
 
 
 @mixin box-shadow($shadow...) {

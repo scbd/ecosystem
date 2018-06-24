@@ -1,12 +1,12 @@
 @import './_nav-divider.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/z-index/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/font-size/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/color-text/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/border-radius/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/line-height/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/z-index/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/font-size/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/color-text/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/border-radius/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/line-height/index.scss';
 
-@import 'node_modules/@biodiversity/ecosystem-tokens/breakpoints/_variables-media.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/grid/_variables-grid.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/breakpoints/_variables-media.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/grid/_variables-grid.scss';
 //** Width of the `border` for generating carets that indicate dropdowns.
 $caret-width-base:          4px !default;
 //** Carets increase slightly in size for larger components.

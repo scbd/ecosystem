@@ -1,10 +1,10 @@
-@import 'node_modules/@biodiversity/ecosystem-tokens/breakpoints/_variables-media.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/grid/_variables-grid.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/line-height/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/color-text/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/font-size/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/border-radius/index.scss';
-@import 'node_modules/@biodiversity/ecosystem-tokens/z-index/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/breakpoints/_variables-media.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/grid/_variables-grid.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/line-height/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/color-text/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/font-size/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/border-radius/index.scss';
+@import 'node_modules/@scbd/ecosystem-tokens/z-index/index.scss';
 // Basics of a navbar
 $input-height-base:              (1.45 + (.5 * 2) + 2);
 $navbar-height:                    2.5em !default;
