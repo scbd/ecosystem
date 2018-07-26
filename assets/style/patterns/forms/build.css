@@ -59,7 +59,7 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 4.2em;
+  height: 2.2em;
   padding: 0.375em 0.75em;
   font-size: 1em;
   line-height: 1.45em;
@@ -107,7 +107,7 @@ input[type="search"] {
   input[type="time"].form-control,
   input[type="datetime-local"].form-control,
   input[type="month"].form-control {
-    line-height: 4.2em; }
+    line-height: 2.2em; }
   input[type="date"].input-sm,
   .input-group-sm input[type="date"],
   input[type="time"].input-sm,
@@ -285,7 +285,7 @@ select[multiple].input-lg {
 .has-feedback {
   position: relative; }
   .has-feedback .form-control {
-    padding-right: 5.25em; }
+    padding-right: 2.75em; }
 
 .form-control-feedback {
   position: absolute;
@@ -293,9 +293,9 @@ select[multiple].input-lg {
   right: 0;
   z-index: 2;
   display: block;
-  width: 4.2em;
-  height: 4.2em;
-  line-height: 4.2em;
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 2.2em;
   text-align: center;
   pointer-events: none; }
 

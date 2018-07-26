@@ -9,7 +9,7 @@
 @import 'node_modules/@scbd/ecosystem-tokens/grid/_variables-grid.scss';
 
 $input-border-focus:             #66afe9 !default;
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) );
 //** Large `.form-control` height
 $input-height-large:             (ceil($font-size-large * 1.3333333) + ($padding-large-vertical * 2) + 2) !default;
 //** Small `.form-control` height

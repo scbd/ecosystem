@@ -163,9 +163,9 @@
     vue "^2.5.16"
     vue-i18n "^7.6.0"
 
-"@scbd/eco-molecule-cal@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@scbd/eco-molecule-cal/-/eco-molecule-cal-0.0.2.tgz#e5dc964ad5e83b419171dd0c404bd21680d9d5ac"
+"@scbd/eco-molecule-cal@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@scbd/eco-molecule-cal/-/eco-molecule-cal-0.0.3.tgz#b3f1c2511e749932568b974f343a86650f9aef5e"
   dependencies:
     "@scbd/eco-molecule-add-to-calendar" "^0.0.6"
     "@scbd/ecosystem-style" "^0.0.2"

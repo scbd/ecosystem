@@ -22,7 +22,7 @@
     "@nuxtjs/proxy": "^1.2.4",
     "@nuxtjs/pwa": "^2.0.5",
     "@scbd/eco-molecule-add-to-calendar": "^0.0.6",
-    "@scbd/eco-molecule-cal": "^0.0.2",
+    "@scbd/eco-molecule-cal": "0.0.3",
     "@scbd/ecosystem-icons": "^0.0.1",
     "@scbd/ecosystem-style": "^0.0.1",
     "@scbd/ecosystem-tokens": "^0.0.1",

@@ -62,7 +62,7 @@ export default {
   }
 
   function getConference(){
-    let path = `/api/v2016/event-groups/5988cb15f166c38e3ec3addc`
+    let path = `/api/v2016/event-groups/5a831c426aa2097d12a61893`
 
     let response = axios.get(path).then((r)=>{
       this.conference= r.data

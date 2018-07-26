@@ -1,13 +1,20 @@
 <template>
-    <span  :class="[$style.main,$style[body]]" >
-      {{body}} {{item}}
+    <span  :class="[$style.main,$style[mapBody()]]" >
+      {{mapBody()}} {{item}}
     </span>
 </template>
 
 <script>
   export default {
     name: 'AgendaItem',
-    props:['body','item']
+    props:['body','item'],
+    methods:{
+      mapBody:function(){
+        if(~this.body.indexOf('COP'))
+          return 'CBD'
+        return this.body.slice(0,this.body.indexOf('-'))
+      }
+    }
   }
 </script>
 

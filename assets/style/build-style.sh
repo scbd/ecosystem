@@ -1,3 +1,5 @@
+
+
 yarn node-sass layouts/base/build.scss layouts/base/build.css
 yarn node-sass layouts/container/build.scss layouts/container/build.css
 yarn node-sass layouts/grid/build.scss layouts/grid/build.css
@@ -32,6 +34,8 @@ yarn node-sass patterns/navs/build.scss patterns/navs/build.css
 yarn node-sass patterns/navbar/build.scss patterns/navbar/build.css
 yarn node-sass patterns/input-groups/build.scss patterns/input-groups/build.css
 yarn node-sass patterns/labels/build.scss patterns/labels/build.css
+yarn node-sass patterns/panels/build.scss patterns/panels/build.css
+yarn node-sass patterns/tooltip/build.scss patterns/tooltip/build.css
 
 yarn node-sass layouts/base/build.scss layouts/base/build.min.css --output-style compressed
 yarn node-sass layouts/container/build.scss layouts/container/build.min.css --output-style compressed
@@ -66,3 +70,5 @@ yarn node-sass patterns/navs/build.scss patterns/navs/build.min.css --output-sty
 yarn node-sass patterns/navbar/build.scss patterns/navbar/build.min.css --output-style compressed
 yarn node-sass patterns/input-groups/build.scss patterns/input-groups/build.min.css --output-style compressed
 yarn node-sass patterns/labels/build.scss patterns/labels/build.min.css --output-style compressed
+yarn node-sass patterns/panels/build.scss patterns/panels/build.min.css --output-style compressed
+yarn node-sass patterns/tooltip/build.scss patterns/tooltip/build.min.css --output-style compressed

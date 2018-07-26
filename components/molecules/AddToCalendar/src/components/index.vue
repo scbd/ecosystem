@@ -114,7 +114,7 @@
       return `${baseUrl}/api/v2018/iCal/${this.event.conference}/${this.stream}`
   }
   function reservationUri (id) {
-      return `http://localhost:8000/api/v2016/reservations/${id}`
+      return `/api/v2016/reservations/${id}`
   }
   function drop () {
     this.showDrop=!this.showDrop

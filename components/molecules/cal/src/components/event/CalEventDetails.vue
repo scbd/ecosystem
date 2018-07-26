@@ -18,7 +18,8 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <!-- <button class="btn btn-default btn-xs"><span :class="$style.pointer" class="text-primary"><small><a v-on:click.stop="goTo(`webcal://localhost:8000/api/v2018/iCal/${calEvent.conference}/${stream}`)">Subscribe to {{stream}}</a></small></span></button> -->
           </span>
-          <AddToCalendar :event="calEvent" style="display:inline-block;" v-on:click.stop=""/>
+
+          <AddToCalendar :options="{baseUrl:'https://api.cbddev.xyz'}" :event="calEvent" style="display:inline-block;" v-on:click.stop=""/>
         </div>
 
         <div ><span class="eco-location"></span> {{location}}</div>
@@ -37,7 +38,7 @@
                 <table >
                   <tr :key="index" v-for="(item, index) in calEvent.item_ss">
                     <td>
-                      <AgendaItem :body="'SBI'" :item="item" />
+                      <AgendaItem :body="calEvent.itemMeeting[index]" :item="item" />
 
                     </td>
                     <td>
