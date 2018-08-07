@@ -151,7 +151,7 @@ function getDays(){
 }
 .cont{
   display: inline-flex;
-  width:400%;
+  width:700%;
 }
 .debugB {
   border: 1px solid blue;
@@ -165,23 +165,16 @@ function getDays(){
 }
 
 
-   /* Small Devices, Tablets */
-   @media only screen and (min-width : 768px) {
+   @media  (min-width:768px) {
+     .cont{
+       width:200%;
+     }
+   }
+   @media (min-width:992px) {
      .cont{
        width:100%;
      }
    }
-   /* Medium Devices, Desktops */
-   @media only screen and (min-width : 992px) {
-     .cont{
-       width:100%;
-     }
-   }
-   /* Large Devices, Wide Screens */
-   @media only screen and (min-width : 1200px) {
-     .cont{
-       width:100%;
-     }
-   }
+
 
 </style>
