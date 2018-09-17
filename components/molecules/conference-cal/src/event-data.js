@@ -1,6 +1,10 @@
 import {DateTime} from 'luxon'
 
-export default [
+const start   = DateTime.fromISO('2018-11-13T05:00:00.000Z')
+const end     = DateTime.fromISO('2018-11-29T11:59:00.000Z')
+const streams = ['official','meeting','rio','cepa','side-events','inno']
+
+const events = [
   {
     start:DateTime.fromISO('2018-11-13T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-13T05:00:00.000Z'),
@@ -34,52 +38,52 @@ export default [
     end:DateTime.fromISO('2018-11-15T05:00:00.000Z'),
     title:'Business',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
     start:DateTime.fromISO('2018-11-18T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-19T05:00:00.000Z'),
     title:'Science',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
     start:DateTime.fromISO('2018-11-21T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-21T05:00:00.000Z'),
     title:'Wild',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
     start:DateTime.fromISO('2018-11-23T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-24T05:00:00.000Z'),
     title:'IPLCs',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
     start:DateTime.fromISO('2018-11-23T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-24T05:00:00.000Z'),
     title:'CITES',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
     start:DateTime.fromISO('2018-11-23T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-23T05:00:00.000Z'),
     title:'Law',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
     start:DateTime.fromISO('2018-11-24T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-24T05:00:00.000Z'),
     title:'Gti',
     color:"#56049e",
-    stream:'purpel'
+    stream:'meeting'
   },
   {
-    start:DateTime.fromISO('2018-11-18T05:00:00.000Z'),
+    start:DateTime.fromISO('2018-11-17T05:00:00.000Z'),
     end:DateTime.fromISO('2018-11-21T05:00:00.000Z'),
     title:'Rio Conventions Pavilion',
     color:"#d3cc04",
@@ -128,3 +132,5 @@ export default [
     stream:'inno'
   }
 ]
+
+export default {events, start, end, streams}

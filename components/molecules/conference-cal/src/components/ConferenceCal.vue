@@ -1,114 +1,89 @@
 <template>
   <section>
-    <div>
-      <!-- <EventSeries v-if="detailsData"/> -->
-      <div class="cont">
-        <div class="day-col" v-for="(day,index) in getDays" v-bind:key="index" :ref="index">
-          <div class="day-col-day">{{day.day}}</div>
-          <div class="day-col-day-w">{{day.dayOfWeek}}</div>
-        </div>
+    <div class="cont">
+      <div class="day-col" v-for="(day,index) in getDays()" v-bind:key="index" :ref="index">
+        <div class="day-col-day">{{day.day}}</div>
+        <div class="day-col-day-w">{{day.dayOfWeek}}</div>
       </div>
-      <div class="cont off" v-for="(s,i) in streams" v-bind:key="i"> &nbsp;
-       <div class="day-col" :class="{'on':index%2}"  v-for="(day, key, index) in days" v-bind:key="index" :ref="'d'+key">
-          <div class="event-cont"   v-if="isSeriesStart(day, aSeries,s)" v-for="(aSeries,j) in series" v-bind:key="j" >
-            <div class="event"   :style="{'background-color':aSeries.color,width:`${getColWidth(aSeries)}px`}"  v-on:click="showDetails(aSeries,$event)">
-            &nbsp;{{aSeries.title}}
+    </div>
+    <div class="cont off" v-for="(s,i) in streams" v-bind:key="i"> &nbsp;
+       <div class="day-col" :class="{'on':index%2}"  v-for="(day, key, index) in getDays()" v-bind:key="index" :ref="'d'+key">
+          <div class="event-cont"   v-if="isEventStart(day, e,s)" v-for="(e,j) in events" v-bind:key="j" >
+            <div class="event"   :style="{'background-color':e.color,width:`${getColWidth(e)}px`}" v-on:click="showDetails" >
+              &nbsp;{{e.title}}
             </div>
             &nbsp;
           </div>
-          <div class="event-cont" v-else-if="isSeriesOn(day, aSeries,s)">&nbsp;</div>
+          <div class="event-cont" v-else-if="isEventOn(day, e,s)">&nbsp;</div>
        </div>
-      </div>
-      <pre>{{this.series}}</pre>
     </div>
   </section>
 </template>
 
 <script>
-import {DateTime} from 'luxon'
-// import EventSeries      from './EventSeries.vue'
-// import Bus        from '../modules/Bus'
-import EventsApi  from '../modules/EventsApi.js'
+import Bus        from '../modules/Bus'
+import eventsData from '../event-data.js'
 
 export default {
   name: 'ConferenceCal',
-  props:['conferenceCode'],
-  // components:{EventSeries},
-  data:function(){
 
+  data:function(){
     return{
       local:'en',
       days:{},
-      conference:'',
-      streams:EventsApi.getStreams(),
-      detailsData:false,
-      series:[]
+      start:eventsData.start,
+      end:eventsData.end,
+      streams:eventsData.streams,
+      events:[]
   }},
   methods:{
-    isSeriesStart:isSeriesStart,
-    isSeriesOn:isSeriesOn,
-    getColWidth:getColWidth,
-    showDetails:showDetails,
-    getSeries:getSeries,
-
-  },
-  computed:{
     getDays:getDays,
-    computeSeries:computeSeries
+    isEventStart:isEventStart,
+    isEventOn:isEventOn,
+    getColWidth:getColWidth,
+    showDetails:showDetails
   },
-  mounted:async function(){
-    this.conference = await EventsApi.getConference(this.conferenceCode)
-    this.series     = await this.getSeries()
+  mounted:function(){
+    for (var i = 0; i < eventsData.events.length; i++) {
+      eventsData.events[i].length = (eventsData.events[i].end.diff(eventsData.events[i].start,'days' ).toObject().days || 0)+1
+    }
+    this.events=eventsData.events;
+    Bus.$on('EventDetails', this.showDetails)
   }
 }
-function computeSeries(){
 
-  return this.series
-}
-async function getSeries(){
-
-  let series =  await EventsApi.getSeries(this.conferenceCode)
-  console.log('this.series',series)
-  return series
-}
-function showDetails (event){
-
-  this.detailsData = event
+function showDetails (e){
+  let {data} = e
+  this.detailsData = this.detailsData? false : data
 }
 
 function getColWidth(event){
   return this.$refs['d'+event.start.toFormat("yyyyMMdd")][0].clientWidth * event.length
 }
-function isSeriesStart(day, event,stream){
-
+function isEventStart(day, event,stream){
   if(day.date.day===event.start.day && event.stream===stream)
     return true
   else
     return false
 }
-function isSeriesOn(day, event,stream){
+function isEventOn(day, event,stream){
   if(day.date.day>event.start.day && day.date.day<=event.end.day && event.stream===stream)
     return true
   else
     return false
 }
 function getDays(){
-
-  if(!this.conference) return {}
-  if(Object.keys(this.days).length) return this.days
-
-  let start = DateTime.fromISO(this.conference.schedule.startMain || this.conference.StartDate,{zone:this.conference.timezone})
-  let end   = DateTime.fromISO(this.conference.EndDate,{zone:this.conference.timezone})
-  let diff  = end.diff(start,'days' ).toObject().days
+  let diff = this.end.diff(this.start,'days' ).toObject().days
 
   for (var i = 0; i < diff; i++) {
-    let day = start.plus({days:i}).startOf('day')
+    let day = this.start.plus({days:i}).startOf('day')
     this.days['d'+day.toFormat("yyyyMMdd")] ={
       day:day.day,
       dayOfWeek:day.setLocale(this.locale).toFormat('ccc'),
       date:day
     }
   }
+
   return this.days
 }
 </script>
@@ -127,17 +102,15 @@ function getDays(){
   text-align: center;
   border-left: 1px solid white;
   border-right: 1px solid white;
-  cursor:pointer;
-  z-index:500;
-
 }
 .event-cont{
+  position: relative;
+
   width: 100%;
   font-weight: bold;
   padding: .5em 0 1em 0;
   font-size: 1.2em;
   z-index:100;
-  cursor:pointer;
 }
 .day-col{
 
@@ -174,23 +147,23 @@ function getDays(){
 }
 .debug {
   border: 1px solid red;
-  z-index:600;
 
 }
 .off{
   margin-left:-0.3em
 }
 
-@media  (min-width:768px) {
- .cont{
-   width:200%;
- }
-}
-@media (min-width:992px) {
- .cont{
-   width:100%;
- }
-}
+
+   @media  (min-width:768px) {
+     .cont{
+       width:200%;
+     }
+   }
+   @media (min-width:992px) {
+     .cont{
+       width:100%;
+     }
+   }
 
 
 </style>

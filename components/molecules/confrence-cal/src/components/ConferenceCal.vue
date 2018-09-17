@@ -32,8 +32,8 @@ export default {
     return{
       local:'en',
       days:{},
-      start:DateTime.fromISO('2018-11-11T05:00:00.000Z'),
-      end:DateTime.fromISO('2018-11-30T11:59:00.000Z'),
+      start:DateTime.fromISO('2018-11-13T05:00:00.000Z'),
+      end:DateTime.fromISO('2018-11-29T11:59:00.000Z'),
       streams:['official','purpel','rio','cepa','side-events','inno'],
       events:[]
   }},
