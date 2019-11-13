@@ -1,42 +1,47 @@
 {
-  "name": "nuxtjs-design-system",
-  "version": "1.0.0",
-  "description": "Design system built with nuxtjs",
-  "author": "Randy Houlahan <randy.houlahan@cbd.int>",
+  "name": "ecosystem",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@nuxtjs/component-cache": "^0.1.3",
-    "@nuxtjs/markdownit-loader": "^1.1.1",
-    "@nuxtjs/pwa": "^2.0.5",
-    "babel-polyfill": "^6.26.0",
-    "bootstrap-sass": "^3.3.7",
-    "normalize.css": "^8.0.0",
-    "nuxt": "npm:nuxt-edge",
-    "vue-i18n": "^7.6.0",
-    "vue-lazyload": "^1.1.4"
-  },
-  "engines": {
-    "node": ">=8",
-    "yarn": ">=1.6.0"
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
-    "json-loader": "^0.5.7",
-    "node-sass": "^4.8.3",
-    "purgecss-webpack-plugin": "^0.22.0",
-    "theo": "^7.0.1",
-    "vue-i18n-extensions": "^0.1.0"
-  }
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "lerna": "^3.18.4",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
