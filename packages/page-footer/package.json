@@ -1,0 +1,32 @@
+{
+  "name": "page-footer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode stg",
+    "build:dev": "NODE_ENV=dev sh scripts/build.sh",
+    "build:stg": "NODE_ENV=stg sh scripts/build.sh",
+    "build": "NODE_ENV=production sh scripts/build.sh",
+    "deploy:dev": "vue-cli-service s3-deploy --mode dev",
+    "deploy:stg": "vue-cli-service s3-deploy --mode stg",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+  },
+  "dependencies": {
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-s3-deploy": "^3.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

@@ -1,0 +1,17 @@
+{
+	"folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "packages/sso-vue-plugin-scbd"
+    },
+    {
+      "path": "packages/page-footer"
+    },
+    {
+      "path": "packages/page-header"
+    }
+  ],
+  "settings": {}
+}
