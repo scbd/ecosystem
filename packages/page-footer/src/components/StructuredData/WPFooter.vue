@@ -3,22 +3,22 @@
 </template>
 <script>
 
-const HOST = process.env.VUE_APP_HOST
-
 export default {
   name : 'WPFooter',
-  props: [ 'siteNavigationElements', 'basePath' ],
+  props: [ 'siteNavElms', 'opts' ],
   getJsonLd
 }
 
-function getJsonLd({ siteNavigationElements, basePath }){
+function getJsonLd({ siteNavElms, opts }){
+  const { host, basePath } = opts
+
   return {
     '@context' : 'https://schema.org',
     '@type'    : 'WPFooter',
-    '@id'      : `${HOST}${basePath}/#pageFooter`,
+    '@id'      : `${host}${basePath}#pageFooter`,
     cssSelector: '#pageFooter',
     xpath      : '//*[@id="pageFooter"]',
-    hasPart    : siteNavigationElements
+    hasPart    : siteNavElms
   }
 }
 

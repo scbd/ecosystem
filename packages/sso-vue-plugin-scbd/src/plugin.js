@@ -1,5 +1,6 @@
 import axios      from 'axios'
 import AuthIFrame from './components/AuthIFrame'
+import defaultOptions from './modules/defaultOptions'
 
 export default { install }
 
@@ -10,7 +11,7 @@ function install (Vue){ // eslint-disable-line
   const token = ''
   const vm    = new Vue({ data: { me, token } })
   const $me   = () => vm.me
-  const ACCOUNTS_URL = process.env.VUE_APP_ACCOUNTS_URL
+  const ACCOUNTS_URL = defaultOptions().accountsUrl
 
   const globalVueMixin = {
     computed: { $me, $accountsBaseUrl, $baseReqOpts, $isAdmin },

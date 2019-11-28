@@ -6,10 +6,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode production  --target lib src/plugin.js && mkdir dist/src && cp src/plugin.js dist/src/ && cp -R src/components dist/src/",
-    "build:dev": "vue-cli-service build --mode dev  --target lib src/plugin.js && mkdir dist/src && cp src/plugin.js dist/src/ && cp -R src/components dist/src/",
-    "build:stg": "vue-cli-service build --mode stg  --target lib src/plugin.js && mkdir dist/src && cp src/plugin.js dist/src/ && cp -R src/components dist/src/",
     "deploy:dev": "vue-cli-service s3-deploy --mode dev",
-    "deploy:stg": "vue-cli-service s3-deploy --mode stg",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint"

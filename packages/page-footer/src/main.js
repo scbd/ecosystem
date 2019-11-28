@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from '../tests/App.vue'
-import i18n from './modules/i18n'
+import i18n from '../tests/e2e/scaffolding/i18n'
 
 Vue.config.productionTip = false
 

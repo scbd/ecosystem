@@ -15,7 +15,7 @@ describe('auth module works', () => {
     cy.visit('https://accounts.staging.cbd.int')
     cy.wait(2000)
     cy.get('#inputEmail')
-      .type(Cypress.env('USER_NAME'))
+      .type('cypress@houlahan.ca')
 
     cy.get('#inputPassword')
       .type(Cypress.env('PASSWORD'))

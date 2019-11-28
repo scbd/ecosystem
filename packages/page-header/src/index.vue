@@ -1,34 +1,32 @@
 <i18n src="./locales/index.json"></i18n>
 <template >
-  <header id="pageHeader" class="header" role="banner" :aria-label="$t('Page Header')">
+  <header id="pageSubHeader" class="header" role="banner" :aria-label="$t('Page Sub Header')">
 
-    <WPHeader v-bind="$props"/>
+    <WPHeader v-bind="$data"/>
     
-    <Icons />
-
-    <Desktop  v-if="!isMobile()" v-bind="$props"/>
-
-    <Mobile  v-if="isMobile()" v-bind="$props"/>
+    <SubHeader v-bind="$data"/>
 
   </header>
 </template>
 
 <script>
-import WPHeader     from '@components/StructuredData/WPHeader'
-import Icons        from '@components/Icons'
-import Mobile       from '@components/Mobile'
-import Desktop      from '@components/Desktop'
+import WPHeader       from '@components/StructuredData/WPHeader'
+import SubHeader      from '@components/SubHeader'
+import defaultOptions from '@modules/defaultOptions'
 
 export default {
-  name      : 'PageHeader',
-  components: { WPHeader, Icons, Mobile, Desktop },
-  props     : [ 'siteNavigationElements', 'basePath' ],
-  methods   : { isMobile }
+  name      : 'PageSubHeader',
+  components: { WPHeader, SubHeader },
+  props     : { siteNavigationElement: { type: Array, required: true },
+    options              : { type: Object, default: () => {} } },
+  data
 }
 
-function isMobile(){
-  if(!window) return false
-  return window.matchMedia('(max-width: 768px)').matches
+function data(){
+  const siteNavElms = this.siteNavigationElement
+  const opts        = defaultOptions(this.options)
+
+  return { siteNavElms, opts }
 }
 </script>
 

@@ -6,8 +6,7 @@
 import makeSelector           from '@modules/makeSelector'
 import HeaderSCBD             from '@src/index.vue'
 import siteNavigationElements from '@modules/staticSiteNavigationElements'
-
-const HOST = process.env.VUE_APP_HOST
+import defaultOptions         from '@modules/defaultOptions'
 
 export default {
   name      : 'app',
@@ -16,25 +15,26 @@ export default {
 }
 
 function data(){
-  const basePath = ''
+  const options     = defaultOptions({})
+
   const headerProps = {
-    siteNavigationElements: siteNavigationElements.map(mapSiteNavigationElement, { basePath }),
-    basePath
+    siteNavigationElement: siteNavigationElements.map(mapSiteNavigationElement, options),
+    options
   }
 
   return { headerProps }
 }
 
 function mapSiteNavigationElement(elm){
-  const { basePath } = this
-  const id           = makeSelector(elm, 'SNE')
-  const children     = elm.hasPart
-  const hasPart      = (children &&  children.length)? children.map(mapSiteNavigationElement, this) : undefined
+  const { host, basePath } = this
+  const id                 = makeSelector(elm, 'WPH-SNE')
+  const children           = elm.hasPart
+  const hasPart            = (children &&  children.length)? children.map(mapSiteNavigationElement, this) : undefined
 
   return {
     '@context' : 'https://schema.org',
     '@type'    : 'SiteNavigationElement',
-    '@id'      : `${HOST}${basePath}/#${id}`,
+    '@id'      : `${host}${basePath}#${id}`,
     cssSelector: `#${id}`,
     xpath      : `//*[@id="${id}"]`,
     ...Object.assign(elm, { hasPart })

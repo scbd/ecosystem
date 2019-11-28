@@ -7,9 +7,6 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
     "deploy:dev": "vue-cli-service s3-deploy --mode dev",
-    "deploy:stg": "vue-cli-service s3-deploy --mode stg",
-    "build:dev": "NODE_ENV=dev sh scripts/build.sh",
-    "build:stg": "NODE_ENV=stg sh scripts/build.sh",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "test:e2e:headless:login": "vue-cli-service test:e2e --headless -s tests/e2e/specs/login.js"

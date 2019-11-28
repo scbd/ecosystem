@@ -11,6 +11,9 @@
     },
     {
       "path": "packages/page-header"
+    },
+    {
+      "path": "packages/page-header-fixed"
     }
   ],
   "settings": {}

@@ -12,12 +12,12 @@ module.exports = {
       staticHosting     : false,
       assetPath         : 'dist',
       assetMatch        : '**',
-      deployPath        : `/${process.env.NODE_ENV}/@ecosystem/sso-vue-plugin-scbd`,
+      deployPath        : `/@ecosystem/sso-vue-plugin-scbd`,
       acl               : 'public-read',
       pwa               : false,
-      enableCloudfront  : true,
+      enableCloudfront  : false,
       cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: `/${process.env.NODE_ENV}/@ecosystem/sso-vue-plugin-scbd`,
+      cloudfrontMatchers: `/@ecosystem/sso-vue-plugin-scbd`,
       uploadConcurrency : 5,
       pluginVersion     : '3.0.0'
     }

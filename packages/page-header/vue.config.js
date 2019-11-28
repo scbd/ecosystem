@@ -21,12 +21,12 @@ module.exports = {
       staticHosting     : false,
       assetPath         : 'dist',
       assetMatch        : '**',
-      deployPath        : `/${process.env.NODE_ENV}/@ecosystem/page-header`,
+      deployPath        : '/@ecosystem/page-header',
       acl               : 'public-read',
       pwa               : false,
-      enableCloudfront  : true,
+      enableCloudfront  : false,
       cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: `/${process.env.NODE_ENV}/@ecosystem/page-header/*`,
+      cloudfrontMatchers: '/@ecosystem/page-header/*',
       uploadConcurrency : 5,
       pluginVersion     : '3.0.0'
     }
