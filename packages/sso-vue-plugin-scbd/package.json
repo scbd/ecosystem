@@ -1,0 +1,43 @@
+{
+  "name": "@scbd/sso-vue-plugin-scbd",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/sso-vue-plugin-scbd.common.js",
+  "unpkg": "dist/sso-vue-plugin-scbd.umd.min.js",
+  "private": false,
+  "browser": {
+    "./sfc": "src/plugin.js"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service --mode stg serve --open ",
+    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib src/plugin.js",
+    "deploy:dev": "vue-cli-service --mode dev s3-deploy ",
+    "deploy": "vue-cli-service s3-deploy --mode production",
+    "test:e2e": "vue-cli-service --mode stg test:e2e",
+    "test:e2e:headless": "vue-cli-service --mode stg test:e2e --headless --url http://localhost:8883y",
+    "lint": "vue-cli-service lint",
+    "release": "yarn publish --access=public --tag beta"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "bootstrap": "^4.3.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-s3-deploy": "^3.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHead": "534f983ca739cdaaf1a29e473d6ba99c90a585d0"
+}

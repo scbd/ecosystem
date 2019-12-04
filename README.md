@@ -1,32 +1,12 @@
-# nuxtjs-design-system
+<p align="center"><img width="52px" height="65px" src="https://www.cbd.int/styles/ui/templates/cbd2011/images/logo-cbd-leaf-line.gif" alt="Secretariat of the Convention on Biological Diversity"><img width="148x" height="65px" src="https://www.cbd.int/styles/ui/templates/cbd2011/images/logo-cbd-text-en.gif" alt="Secretariat of the Convention on Biological Diversity"></p>
+<h1 align="center">Ecosystem - Component Library</h1>
 
-> Design system platform built with nuxtjs
+<p align="center">
 
-## Build Setup
+</p>
 
-``` bash
-# install dependencies
-$ yarn
+<p align="center">Front-end pieces for re-use</p>
 
-# serve with hot reload at localhost:3000
-$ yarn  run dev
+[logo]:https://www.cbd.int/styles/ui/templates/cbd2011/images/logo-cbd-leaf-line.gif
+[logoText]:https://www.cbd.int/styles/ui/templates/cbd2011/images/logo-cbd-text-en.gif
 
-# build for production and launch server
-$ yarn  run build
-$ yarn  start
-```
-
-
-Features:
-- built for your org
-- Consistent  communication
-- terminology
-- statuses
-- living document
-- NPM publishable
-- faster workflow
-- story boardish
-- Partially self documenting
-- versioning
-- theming
-- inline editing of text as git resource
