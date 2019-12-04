@@ -6,7 +6,7 @@
 
 <script>
 
-import PageFooter             from '@src/data-providers/Static'
+import PageFooter from '@src/data-providers/Drupal'
 
 export default {
   name      : 'app',

@@ -2,9 +2,8 @@
   <div v-show="props.show" class="mobile-nav-wrapper ml-auto mobile-menu">
     <div class="mobile-nav-wrapper ml-auto mobile-menu">
       <div  class="navbar-collapse">
-
         <component
-            v-if="props.opts.mainSNEs"
+            
             :is="injections.components.MainNav"
             :siteNavElms="props.opts.mainSNEs"/>
 

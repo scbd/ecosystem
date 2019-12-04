@@ -1,8 +1,7 @@
 
 describe('auth module works', () => {
-  beforeEach(function () {
+  beforeEach(() => {
     cy.viewport('macbook-15')
-    
   })
 
 
@@ -24,7 +23,7 @@ describe('auth module works', () => {
       .first()
       .click()
     cy.get(':nth-child(2) > a > h3')
-    .should('be.visible')
+      .should('be.visible')
     Cypress.Cookies.preserveOnce('authenticationToken')
   })
   // it('Accounts cookie loaded', () => {
@@ -41,14 +40,12 @@ describe('auth module works', () => {
   // })
 
   it('User should be logged in', () => {
-    cy.visit('/')
+    cy.visit('http://localhost:8883')
     cy.document()
 
     cy.wait(2000)
     cy.get('strong')
       .contains('cypress cypress')
   })
-
-
 })
 

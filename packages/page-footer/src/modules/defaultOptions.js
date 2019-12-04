@@ -1,21 +1,25 @@
 const optionValidationMap = {
   host    : String,
-  basePath: String
+  basePath: String,
+  dapi    : String
 }
 
 const dev = {
   host    : 'https://www.cbddev.xyz',
-  basePath: '/'
+  basePath: '/',
+  dapi    : 'https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg'
 }
 
 const stg = {
   host    : 'https://www.staging.cbd.int',
-  basePath: '/'
+  basePath: '/',
+  dapi    : 'https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg'
 }
 
 const prod = {
   host    : 'https://www.cbd.int',
-  basePath: '/'
+  basePath: '/',
+  dapi    : 'https://dapi.cbd.int'
 }
 
 function defaultOptions (userOptions = {}){
@@ -26,13 +30,13 @@ function defaultOptions (userOptions = {}){
 }
 
 function getDefaultOptions(){
-  if(!window) return prod
+  if(!window) return stg
   
   if(window.location.href.includes('staging.cbd.int')) return stg
   if(window.location.href.includes('cbddev.xyz')) return dev
   if(window.location.href.includes('www.cbd.int')) return prod
 
-  return prod
+  return stg
 }
 
 function validateOptions (userOptions){

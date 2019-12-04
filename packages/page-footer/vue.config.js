@@ -3,7 +3,11 @@ const glob = require('glob-all');
 const path = require('path')
 
 module.exports = {
-  css          : { extract: true },
+  css       : { extract: true },
+  lintOnSave: true,
+  devServer : {
+    port: 8880
+  },
   pluginOptions: {
     i18n: {
       locale        : 'en',
@@ -20,12 +24,12 @@ module.exports = {
       staticHosting     : false,
       assetPath         : 'dist',
       assetMatch        : '**',
-      deployPath        : `/@ecosystem/page-footer`,
+      deployPath        : '/@ecosystem/page-footer',
       acl               : 'public-read',
       pwa               : false,
       enableCloudfront  : false,
       cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: `/@ecosystem/page-footer`,
+      cloudfrontMatchers: '/@ecosystem/page-footer',
       uploadConcurrency : 5,
       pluginVersion     : '3.0.0'
     }

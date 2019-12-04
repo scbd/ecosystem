@@ -1,21 +1,25 @@
 const optionValidationMap = {
   host    : String,
-  basePath: String
+  basePath: String,
+  dapi    : String
 }
 
 const dev = {
   host    : 'https://www.cbddev.xyz',
-  basePath: '/'
+  basePath: '/',
+  dapi    : 'https://dapi.cbd.int'
 }
 
 const stg = {
   host    : 'https://www.staging.cbd.int',
-  basePath: '/'
+  basePath: '/',
+  dapi    : 'https://dapi.cbd.int'
 }
 
 const prod = {
   host    : 'https://www.cbd.int',
-  basePath: '/'
+  basePath: '/',
+  dapi    : 'https://dapi.cbd.int'
 }
 
 function defaultOptions (userOptions){

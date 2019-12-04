@@ -2,7 +2,11 @@
 const path = require('path')
 
 module.exports = {
-  pluginOptions:{
+  lintOnSave: true,
+  devServer : {
+    port: 8883
+  },
+  pluginOptions: {
     s3Deploy: {
       registry          : undefined,
       awsProfile        : 'default',
@@ -12,12 +16,12 @@ module.exports = {
       staticHosting     : false,
       assetPath         : 'dist',
       assetMatch        : '**',
-      deployPath        : `/@ecosystem/sso-vue-plugin-scbd`,
+      deployPath        : '/@ecosystem/sso-vue-plugin-scbd',
       acl               : 'public-read',
       pwa               : false,
       enableCloudfront  : false,
       cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: `/@ecosystem/sso-vue-plugin-scbd`,
+      cloudfrontMatchers: '/@ecosystem/sso-vue-plugin-scbd',
       uploadConcurrency : 5,
       pluginVersion     : '3.0.0'
     }
@@ -29,7 +33,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack: config =>{
+  chainWebpack: config => {
     config.resolve.symlinks(false)
     config.resolveLoader.modules.add(
       `${path.dirname(require.resolve('@vue/cli-plugin-babel'))}/node_modules`

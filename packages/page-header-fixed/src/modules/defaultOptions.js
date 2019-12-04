@@ -6,7 +6,8 @@ const optionValidationMap = {
   mainSNEs   : Object,
   loginSNEs  : Array,
   sideSNEs   : Array,
-  signOutUrl : String
+  signOutUrl : String,
+  dapi       : String
 }
 
 const dev = {
@@ -17,7 +18,8 @@ const dev = {
   mainSNEs   : [],
   loginSNEs  : [],
   sideSNEs   : [],
-  signOutUrl : 'https://www.cbd.int/user/signout'
+  signOutUrl : 'https://www.cbd.int/user/signout',
+  dapi       : 'https://dapi.cbd.int'
 }
 
 const stg = {
@@ -28,7 +30,8 @@ const stg = {
   mainSNEs   : [],
   loginSNEs  : [],
   sideSNEs   : [],
-  signOutUrl : 'https://www.cbd.int/user/signout'
+  signOutUrl : 'https://www.cbd.int/user/signout',
+  dapi       : 'https://dapi.cbd.int'
 }
 
 const prod = {
@@ -39,7 +42,8 @@ const prod = {
   mainSNEs   : [],
   loginSNEs  : [],
   sideSNEs   : [],
-  signOutUrl : 'https://www.cbd.int/user/signout'
+  signOutUrl : 'https://www.cbd.int/user/signout',
+  dapi       : 'https://dapi.cbd.int'
 }
 
 function defaultOptions (userOptions){

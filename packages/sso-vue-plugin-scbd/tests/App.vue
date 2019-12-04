@@ -18,33 +18,29 @@
     </table>
 
 
-
-
-
   </div>
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.min.css"
+import 'bootstrap/dist/css/bootstrap.min.css'
 export default {
-  name: 'app',
+  name   : 'app',
   methods: { loadMe },
   mounted,
   data
 }
 
 function data (){
-  return {me:''}
+  return { me: '' }
 }
 function mounted(){
-
   window.document.addEventListener('$me', this.loadMe)
 }
 
 function loadMe(evt){
-  setTimeout(() => { 
+  setTimeout(() => {
     this.me = evt.$me
-    this.$forceUpdate() 
+    this.$forceUpdate()
   }, 1000)
 }
 </script>

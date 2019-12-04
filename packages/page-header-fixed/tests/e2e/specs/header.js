@@ -7,20 +7,20 @@ describe('The SCBD Header Desktop', () => {
     cy.get('header')
       .should('have.id', 'pageHeader')
   })
-  it('It should contain 2 navs', () => {
+  it('It should contain 1 navs', () => {
     cy.get('nav')
       .should(($nav) => {
-        expect($nav).to.have.length(2)
+        expect($nav).to.have.length(1)
       })
+    cy.get('#information-SNE > .nav-link')
+      .should('be.visible')
 
-    cy.get('.dropdown-toggle')
-      .should(($nav) => {
-        expect($nav).to.have.length(2)
-      })
+    cy.get('#aboutTheSecretariatP1-SNE > .nav-link')
+      .should('be.visible')
   })
 
   it('hover drop downs 1 is functional', () => {
-    cy.get('#pageHeader > div > nav.navbar.navbar-expand-lg.top-nav > div > div > ul.navbar-nav.mr-auto > li:nth-child(1)')
+    cy.get('#information-SNE > .nav-link')
       .trigger('mouseover')
 
     cy.get('.dropdown-menu')
@@ -30,12 +30,12 @@ describe('The SCBD Header Desktop', () => {
         assert.isTrue($a.length > 3, 'links are present')
       })
 
-    cy.get('#pageHeader > div > nav.navbar.navbar-expand-lg.top-nav > div > div > ul.navbar-nav.mr-auto > li:nth-child(1)')
+    cy.get('#information-SNE > .nav-link')
       .trigger('mouseleave')
   })
 
   it('hover drop downs 2 is functional', () => {
-    cy.get('#pageHeader > div > nav.navbar.navbar-expand-lg.top-nav > div > div > ul.navbar-nav.mr-auto > li:nth-child(2)')
+    cy.get('#aboutTheSecretariatP1-SNE > .nav-link')
       .trigger('mouseover')
 
     cy.get('.dropdown-menu')
@@ -45,7 +45,7 @@ describe('The SCBD Header Desktop', () => {
         assert.isTrue($a.length > 3, 'links are present')
       })
 
-    cy.get('#pageHeader > div > nav.navbar.navbar-expand-lg.top-nav > div > div > ul.navbar-nav.mr-auto > li:nth-child(2)')
+    cy.get('#aboutTheSecretariatP1-SNE > .nav-link')
       .trigger('mouseleave')
   })
 
@@ -60,9 +60,9 @@ describe('The SCBD Header Desktop', () => {
   it('it takes screen shots', () => {
     cy.screenshot('header')
     cy.wait(1000)
-    cy.get('#pageHeader > div > nav.navbar.navbar-expand-lg.top-nav > div > div > ul.navbar-nav.mr-auto > li:nth-child(1)')
+    cy.get('#information-SNE > .nav-link')
       .trigger('mouseover')
-    cy.get('#pageHeader > div > nav.navbar.navbar-expand-lg.top-nav > div > div > ul.navbar-nav.mr-auto > li:nth-child(2)')
+    cy.get('#aboutTheSecretariatP1-SNE > .nav-link')
       .trigger('mouseover')
     cy.wait(1000)
     cy.screenshot('hover')

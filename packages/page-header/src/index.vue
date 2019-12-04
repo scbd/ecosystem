@@ -2,9 +2,9 @@
 <template >
   <header id="pageSubHeader" class="header" role="banner" :aria-label="$t('Page Sub Header')">
 
-    <WPHeader v-bind="$data"/>
-    
-    <SubHeader v-bind="$data"/>
+    <WPHeader  v-bind="{ siteNavElms, opts }"/>
+
+    <SubHeader v-bind="{ siteNavElms, opts }"/>
 
   </header>
 </template>
@@ -17,23 +17,25 @@ import defaultOptions from '@modules/defaultOptions'
 export default {
   name      : 'PageSubHeader',
   components: { WPHeader, SubHeader },
-  props     : { siteNavigationElement: { type: Array, required: true },
-    options              : { type: Object, default: () => {} } },
-  data
+  computed  : { opts, siteNavElms },
+  props     : { siteNavigationElement: { type: Object, required: true },
+    options              : { type: Object, default: () => {} } }
 }
 
-function data(){
-  const siteNavElms = this.siteNavigationElement
-  const opts        = defaultOptions(this.options)
-
-  return { siteNavElms, opts }
+function opts(){
+  return defaultOptions(this.options)
 }
+
+function siteNavElms(){
+  return this.siteNavigationElement
+}
+
+
 </script>
 
 <style>
   @import "https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900";
   @import "https://prod.drupal.www.infra.cbd.int/themes/custom/bootstrap_sass/css/style.css";
-  @import "https://s3.amazonaws.com/phoenix.www.cbd.int/themes/custom/bootstrap_sass/css/style.css";
 
   .slide-fade-enter-active { transition:  all .2s ease; }
   .slide-fade-leave-active { transition: all .3s ease; }

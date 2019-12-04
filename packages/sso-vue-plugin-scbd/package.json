@@ -2,14 +2,21 @@
   "name": "@ecosystem/sso-vue-plugin-scbd",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/sso-vue-plugin-scbd.umd.min.js",
+  "main": "dist/sso-vue-plugin-scbd.common.js",
+  "unpkg": "dist/sso-vue-plugin-scbd.umd.min.js",
+  "browser": {
+    "./sfc": "src/plugin.js"
+  },
+  "files": [ "dist/*", "src/*" ],
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production  --target lib src/plugin.js && mkdir dist/src && cp src/plugin.js dist/src/ && cp -R src/components dist/src/",
-    "deploy:dev": "vue-cli-service s3-deploy --mode dev",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:e2e:headless": "vue-cli-service test:e2e --headless",
-    "lint": "vue-cli-service lint"
+    "serve": "vue-cli-service --mode stg serve --open ",
+    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib src/plugin.js",
+    "deploy:dev": "vue-cli-service --mode dev s3-deploy ",
+    "deploy": "vue-cli-service s3-deploy --mode production",
+    "test:e2e": "vue-cli-service --mode stg test:e2e",
+    "test:e2e:headless": "vue-cli-service --mode stg test:e2e --headless",
+    "lint": "vue-cli-service lint",
+    "release": "yarn publish --access=public"
   },
   "dependencies": {
     "axios": "^0.19.0",

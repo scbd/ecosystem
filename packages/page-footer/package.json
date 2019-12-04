@@ -1,7 +1,15 @@
 {
-  "name": "page-footer",
+  "name": "@ecosystem/page-footer",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/PageFooter.common.js",
+  "unpkg": "dist/PageFooter.umd.min.js",
+  "browser": {
+    "./sfc": "src/data-providers/Drupal.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve --mode stg",
     "build": "NODE_ENV=production sh scripts/build.sh",
@@ -9,7 +17,9 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "release": "yarn publish --access=public"
+
   },
   "dependencies": {
     "core-js": "^3.3.2",

@@ -4,16 +4,16 @@
       "path": "."
     },
     {
-      "path": "packages/sso-vue-plugin-scbd"
-    },
-    {
-      "path": "packages/page-footer"
+      "path": "packages/page-header-fixed"
     },
     {
       "path": "packages/page-header"
     },
     {
-      "path": "packages/page-header-fixed"
+      "path": "packages/sso-vue-plugin-scbd"
+    },
+    {
+      "path": "packages/page-footer"
     }
   ],
   "settings": {}

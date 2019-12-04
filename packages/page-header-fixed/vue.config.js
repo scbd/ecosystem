@@ -3,7 +3,11 @@ const glob = require('glob-all');
 const path = require('path')
 
 module.exports = {
-  css          : { extract: true },
+  css       : { extract: false },
+  lintOnSave: true,
+  devServer : {
+    port: 8881
+  },
   pluginOptions: {
     i18n: {
       locale        : 'en',
