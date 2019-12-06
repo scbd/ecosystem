@@ -1,0 +1,40 @@
+{
+  "name": "@scbd/map-nav",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "main": "dist/MapNav.common.js",
+  "unpkg": "dist/MapNav.umd.min.js",
+  "browser": {
+    "./sfc": "src/index.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "NODE_ENV=production sh scripts/build.sh",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint --fix",
+    "release": "yarn publish --access=public --tag beta"
+  },
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.7.12",
+    "@amcharts/amcharts4-geodata": "^4.1.9",
+    "@scbd/component-options": "^0.1.0",
+    "@scbd/self-embedding-component": "^0.0.1",
+    "core-js": "^3.4.3",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
