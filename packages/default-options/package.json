@@ -1,6 +1,6 @@
 {
   "name": "@scbd/default-options",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "license": "MIT",
   "main": "dist/DefaultOptions.common.js",
@@ -16,7 +16,6 @@
     "release": "yarn publish --access=public --tag beta"
   },
   "dependencies": {
-    "@scbd/component-service": "^0.1.0",
     "core-js": "^3.4.3",
     "vue": "^2.6.10"
   },
