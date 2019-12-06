@@ -1,6 +1,6 @@
 {
   "name": "@scbd/self-embedding-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "license": "MIT",
   "main": "dist/SelfEmbeddingComponent.common.js",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production --name SelfEmbeddingComponent  --target lib --dest dist/ src/index.js",
+    "build": "sh scripts/build.sh",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
     "release": "yarn publish --access=public --tag beta"
   },
