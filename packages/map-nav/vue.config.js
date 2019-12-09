@@ -1,38 +1,19 @@
 const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path')
+const glob           = require('glob-all');
+const path           = require('path')
 
 module.exports = {
-  lintOnSave: true,
-  devServer : {
-    port: 8882
+  css      : { extract: false },
+  devServer: {
+    port: 8885
   },
-  css          : { extract: false },
+  lintOnSave   : true,
   pluginOptions: {
     i18n: {
       locale        : 'en',
       fallbackLocale: 'en',
       localeDir     : 'locales',
       enableInSFC   : true
-    },
-
-    s3Deploy: {
-      registry          : undefined,
-      awsProfile        : 'default',
-      region            : 'us-east-1',
-      bucket            : 'scbd-components',
-      createBucket      : false,
-      staticHosting     : false,
-      assetPath         : 'dist',
-      assetMatch        : '**',
-      deployPath        : '/@ecosystem/page-header',
-      acl               : 'public-read',
-      pwa               : false,
-      enableCloudfront  : false,
-      cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: '/@ecosystem/page-header/*',
-      uploadConcurrency : 5,
-      pluginVersion     : '3.0.0'
     }
     
   },
@@ -54,6 +35,8 @@ module.exports = {
       .set('@locales', path.resolve(__dirname, 'src/locales'))
     config.resolve.alias
       .set('@src', path.resolve(__dirname, 'src'))
+    config.resolve.alias
+      .set('@dist', path.resolve(__dirname, 'dist'))
   },
   configureWebpack: {
     // Merged into the final Webpack config

@@ -1,13 +1,10 @@
 const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path')
+const glob           = require('glob-all');
+const path           = require('path')
 
 module.exports = {
-  lintOnSave: true,
-  devServer : {
-    port: 8882
-  },
   css          : { extract: false },
+  lintOnSave   : true,
   pluginOptions: {
     i18n: {
       locale        : 'en',
@@ -25,12 +22,12 @@ module.exports = {
       staticHosting     : false,
       assetPath         : 'dist',
       assetMatch        : '**',
-      deployPath        : '/@ecosystem/page-header',
+      deployPath        : '/@ecosystem/page-header-fixed',
       acl               : 'public-read',
       pwa               : false,
       enableCloudfront  : false,
       cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: '/@ecosystem/page-header/*',
+      cloudfrontMatchers: '/@ecosystem/page-header-fixed/*',
       uploadConcurrency : 5,
       pluginVersion     : '3.0.0'
     }
