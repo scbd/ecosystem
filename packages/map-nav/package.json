@@ -1,6 +1,6 @@
 {
   "name": "@scbd/map-nav",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "license": "MIT",
   "main": "dist/MapNav.common.js",
@@ -17,7 +17,7 @@
     "build": "NODE_ENV=production sh scripts/build.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
-    "release": "yarn publish --access=public --tag beta"
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.7.12",
