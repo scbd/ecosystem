@@ -1,6 +1,6 @@
 {
   "name": "@scbd/map-nav",
-  "version": "0.0.3",
+  "version": "0.0.11",
   "private": false,
   "license": "MIT",
   "main": "dist/MapNav.common.js",
@@ -23,7 +23,7 @@
     "@amcharts/amcharts4": "^4.7.12",
     "@amcharts/amcharts4-geodata": "^4.1.9",
     "@scbd/default-options": "0.0.7",
-    "@scbd/self-embedding-component": "0.0.5",
+    "@scbd/self-embedding-component": "0.0.6",
     "bootstrap": "^4.4.1",
     "change-case": "^4.1.0",
     "core-js": "^3.4.3",

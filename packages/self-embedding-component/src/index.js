@@ -1,17 +1,17 @@
-import  { camelCase } from 'change-case'
+import  { camelCase, pascalCase } from 'change-case'
 
 const VUE_I18N = { url: 'https://cdn.cbd.int/vue-i18n', name: 'VueI18n' }
 const VUE      = { url: 'https://cdn.cbd.int/vue',      name: 'Vue' }
 
 export default class EmbedComponent{
   static build (opts){
-    EmbedComponent.opts        = Object.assign(setDefaults(), opts)
+    EmbedComponent.opts        = Object.assign(setDefaults(opts), opts)
     EmbedComponent.opts.appId  = `${EmbedComponent.opts.appId}-${EmbedComponent.opts.selfId}`
     EmbedComponent.selfElement = document.getElementById(EmbedComponent.opts.selfId)
 
     if(!EmbedComponent.selfElement) throw new Error(`Id on script tag not found: id="${EmbedComponent.opts.selfId}"`)
 
-    EmbedComponent.opts.propsData = attrsAsPropsData()
+    EmbedComponent.opts.propsData.options = attrsAsOptions()
 
     EmbedComponent.parentNode     = EmbedComponent.selfElement.parentNode
 
@@ -26,7 +26,7 @@ export default class EmbedComponent{
 
 function main (){
   const deps = EmbedComponent.opts.vuePlugins
-  const cssDeps = EmbedComponent.opts.cssDependancies
+  const cssDeps = EmbedComponent.opts.cssDependencies
   const functions = []
 
   for (let i = 0; i < deps.length; i++)
@@ -38,17 +38,18 @@ function main (){
   functions[0]()
 }
 
-function setDefaults (){
-  const opts = {}
+function setDefaults ({ name, version, options }){
 
-  opts.propsData          = {}
-  opts.vuePlugins         = []
-  opts.cssDependancies    = []
-  opts.i18n               = true
-  opts.selfId             = 'EmbedComponent'
-  opts.appId              = 'appId'
+  const selfId          = name.replace('@scbd/', '')
+  const compName        = pascalCase(selfId)
+  const url             = `https://cdn.cbd.int/${name}@${version}`
+  const propsData       = { options }
+  const vuePlugins      = []
+  const cssDependencies = []
+  const i18n            = true
+  const appId           = 'appId'
 
-  return opts
+  return { url, compName, propsData, appId, selfId, i18n, cssDependencies, vuePlugins}
 }
 
 function getI18n(){
@@ -71,7 +72,7 @@ function mounted(){
   const i18n                      = getI18n()
   const { compName, propsData }   = EmbedComponent.opts
   const VueClass                  = window['Vue'].extend(window[compName])
-  const classInstanceProps        = i18n? { i18n, propsData } : { i18n }
+  const classInstanceProps        = i18n? { i18n, propsData } : { propsData }
   const vueClassInstance          = new VueClass(classInstanceProps)
 
   vueClassInstance.$mount()
@@ -114,13 +115,13 @@ function loadSelf(){
   loadScript(url, loadApp)
 }
 
-function attrsAsPropsData(){
+function attrsAsOptions(){
   const   self         = EmbedComponent.selfElement
-  const { propsData  } = EmbedComponent.opts
+  const { options }    = EmbedComponent.opts
   const   attrs        = self.attributes
   const   newOptions   = {}
 
-  if (!self.hasAttributes()) return propsData
+  if (!self.hasAttributes()) return options
 
   for (const { name, value } of attrs){
     if([ 'id', 'src' ].includes(name)) continue
@@ -128,5 +129,5 @@ function attrsAsPropsData(){
     newOptions[camelCase(name)]=value
   }
   
-  return Object.assign(propsData, newOptions)
+  return Object.assign(options, newOptions)
 }

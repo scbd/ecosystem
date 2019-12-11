@@ -2,7 +2,7 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
   "main": "dist/PageHeaderFixed.common.js",
   "browser": {
@@ -24,6 +24,8 @@
     "release": "yarn publish --access=public --tag beta"
   },
   "dependencies": {
+    "@scbd/default-options": "0.0.7",
+    "@scbd/self-embedding-component": "0.0.7",
     "change-case": "^3.1.0",
     "core-js": "^3.3.2",
     "vue": "^2.6.10",

@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import WPHeader       from '@components/StructuredData/WPHeader'
-import Icons          from '@components/Icons'
-import Mobile         from '@components/Mobile'
-import Desktop        from '@components/Desktop'
-import defaultOptions from '@modules/defaultOptions'
+import WPHeader           from '@components/StructuredData/WPHeader'
+import Icons              from '@components/Icons'
+import Mobile             from '@components/Mobile'
+import Desktop            from '@components/Desktop'
+import { DefaultOptions } from '@modules/defaultOptions'
 
 export default {
   name      : 'PageHeaderFixed',
@@ -34,7 +34,7 @@ function siteNavElms(){
 }
 
 function opts(){
-  return defaultOptions(this.options)
+  return DefaultOptions.get(this.options)
 }
 
 function isMobile(){

@@ -1,6 +1,6 @@
 {
   "name": "@scbd/self-embedding-component",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "private": false,
   "license": "MIT",
   "main": "dist/SelfEmbeddingComponent.common.js",
