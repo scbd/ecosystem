@@ -36,4 +36,5 @@
 .icon-sign-out { width: 0.875em; }
 .icon-profile  { width: 0.7138671875em; }
 .icon-lock     { width: 0.642578125em; }
+.icon-search { width: 1em; }
 </style>

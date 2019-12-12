@@ -1,10 +1,10 @@
 <i18n src="./locales/index.json"></i18n>
 <template>
-  <footer id="pageFooter" >
+<section>
+  <FollowUs />
+  <footer id="pageFooter" class="cbd-footer">
 
     <WPFooter v-bind="{ opts, siteNavElms }"/>
-
-    <FollowUs />
 
     <div class="container row">
 
@@ -15,6 +15,7 @@
 
     </div>
   </footer>
+  </section>
 </template>
 
 <script>
@@ -44,12 +45,5 @@ function opts(){
 
 <style scoped>
   footer { background-color: #202020; color: #cdcdcd; padding-bottom: 5em; letter-spacing: .025em; font-size: 16px; }
-  .fu{ margin-bottom:4em; }
-  @media (max-width: 568px){ .fu { margin-bottom:2em; }
-}
 </style>
-<style>
-  @import "https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900";
-  @import "https://prod.drupal.www.infra.cbd.int/themes/custom/bootstrap_sass/css/style.css";
-  @import "https://s3.amazonaws.com/phoenix.www.cbd.int/themes/custom/bootstrap_sass/css/style.css";
-</style>
+

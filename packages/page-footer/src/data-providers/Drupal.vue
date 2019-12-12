@@ -27,7 +27,7 @@ async function mounted(){
 }
 
 function getMain({ dapi }){
-  return axios.get(`${dapi}/menus?q=quick-links,information,topics,aPartOf`)
+  return axios.get(`${dapi}/menus?q=quick-links,topics,information,aPartOf`)
     .then((d) => d.data)
 }
 </script>

@@ -1,10 +1,8 @@
 {
   "name"      : "ecosystem",
-  "version"   : "0.1.0",
   "private"   : true,
   "license": "MIT",
   "workspaces": [ "packages/*" ],
-  "@ecosystem": { "symlinkWorkspaces": true },
   "description": "Component library front-end",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "scripts": {

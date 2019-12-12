@@ -4,8 +4,8 @@
   </div>
 </template>
 <script>
-import { createFromConfig      , useTheme, color }                   from '@amcharts/amcharts4/core'
-import { MapChart              , GraticuleSeries, MapPolygonSeries } from '@amcharts/amcharts4/maps'
+import { createFromConfig, useTheme, color }                   from '@amcharts/amcharts4/core'
+import { MapChart, GraticuleSeries, MapPolygonSeries } from '@amcharts/amcharts4/maps'
 import { MapBuilder             }                                    from '@modules/map-builder'
 import   am4themes_animated                                          from '@amcharts/amcharts4/themes/animated'// eslint-disable-line
 import { geoDataPoliticalUpdate }                                    from '@modules/political-mapping'
@@ -39,9 +39,8 @@ function mounted (){
 }
 
 async function constructMap(){
-
-  const geodata = geoDataPoliticalUpdate((await import(/* webpackChunkName: "worldHigh" */ '@amcharts/amcharts4-geodata/worldHigh')).default)
-
+  //const geodata = geoDataPoliticalUpdate((await import(/* webpackChunkName: "worldHigh" */ '@amcharts/amcharts4-geodata/worldHigh')).default)
+  const geodata = geoDataPoliticalUpdate((await import(/* webpackChunkName: "worldLow" */ '@amcharts/amcharts4-geodata/worldLow')).default)
   const { main } = this.options.config
   const map      = createFromConfig({ ...main, geodata }, this.$refs.map, MapChart)
 

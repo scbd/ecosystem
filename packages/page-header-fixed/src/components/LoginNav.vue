@@ -2,7 +2,7 @@
 <template>
   <ul class="navbar-nav">
     <li v-if="!isAuthLoaded" class="nav-item">
-      <a id="accountsLink-SNE" v-if="!isAuthLoaded" class="nav-link" :href="`${opts.accountsUrl}/signin?returnUrl=${returnUrl}`">
+      <a id="accountsLink-SNE" v-if="!isAuthLoaded" class="nav-link login" :href="`${opts.accountsUrl}/signin?returnUrl=${returnUrl}`">
         {{$t('Login')}}
         <span class="lock-icon"></span>
       </a>
@@ -68,7 +68,7 @@ function isAuthLoaded(){
 function data(){ return { returnUrl: '', me: {}, show: false, isMobile: false } }
 
 function mounted(){
-  this.isMobile = window.matchMedia('(max-width: 768px)').matches
+  this.isMobile = window.matchMedia('(max-width: 990px)').matches
   window.document.addEventListener('$me', this.loadMe)
   this.returnUrl = window? window.location.href : ''
 }
@@ -99,4 +99,5 @@ function set (index, state){
 <style scoped>
   .nav-item{ text-transform: capitalize; }
   .dropdown-item svg { margin-right:1em; }
+  .login {text-transform: uppercase;}
 </style>

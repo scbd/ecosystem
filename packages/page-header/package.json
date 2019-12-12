@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-header",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "private": false,
   "license": "MIT",
   "main": "dist/PageHeader.common.js",
@@ -24,12 +24,12 @@
     "release": "yarn publish --access=public --tag beta"
   },
   "dependencies": {
+    "@scbd/default-options": "0.0.7",
+    "@scbd/self-embedding-component": "^0.0.7",
     "change-case": "^3.1.0",
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.0.0",
-    "@scbd/default-options": "0.0.7",
-    "@scbd/self-embedding-component": "0.0.6"
+    "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",

@@ -26,6 +26,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@scbd/default-options": "^0.0.7",
     "change-case": "^4.1.0"
   }
 }

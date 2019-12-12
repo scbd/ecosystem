@@ -2,7 +2,7 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
   "main": "dist/PageHeaderFixed.common.js",
   "browser": {
@@ -28,6 +28,7 @@
     "@scbd/self-embedding-component": "0.0.7",
     "change-case": "^3.1.0",
     "core-js": "^3.3.2",
+    "tiny-debounce": "^0.1.1",
     "vue": "^2.6.10",
     "vue-i18n": "^8.0.0"
   },

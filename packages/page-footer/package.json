@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-footer",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "private": false,
   "license": "MIT",
   "main": "dist/PageFooter.common.js",
@@ -23,10 +23,10 @@
     "release": "yarn publish --access=public --tag beta"
   },
   "dependencies": {
-    "core-js": "^3.3.2",
-    "vue": "^2.6.10",
     "@scbd/default-options": "0.0.7",
-    "@scbd/self-embedding-component": "0.0.6"
+    "@scbd/self-embedding-component": "^0.0.7",
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",

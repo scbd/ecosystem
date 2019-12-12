@@ -23,7 +23,7 @@ function data(){
 }
 
 async function mounted(){
-  this.headerProps.options.mainSNEs = await getMain(this.headerProps.options)
+  this.headerProps.options.mainSNEs = (await getMain(this.headerProps.options))[0]
   this.headerProps.siteNavigationElements = await getTopMenu(this.headerProps.options)
   this.$forceUpdate()
 }

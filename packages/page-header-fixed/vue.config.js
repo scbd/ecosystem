@@ -55,9 +55,10 @@ module.exports = {
     config.resolve.alias
       .set('@src', path.resolve(__dirname, 'src'))
   },
-  configureWebpack: {
+  configureWebpack: config => {
     // Merged into the final Webpack config
-    plugins: [
+    config.output.umdNamedDefine = true
+    config.plugins.push(
       new PurgecssPlugin({
         paths: glob.sync([
           path.join(__dirname, './src/index.html'),
@@ -65,6 +66,6 @@ module.exports = {
           path.join(__dirname, './src/**/*.js')
         ])
       })
-    ]
+    )
   }
 }

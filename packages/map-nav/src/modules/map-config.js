@@ -20,7 +20,7 @@ export const chartContainer = { callback: homeButton }
 
 export const countries = {
   type       : 'MapPolygonSeries',
-  id: 'mapSeries',
+  id         : 'mapSeries',
   useGeodata : true,
   mapPolygons: {
     template: {
@@ -34,7 +34,7 @@ export const countries = {
 }
 
 export const grid = {
-  id:'gridSeries',
+  id       : 'gridSeries',
   type     : 'GraticuleSeries',
   fitExtent: false,
   mapLines : {
@@ -48,49 +48,49 @@ export const grid = {
 }
 
 export const countryLabelSeries = {
-  type: 'MapImageSeries',
-  id: 'labelSeries',
-  mapImages:{
-    children: [{
-      type: 'Label',
+  type     : 'MapImageSeries',
+  id       : 'labelSeries',
+  mapImages: {
+    children: [ {
+      type            : 'Label',
       horizontalCenter: 'middle',
       verticalCenter  : 'middle',
       fontSize        : 14,
       fontWeight      : 600,
       fill            : color('#ffffff'),
       nonScaling      : true
-    }]
+    } ]
   }
 }
 export const countryLabelAltSeries = {
-  type: 'MapImageSeries',
-  id: 'labelSeriesAlt',
-  mapImages:{
-    children: [{
-      type: 'Label',
+  type     : 'MapImageSeries',
+  id       : 'labelSeriesAlt',
+  mapImages: {
+    children: [ {
+      type            : 'Label',
       horizontalCenter: 'middle',
       verticalCenter  : 'middle',
       fontSize        : 16,
       fontWeight      : 700,
       fill            : color('#000000'),
       nonScaling      : true
-    }]
+    } ]
   }
 }
 
 export const countryFlagSeries = {
-  type: 'MapImageSeries',
-  id: 'flagSeries',
-  mapImages:{
-    children: [{
-      type            : 'Image' ,
-      maxWidth        : 50      ,
-      nonScaling      : true    ,
+  type     : 'MapImageSeries',
+  id       : 'flagSeries',
+  mapImages: {
+    children: [ {
+      type            : 'Image',
+      maxWidth        : 50,
+      nonScaling      : true,
       horizontalCenter: 'middle',
       verticalCenter  : 'bottom',
-      visible         : false   ,
-      propertyFields: { hre: 'flag', latitude: 'latitude', longitude:'longitude' }
-    }]
+      visible         : false,
+      propertyFields  : { hre: 'flag', latitude: 'latitude', longitude: 'longitude' }
+    } ]
   }
 }
 export const series = [ grid, countries, countryLabelSeries, countryLabelAltSeries ]
@@ -103,6 +103,7 @@ export const main = {
   paddingRight         : 20,
   paddingLeft          : 20,
   calculateVisualCenter: true,
+  deltaLongitude: -10,
   backGround,
   backgroundSeries,
   zoomControl,

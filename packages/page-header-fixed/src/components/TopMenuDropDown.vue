@@ -1,6 +1,6 @@
 <template>
   <ul class="navbar-nav mr-auto">
-    <li @mouseover="open(index)" @mouseleave="close(index)" v-on:click.capture="toggle(index)" v-for="(aMenu,index) in siteNavElms" :key="index" :id="makeSelector(aMenu, 'SNE')" class="topmenu nav-item dropdown">
+    <li @mouseover.passive="open(index)" @mouseleave="close(index)" v-on:click.capture="toggle(index)" v-for="(aMenu,index) in siteNavElms" :key="index" :id="makeSelector(aMenu, 'SNE')" class="topmenu nav-item dropdown">
       <a href="#" :title="aMenu.name" class="nav-link dropdown-toggle"  role="button" >
         {{aMenu.name}}
       </a>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import debounce from 'tiny-debounce'
 import makeSelector from '@modules/makeSelector'
 
 export default {
@@ -38,7 +39,7 @@ function data(){
 }
 
 function mounted(){
-  this.isMobile = window.matchMedia('(max-width: 768px)').matches
+  this.isMobile = window.matchMedia('(max-width: 990px)').matches
   this.initState()
 }
 
@@ -59,9 +60,9 @@ function toggle(index){
   this.$forceUpdate()
 }
 
-function open (index){ this.set(index, true) }
+function open (index){ debounce(this.set(index, true), 1000) }
 
-function close (index){ this.set(index, false) }
+function close (index){ debounce(this.set(index, false), 1000) }
 
 function set (index, state){
   if(this.isMobile) return
