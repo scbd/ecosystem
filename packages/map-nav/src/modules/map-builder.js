@@ -150,12 +150,7 @@ export class MapBuilder{
 
       const cc = (await test()).filter(c => !finnished.includes(c.code))
 
-      for (const c of cc){
-        console.log(c.code)
-        self.setCountryHome(c.code)
-       
-        await sleep(3000)
-      }
+  
       if(code) return self.setCountryHome(code)
 
       self.animation = map.animate({ property: 'deltaLongitude', to: 200000 }, 20000000)
