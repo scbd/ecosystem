@@ -3,6 +3,7 @@ import { politicalMap, findByParent, hasMap } from '@modules/political-mapping'
 import axios from 'axios'
 import { mapDataConfigZoomLevel, zoomLevelData, finnished } from '@modules/country-series-config'
 
+
 export class MapBuilder{
   constructor(map, options){
     this.map            = map
@@ -22,13 +23,12 @@ export class MapBuilder{
     this.addCountryEvent('out', this.outCountry.bind(this))
 
     this.map.seriesContainer.events.on('over', (ev) => console.log(this.map.svgPointToGeo(ev.pointer.point)))
-
   }
 
   addCountryLabels(p){
-    const alts = [ 'CK', 'CV', 'CL', 'DK', 'PS', 'ES', 'FJ', 'FM', 'EC', 'GB', 'GD', 'GQ', 'GR', 'ID', 'JP', 'KI', 'KM', 'KN', 'LC', 'MH', 'MC', 'MV', 'MZ', 'NO', 'MY', 'NR', 'NZ', 'NU', 'PH', 'PG',  'SC', 'SB', 'ST', 'TT', 'TO' ]
-    const altLat = new Map([ [ 'CK', -.1 ], [ 'CM', -2 ], [ 'CR', .4 ], [ 'ER', -.4 ], [ 'FI', -2 ], [ 'FM', .5 ], [ 'GB', 4 ], [ 'GD', .5 ], [ 'GM', .2 ], [ 'GN', 1 ], [ 'HR', 1 ], [ 'ID', -4 ], [ 'IL', -.3 ], [ 'IT', 1 ], [ 'JP', 3 ], [ 'KI', .2 ], [ 'KM', .5 ], [ 'KN', .3 ], [ 'LA', 5 ], [ 'LI', .2 ], [ 'LC', .2 ], [ 'MH', .2 ] , [ 'MM', 2 ], [ 'MC', -.2 ], [ 'MV', .1 ], [ 'MZ', -1.5 ], [ 'NR', .2 ], [ 'PA', .5 ], [ 'NU', .2 ] , [ 'PH', -.2 ], [ 'SC', .1 ], [ 'SM', .1 ], [ 'TL', .2 ], [ 'TH', 2 ], [ 'TT', .4 ], [ 'TO', .1 ]     ])
-    const altLng = new Map([ [ 'CL', -8 ], [ 'PS', -.75 ], [ 'ES', -3 ], [ 'GQ', -1 ], [ 'GR', 1 ], [ 'IL', -.3 ], [ 'HT', .8 ], [ 'JO', 1 ], [ 'IN', -3 ], [ 'MD', .5 ], [ 'MW', -.5 ], [ 'MZ',4 ] , [ 'NO',-10 ], [ 'NZ', -3.5 ], [ 'OM', 1 ], [ 'PT', -.4 ], [ 'PG', 2], [ 'RU', 95], [ 'SE', -2.5], [ 'SO', .5], [ 'US', 15 ]       ])
+    const alts = [ 'CK', 'CV', 'CL', 'DK', 'PS', 'ES', 'FJ', 'FM', 'EC', 'GB', 'GD', 'GQ', 'GR', 'ID', 'JP', 'KI', 'KM', 'KN', 'LC', 'MH', 'MC', 'MV', 'MZ', 'NO', 'MY', 'NR', 'NZ', 'NU', 'PH', 'PG',  'SC', 'SB', 'ST', 'TT', 'TO', 'VC', 'TV', 'VN', 'VU' ]
+    const altLat = new Map([ [ 'CK', -.1 ], [ 'CM', -2 ], [ 'CR', .4 ], [ 'ER', -.4 ], [ 'FI', -2 ], [ 'FM', .5 ], [ 'GB', 4 ], [ 'GD', .5 ], [ 'GM', .2 ], [ 'GN', 1 ], [ 'HR', 1 ], [ 'ID', -4 ], [ 'IL', -.3 ], [ 'IT', 1 ], [ 'JP', 3 ], [ 'KI', .2 ], [ 'KM', .5 ], [ 'KN', .3 ], [ 'LA', 5 ], [ 'LI', .2 ], [ 'LC', .2 ], [ 'MH', .2 ], [ 'MM', 2 ], [ 'MC', -.2 ], [ 'MV', .1 ], [ 'MZ', -1.5 ], [ 'NR', .2 ], [ 'PA', .5 ], [ 'NU', .2 ], [ 'PH', -.2 ], [ 'SC', .1 ], [ 'SM', .1 ], [ 'TL', .2 ], [ 'TH', 2 ], [ 'TT', .4 ], [ 'TO', .1 ], [ 'US', -5 ], [ 'VC', .2 ], [ 'TV', .1 ], [ 'VA', .05 ], [ 'CU', .4 ]      ])
+    const altLng = new Map([ [ 'CL', -8 ], [ 'PS', -.75 ], [ 'ES', -3 ], [ 'GQ', -1 ], [ 'GR', 1 ], [ 'IL', -.3 ], [ 'HT', .8 ], [ 'JO', 1 ], [ 'IN', -3 ], [ 'MD', .5 ], [ 'MW', -.5 ], [ 'MZ', 4 ], [ 'NO', -10 ], [ 'NZ', -3.5 ], [ 'OM', 1 ], [ 'PT', -.4 ], [ 'PG', 2 ], [ 'RU', 95 ], [ 'SE', -2.5 ], [ 'SO', .5 ], [ 'US', 20 ], [ 'VN', 4 ], [ 'CA', -12 ]       ])
 
     console.log('labelSeries', ls)
     
@@ -197,34 +197,35 @@ export class MapBuilder{
     const hasParent = hasMap(code.toUpperCase())
     const isLast = (index) => relatedCountries.length-1 == index
 
-console.log('hasRelations', relatedCountries.map(c => c.dataItem.dataContext.id))
+    console.log('hasRelations', relatedCountries.map(c => c.dataItem.dataContext.id))
     for (const [ i, c ] of relatedCountries.entries()){
       c.fill                      = color('#9a5917')
       c.tooltip.getFillFromObject = false
       c.tooltip.background.fill   = color('#01463a')
 
       if(!isLast(i)) continue
-      if(!['RU'].includes(code))
-console.log('c.dataItem.zoomLevel',c.dataItem.zoomLevel)
+      
+      if(![ 'RU' ].includes(code))
+        console.log('c.dataItem.zoomLevel', c.dataItem.zoomLevel)
       map.homeZoomLevel = c.dataItem.zoomLevel || 2
     
-      if(!['RU'].includes(code)) {
+      if(![ 'RU' ].includes(code)){
         map.deltaLatitude  = -c.visualLatitude
         map.deltaLongitude = -c.visualLongitude
 
-      map.homeGeoPoint = {
-        latitude : c.visualLatitude,
-        longitude: c.visualLongitude
+        map.homeGeoPoint = {
+          latitude : c.visualLatitude,
+          longitude: c.visualLongitude
+        }
       }
-    }else{
-      map.deltaLatitude  = -c.dataItem.zoomGeoPoint.latitude
-      map.deltaLongitude = -c.dataItem.zoomGeoPoint.longitude
-      map.homeGeoPoint = {
-        latitude : c.dataItem.zoomGeoPoint.latitude,
-        longitude: c.dataItem.zoomGeoPoint.longitude
+else{
+        map.deltaLatitude  = -c.dataItem.zoomGeoPoint.latitude
+        map.deltaLongitude = -c.dataItem.zoomGeoPoint.longitude
+        map.homeGeoPoint = {
+          latitude : c.dataItem.zoomGeoPoint.latitude,
+          longitude: c.dataItem.zoomGeoPoint.longitude
+        }
       }
-
-    }
       this.addCountryLabels(c)
     }
     
