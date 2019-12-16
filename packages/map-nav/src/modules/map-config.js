@@ -103,7 +103,7 @@ export const main = {
   paddingRight         : 20,
   paddingLeft          : 20,
   calculateVisualCenter: true,
-  deltaLongitude: -10,
+  deltaLongitude       : -10,
   backGround,
   backgroundSeries,
   zoomControl,

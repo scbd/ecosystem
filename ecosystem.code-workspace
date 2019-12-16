@@ -23,6 +23,9 @@
     },
     {
       "path": "packages/default-options"
+    },
+    {
+      "path": "packages/www-css"
     }
   ],
   "settings": {}

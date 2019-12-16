@@ -1,11 +1,8 @@
 <i18n src="./locales/index.json"></i18n>
 <template >
   <header id="pageSubHeader" class="header" role="banner" :aria-label="$t('Page Sub Header')">
-
     <WPHeader  v-bind="{ siteNavElms, opts }"/>
-
     <SubHeader v-bind="{ siteNavElms, opts }"/>
-
   </header>
 </template>
 
@@ -30,3 +27,10 @@ function siteNavElms(){
   return this.siteNavigationElement
 }
 </script>
+<style scoped>
+#pageSubHeader{
+  position: fixed;
+  top:46px;
+  width: 100vw;
+}
+</style>

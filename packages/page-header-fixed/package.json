@@ -2,9 +2,9 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.9",
+  "version": "0.0.55",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
-  "main": "dist/PageHeaderFixed.common.js",
+  "main": "dist/PageHeaderFixed.umd.min.js",
   "browser": {
     "./sfc": "src/data-providers/Drupal.vue"
   },
@@ -21,11 +21,10 @@
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "test:e2e:headless:login": "vue-cli-service test:e2e --headless -s tests/e2e/specs/login.js",
-    "release": "yarn publish --access=public --tag beta"
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@scbd/default-options": "0.0.7",
-    "@scbd/self-embedding-component": "0.0.7",
     "change-case": "^3.1.0",
     "core-js": "^3.3.2",
     "tiny-debounce": "^0.1.1",

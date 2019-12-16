@@ -1,5 +1,5 @@
 <template functional>
-    <div class="navbar-wrapper desktop-only">
+    <div class="desktop-only">
       <nav id="pageMainNav" class="navbar navbar-expand-lg sub-nav">
         <div class="limited-width-content">
           <component  :is="injections.components.Logo"/>

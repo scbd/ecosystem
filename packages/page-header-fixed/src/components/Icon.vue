@@ -1,5 +1,5 @@
 <template functional>
-  <svg :class="{ [`icon-${props.name}`]:true }" class="icon">
+  <svg :class="{ [`icon-${props.name}`]:true }" class="icon" >
     <use :xlink:href="`#icon-${props.name}`"></use>
   </svg>
 </template>

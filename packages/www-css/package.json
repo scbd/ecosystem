@@ -1,6 +1,6 @@
 {
   "name": "@scbd/www-css",
-  "version": "0.0.13",
+  "version": "0.0.17",
   "private": false,
   "unpkg": "dist/style.min.css",
   "main": "dist/style.min.css",
@@ -8,11 +8,12 @@
     "dist/*"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "scss": "node-sass src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.css && node-sass  --output-style compressed src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.min.css && cp -R src/cbd/web/themes/custom/bootstrap_sass/images dist/images && sed -i -e 's|../../images/|dist/images/|g' dist/style.css",
+    "scss": "node-sass src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.css && node-sass  --output-style compressed src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.min.css && cp -R src/cbd/web/themes/custom/bootstrap_sass/images/* dist/images",
+    "sed": "sed -i -e 's~../../images/~images/~g' dist/style.css && sed -i -e 's~../../images/~images/~g' dist/style.min.css",
     "release": "yarn publish --access=public --tag latest"
   },
   "devDependencies": {
@@ -21,7 +22,6 @@
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
-    "cbd": "git://github.com/orangemedians/CBD.git#1.0.12",
     "core-js": "^3.4.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",

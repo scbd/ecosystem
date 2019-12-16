@@ -1,9 +1,9 @@
 {
   "name": "@scbd/page-footer",
-  "version": "0.0.9",
+  "version": "0.0.52",
   "private": false,
   "license": "MIT",
-  "main": "dist/PageFooter.common.js",
+  "main": "dist/PageFooter.umd.min.js",
   "unpkg": "dist/PageFooter.umd.min.js",
   "browser": {
     "./sfc": "src/data-providers/Drupal.vue"
@@ -20,7 +20,7 @@
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "release": "yarn publish --access=public --tag beta"
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@scbd/default-options": "0.0.7",

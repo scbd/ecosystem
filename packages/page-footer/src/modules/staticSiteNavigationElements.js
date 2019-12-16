@@ -61,8 +61,8 @@ export default [
     name    : 'A PART OF',
     position: 4,
     hasPart : [
-      { name: 'United Nations', url: 'https://www.un.org', image: 'https://attachments.cbd.int/un-logo-white.webp, https://attachments.cbd.int/un-logo-white.svg, https://attachments.cbd.int/un-logo-white.png', position: 1 },
-      { name: 'UN Environment Programme', url: 'https://www.unenvironment.org/', image: 'https://attachments.cbd.int/en/UNEP_2019_brand_white.webp, https://attachments.cbd.int/en/UNEP_2019_brand_white.svg', position: 2 }
+      { name: 'United Nations', url: 'https://www.un.org', image: 'https://attachments.cbd.int/un-logo-white.svg, https://attachments.cbd.int/un-logo-white.png', position: 1 },
+      { name: 'UN Environment Programme', url: 'https://www.unenvironment.org/', image: 'https://attachments.cbd.int/en/UNEP_2019_brand_white.svg', position: 2 }
     ]
   }
 ]

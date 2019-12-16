@@ -1,9 +1,9 @@
 {
   "name": "@scbd/page-header",
-  "version": "0.0.9",
+  "version": "0.0.52",
   "private": false,
   "license": "MIT",
-  "main": "dist/PageHeader.common.js",
+  "main": "dist/PageHeader.umd.min.js",
   "unpkg": "dist/PageHeader.umd.min.js",
   "browser": {
     "./sfc": "src/data-providers/Drupal.vue"
@@ -13,7 +13,7 @@
     "src/*"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve --mode stg",
+    "serve": "vue-cli-service serve --mode stg --open",
     "build": "NODE_ENV=production sh scripts/build.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
@@ -21,7 +21,7 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "test:e2e:headless:login": "vue-cli-service test:e2e --headless -s tests/e2e/specs/login.js",
-    "release": "yarn publish --access=public --tag beta"
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@scbd/default-options": "0.0.7",

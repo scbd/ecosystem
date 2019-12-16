@@ -1,4 +1,4 @@
-export const zoomLevelData =  [
+export const zoomLevelData =  new Set([
   { id: 'AD', zoomLevel: 128 },
   { id: 'AE', zoomLevel: 32 },
   { id: 'AG', zoomLevel: 32 },
@@ -142,7 +142,6 @@ export const zoomLevelData =  [
   { id: 'SK', zoomLevel: 32 },
   { id: 'SG', zoomLevel: 128 },
   { id: 'SI', zoomLevel: 64 },
-  { id: 'RU', zoomLevel: 2, zoomGeoPoint: { longitude: 100.298353531168, latitude: 60.31299368319977 } },
   { id: 'SE', zoomLevel: 8 },
   { id: 'SN', zoomLevel: 16 },
   { id: 'SO', zoomLevel: 8 },
@@ -196,13 +195,13 @@ export const zoomLevelData =  [
   { id: 'CN', zoomLevel: 2 },
   { id: 'SL', zoomLevel: 32 },
   { id: 'MT', zoomLevel: 128 },
-  { id: 'QA', zoomLevel: 64 }
-]
+  { id: 'QA', zoomLevel: 64 },
+  { id: 'RU', zoomLevel: 2, zoomGeoPoint: { longitude: 100.298353531168, latitude: 60.31299368319977 } }
+])
 
-export const finnished = zoomLevelData.splice(0, zoomLevelData.length-1).map(zl => zl.id)
-//{ id: 'NZ', zoomLevel: 4 }
+
 export const mapDataConfigZoomLevel = (series) => {
-  series.dataFields.zoomLevel = 'zoomLevel'
+  series.dataFields.zoomLevel    = 'zoomLevel'
   series.dataFields.zoomGeoPoint = 'zoomGeoPoint'
   mergeData(series.data, zoomLevelData)
 }
@@ -211,7 +210,7 @@ function mergeData(seriesData, newData){
   if(!seriesData.length) return seriesData = newData
 
   // merge existing
-  for (const dataItem of seriesData){
+  for (let dataItem of seriesData){
     const newMatch = newData.find((item) => item.id===dataItem.id)
 
     if(newMatch) dataItem = { ...dataItem, ...newMatch }

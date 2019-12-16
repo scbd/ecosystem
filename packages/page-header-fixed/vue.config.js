@@ -3,10 +3,11 @@ const glob = require('glob-all');
 const path = require('path')
 
 module.exports = {
-  css       : { extract: false },
-  lintOnSave: true,
-  devServer : {
-    port: 8881
+  css                  : { extract: false },
+  transpileDependencies: [ '@scbd/page-header-fixed' ],
+  lintOnSave           : true,
+  devServer            : {
+    host: 'r.local', port: 8881
   },
   pluginOptions: {
     i18n: {
