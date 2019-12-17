@@ -27,10 +27,7 @@ function siteNavElms(){
   return this.siteNavigationElement
 }
 </script>
+
 <style scoped>
-#pageSubHeader{
-  position: fixed;
-  top:46px;
-  width: 100vw;
-}
+#pageSubHeader{ position: fixed; top:46px; width: 100vw; z-index: 10000; background-color: #ffffff}
 </style>

@@ -49,7 +49,9 @@ function mounted(){
   this.$nextTick(() => window.addEventListener('resize', () => debounce(self.$forceUpdate(), 500)))
 }
 </script>
-
+<style scoped>
+  #pageHeaderFixed{ position: fixed; top: 0; width:100vw; z-index: 10000;}
+</style>
 <style>
   .slide-fade-enter-active { transition:  all .1s ease; }
   .slide-fade-enter, .slide-fade-leave-to { transform: translateY(-20px); opacity  : 0; }

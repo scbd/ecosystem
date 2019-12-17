@@ -7,7 +7,7 @@ module.exports = {
   transpileDependencies: [ '@scbd/page-header-fixed' ],
   lintOnSave           : true,
   devServer            : {
-    host: 'r.local', port: 8881
+     port: 8881
   },
   pluginOptions: {
     i18n: {
