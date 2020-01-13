@@ -1,45 +1,44 @@
-import axios      from 'axios'
-import AuthIFrame from './components/AuthIFrame'
+import $http          from 'ky-universal'
+import AuthIFrame     from './components/AuthIFrame'
 import defaultOptions from './modules/defaultOptions'
+import MeStore        from './me-store'
+import Auth           from './authentication'
 
 export default { install }
 
+function install (Vue, options = {}){ // eslint-disable-line
 
-function install (Vue){ // eslint-disable-line
+  const { env, ENV }   = options
+  const opts  = { ...defaultOptions(env || ENV), ...options }
+
+  const store   = new MeStore(Vue, opts)
+  const auth    = new Auth(Vue, opts)
+
+  const $me   = () => store
+  const $auth = () => auth
   
-  const me    = {}
-  const token = ''
-  const vm    = new Vue({ data: { me, token } })
-  const $me   = () => vm.me
-  const ACCOUNTS_URL = defaultOptions().accountsUrl
-
   const globalVueMixin = {
-    computed: { $me, $accountsBaseUrl, $baseReqOpts, $isAdmin },
-    methods : { $isAuthLoaded, $isUserLoaded, $hasRole },
+    computed: { $me, $auth },
     mounted
   }
 
   async function loadUser(){
-    const me      = await getUser()
-    const profile = await getProfile(me.userID)
+    
+    const   me                             = await getUser()
+    const { FirstName, LastName, Country } = await getProfile(me.userID)
+
+    const firstName = FirstName
+    const lastName  = LastName
+    const country   = Country
   
-    me.firstName = profile.FirstName // eslint-disable-line
-    me.lastName  = profile.LastName // eslint-disable-line
-    me.country   = profile.Country // eslint-disable-line
-  
-    Vue.nextTick(() => {
-      me.isAdmin = $isAdmin()
-      me.isStaff = $isStaff()
-      me.isGov   = $isGov()
-      vm.me      = me
-    })
-  
-    return vm.token
+    Vue.nextTick(() => store.set({ ...me, firstName, lastName, country }))
+
+    return store
   }
   
   function mounted(){
     if(!Vue.$AuthIFrame && this.$options.name!=='AuthIFrame' && this.$options.name){
-      const data = () => ({ url: $accountsBaseUrl() })
+      const data = () => ({ url: opts.accountsUrl })
       const AuthIFrameClass    = Vue.extend(AuthIFrame)
       const AuthIFrameInstance = new AuthIFrameClass({ methods: { receivePostMessage }, data })
     
@@ -48,11 +47,11 @@ function install (Vue){ // eslint-disable-line
       document.getElementsByTagName('body')[0].appendChild(AuthIFrameInstance.$el)
       Vue.$AuthIFrame = AuthIFrameInstance.$el
   
-      $isAuthLoaded()
-        .then(loadUser)
+      this.$auth.isAuthLoaded()
+        .then(() => loadUser())
         .then(() => dispatchUser(AuthIFrameInstance.$el))
         .catch(() => {
-          vm.me = anonymous()
+          store.set(anonymous())
           dispatchUser(AuthIFrameInstance.$el)
         })
         .finally(() => {
@@ -64,91 +63,32 @@ function install (Vue){ // eslint-disable-line
   function dispatchUser(elm){
     const event = new Event('$me', { bubbles: true })
   
-    event.$me = vm.me
+    event.$me = store
     elm.dispatchEvent(event)
   }
-  
-  function $isUserLoaded(){ return new Promise(loadingInterval) }
-  function $isAuthLoaded(){ return new Promise(loadingInterval) }
-  
-  function loadingInterval(resolve, reject){
-    const timeout = setTimeout(() => {
-      clearInterval(timer)
-      if(vm.me.userID) resolve(true)
-      reject('Error loading SCBD auth vue plugin')
-    }, 3000)
-    const timer = setInterval(() => {
-      if(!vm.token) return
-  
-      clearInterval(timer)
-      clearTimeout(timeout)
-      return resolve(vm.token)
-    }, 100)
-  }
-  
-  function receivePostMessage(event){
-    if(event.origin!=$accountsBaseUrl()) return null
-  
-    const message = JSON.parse(event.data)
-  
-    if(message.type!=='authenticationToken')
-      throw new Error('unsupported authentication message type')
-  
-    vm.token = message.authenticationToken
-    return vm.token
-  }
-  
-  function $hasRole (role){
-    if(!vm.me || !vm.me.roles) return false
-  
-    return vm.me.roles.includes(role)
-  }
-  
-  function $isAdmin (){
-    if(!vm.me || !vm.me.roles) return false
-  
-    return vm.me.roles.includes('Administrator') || vm.me.roles.includes('ActionAdmin')
-  }
-  
-  function $isStaff (){
-    if(!vm.me || !vm.me.userGroups) return false
-  
-    return vm.me.userGroups.includes('SCBD')
-  }
-  
-  function $isGov (){
-    if(!vm.me || !vm.me.government || !vm.me.roles) return false
-  
-    return vm.me.roles.includes('NFP-CBD') || vm.me.roles.includes('ChmNrNationalFocalPoint') || vm.me.roles.includes('ChmNrNationalAuthorizedUser')
-  }
 
+  function receivePostMessage(event){
+    if(event.origin!=opts.accountsUrl) return null
+    
+    const { type, authenticationToken } = JSON.parse(event.data)
+
+    if(type!=='authenticationToken') throw new Error('unsupported authentication message type')
+  
+    return auth.token = authenticationToken
+  }
   
   function getUser(){
-    const { me } = vm
   
-    if(me && me.name) return me
-    if(!vm.token)     return anonymous()
+    if (store.userID) return store
+    if (!auth.token)  return anonymous()
   
-    return axios.get(`${$accountsBaseUrl()}/api/v2013/authentication/user`, $baseReqOpts())
-      .then((r) => r.data)
+    return $http.get(`${opts.accountsUrl}/api/v2013/authentication/user`, auth.baseReqOpts).json()
   }
   
   function getProfile(id){
-    return axios.get(`${$accountsBaseUrl()}/api/v2013/users/${id}`, $baseReqOpts())
-      .then((r) => r.data)
+    return $http.get(`${opts.accountsUrl}/api/v2013/users/${id}`, auth.baseReqOpts).json()
   }
-  
-  function $accountsBaseUrl(){
-    if(!ACCOUNTS_URL) throw new Error('ACCOUNTS_URL env var not set')
-    return ACCOUNTS_URL
-  }
-  
-  function $baseReqOpts(){
-    if(!vm.token) return {}
-    
-    return { headers: { Authorization: `Ticket ${vm.token}` } }
-  }
-  
+
   Vue.mixin(globalVueMixin)
 }
 
@@ -164,3 +104,4 @@ function anonymous(){
     roles          : []
   }
 }
+

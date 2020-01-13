@@ -4,7 +4,8 @@ const path = require('path')
 module.exports = {
   lintOnSave: true,
   devServer : {
-    port: 8883
+    allowedHosts: [ 'localhost.cbd.int' ],
+    port : 8883
   },
   pluginOptions: {
     s3Deploy: {

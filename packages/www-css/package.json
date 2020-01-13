@@ -1,6 +1,6 @@
 {
   "name": "@scbd/www-css",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "private": false,
   "unpkg": "dist/style.min.css",
   "main": "dist/style.min.css",
@@ -28,5 +28,9 @@
     "node-sass": "^4.13.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "ky": "^0.16.1",
+    "ky-universal": "^0.3.0"
   }
 }

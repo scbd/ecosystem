@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from '../tests/App.vue'
 import Auth from './plugin'
 
-Vue.use(Auth, { env: process.env.NODE_ENV })
+
+Vue.use(Auth, { accountsUrl: 'https://accounts.cbd.int' } )//{ accountsUrl: 'https://accounts.cbd.int' }
 
 Vue.config.productionTip = false
 
