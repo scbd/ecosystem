@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.7",
-    "change-case": "^4.1.0"
+    "change-case": "^4.1.0",
+    "webfont": "^9.0.0"
   }
 }

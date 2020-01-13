@@ -26,7 +26,16 @@
     },
     {
       "path": "packages/www-css"
+    },
+    {
+      "path": "packages/nuxt-scbd-sso-module"
     }
   ],
-  "settings": {}
+  "settings": {
+    "cSpell.words": [
+      "me",
+      "module",
+      "vuex"
+    ]
+  }
 }

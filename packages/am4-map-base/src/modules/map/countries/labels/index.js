@@ -1,0 +1,1 @@
+export { addCountryLabel } from './service'

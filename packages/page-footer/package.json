@@ -26,7 +26,8 @@
     "@scbd/default-options": "0.0.7",
     "@scbd/self-embedding-component": "^0.0.7",
     "core-js": "^3.3.2",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "webfont": "^9.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",

@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import App from '../tests/App.vue'
 import Auth from './plugin'
+import vuex from 'vuex'
 
-Vue.use(Auth, { env: process.env.NODE_ENV })
+Vue.use(vuex)
+
+const $store = new vuex.Store({  state: { init: {} } })
+
+Vue.use(Auth, { accountsUrl: 'https://accounts.cbd.int', $store })//{ accountsUrl: 'https://accounts.cbd.int' }
 
 Vue.config.productionTip = false
 

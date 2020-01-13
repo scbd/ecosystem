@@ -1,3 +1,142 @@
+import { color                 } from '@amcharts/amcharts4/core'
+import { findByParent, hasMap  } from '@modules/map/political-mapping'
+import { addCountryLabel       } from '@modules/map/country-label-service'
+import { getStyle              } from './config'
+
+const isCustomZoomCenter = (code) => [ 'RU' ].includes(code)
+
+export const hoverCountry = (mapBuilder) => (ev) => {
+  const code = ev.target.dataItem.dataContext.id
+
+  setCountryState(code, 'hover', mapBuilder)
+}
+
+const overEventQueue = [ hoverCountry ]
+
+export const pushOverEventFn = (fn) => overEventQueue.push(fn)
+
+export const setCountryEvents = (mapBuilder) => {
+  for (const overEventFunction of overEventQueue)
+    mapBuilder.addCountryEvent('over', overEventFunction(mapBuilder))
+  
+  mapBuilder.addCountryEvent('hit',  onClickCountry(mapBuilder))
+  mapBuilder.addCountryEvent('out',  outCountry(mapBuilder))
+}
+
+export const onClickCountry = (mapBuilder) => (ev) => {
+  const { options } = mapBuilder
+
+  countryClick(options)(ev)
+  onClickDevMode(mapBuilder)(ev)
+}
+
+export const onClickDevMode = (mapBuilder) => (ev) => {
+  if(!mapBuilder.options.devMode) return
+  const code  = ev.target.dataItem.dataContext.id
+  const geo   = mapBuilder.map.svgPointToGeo(ev.svgPoint)
+
+  console.log({ ...geo, code })
+}
+
+export const outCountry = (mapBuilder) => (ev) => {
+  const code = ev.target.dataItem.dataContext.id
+
+  setCountryState(code, 'default', mapBuilder)
+}
+
+export const setCountryState = (code, state, mapBuilder) => {
+  const targetCountries = getPoliticalRelations(code.toUpperCase(), mapBuilder)
+
+  for (const c of targetCountries)
+    c.setState(state)
+}
+
+export const clickUrl = ({ options }, id) => {
+  const { basePath, search, devMode } = options
+  const host                          = devMode? window.location.origin : options.host
+  const hasParent                     = hasMap(id)
+  const code                          = hasParent? hasParent : id
+
+  return `${host}${basePath}?${search}=${code}`
+}
+
+export const countryClick =  (options) => (ev) => { window.location.href = clickUrl({ options }, ev.target.dataItem.dataContext.id) }
+
+export const getPoliticalRelations = (code, mapBuilder) => {
+  const parent = hasMap(code)? hasMap(code) : code
+  const target = findByParent(parent).concat([ parent ])
+
+  return target.map(id => mapBuilder.getCountry(id))
+}
+
+export const configureMapSeries = (mb) => { mb.mapSeries.data = [ ...zoomLevelData ] }
+
+export const getCountryFromQuery = ({ search }) => {
+  const urlParams   = new URLSearchParams(location.search)
+  const searchValue = urlParams.get(search)
+
+  return searchValue? searchValue.toUpperCase() : ''
+}
+
+export const styleHomePolygon = (country, hideToolTip = true) => {
+  country.fill = color(getStyle().hover)
+  if(hideToolTip){
+    country.showTooltipOn = 'doNotShow'
+    country.dispatch('over')
+    country.dispatch('out')
+  }
+}
+
+export const setCountryHome = (id, mapBuilder) => { // eslint-disable-line
+  const   code             = id.toUpperCase()
+  const { animation, map } = mapBuilder
+  const   relatedCountries = getPoliticalRelations(code, mapBuilder)
+  const   isLast           = (index) => relatedCountries.length-1 == index
+
+  animation.pause()
+
+  for (const [ i, countryPolygon ] of relatedCountries.entries()){
+    const { zoomLevel } = countryPolygon.dataItem
+
+    map.homeZoomLevel = zoomLevel || 2
+  
+    if(isCustomZoomCenter(code)) setHomeToCountryFromZoomGeoPoint(map, countryPolygon)
+    else setHomeToCountryFromVisualCenter(map, countryPolygon)
+    
+    if(isLast(i))
+      addCountryLabel(countryPolygon, mapBuilder)
+    styleHomePolygon(countryPolygon)
+  }
+  
+  map.goHome(2500)
+}
+
+export const setHomeToCountryFromVisualCenter = (map, countryPolygon) => {
+  const lngLat = getVisualCenter(countryPolygon)
+
+  setHomeToCountry(map, lngLat)
+}
+
+export const setHomeToCountryFromZoomGeoPoint = (map, countryPolygon) => {
+  const { zoomGeoPoint } = countryPolygon.dataItem
+
+  setHomeToCountry(map, zoomGeoPoint)
+}
+
+export const setHomeToCountry = (map, lngLat) => {
+  setDelta(map, lngLat)
+  setHomeGeoPoint(map, lngLat)
+}
+
+export const getVisualCenter = (countryPolygon) => ({ latitude: countryPolygon.visualLatitude, longitude: countryPolygon.longitude })
+
+export const setDelta = (map, { latitude, longitude }) => {
+  map.deltaLatitude  = -latitude
+  map.deltaLongitude = -longitude
+}
+
+export const setHomeGeoPoint = (map, { latitude, longitude }) => map.homeGeoPoint = { latitude, longitude }
+
 export const zoomLevelData =  new Set([
   { id: 'AD', zoomLevel: 128 },
   { id: 'AE', zoomLevel: 32 },
@@ -198,27 +337,3 @@ export const zoomLevelData =  new Set([
   { id: 'QA', zoomLevel: 64 },
   { id: 'RU', zoomLevel: 2, zoomGeoPoint: { longitude: 100.298353531168, latitude: 60.31299368319977 } }
 ])
-
-
-export const mapDataConfigZoomLevel = (series) => {
-  series.dataFields.zoomLevel    = 'zoomLevel'
-  series.dataFields.zoomGeoPoint = 'zoomGeoPoint'
-  mergeData(series.data, zoomLevelData)
-}
-
-function mergeData(seriesData, newData){
-  if(!seriesData.length) return seriesData = newData
-
-  // merge existing
-  for (let dataItem of seriesData){
-    const newMatch = newData.find((item) => item.id===dataItem.id)
-
-    if(newMatch) dataItem = { ...dataItem, ...newMatch }
-  }
-
-  //add ones not existing
-  const seriesDataIds = seriesData.map(item => item.id)
-  const toBeAdded = newData.filter((item) => !seriesDataIds.includes(item.id))
-
-  seriesData = [ ...seriesData, ...toBeAdded ].sort((a, b) => (a.id > b.id)? 1 : -1)
-}

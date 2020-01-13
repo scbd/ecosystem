@@ -1,7 +1,5 @@
 <template>
-  <iframe id="authFrame" style="display:none;" ref="authFrame"
-          :src="`${url}/app/authorize.html`">
-  </iframe>
+  <iframe id="authFrame" style="display:none;" ref="authFrame" :src="`${url}/app/authorize.html`"/>
 </template>
 
 <script>

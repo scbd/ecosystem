@@ -28,5 +28,8 @@
     "node-sass": "^4.13.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "webfont": "^9.0.0"
   }
 }

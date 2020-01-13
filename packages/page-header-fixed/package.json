@@ -29,7 +29,8 @@
     "core-js": "^3.3.2",
     "tiny-debounce": "^0.1.1",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^8.0.0",
+    "webfont": "^9.0.0"
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",

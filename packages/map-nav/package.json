@@ -1,6 +1,6 @@
 {
   "name": "@scbd/map-nav",
-  "version": "0.0.15",
+  "version": "0.0.31",
   "private": false,
   "license": "MIT",
   "main": "dist/MapNav.common.js",
@@ -15,6 +15,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "NODE_ENV=production sh scripts/build.sh",
+    "build-watch": "NODE_ENV=production sh scripts/build-watch.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
     "release": "yarn publish --access=public --tag latest"
@@ -22,7 +23,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.7.12",
     "@amcharts/amcharts4-geodata": "^4.1.9",
-    "@scbd/default-options": "0.0.7",
+    "@scbd/default-options": "0.0.53",
     "@scbd/self-embedding-component": "0.0.7",
     "bootstrap": "^4.4.1",
     "change-case": "^4.1.0",
