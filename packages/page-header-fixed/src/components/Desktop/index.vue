@@ -3,13 +3,6 @@
   <nav id="pagFixedNav" class="navbar navbar-expand-lg top-nav">
     <div class="limited-width-content">
 
-      <span class="navbar-brand">
-        <a href="https://www.cbd.int" :title="parent.$t('United Nations')">
-          <img srcset="https://attachments.cbd.int/un-logo-white.webp, https://attachments.cbd.int/un-logo-white.svg, https://attachments.cbd.int/un-logo-white.png" :alt="parent.$t('United Nations')" />
-          <span>{{parent.$t('UN')}}</span>
-        </a>
-      </span>
-
       <div class="navbar-collapse">
         <component :is="injections.components.TopMenuDropDown" v-bind="props"/>
       

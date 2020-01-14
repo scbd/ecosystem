@@ -3,10 +3,11 @@ const glob = require('glob-all');
 const path = require('path')
 
 module.exports = {
-  css       : { extract: false },
-  lintOnSave: true,
-  devServer : {
-    port: 8881
+  css                  : { extract: false },
+  transpileDependencies: [ '@scbd/page-header-fixed' ],
+  lintOnSave           : true,
+  devServer            : {
+    host: 'r.local', port: 8881
   },
   pluginOptions: {
     i18n: {
@@ -55,9 +56,10 @@ module.exports = {
     config.resolve.alias
       .set('@src', path.resolve(__dirname, 'src'))
   },
-  configureWebpack: {
+  configureWebpack: config => {
     // Merged into the final Webpack config
-    plugins: [
+    config.output.umdNamedDefine = true
+    config.plugins.push(
       new PurgecssPlugin({
         paths: glob.sync([
           path.join(__dirname, './src/index.html'),
@@ -65,6 +67,6 @@ module.exports = {
           path.join(__dirname, './src/**/*.js')
         ])
       })
-    ]
+    )
   }
 }

@@ -21,6 +21,17 @@
         <title>{{parent.$t('Search')}}</title>
         <path d="M16 254 c-20 -20 -20 -22 5 -63 14 -24 19 -44 15 -63 -7 -37 15 -90 45 -112 13 -9 43 -16 67 -16 62 0 102 40 102 104 0 64 -40 109 -100 112 -31 1 -49 9 -67 28 -27 30 -45 33 -67 10z m164 -104 c36 -36 14 -100 -34 -100 -60 1 -81 79 -29 109 26 15 41 13 63 -9z"/>
       </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+      <title>{{parent.$t('Menu')}}</title>
+      <path d="M-1.77635684e-15,-8.8817842e-16 L29.461538,-8.8817842e-16 L29.461538,2 L-1.77635684e-15,2 L-1.77635684e-15,-8.8817842e-16 Z M4.91025633,10.6407675 L4.91025633,9.64076753 L29.461538,9.64076753 L29.461538,10.6407675 L4.91025633,10.6407675 Z M-1.77635684e-15,20.2777774 L-1.77635684e-15,18.2777774 L29.461538,18.2777774 L29.461538,20.2777774 L-1.77635684e-15,20.2777774 Z"></path>
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 30 30">
+      <title>{{parent.$t('Close')}}</title>
+      <path  d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+      </symbol>
+      <filter id="blur" x="0" y="0">
+        <feGaussianBlur in="SourceGraphic" stdDeviation=".5" />
+      </filter>
     </defs>
   </svg>
 </template>
@@ -35,5 +46,8 @@
 }
 .icon-sign-out { width: 0.875em; }
 .icon-profile  { width: 0.7138671875em; }
-.icon-lock     { width: 0.642578125em; }
+.icon-lock     { width: 0.8em; margin-bottom: .25em}
+.icon-search { width: 1em; fill:#ffffff;}
+.icon-menu { width: 1.6em; fill:#ffffff}
+.icon-close { font-size: 1.5em; fill:#ffffff}
 </style>

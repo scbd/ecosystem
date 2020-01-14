@@ -1,16 +1,17 @@
 <template functional>
-  <div v-show="props.show" class="mobile-nav-wrapper ml-auto mobile-menu">
-    <div class="mobile-nav-wrapper ml-auto mobile-menu">
-      <div  class="navbar-collapse">
+  <div v-show="props.show" class="mobile-nav-wrapper ml-auto mobile-menu" style="min-width:88vw;">
+
+      
+      <div  class="navbar-collapse" style="width:100%">
         <component
             
             :is="injections.components.MainNav"
             :siteNavElms="props.opts.mainSNEs"/>
 
         <div class="mobile-top-menu">
-          <hr>
+          <hr >
           <component :is="injections.components.TopMenuDropDown" v-bind="props"/>
-          <hr>
+          <hr >
 
           <component :is="injections.components.LoginNav" v-bind="props" />
 
@@ -19,7 +20,7 @@
         </div>
       </div>
 
-    </div>
+ 
   </div>
 </template>
 

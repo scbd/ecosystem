@@ -7,11 +7,12 @@
         </a>
         
         <div class="text-center sub-nav-title ">
-          <img :srcset="`https://attachments.cbd.int/${$i18n.locale}/brand-text.webp, https://attachments.cbd.int/${$i18n.locale}/brand-text.png`" :alt="$t('Convention on Biological Diversity')">
+          <img :srcset="`https://attachments.cbd.int/${$i18n.locale}/brand-text.png`" :alt="$t('Convention on Biological Diversity')">
         </div>
 
         <button @click="toggle()" class="navbar-toggler collapsed" type="button">
-          <span class="navbar-toggler-icon"></span>
+          <img v-if="!show" src= "http://attachments.cbd.int/nav_icon.png"/>
+          <Icon v-if="show" name="close" />
         </button>
 
         <transition name="mobile">
@@ -24,10 +25,10 @@
 
 <script>
 import Nav  from './Nav'
-
+import Icon  from '../Icon'
 export default {
   name      : 'MobileHeaderSCBD',
-  components: { Nav },
+  components: { Nav, Icon },
   props     : [ 'siteNavElms', 'opts' ],
   methods   : { toggle },
   data

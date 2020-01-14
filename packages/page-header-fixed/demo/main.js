@@ -6,6 +6,6 @@ Vue.config.productionTip = true
 Vue.config.performance =true
 Vue.use()
 new Vue({
-  // i18n,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
