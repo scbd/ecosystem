@@ -3,6 +3,7 @@
 
     <div v-if="me" class="shadow-lg p-3 mb-5 bg-white rounded">
       <h1>Hello <strong>{{$me.name}}</strong>.  The global $me event caught.</h1>
+      <h5>$accountsUrl: {{$auth.accountsUrl}}</h5>
     </div>
 
     <div v-if="!me" style="text-align: center;">
@@ -14,6 +15,22 @@
       <tr v-for="(value, name) in $me" :key="name" >
         <th class="font-weight-bold" style="text-align:right;">{{name}}:</th>
         <th style="text-align:left;">{{value}}</th>
+      </tr>
+      <tr >
+        <th class="font-weight-bold" style="text-align:right;">hasRole('user'):</th>
+        <th style="text-align:left;">{{$me.hasRole('User')}}</th>
+      </tr>
+      <tr v-if="$me.isVuex">
+        <th class="font-weight-bold" style="text-align:right;">isAdmin:</th>
+        <th style="text-align:left;">{{$me.isAdmin}}</th>
+      </tr>
+            <tr v-if="$me.isVuex">
+        <th class="font-weight-bold" style="text-align:right;">isGov:</th>
+        <th style="text-align:left;">{{$me.isGov}}</th>
+      </tr>
+            <tr v-if="$me.isVuex">
+        <th class="font-weight-bold" style="text-align:right;">isStaff:</th>
+        <th style="text-align:left;">{{$me.isStaff}}</th>
       </tr>
     </table>
 
@@ -33,6 +50,7 @@ export default {
 function data (){
   return { me: '' }
 }
+
 function mounted(){
   window.document.addEventListener('$me', this.loadMe)
 }
@@ -41,6 +59,7 @@ function loadMe(evt){
   setTimeout(() => {
     this.me = evt.$me
     this.$forceUpdate()
+    setTimeout(() => this.logOut(), 5000)
   }, 1000)
 }
 </script>
