@@ -1,0 +1,35 @@
+{
+  "name": "@scbd/nuxt-scbd-sso-module",
+  "version": "0.0.2",
+  "license": "MIT",
+  "main": "src/index.js",
+  "unpkg": "src/index.js",
+  "private": false,
+  "browser": {
+    "./sfc": "src/index.js"
+  },
+  "files": [
+    "src/*"
+  ],
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "release": "yarn publish --access=public --tag latest",
+    "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
+    "yarn-outdated": "yarn outdated"
+  },
+  "dependencies": {
+    "@scbd/sso-vue-plugin-scbd": "^0.0.10",
+    "core-js": "^3.4.4",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
