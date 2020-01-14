@@ -21,6 +21,7 @@ module.exports = {
     curly                 : [ 'error', 'multi', 'consistent' ],
     complexity            : [ 'error', 10 ],
 
+    'promise/avoid-new'             : 'off',
     'require-await'                 : 'error',
     'prefer-promise-reject-errors'  : 'error',
     'no-return-await'               : 'error',

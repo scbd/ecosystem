@@ -14,7 +14,28 @@
     },
     {
       "path": "packages/page-footer"
+    },
+    {
+      "path": "packages/map-nav"
+    },
+    {
+      "path": "packages/self-embedding-component"
+    },
+    {
+      "path": "packages/default-options"
+    },
+    {
+      "path": "packages/www-css"
+    },
+    {
+      "path": "packages/nuxt-scbd-sso-module"
     }
   ],
-  "settings": {}
+  "settings": {
+    "cSpell.words": [
+      "me",
+      "module",
+      "vuex"
+    ]
+  }
 }
