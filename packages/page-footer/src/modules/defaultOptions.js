@@ -52,7 +52,7 @@ function validateOptions (userOptions){
 
 function removeUnknownKey (options, key){
   delete(options, key)
-  console.warn(`${key} not permitted in @ecosystem/page-header-fixed component options`) // eslint-disable-line
+  throw new Error(`${key} not permitted in @ecosystem/page-header-fixed component options`)
 }
 
 function errorUnknownType (key, rType, eType){
