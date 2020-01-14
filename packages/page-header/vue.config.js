@@ -7,7 +7,7 @@ module.exports = {
   devServer : {
     port: 8882
   },
-  css          : { extract: true },
+  css          : { extract: false },
   pluginOptions: {
     i18n: {
       locale        : 'en',

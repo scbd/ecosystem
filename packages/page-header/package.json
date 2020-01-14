@@ -1,14 +1,19 @@
 {
-  "name": "@ecosystem/page-header",
-  "version": "0.1.0",
-  "main": "dist/PageHeader.common.js",
+  "name": "@scbd/page-header",
+  "version": "0.0.52",
+  "private": false,
+  "license": "MIT",
+  "main": "dist/PageHeader.umd.min.js",
   "unpkg": "dist/PageHeader.umd.min.js",
   "browser": {
     "./sfc": "src/data-providers/Drupal.vue"
   },
-  "files": [ "dist/*", "src/*" ],
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "scripts": {
-    "serve": "vue-cli-service serve --mode stg",
+    "serve": "vue-cli-service serve --mode stg --open",
     "build": "NODE_ENV=production sh scripts/build.sh",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
@@ -16,13 +21,16 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "test:e2e:headless:login": "vue-cli-service test:e2e --headless -s tests/e2e/specs/login.js",
-    "release": "yarn publish --access=public"
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
+    "@scbd/default-options": "0.0.7",
+    "@scbd/self-embedding-component": "^0.0.7",
     "change-case": "^3.1.0",
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^8.0.0",
+    "webfont": "^9.0.0"
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",
@@ -43,5 +51,5 @@
   "@ecosystem": {
     "symlinkWorkspaces": true
   },
-  "license": "MIT"
+  "gitHead": "534f983ca739cdaaf1a29e473d6ba99c90a585d0"
 }
