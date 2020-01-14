@@ -1,0 +1,35 @@
+{
+  "name": "@scbd/www-css",
+  "version": "0.0.17",
+  "private": false,
+  "unpkg": "dist/style.min.css",
+  "main": "dist/style.min.css",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint",
+    "scss": "node-sass src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.css && node-sass  --output-style compressed src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.min.css && cp -R src/cbd/web/themes/custom/bootstrap_sass/images/* dist/images",
+    "sed": "sed -i -e 's~../../images/~images/~g' dist/style.css && sed -i -e 's~../../images/~images/~g' dist/style.min.css",
+    "release": "yarn publish --access=public --tag latest"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "core-js": "^3.4.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.13.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "webfont": "^9.0.0"
+  }
+}
