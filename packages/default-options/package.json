@@ -1,32 +1,25 @@
 {
-  "name": "@scbd/default-options",
-  "version": "0.0.7",
+  "name"   : "@scbd/default-options",
+  "version": "0.0.53",
   "private": false,
   "license": "MIT",
-  "main": "dist/DefaultOptions.common.js",
-  "unpkg": "dist/DefaultOptions.umd.min.js",
-  "files": [
-    "dist/*",
-    "src/*"
-  ],
+  "main"   : "dist/DefaultOptions.umd.min.js",
+  "unpkg"  : "dist/DefaultOptions.umd.min.js",
+  "files"  : [ "dist/*", "src/*" ],
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode production --name DefaultOptions  --target lib src/index.js",
-    "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
-    "release": "yarn publish --access=public --tag beta"
+    "serve"  : "vue-cli-service serve --open",
+    "build"  : "vue-cli-service build --mode production --name DefaultOptions  --target lib --formats umd-min src/index.js",
+    "lint"   : "vue-cli-service lint --fix -c ../../.eslintrc.js",
+    "release": "yarn publish --access=public --tag latest"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-babel"      : "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "dependencies": {
-    "@scbd/self-embedding-component": "^0.0.7",
-    "webfont": "^9.0.0"
+    "@vue/cli-plugin-eslint"     : "^4.1.0",
+    "@vue/cli-service"           : "^4.1.0",
+    "babel-eslint"               : "^10.0.3",
+    "eslint"                     : "^5.16.0",
+    "eslint-plugin-vue"          : "^5.0.0",
+    "vue-template-compiler"      : "^2.6.10"
   }
 }
