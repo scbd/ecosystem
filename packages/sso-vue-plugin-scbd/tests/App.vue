@@ -58,8 +58,9 @@ function mounted(){
 function loadMe(evt){
   setTimeout(() => {
     this.me = evt.$me
+    console.log(evt)
     this.$forceUpdate()
-    setTimeout(() => this.logOut(), 5000)
+    // setTimeout(() => this.logOut(), 5000)
   }, 1000)
 }
 </script>

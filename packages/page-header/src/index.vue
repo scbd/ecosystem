@@ -32,5 +32,7 @@ function siteNavElms(){
   position: fixed;
   top:46px;
   width: 100vw;
+  z-index: 99999;
+  background-color: white;
 }
 </style>

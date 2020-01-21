@@ -1,8 +1,8 @@
 {
   "name": "@scbd/sso-vue-plugin-scbd",
-  "version": "0.0.10",
+  "version": "0.0.13",
   "license": "MIT",
-  "main": "dist/sso-vue-plugin-scbd.umd.min.js0.0.3",
+  "main": "dist/sso-vue-plugin-scbd.umd.min.js",
   "unpkg": "dist/sso-vue-plugin-scbd.umd.min.js",
   "private": false,
   "browser": {
@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service --mode production serve --open ",
-    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib src/plugin.js",
+    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib  src/plugin.js",
     "deploy:dev": "vue-cli-service --mode dev s3-deploy ",
     "deploy": "vue-cli-service s3-deploy --mode production",
     "test:e2e": "vue-cli-service --mode stg test:e2e",

@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-header",
-  "version": "0.0.52",
+  "version": "0.0.61",
   "private": false,
   "license": "MIT",
   "main": "dist/PageHeader.umd.min.js",
@@ -27,10 +27,11 @@
     "@scbd/default-options": "0.0.7",
     "@scbd/self-embedding-component": "^0.0.7",
     "change-case": "^3.1.0",
-    "core-js": "^3.3.2",
-    "vue": "^2.6.10",
+    "ky": "^0.16.1",
+    "ky-universal": "^0.3.0",
+    "vue": "^2.6.11",
     "vue-i18n": "^8.0.0",
-    "webfont": "^9.0.0"
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",

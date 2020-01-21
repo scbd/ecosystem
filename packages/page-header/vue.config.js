@@ -3,9 +3,11 @@ const glob = require('glob-all');
 const path = require('path')
 
 module.exports = {
-  lintOnSave: true,
-  devServer : {
-    port: 8882
+  transpileDependencies: [ 'ky', 'ky-universal' ],
+  lintOnSave           : true,
+  devServer            : {
+    port            : 8882,
+    disableHostCheck: true
   },
   css          : { extract: false },
   pluginOptions: {
@@ -14,25 +16,6 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir     : 'locales',
       enableInSFC   : true
-    },
-
-    s3Deploy: {
-      registry          : undefined,
-      awsProfile        : 'default',
-      region            : 'us-east-1',
-      bucket            : 'scbd-components',
-      createBucket      : false,
-      staticHosting     : false,
-      assetPath         : 'dist',
-      assetMatch        : '**',
-      deployPath        : '/@ecosystem/page-header',
-      acl               : 'public-read',
-      pwa               : false,
-      enableCloudfront  : false,
-      cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: '/@ecosystem/page-header/*',
-      uploadConcurrency : 5,
-      pluginVersion     : '3.0.0'
     }
     
   },

@@ -44,21 +44,23 @@ export default class {
     return store.token = authenticationToken
   }
   
-  dispatchUser(element){
+  dispatchUser(element, meStore){
     if(!elm) elm = element
 
     const event = new Event('$me', { bubbles: true })
 
-    event.$me   = this
+  
+    event.$me   = meStore
+    event.$auth = store
     elm.dispatchEvent(event)
+    this.onRequestMeEvent(elm)
   }
 
-  dispatchUserEvent(element){
-    if(!elm) elm = element
 
-    const event = new Event('$requestMe', { bubbles: true })
+  onRequestMeEvent(element){
+    if(!elm) elm = element
   
-    elm.dispatchEvent(event)
+    window.document.addEventListener('$requestMe', () => this.dispatchUser(elm))
   }
 }
 

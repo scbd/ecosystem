@@ -10,6 +10,7 @@ export default class MeStore{
   }
 
   get userID(){ return store.me.userID }
+  get userId(){ return store.me.userID }
   get name(){ return store.me.name }
   get email(){ return store.me.email }
   get government(){ return store.me.government }

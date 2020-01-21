@@ -1,6 +1,6 @@
 {
   "name": "@scbd/nuxt-scbd-sso-module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "src/index.js",
   "unpkg": "src/index.js",
@@ -18,7 +18,7 @@
     "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
-    "@scbd/sso-vue-plugin-scbd": "^0.0.10",
+    "@scbd/sso-vue-plugin-scbd": "^0.0.13",
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
   },

@@ -35,6 +35,7 @@ export default class MeVuex extends MeStore{
   
   logOut (){
     store.commit('me/logOut')
+    store.commit('me/save', this.anonymous())
     return this
   }
 }
