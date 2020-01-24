@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.53",
+    "@scbd/self-embedding-component": "^0.0.8",
     "@scbd/sso-vue-plugin-scbd": "^0.0.13",
     "core-js": "^3.4.4",
     "vue": "^2.6.10"

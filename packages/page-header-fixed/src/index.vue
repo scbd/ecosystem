@@ -40,7 +40,7 @@ function opts(){
 }
 
 function isMobile(){
-  if(!window) return false
+  if(typeof window === 'undefined') return false
   return window.matchMedia('(max-width: 990px)').matches
 }
 function mounted(){

@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.53",
+    "@scbd/self-embedding-component": "^0.0.8",
     "webfont": "^9.0.0"
   }
 }

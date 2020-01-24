@@ -1,16 +1,15 @@
 {
   "name": "@scbd/self-embedding-component",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "license": "MIT",
-  "main": "dist/SelfEmbeddingComponent.umd.min.js",
-  "unpkg": "dist/SelfEmbeddingComponent.umd.min.js",
+  "main": "src/index.js",
+  "unpkg": "src/index.js",
   "files": [
-    "dist/*",
     "src/*"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "cp dist/widget.umd.js public/ && vue-cli-service serve",
     "build": "sh scripts/build.sh",
     "lint": "vue-cli-service lint --fix ",
     "release": "yarn publish --access=public --tag latest"

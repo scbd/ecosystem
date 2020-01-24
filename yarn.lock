@@ -1720,13 +1720,6 @@
     magic-string "^0.25.2"
     rollup-pluginutils "^2.6.0"
 
-"@scbd/self-embedding-component@0.0.7", "@scbd/self-embedding-component@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@scbd/self-embedding-component/-/self-embedding-component-0.0.7.tgz#3dfc4418c787d90fad4aae162fb122d1fb040ad5"
-  integrity sha512-M3WjiWZIYsJao8oN7mDZU1F6CHku2LdWv7sjrE/n5nEz0frYaV/S0MpyyLYvK6HWDEdHPBre4DZKqtjAnOh+6g==
-  dependencies:
-    change-case "^4.1.0"
-
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@soda/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-1.7.1.tgz#706f64bcb4a8b9642b48ae3ace444c70334d615d"

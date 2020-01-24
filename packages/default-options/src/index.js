@@ -7,14 +7,10 @@ const V_MAP = { host: String, basePath: String }
 
 export default class DefaultOptions{
   constructor({ environments, validationMap, force, name }){
-    environments   = {
-      dev : Object.assign(ENVS.dev, environments.dev),
-      stg : Object.assign(ENVS.stg, environments.stg),
-      prod: Object.assign(ENVS.prod, environments.prod)
-    }
+    environments   = assignEnvironments(environments)
 
     validationMap  = Object.assign(V_MAP, validationMap)
-    console.log('dddd')
+    
     this.props     = { environments, validationMap, force, name }
   }
 
@@ -29,9 +25,9 @@ export default class DefaultOptions{
 
   get env (){
     if(this.props.force) return this.props.force
-    if(isServer()) return process.env.NODE_ENV || 'dev'
+    if(isServer()) return process.env.NODE_ENV || 'prod'
 
-    return getEnv()
+    return getEnvClient()
   }
 
   validate(opts){ return validate(opts, this.props.validationMap) }
@@ -40,7 +36,7 @@ export default class DefaultOptions{
 export const validateOptions = validate
 
 
-function getEnv(){
+function getEnvClient(){
   const thisHost = window.location.href
 
   if(thisHost.includes('staging.cbd.int')) return 'stg'
@@ -50,7 +46,7 @@ function getEnv(){
   return 'prod'
 }
 
-function isServer(){ return !window }
+function isServer(){ return typeof window === 'undefined'}
 
 function validate (opts, vMap){
   for (const key in opts){
@@ -70,4 +66,16 @@ function removeUnknownKey (options, key){
 
 function errorUnknownType (key, rType, eType){
   throw new Error(`${key} has incorrect type.  Received: ${rType} Expected: ${eType}`)
+}
+
+function assignEnvironments(environments){
+  const dev  = Object.assign(ENVS.dev , environments.dev )
+  const stg  = Object.assign(ENVS.stg , environments.stg )
+  const prod = Object.assign(ENVS.prod, environments.prod)
+
+  const development = dev
+  const staging     = stg
+  const production  = prod
+  
+  return { development, dev, staging, stg, production, prod }
 }

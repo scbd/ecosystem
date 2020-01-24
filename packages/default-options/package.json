@@ -1,6 +1,6 @@
 {
   "name": "@scbd/default-options",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "private": false,
   "license": "MIT",
   "main": "src/index.js",
@@ -24,5 +24,8 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@scbd/self-embedding-component": "^0.0.8"
   }
 }
