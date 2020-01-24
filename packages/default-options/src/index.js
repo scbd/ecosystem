@@ -14,7 +14,7 @@ export default class DefaultOptions{
     }
 
     validationMap  = Object.assign(V_MAP, validationMap)
-
+    console.log('dddd')
     this.props     = { environments, validationMap, force, name }
   }
 

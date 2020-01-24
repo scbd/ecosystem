@@ -5,7 +5,7 @@ describe('The SCBD Header Desktop', () => {
   it('Header Element Loads', () => {
     cy.visit('/')
     cy.get('header')
-      .should('have.id', 'pageHeader')
+      .should('have.id', 'pageHeaderFixed')
   })
   it('It should contain 1 navs', () => {
     cy.get('nav')

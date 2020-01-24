@@ -44,8 +44,8 @@
   </ul>
 </template>
 <script>
-import Icon         from '@components/Icon'
-import makeSelector from '@modules/makeSelector'
+import Icon         from '../components/Icon'
+import makeSelector from '../modules/makeSelector'
 
 export default {
   name      : 'LoginNav',

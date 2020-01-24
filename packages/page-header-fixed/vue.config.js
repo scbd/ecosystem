@@ -4,10 +4,11 @@ const path = require('path')
 
 module.exports = {
   css                  : { extract: false },
-  transpileDependencies: [ '@scbd/page-header-fixed' ],
+  transpileDependencies: [ 'ky', 'ky-universal', '@scbd/default-options', 'change-case', 'check-ie', 'tiny-debounce', 'ky-universal', 'vue-i18n' ],
   lintOnSave           : true,
   devServer            : {
-    host: 'r.local', port: 8881
+    port   : 8881,
+    headers: { 'Access-Control-Allow-Origin': '*' }
   },
   pluginOptions: {
     i18n: {
@@ -15,25 +16,6 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir     : 'locales',
       enableInSFC   : true
-    },
-
-    s3Deploy: {
-      registry          : undefined,
-      awsProfile        : 'default',
-      region            : 'us-east-1',
-      bucket            : 'scbd-components',
-      createBucket      : false,
-      staticHosting     : false,
-      assetPath         : 'dist',
-      assetMatch        : '**',
-      deployPath        : '/@ecosystem/page-header-fixed',
-      acl               : 'public-read',
-      pwa               : false,
-      enableCloudfront  : false,
-      cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: '/@ecosystem/page-header-fixed/*',
-      uploadConcurrency : 5,
-      pluginVersion     : '3.0.0'
     }
     
   },

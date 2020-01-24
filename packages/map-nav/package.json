@@ -17,7 +17,7 @@
     "build": "NODE_ENV=production sh scripts/build.sh",
     "build-watch": "NODE_ENV=production sh scripts/build-watch.sh",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
+    "lint": "vue-cli-service lint --fix ",
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@scbd/self-embedding-component": "^0.0.8",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

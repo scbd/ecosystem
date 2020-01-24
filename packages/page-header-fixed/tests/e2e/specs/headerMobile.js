@@ -2,14 +2,14 @@ describe('The SCBD Header Mobile', () => {
   beforeEach(() => {
     cy.viewport('iphone-6')
     cy.visit('/')
-    cy.get('.navbar-toggler-icon')
+    cy.get('.navbar-toggler')
       .click()
   })
 
   it('Header Element Loads', () => {
     cy.visit('/')
     cy.get('header')
-      .should('have.id', 'pageHeader')
+      .should('have.id', 'pageHeaderFixed')
   })
 
   it('Menu is visible on click', () => {
@@ -22,41 +22,44 @@ describe('The SCBD Header Mobile', () => {
       .should('be.visible')
   })
 
-  it('Top menu one is visible, opens, has items', () => {
+  it('The main menu should be visible', () => {
     cy.get('.mobile-top-menu > .mr-auto > :nth-child(1) > .nav-link')
       .should('be.visible')
       .click()
-    cy.get('#pageHeader > div.navbar-wrapper.mobile-only > nav > div.mobile-nav-wrapper.ml-auto.mobile-menu > div > div > div > ul.navbar-nav.mr-auto > li:nth-child(1)')
+    cy.get('#biodiversityConvention-WPH-SNE')
       .should('be.visible')
-
-    cy.get('.dropdown-item-label')
-      .should(($a) => {
-        expect($a).to.have.length(5)
-      })
-    cy.get('.mobile-top-menu > .mr-auto > :nth-child(1) > .nav-link')
-      .click()
-    cy.get('#pageHeader > div.navbar-wrapper.mobile-only > nav > div.mobile-nav-wrapper.ml-auto.mobile-menu > div > div > div > ul.navbar-nav.mr-auto > li:nth-child(1)')
-      .should('not.have.descendants', '#pageHeader > div.navbar-wrapper.mobile-only > nav > div.mobile-nav-wrapper.ml-auto.mobile-menu > div > div > div > ul.navbar-nav.mr-auto > li:nth-child(1) > div > div > a')
   })
 
-  it('Top menu one is visible, opens, has items', () => {
-    cy.get('.mobile-top-menu > .mr-auto > :nth-child(2) > .nav-link')
+  it('Info menu should be visible and expand when clicked', () => {
+
+
+    cy.get('#information-SNE > .nav-link')
       .should('be.visible')
       .click()
 
-    cy.get('#pageHeader > div.navbar-wrapper.mobile-only > nav > div.mobile-nav-wrapper.ml-auto.mobile-menu > div > div > div > ul.navbar-nav.mr-auto > li:nth-child(2)')
+    cy.get('#contactUs-SNE')
       .should('be.visible')
 
-    cy.get('.dropdown-item-label')
-      .should(($a) => {
-        expect($a).to.have.length(6)
-      })
-
-    cy.get('.mobile-top-menu > .mr-auto > :nth-child(2) > .nav-link')
+    cy.get('#information-SNE > .nav-link')
+      .should('be.visible')
       .click()
-    cy.get('#pageHeader > div.navbar-wrapper.mobile-only > nav > div.mobile-nav-wrapper.ml-auto.mobile-menu > div > div > div > ul.navbar-nav.mr-auto > li:nth-child(2)')
-      .should('not.have.descendants', '#pageHeader > div.navbar-wrapper.mobile-only > nav > div.mobile-nav-wrapper.ml-auto.mobile-menu > div > div > div > ul.navbar-nav.mr-auto > li:nth-child(1) > div > div > a')
   })
+
+  it('About menu should be visible and expand when clicked', () => {
+
+
+    cy.get('#aboutTheSecretariatP1-SNE > .nav-link')
+    .should('be.visible')
+    .click( )
+
+    cy.wait(500)
+
+    cy.get('#staff-SNE')
+    .should('be.visible')
+
+
+  })
+
   it('Login is visible', () => {
     cy.get('#accountsLink-SNE')
       .should('be.visible')

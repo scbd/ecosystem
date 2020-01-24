@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import   WPHeader         from '@components/StructuredData/WPHeader'
-import   Icons            from '@components/Icons'
-import   Mobile           from '@components/Mobile'
-import   Desktop          from '@components/Desktop'
+import   WPHeader         from './components/StructuredData/WPHeader'
+import   Icons            from './components/Icons'
+import   Mobile           from './components/Mobile'
+import   Desktop          from './components/Desktop'
 import   debounce         from 'tiny-debounce'
-import { DefaultOptions } from '@modules/defaultOptions'
+import { DefaultOptions } from './modules/defaultOptions'
 
 export default {
   name      : 'PageHeaderFixed',
@@ -27,12 +27,12 @@ export default {
   computed  : { opts, siteNavElms },
   methods   : { isMobile },
   props     : { siteNavigationElements: { type: Array, required: true },
-    options               : { type: Object, default: () => {} } },
+                options               : { type: Object, default: () => {} } },
   mounted
 }
 
 function siteNavElms(){
-  return this.siteNavigationElements
+  return this.siteNavigationElements.length? this.siteNavigationElements : this.options.siteNavigationElements
 }
 
 function opts(){

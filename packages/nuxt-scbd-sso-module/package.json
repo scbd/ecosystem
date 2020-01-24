@@ -18,11 +18,13 @@
     "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
+    "@scbd/default-options": "^0.0.53",
     "@scbd/sso-vue-plugin-scbd": "^0.0.13",
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@scbd/self-embedding-component": "^0.0.8",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

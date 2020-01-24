@@ -23,13 +23,14 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/default-options": "0.0.7",
+    "@scbd/default-options": "^0.0.53",
     "@scbd/self-embedding-component": "^0.0.7",
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
     "webfont": "^9.0.0"
   },
   "devDependencies": {
+    "@scbd/self-embedding-component": "^0.0.8",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-e2e-cypress": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",

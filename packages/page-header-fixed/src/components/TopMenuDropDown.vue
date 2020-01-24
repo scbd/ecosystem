@@ -20,7 +20,7 @@
 
 <script>
 import debounce from 'tiny-debounce'
-import makeSelector from '@modules/makeSelector'
+import makeSelector from '../modules/makeSelector'
 
 export default {
   name   : 'TopMenuDropDown',

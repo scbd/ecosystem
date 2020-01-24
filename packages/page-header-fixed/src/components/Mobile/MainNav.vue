@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import makeSelector from '@modules/makeSelector'
+import makeSelector from '../../modules/makeSelector'
 
 export default { props: [ 'siteNavElms' ], makeSelector }
 </script>

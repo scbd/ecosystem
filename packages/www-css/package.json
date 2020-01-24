@@ -17,6 +17,7 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "devDependencies": {
+    "@scbd/self-embedding-component": "^0.0.8",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
@@ -30,6 +31,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@scbd/default-options": "^0.0.53",
     "webfont": "^9.0.0"
   }
 }
