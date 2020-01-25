@@ -1,13 +1,13 @@
-import { MouseCursorStyle } from '@amcharts/amcharts4/core'
-import { worldLow, langPoliticalUpdate } from './political-mapping'
-import { getUnLocale } from '@modules/locale'
+import { MouseCursorStyle                      } from '@amcharts/amcharts4/core'
+import { worldLow        , langPoliticalUpdate } from './political-mapping'
+import { getUnLocale                           } from '@modules/locale'
 
-import  english from '@amcharts/amcharts4-geodata/lang/EN'
-import  spanish from '@amcharts/amcharts4-geodata/lang/ES'
-import  arabic from '@amcharts/amcharts4-geodata/lang/AR'
-import  french from '@amcharts/amcharts4-geodata/lang/FR'
-import  russian from '@amcharts/amcharts4-geodata/lang/RU'
-import  chinese from '@amcharts/amcharts4-geodata/lang/cn_ZH'
+import english from '@amcharts/amcharts4-geodata/lang/EN'
+import spanish from '@amcharts/amcharts4-geodata/lang/ES'
+import arabic  from '@amcharts/amcharts4-geodata/lang/AR'
+import french  from '@amcharts/amcharts4-geodata/lang/FR'
+import russian from '@amcharts/amcharts4-geodata/lang/RU'
+import chinese from '@amcharts/amcharts4-geodata/lang/cn_ZH'
 
 const userStyle = { }
 
@@ -126,12 +126,9 @@ export const series = [ grid, countryLabelSeries, countryLabelAltSeries, euSerie
 
 export const euFlag = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgODEwIDU0MCI+CjxkZXNjPkV1cm9wZWFuIGZsYWc8L2Rlc2M+CjxkZWZzPgo8ZyBpZD0icyI+CjxnIGlkPSJjIj4KPHBhdGggaWQ9InQiIGQ9Ik0wLDB2MWgwLjV6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xKXJvdGF0ZSgxOCkiLz4KPHVzZSB4bGluazpocmVmPSIjdCIgdHJhbnNmb3JtPSJzY2FsZSgtMSwxKSIvPgo8L2c+CjxnIGlkPSJhIj4KPHVzZSB4bGluazpocmVmPSIjYyIgdHJhbnNmb3JtPSJyb3RhdGUoNzIpIi8+Cjx1c2UgeGxpbms6aHJlZj0iI2MiIHRyYW5zZm9ybT0icm90YXRlKDE0NCkiLz4KPC9nPgo8dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InNjYWxlKC0xLDEpIi8+CjwvZz4KPC9kZWZzPgo8cmVjdCBmaWxsPSIjMDM5IiB3aWR0aD0iODEwIiBoZWlnaHQ9IjU0MCIvPgo8ZyBmaWxsPSIjZmMwIiB0cmFuc2Zvcm09InNjYWxlKDMwKXRyYW5zbGF0ZSgxMy41LDkpIj4KPHVzZSB4bGluazpocmVmPSIjcyIgeT0iLTYiLz4KPHVzZSB4bGluazpocmVmPSIjcyIgeT0iNiIvPgo8ZyBpZD0ibCI+Cjx1c2UgeGxpbms6aHJlZj0iI3MiIHg9Ii02Ii8+Cjx1c2UgeGxpbms6aHJlZj0iI3MiIHRyYW5zZm9ybT0icm90YXRlKDE1MCl0cmFuc2xhdGUoMCw2KXJvdGF0ZSg2NikiLz4KPHVzZSB4bGluazpocmVmPSIjcyIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwKXRyYW5zbGF0ZSgwLDYpcm90YXRlKDI0KSIvPgo8dXNlIHhsaW5rOmhyZWY9IiNzIiB0cmFuc2Zvcm09InJvdGF0ZSg2MCl0cmFuc2xhdGUoMCw2KXJvdGF0ZSgxMikiLz4KPHVzZSB4bGluazpocmVmPSIjcyIgdHJhbnNmb3JtPSJyb3RhdGUoMzApdHJhbnNsYXRlKDAsNilyb3RhdGUoNDIpIi8+CjwvZz4KPHVzZSB4bGluazpocmVmPSIjbCIgdHJhbnNmb3JtPSJzY2FsZSgtMSwxKSIvPgo8L2c+Cjwvc3ZnPgo='
 
-const locale = getUnLocale()
-
-console.log('locale', locale)
+const locale       = getUnLocale()
 const geodataNames = geoDataLang[locale] //en default
 
-console.log(geoDataLang)
 export const main = {
   projection           : 'Orthographic',
   panBehavior          : 'rotateLongLat',

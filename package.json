@@ -12,7 +12,7 @@
     "lint"             : "lerna run lint",
     "prePublish"       : "lerna run lint && lerna run build && lerna run test:e2e:headless",
     "prepatch"         : "lerna version prepatch",
-    "rebuild"          : "lerna clean -y && rm -rf node_modules && rm yarn.lock && yarn && lerna bootstrap && lerna link --force-local",
+    "rebuild"          : "lerna clean -y && rm -rf node_modules && rm yarn.lock && yarn && lerna bootstrap && lerna link",
     "boot"             : "lerna bootstrap && lerna link",
     "ui"               : "vue ui"
   },

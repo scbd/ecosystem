@@ -1,2 +1,2 @@
-# vue-cli-service build --mode production --name SelfEmbeddingComponent  --target lib --dest dist/ src/index.js
-vue-cli-service build --mode production --name widget  --target lib --formats umd -dest dist tests/e2e/scaffolding/widget.js --watch
+vue-cli-service build --mode production --name SelfEmbeddingComponent  --target lib --dest dist/ src/index.js
+vue-cli-service build --mode production --name widget  --target lib --formats umd -dest dist/test tests/e2e/scaffolding/widget.js --watch

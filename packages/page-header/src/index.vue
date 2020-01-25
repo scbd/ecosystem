@@ -16,7 +16,7 @@ export default {
   components: { WPHeader, SubHeader },
   computed  : { opts, siteNavElms },
   props     : { siteNavigationElement: { type: Object, required: true },
-    options              : { type: Object, default: () => {} } }
+                options              : { type: Object, default: () => {} } }
 }
 
 function opts(){

@@ -29,7 +29,7 @@ export default {
   components: { Nav, FollowUs, WPFooter },
   computed  : { opts, siteNavElms },
   props     : { siteNavigationElements: { type: Array, required: true },
-    options               : { type: Object, default: () => {} } }
+                options               : { type: Object, default: () => {} } }
 
 }
 

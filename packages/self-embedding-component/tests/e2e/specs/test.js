@@ -1,8 +1,10 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
+describe('Widget loads and contains amcharts map', () => {
   it('Visits the app root url', () => {
     cy.visit('/')
-    cy.contains('h1', 'Welcome to Your Vue.js App')
+
+    cy.get('[transform="translate(903,0)"] > [fill="#d9d9d9"] > path')
+    .should('be.visible')
   })
 })

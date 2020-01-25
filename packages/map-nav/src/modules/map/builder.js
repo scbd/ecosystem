@@ -90,7 +90,7 @@ export class MapBuilder{
   }
 
   devMode(){
-    this.map.seriesContainer.events.on('hit', (ev) => console.log(this.map.svgPointToGeo(ev.svgPoint)))
+    this.map.seriesContainer.events.on('hit', (ev) => console.log(this.map.svgPointToGeo(ev.svgPoint)))  //eslint-disable-line
   }
 
   stopStartDelayAnimation(){

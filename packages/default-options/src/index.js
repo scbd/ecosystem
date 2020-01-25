@@ -3,7 +3,7 @@ const stg   = { host: 'https://www.staging.cbd.int', basePath: '/' }
 const prod  = { host: 'https://www.cbd.int',         basePath: '/' }
 
 const ENVS   = { dev, stg, prod }
-const V_MAP = { host: String, basePath: String }
+const V_MAP  = { host: String, basePath: String }
 
 export default class DefaultOptions{
   constructor({ environments, validationMap, force, name }){

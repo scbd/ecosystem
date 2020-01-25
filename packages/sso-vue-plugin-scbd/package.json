@@ -18,14 +18,15 @@
     "deploy:dev": "vue-cli-service --mode dev s3-deploy ",
     "deploy": "vue-cli-service s3-deploy --mode production",
     "test:e2e": "vue-cli-service --mode stg test:e2e",
-    "test:e2e:headless": "vue-cli-service --mode stg test:e2e --headless --url http://localhost:8883",
-    "lint": "vue-cli-service lint",
+    "test:e2e:headless-": "vue-cli-service --mode stg test:e2e --headless --url http://localhost:8883",
+    "lint": "vue-cli-service lint --fix",
     "release": "yarn publish --access=public --tag latest",
     "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
     "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.53",
+    "@scbd/page-header-fixed": "^0.0.61",
     "@scbd/self-embedding-component": "^0.0.8",
     "ky": "^0.16.1",
     "ky-universal": "^0.3.0",

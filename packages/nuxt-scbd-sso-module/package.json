@@ -12,13 +12,14 @@
     "src/*"
   ],
   "scripts": {
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --fix",
     "release": "yarn publish --access=public --tag latest",
     "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
     "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.53",
+    "@scbd/page-header-fixed": "^0.0.61",
     "@scbd/self-embedding-component": "^0.0.8",
     "@scbd/sso-vue-plugin-scbd": "^0.0.13",
     "core-js": "^3.4.4",

@@ -35,7 +35,7 @@ export const onClickDevMode = (mapBuilder) => (ev) => {
   const code  = ev.target.dataItem.dataContext.id
   const geo   = mapBuilder.map.svgPointToGeo(ev.svgPoint)
 
-  console.log({ ...geo, code })
+  console.log({ ...geo, code }) // eslint-disable-line
 }
 
 export const outCountry = (mapBuilder) => (ev) => {

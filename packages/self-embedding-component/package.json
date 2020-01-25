@@ -9,9 +9,10 @@
     "src/*"
   ],
   "scripts": {
-    "serve": "cp dist/widget.umd.js public/ && vue-cli-service serve",
-    "build": "sh scripts/build.sh",
+    "serve": "sh scripts/build-test.sh && vue-cli-service serve",
     "lint": "vue-cli-service lint --fix ",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "sh scripts/build-test.sh && vue-cli-service test:e2e --headless",
     "release": "yarn publish --access=public --tag latest"
   },
   "devDependencies": {
@@ -25,8 +26,6 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.0.53",
-    "change-case": "^4.1.0",
-    "webfont": "^9.0.0"
+    "change-case": "^4.1.0"
   }
 }

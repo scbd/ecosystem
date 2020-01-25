@@ -17,13 +17,16 @@
     "build": "NODE_ENV=production sh scripts/build.sh",
     "deploy:dev": "vue-cli-service s3-deploy --mode dev",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:e2e:headless": "vue-cli-service test:e2e --headless",
-    "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
+    "test:e2e:headless-": "vue-cli-service test:e2e --headless",
+    "lint": "vue-cli-service lint --fix ",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "release": "yarn publish --access=public --tag latest"
+    "release": "yarn publish --access=public --tag latest",
+    "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
+    "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.53",
+    "@scbd/page-header-fixed": "^0.0.61",
     "@scbd/self-embedding-component": "^0.0.8",
     "core-js": "^3.3.2",
     "vue": "^2.6.10",

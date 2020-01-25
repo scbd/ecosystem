@@ -41,7 +41,7 @@ function constructMap(){
 
 function errorCaptured(err, vm){
   dispose(vm.$data.map)
-  console.error(err)
+  console.error(err) //eslint-disable-line
 }
 </script>
 

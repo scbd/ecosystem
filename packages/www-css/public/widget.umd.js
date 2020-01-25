@@ -96,6 +96,49 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "4141":
+/***/ (function(module, exports) {
+
+// document.currentScript polyfill by Adam Miller
+
+// MIT license
+
+(function(document){
+  var currentScript = "currentScript",
+      scripts = document.getElementsByTagName('script'); // Live NodeList collection
+
+  // If browser needs currentScript polyfill, add get currentScript() to the document object
+  if (!(currentScript in document)) {
+    Object.defineProperty(document, currentScript, {
+      get: function(){
+
+        // IE 6-10 supports script readyState
+        // IE 10+ support stack trace
+        try { throw new Error(); }
+        catch (err) {
+
+          // Find the second match for the "at" string to get file src url from stack.
+          // Specifically works with the format of stack traces in IE.
+          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
+
+          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
+          for(i in scripts){
+            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
+              return scripts[i];
+            }
+          }
+
+          // If no match, return null
+          return null;
+        }
+      }
+    });
+  }
+})(document);
+
+
+/***/ }),
+
 /***/ "dd63":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -106,7 +149,9 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (false) {}
+  if (true) {
+    __webpack_require__("4141")
+  }
 
   var i
   if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
@@ -438,68 +483,94 @@ function camelCase(input, options) {
 }
 //# sourceMappingURL=index.js.map
 // CONCATENATED MODULE: ./src/index.js
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-const VUE_I18N = {
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+var VUE_I18N = {
   url: 'https://cdn.cbd.int/vue-i18n',
   name: 'VueI18n'
 };
-const VUE = {
+var VUE = {
   url: 'https://cdn.cbd.int/vue',
   name: 'Vue'
 };
-class EmbedComponent {
-  static build(opts) {
-    EmbedComponent.opts = Object.assign(setDefaults(opts), opts);
-    EmbedComponent.opts.appId = `${EmbedComponent.opts.appId}-${EmbedComponent.opts.selfId}`;
-    EmbedComponent.selfElement = document.getElementById(EmbedComponent.opts.selfId);
-    if (!EmbedComponent.selfElement) throw new Error(`Id on script tag not found: id="${EmbedComponent.opts.selfId}"`);
-    EmbedComponent.opts.propsData.options = attrsAsOptions();
-    EmbedComponent.parentNode = EmbedComponent.selfElement.parentNode;
-    if (EmbedComponent.opts.i18n) EmbedComponent.opts.vuePlugins.unshift(VUE_I18N);
-    EmbedComponent.opts.vuePlugins.unshift(VUE);
-    main();
+
+var EmbedComponent =
+/*#__PURE__*/
+function () {
+  function EmbedComponent() {
+    _classCallCheck(this, EmbedComponent);
   }
 
-}
+  _createClass(EmbedComponent, null, [{
+    key: "build",
+    value: function build(opts) {
+      EmbedComponent.opts = Object.assign(setDefaults(opts), opts);
+      EmbedComponent.opts.appId = "".concat(EmbedComponent.opts.appId, "-").concat(EmbedComponent.opts.selfId);
+      EmbedComponent.selfElement = document.getElementById(EmbedComponent.opts.selfId);
+      if (!EmbedComponent.selfElement) throw new Error("Id on script tag not found: id=\"".concat(EmbedComponent.opts.selfId, "\""));
+      EmbedComponent.opts.propsData.options = attrsAsOptions();
+      EmbedComponent.parentNode = EmbedComponent.selfElement.parentNode;
+      if (EmbedComponent.opts.i18n) EmbedComponent.opts.vuePlugins.unshift(VUE_I18N);
+      EmbedComponent.opts.vuePlugins.unshift(VUE);
+      main();
+    }
+  }]);
+
+  return EmbedComponent;
+}();
+
+
 
 function main() {
-  const deps = EmbedComponent.opts.vuePlugins;
-  const cssDeps = EmbedComponent.opts.cssDependencies;
-  const functions = [];
+  var deps = EmbedComponent.opts.vuePlugins;
+  var cssDeps = EmbedComponent.opts.cssDependencies;
+  var functions = [];
 
-  for (let i = 0; i < deps.length; i++) functions[i] = () => {
-    loadScript(deps[i].url, functions[i + 1]);
+  var _loop = function _loop(i) {
+    functions[i] = function () {
+      loadScript(deps[i].url, functions[i + 1]);
+    };
   };
 
-  for (let i = 0; i < cssDeps.length; i++) loadLink(cssDeps[i]);
+  for (var i = 0; i < deps.length; i++) {
+    _loop(i);
+  }
+
+  for (var _i = 0; _i < cssDeps.length; _i++) {
+    loadLink(cssDeps[_i]);
+  }
 
   functions[0]();
 }
 
-function setDefaults({
-  name,
-  version,
-  options
-}) {
-  const selfId = name.replace('@scbd/', '');
-  const compName = pascalCase(selfId);
-  const url = `https://cdn.cbd.int/${name}@${version}`;
-  const propsData = {
-    options
+function setDefaults(_ref) {
+  var name = _ref.name,
+      version = _ref.version,
+      options = _ref.options;
+  var selfId = name.replace('@scbd/', '');
+  var compName = pascalCase(selfId);
+  var url = "https://cdn.cbd.int/".concat(name, "@").concat(version);
+  var propsData = {
+    options: options
   };
-  const vuePlugins = [];
-  const cssDependencies = [];
-  const i18n = true;
-  const appId = 'appId';
+  var vuePlugins = [];
+  var cssDependencies = [];
+  var i18n = true;
+  var appId = 'appId';
   return {
-    url,
-    compName,
-    propsData,
-    appId,
-    selfId,
-    i18n,
-    cssDependencies,
-    vuePlugins
+    url: url,
+    compName: compName,
+    propsData: propsData,
+    appId: appId,
+    selfId: selfId,
+    i18n: i18n,
+    cssDependencies: cssDependencies,
+    vuePlugins: vuePlugins
   };
 }
 
@@ -515,28 +586,27 @@ function getI18n() {
 }
 
 function loadApp() {
-  const divTag = document.createElement('div');
+  var divTag = document.createElement('div');
   divTag.id = EmbedComponent.opts.appId;
   insertElement(divTag);
   new window['Vue']({
-    mounted
-  }).$mount(`#${EmbedComponent.opts.appId}`);
+    mounted: mounted
+  }).$mount("#".concat(EmbedComponent.opts.appId));
 }
 
 function mounted() {
-  const i18n = getI18n();
-  const {
-    compName,
-    propsData
-  } = EmbedComponent.opts;
-  const VueClass = window['Vue'].extend(window[compName]);
-  const classInstanceProps = i18n ? {
-    i18n,
-    propsData
+  var i18n = getI18n();
+  var _EmbedComponent$opts = EmbedComponent.opts,
+      compName = _EmbedComponent$opts.compName,
+      propsData = _EmbedComponent$opts.propsData;
+  var VueClass = window['Vue'].extend(window[compName]);
+  var classInstanceProps = i18n ? {
+    i18n: i18n,
+    propsData: propsData
   } : {
-    propsData
+    propsData: propsData
   };
-  const vueClassInstance = new VueClass(classInstanceProps);
+  var vueClassInstance = new VueClass(classInstanceProps);
   vueClassInstance.$mount();
   this.$el.appendChild(vueClassInstance.$el);
 }
@@ -546,15 +616,16 @@ function insertElement(el) {
 }
 
 function loadLink(url) {
-  const tag = document.createElement('link');
+  var tag = document.createElement('link');
   tag.rel = 'stylesheet';
   tag.charset = 'utf-8';
   tag.href = url;
   insertElement(tag);
 }
 
-function loadScript(url, next = loadSelf) {
-  const tag = document.createElement('script');
+function loadScript(url) {
+  var next = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : loadSelf;
+  var tag = document.createElement('script');
   tag.charset = 'utf-8';
   tag.src = url;
   tag.onload = next;
@@ -563,40 +634,57 @@ function loadScript(url, next = loadSelf) {
 }
 
 function loadSelf() {
-  const {
-    vuePlugins,
-    url
-  } = EmbedComponent.opts;
-  if (vuePlugins && vuePlugins.length > 0) for (let i = 1; i < vuePlugins.length; i++) window.Vue.use(window[vuePlugins[i].name]);
+  var _EmbedComponent$opts2 = EmbedComponent.opts,
+      vuePlugins = _EmbedComponent$opts2.vuePlugins,
+      url = _EmbedComponent$opts2.url;
+  if (vuePlugins && vuePlugins.length > 0) for (var i = 1; i < vuePlugins.length; i++) {
+    window.Vue.use(window[vuePlugins[i].name]);
+  }
   loadScript(url, loadApp);
 }
 
 function attrsAsOptions() {
-  const self = EmbedComponent.selfElement;
-  const {
-    options
-  } = EmbedComponent.opts;
-  const attrs = self.attributes;
-  const newOptions = {};
+  var self = EmbedComponent.selfElement;
+  var options = EmbedComponent.opts.options;
+  var attrs = self.attributes;
+  var newOptions = {};
   if (!self.hasAttributes()) return options;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-  for (const {
-    name,
-    value
-  } of attrs) {
-    if (['id', 'src'].includes(name)) continue;
-    newOptions[camelCase(name)] = value;
+  try {
+    for (var _iterator = attrs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _step$value = _step.value,
+          name = _step$value.name,
+          value = _step$value.value;
+      if (['id', 'src'].includes(name)) continue;
+      newOptions[camelCase(name)] = value;
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
   }
 
   return Object.assign(options, newOptions);
 }
 // CONCATENATED MODULE: ./tests/e2e/scaffolding/widget.js
 
-const widget_name = '@scbd/map-nav';
-const widget_version = '0.0.31';
-const widget_i18n = false;
-const widget_options = {};
-const config = {
+var widget_name = '@scbd/map-nav';
+var widget_version = '0.0.31';
+var widget_i18n = false;
+var widget_options = {};
+var config = {
   i18n: widget_i18n,
   version: widget_version,
   name: widget_name,
