@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "yarn scss && node scripts/index.js",
+    "build:local:only": "yarn scss && node scripts/index.js",
     "test:e2e": "vue-cli-service test:e2e",
     "scss": "node-sass src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.css && node-sass  --output-style compressed src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.min.css && cp -R src/cbd/web/themes/custom/bootstrap_sass/images/* dist/images",
     "release": "yarn publish --access=public --tag latest"
