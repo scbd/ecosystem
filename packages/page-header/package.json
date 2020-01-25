@@ -26,8 +26,6 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.53",
-    "@scbd/page-header-fixed": "^0.0.61",
-    "@scbd/self-embedding-component": "^0.0.8",
     "change-case": "^3.1.0",
     "ky": "^0.16.1",
     "ky-universal": "^0.3.0",
@@ -37,7 +35,6 @@
   },
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@scbd/self-embedding-component": "^0.0.8",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-e2e-cypress": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",

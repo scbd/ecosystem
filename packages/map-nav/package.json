@@ -23,13 +23,12 @@
     "@amcharts/amcharts4": "^4.7.12",
     "@amcharts/amcharts4-geodata": "^4.1.9",
     "@scbd/default-options": "0.0.54",
-    "@scbd/self-embedding-component": "^0.0.8",
+    "@scbd/self-embedding-component": "^0.0.9",
     "change-case": "^4.1.0",
     "core-js": "^3.4.3",
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@scbd/self-embedding-component": "^0.0.8",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
