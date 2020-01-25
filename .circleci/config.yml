@@ -17,6 +17,7 @@ jobs:
             - ecosystem-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - ecosystem-{{ .Branch }}-
             - ecosystem-
+      - run: yarn
       - run: yarn boot
       - save_cache:
           key: ecosystem-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -55,3 +56,6 @@ workflows:
       - build:
           requires:
             - lint
+      - test:
+        requires:
+          - build
