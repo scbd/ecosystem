@@ -45,8 +45,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/scbd
-      - run: pwd && ls -al ~/.cache 
-      - run: $(yarn bin)/cypress install
       - run: pwd && ls -al && alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
 
 workflows:
@@ -54,9 +52,6 @@ workflows:
   install-and-test:
     jobs:
       - install
-      - lint:
-          requires:
-            - install
       - test:
           requires:
-            - lint
+            - install
