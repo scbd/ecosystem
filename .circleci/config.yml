@@ -16,7 +16,7 @@ jobs:
           keys:
             - eco4-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - eco4-
-      - run: pwd && yarn --version && yarn install --frozen-lockfile && yarn boot
+      - run: pwd && yarn --version && ls -al && yarn boot
       - save_cache:
           key: eco4-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
@@ -45,7 +45,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/scbd
-      - run: alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
+      - run: pwd && ls -al ~/.cache && 
+      - run: pwd && ls -al && alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
 
 workflows:
   version: 2
