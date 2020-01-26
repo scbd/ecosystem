@@ -33,7 +33,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/scbd/ecosystem
-      - run: yarn run lint
+      - run: pwd && ls -al && yarn run lint
   build:
     <<: *defaults
     steps:
