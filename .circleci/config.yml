@@ -24,7 +24,8 @@ jobs:
             - ~/.npm
             - ~/.cache
       - persist_to_workspace:
-          root: ~/scbd/ecosystem
+          root: ~/scbd
+            - path: ecosystem
 
   lint:
     <<: *defaults
@@ -44,7 +45,7 @@ jobs:
       - attach_workspace:
           at: ~/scbd/ecosystem
       - run: alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
-      
+
 workflows:
   version: 2
   install-and-test:
