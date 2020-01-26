@@ -14,11 +14,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - eco3-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - eco3-
+            - eco4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - eco4-
       - run: pwd && yarn --version && yarn install --frozen-lockfile && yarn boot
       - save_cache:
-          key: eco3-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: eco4-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
             - ~/.npm
