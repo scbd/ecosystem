@@ -14,18 +14,21 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - eco2-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - eco2-
+            - eco3-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - eco3-
       - run: pwd && yarn --version && yarn install --frozen-lockfile && $(yarn bin)/cypress install && yarn boot
       - save_cache:
-          key: eco2-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: eco3-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
             - ~/.npm
             - ~/.cache
       - persist_to_workspace:
           root: ~/scbd
-          paths: ecosystem
+          paths: 
+            - ecosystem
+            - ~/.npm
+            - ~/.cache
 
   lint:
     <<: *defaults
