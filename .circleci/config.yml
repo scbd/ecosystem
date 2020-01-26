@@ -46,9 +46,9 @@ jobs:
       - attach_workspace:
           at: ~/scbd
       - restore_cache:
-        keys:
-          - eco5-{{ checksum "yarn.lock" }}
-          - eco5-
+          keys:
+            - eco5-{{ checksum "yarn.lock" }}
+            - eco5-
       - run: ls -al ~/ && pwd && ls -al
       - run: pwd && ls -al && alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
 
