@@ -14,11 +14,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - eco4-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - eco4-
+            - eco5-{{ checksum "yarn.lock" }}
+            - eco5-
       - run: pwd && yarn --version && ls -al && yarn boot
       - save_cache:
-          key: eco4-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: eco5-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
             - ~/.npm
@@ -45,6 +45,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/scbd
+      - run: ls -al / && pwd && ls -al
       - run: pwd && ls -al && alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
 
 workflows:
