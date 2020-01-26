@@ -34,29 +34,48 @@ jobs:
       - attach_workspace:
           at: ~/scbd
       - run: pwd && ls -al && yarn run lint
+
+  audit:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/scbd
+      - run:
+          name: Security Audit
+          command: yarn run audit
   build:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/scbd
-      - run: yarn run build
+      - run:
+          name: Build package distributions
+          command: yarn run build       
   test:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/scbd
-      - restore_cache:
+# restore_cache needed for ~/.cache ... cypress binary is stored there
+      - restore_cache:  
           keys:
             - eco5-{{ checksum "yarn.lock" }}
             - eco5-
-      - run: ls -al ~/ && pwd && ls -al
-      - run: pwd && ls -al && alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
+      - run:
+          name: Cypress e2e tests
+          command: alias cypress="$(yarn bin)/cypress" && yarn run test:e2e:headless
 
 workflows:
   version: 2
   install-and-test:
     jobs:
       - install
-      - test:
+      - audit:
           requires:
             - install
+      - audit:
+          requires:
+            - audit
+      - test:
+          requires:
+            - audit
