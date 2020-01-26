@@ -16,13 +16,14 @@ jobs:
       - restore_cache:
           keys:
             - ecosystem-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - ecosystem-{{ .Branch }}-
             - ecosystem-
       - run: yarn boot
       - save_cache:
           key: ecosystem-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
+            - ~/.npm
+            - ~/.cache
       - persist_to_workspace:
           root: ~/scbd
           paths:
