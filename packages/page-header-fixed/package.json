@@ -2,7 +2,7 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.61",
+  "version": "0.0.63",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
   "main": "dist/PageHeaderFixed.umd.min.js",
   "browser": {
@@ -25,9 +25,10 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.0.53",
+    "@scbd/default-options": "^0.0.54",
     "change-case": "^3.1.0",
     "check-ie": "^2.0.0",
+    "ky": "^0.16.2",
     "ky-universal": "^0.3.0",
     "tiny-debounce": "^0.1.1",
     "vue-i18n": "^8.0.0",

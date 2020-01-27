@@ -5,17 +5,13 @@ const imagesDirPath = path.resolve(__dirname,`../dist/images` )
 
 const clean = (fileData) => fileData
                               .replace(/\/images\/Rolling/g, './images/Rolling')
-                              
                               .replace(/\/..\/..\/images/gi, './images')
                               .replace(/..\/..\/images/gi, './images')
                               .replace(/..\/images/gi, './images')
                               .replace(/Rolling-1s-50px.svg"/gi,'Rolling-1s-50px.svg')
                               .replace(/..\/..\/..\/..\/misc\/icons\/000000/gi, './images')
                               .replace(/..\/..\/..\/..\/misc\/icons\/ffffff/gi, './images')
-                              // .replace(/"<"/g, "'<'")
-                              // .replace(/">"/g, "'>'")
-                              // .replace(/url\("/g, 'url(')
-                              // .replace(/g"\)/g, 'g)')
+
 
 const findLocalImagePaths = (fileData) => (findImagePaths(fileData)
                                             .filter((url) => !url.includes('../../../../misc/icons/')))

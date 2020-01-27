@@ -28,11 +28,5 @@ function siteNavElms(){
 }
 </script>
 <style scoped>
-#pageSubHeader{
-  position: fixed;
-  top:46px;
-  width: 100vw;
-  z-index: 99999;
-  background-color: white;
-}
+#pageSubHeader{ position: fixed; top:46px; width: 100vw; z-index: 99999; background-color: white; }
 </style>

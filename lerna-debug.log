@@ -1,0 +1,22 @@
+0 silly argv {
+0 silly argv   _: [ 'diff' ],
+0 silly argv   lernaVersion: '3.20.2',
+0 silly argv   '$0': '/Users/randyhoulahan/.config/yarn/global/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v3.20.2
+2 verbose rootPath /Users/randyhoulahan/projects/@scbd/ecosystem
+3 info versioning independent
+4 silly hasCommit
+5 verbose hasCommit true
+6 verbose hasTags true
+7 silly getLastTagInBranch
+8 error Error: Command failed: git describe --tags --abbrev=0
+8 error fatal: No tags can describe '29243cde438a7dbe6116394d5e346bd43377cf54'.
+8 error Try --always, or create some tags.
+8 error
+8 error
+8 error     at makeError (/Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/execa/index.js:174:9)
+8 error     at Function.module.exports.sync (/Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/execa/index.js:338:15)
+8 error     at Object.execSync (/Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/@lerna/child-process/index.js:26:16)
+8 error     at getLastCommit (/Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/@lerna/diff/lib/get-last-commit.js:12:25)
+8 error     at DiffCommand.initialize (/Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/@lerna/diff/index.js:33:27)
