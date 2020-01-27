@@ -42,7 +42,7 @@ jobs:
           at: ~/scbd
       - run:
           name: Security Audit
-          command: yarn run audit
+          command: lerna exec yarn audit
   build:
     <<: *defaults
     steps:
