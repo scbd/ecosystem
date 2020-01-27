@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-header",
-  "version": "0.0.61",
+  "version": "0.0.4",
   "private": false,
   "license": "MIT",
   "main": "dist/PageHeader.umd.min.js",
@@ -15,17 +15,16 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode stg --open",
     "build": "NODE_ENV=production sh scripts/build.sh",
-    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix",
-    "deploy:dev": "vue-cli-service s3-deploy --mode dev",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "test:e2e:headless-": "vue-cli-service test:e2e --headless",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "release": "yarn publish --access=public --tag latest",
     "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
     "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.0.53",
+    "@scbd/default-options": "^0.0.54",
     "change-case": "^3.1.0",
     "ky": "^0.16.1",
     "ky-universal": "^0.3.0",
