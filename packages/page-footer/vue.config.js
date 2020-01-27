@@ -1,9 +1,10 @@
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob           = require('glob-all'               )
+const path           = require('path'                   )
 
 module.exports = {
   css       : { extract: false },
+  transpileDependencies: [ 'ky', 'ky-universal', '@scbd/default-options', 'change-case', 'check-ie', 'vue-i18n' ],
   lintOnSave: true,
   devServer : {
     port: 8884
@@ -14,24 +15,6 @@ module.exports = {
       fallbackLocale: 'en',
       localeDir     : 'locales',
       enableInSFC   : true
-    },
-    s3Deploy: {
-      registry          : undefined,
-      awsProfile        : 'default',
-      region            : 'us-east-1',
-      bucket            : 'scbd-components',
-      createBucket      : false,
-      staticHosting     : false,
-      assetPath         : 'dist',
-      assetMatch        : '**',
-      deployPath        : '/@ecosystem/page-footer',
-      acl               : 'public-read',
-      pwa               : false,
-      enableCloudfront  : false,
-      cloudfrontId      : 'E1HTG3XMM9WZ5L',
-      cloudfrontMatchers: '/@ecosystem/page-footer',
-      uploadConcurrency : 5,
-      pluginVersion     : '3.0.0'
     }
   },
   chainWebpack: config => {
@@ -43,15 +26,6 @@ module.exports = {
       .use('i18n')
       .loader('@kazupon/vue-i18n-loader')
       .end()
-
-    config.resolve.alias
-      .set('@components', path.resolve(__dirname, 'src/components'))
-    config.resolve.alias
-      .set('@modules', path.resolve(__dirname, 'src/modules'))
-    config.resolve.alias
-      .set('@locales', path.resolve(__dirname, 'src/locales'))
-    config.resolve.alias
-      .set('@src', path.resolve(__dirname, 'src'))
   },
   configureWebpack: {
     // Merged into the final Webpack config

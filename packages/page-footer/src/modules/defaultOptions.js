@@ -1,62 +1,27 @@
-const optionValidationMap = {
-  host    : String,
-  basePath: String,
-  dapi    : String
+import   DOptions               from '@scbd/default-options'
+import { name              }    from '../../package'
+import   siteNavigationElements from '../footerSiteNavigationElements'
+
+const validationMap = {
+  host                    : String,
+  siteNavigationElements  : Array,
+  dapi                    : String,
+  static                  : Boolean
 }
 
 const dev = {
-  host    : 'https://www.cbddev.xyz',
-  basePath: '/',
-  dapi    : 'https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg'
+  host       : 'https://www.cbddev.xyz',
+  dapi       : 'https://dapi.cbd.int',
+  static     : false,
+  siteNavigationElements
 }
 
-const stg = {
-  host    : 'https://www.staging.cbd.int',
-  basePath: '/',
-  dapi    : 'https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg'
-}
+const stg = { ...dev, ...{ host: 'https://www.staging.cbd.int' }  }
 
-const prod = {
-  host    : 'https://www.cbd.int',
-  basePath: '/',
-  dapi    : 'https://dapi.cbd.int'
-}
+const prod = { ...dev, ...{ host: 'https://www.cbd.int' } }
 
-function defaultOptions (userOptions = {}){
-  validateOptions(userOptions)
-  const options = Object.assign(getDefaultOptions(), userOptions)
+const environments  = { prod, stg, dev }
 
-  return options
-}
+const dOptions = new DOptions({ environments, validationMap, name })
 
-function getDefaultOptions(){
-  if(!window) return stg
-  
-  if(window.location.href.includes('staging.cbd.int')) return stg
-  if(window.location.href.includes('cbddev.xyz')) return dev
-  if(window.location.href.includes('www.cbd.int')) return prod
-
-  return stg
-}
-
-function validateOptions (userOptions){
-  for (const key in userOptions){
-    const rType = typeof userOptions[key]
-    const eType = optionValidationMap[key]
-
-    if(!Object.keys(optionValidationMap).includes(key)) removeUnknownKey(userOptions, key)
-
-    if(userOptions[key].prototype instanceof eType)  errorUnknownType(key, rType, eType)
-  }
-}
-
-function removeUnknownKey (options, key){
-  delete(options, key)
-  throw new Error(`${key} not permitted in @ecosystem/page-header-fixed component options`)
-}
-
-function errorUnknownType (key, rType, eType){
-  throw new Error(`${key} has incorrect type.  Received: ${rType} Expected: ${eType}`)
-}
-
-export default defaultOptions
+export default dOptions

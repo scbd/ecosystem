@@ -7,25 +7,26 @@
 </template>
 
 <script>
-import WPHeader       from '@components/StructuredData/WPHeader'
-import SubHeader      from '@components/SubHeader'
-import defaultOptions from '@modules/defaultOptions'
+import   WPHeader         from './components/StructuredData/WPHeader'
+import   SubHeader        from './components/SubHeader'
+import { DefaultOptions } from './modules/defaultOptions'
 
 export default {
   name      : 'PageSubHeader',
   components: { WPHeader, SubHeader },
   computed  : { opts, siteNavElms },
-  props     : { siteNavigationElement: { type: Object, required: true },
+  props     : { siteNavigationElement: { type: Object },
                 options              : { type: Object, default: () => {} } }
 }
 
 function opts(){
-  return defaultOptions(this.options)
+  return DefaultOptions.get(this.options)
 }
 
 function siteNavElms(){
-  return this.siteNavigationElement
+  return Object.keys(this.siteNavigationElement).length? this.siteNavigationElement : this.options.siteNavigationElement
 }
+
 </script>
 <style scoped>
 #pageSubHeader{ position: fixed; top:46px; width: 100vw; z-index: 99999; background-color: white; }

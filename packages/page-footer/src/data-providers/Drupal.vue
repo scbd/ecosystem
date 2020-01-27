@@ -3,31 +3,44 @@
 </template>
 
 <script>
-import axios          from 'axios'
-import PageFooter     from '@src/index.vue'
-import defaultOptions from '@modules/defaultOptions'
+import PageFooter     from '../index.vue'
+import DefaultOptions from '../modules/defaultOptions'
 
 export default {
-  name      : 'app',
+  name      : 'DrupalDataProvider',
   components: { PageFooter },
+  methods   : {readMenusFromApi},
   data,
   mounted
 }
 
 function data(){
-  const options                 = defaultOptions({})
+  const options                 = DefaultOptions.get({})
   const siteNavigationElements  = []
   const headerProps             = { siteNavigationElements, options }
 
   return { headerProps }
 }
+
 async function mounted(){
-  this.headerProps.siteNavigationElements =  await getMain(this.headerProps.options)
-  this.$forceUpdate()
+  if(!this.headerProps.options.static)
+    setTimeout(() => this.readMenusFromApi(), 1000)
 }
 
-function getMain({ dapi }){
-  return axios.get(`${dapi}/menus?q=quick-links,topics,information,aPartOf`)
-    .then((d) => d.data)
+async function readMenusFromApi(){
+  const    checkIe  = (await import(/* webpackChunkName: "check-ie" */ 'check-ie')).default
+
+  if(checkIe(window.navigator.userAgent))
+    await import(/* webpackChunkName: "polyfill-fetch" */ 'whatwg-fetch')
+
+  const $http = this.$http? this.$http : (await import(/* webpackChunkName: "ky-universal" */ 'ky-universal')).default
+
+  this.headerProps.siteNavigationElements = await getFooterMenuFromApi($http, this.headerProps.options)
+  this.$forceUpdate()
+
+}
+
+function getFooterMenuFromApi($http, { dapi }){
+  return $http.get(`${dapi}/menus?q=quick-links,topics,information,aPartOf`).json()
 }
 </script>

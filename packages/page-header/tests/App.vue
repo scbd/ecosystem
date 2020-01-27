@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import HeaderSCBD  from '@src/data-providers/Drupal.vue'
+import HeaderSCBD  from '../src/data-providers/Drupal.vue'
 
 
 export default {

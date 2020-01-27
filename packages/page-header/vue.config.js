@@ -3,7 +3,7 @@ const glob = require('glob-all');
 const path = require('path')
 
 module.exports = {
-  transpileDependencies: [ 'ky', 'ky-universal' ],
+  transpileDependencies: [ 'ky', 'ky-universal', '@scbd/default-options', 'change-case', 'check-ie', 'vue-i18n' ],
   lintOnSave           : true,
   devServer            : {
     port            : 8882,
@@ -27,16 +27,7 @@ module.exports = {
       .type('javascript/auto')
       .use('i18n')
       .loader('@kazupon/vue-i18n-loader')
-      .end()
 
-    config.resolve.alias
-      .set('@components', path.resolve(__dirname, 'src/components'))
-    config.resolve.alias
-      .set('@modules', path.resolve(__dirname, 'src/modules'))
-    config.resolve.alias
-      .set('@locales', path.resolve(__dirname, 'src/locales'))
-    config.resolve.alias
-      .set('@src', path.resolve(__dirname, 'src'))
   },
   configureWebpack: {
     // Merged into the final Webpack config

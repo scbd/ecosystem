@@ -11,7 +11,7 @@ const dapi      = 'https://dapi.cbd.int';
   const siteNavigationElements = stringifyToJsModule( await getTopMenu())
 
   fs.writeFileSync(`${writePath}/mainSNEs.js`, mainSNEs)
-  fs.writeFileSync(`${writePath}/siteNavigationElements.js`, siteNavigationElements)
+  fs.writeFileSync(`${writePath}/pageHeaderFixedSiteNavigationElements.js`, siteNavigationElements)
 
   console.log('Finnished writing static menus')
 })()

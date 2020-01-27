@@ -3,33 +3,48 @@
 </template>
 
 <script>
-import 'whatwg-fetch'
-import $http          from 'ky-universal'
-import HeaderSCBD     from '@src/index.vue'
-import defaultOptions from '@modules/defaultOptions'
+
+import   HeaderSCBD       from '../index.vue'
+import { DefaultOptions } from '../modules/defaultOptions'
 
 export default {
   name      : 'app',
   components: { HeaderSCBD },
+  methods: {readMenusFromApi},
   data,
   mounted
 }
 
 function data(){
-  const options                = defaultOptions({})
+  const options                = DefaultOptions.get()
   const siteNavigationElement  = {}
   const headerProps            = { siteNavigationElement, options }
 
   return { headerProps }
 }
 
+
 async function mounted(){
-  this.headerProps.siteNavigationElement =  await getMain(this.headerProps.options)
-  this.$forceUpdate()
+  if(!this.headerProps.options.static)
+    setTimeout(() => this.readMenusFromApi(), 1000)
 }
 
-function getMain({ dapi }){
-  return $http.get(`${dapi}/menus/main?postfix=WPSH`, { credentials: 'same-origin' }).json().then((d) =>  ({ identifier: [ { name: 'drupalMenuName', value: 'main' } ], name: 'main', position: 1, hasPart: d }))
+async function readMenusFromApi(){
+  const    checkIe  = (await import(/* webpackChunkName: "check-ie" */ 'check-ie')).default
+
+  if(checkIe(window.navigator.userAgent))
+    await import(/* webpackChunkName: "polyfill-fetch" */ 'whatwg-fetch')
+
+  const $http = this.$http? this.$http : (await import(/* webpackChunkName: "ky-universal" */ 'ky-universal')).default
+
+  this.headerProps.siteNavigationElement = (await getMain($http, this.headerProps.options))[0]
+  this.$forceUpdate()
+
+}
+
+function getMain($http, { dapi }){
+  return $http.get(`${dapi}/menus/main?postfix=WPH`).json()
+    .then((d) =>  [ { identifier: [ { name: 'drupalMenuName', value: 'main' } ], name: 'main', position: 3, hasPart: d } ])
 }
 
 </script>

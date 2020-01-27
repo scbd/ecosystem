@@ -3,10 +3,8 @@
 </template>
 
 <script>
-
-
-import   HeaderSCBD       from '../index.vue'
-import { DefaultOptions } from '../modules/defaultOptions'
+import HeaderSCBD  from '../index.vue'
+import defaultOpts from '../modules/defaultOptions'
 
 
 export default {
@@ -18,7 +16,7 @@ export default {
 }
 
 function data(){
-  const options                = DefaultOptions.get()
+  const options                = defaultOpts.get()
   const siteNavigationElements = []
   const headerProps            = { siteNavigationElements, options }
 

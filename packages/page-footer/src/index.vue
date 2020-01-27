@@ -19,27 +19,26 @@
 </template>
 
 <script>
-import Nav            from '@components/Nav'
-import FollowUs       from '@components/FollowUs'
-import WPFooter       from '@components/StructuredData/WPFooter'
-import defaultOptions from '@modules/defaultOptions'
+import   Nav              from './components/Nav'
+import   FollowUs         from './components/FollowUs'
+import   WPFooter         from './components/StructuredData/WPFooter'
+import   DefaultOptions   from './modules/defaultOptions'
 
 export default {
   name      : 'PageFooter',
   components: { Nav, FollowUs, WPFooter },
   computed  : { opts, siteNavElms },
-  props     : { siteNavigationElements: { type: Array, required: true },
+  props     : { siteNavigationElements: { type: Array },
                 options               : { type: Object, default: () => {} } }
 
 }
 
-
 function siteNavElms(){
-  return this.siteNavigationElements
+  return (this.siteNavigationElements || []).length? this.siteNavigationElements : this.options.siteNavigationElements
 }
 
 function opts(){
-  return defaultOptions(this.options)
+  return DefaultOptions.get(this.options)
 }
 </script>
 

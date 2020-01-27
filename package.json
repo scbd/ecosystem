@@ -14,8 +14,10 @@
     "clean"          : "lerna clean -y",
     "prepatch"         : "lerna version prepatch",
     "rebuild"          : "lerna clean -y && rm -rf node_modules && rm yarn.lock && yarn && lerna bootstrap && lerna link",
-    "boot"           : "lerna bootstrap",
-    "ui"               : "vue ui"
+    "boot"           : "lerna bootstrap && lerna link",
+    "ui"               : "vue ui",
+    "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
+    "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
     "core-js": "^3.3.2",

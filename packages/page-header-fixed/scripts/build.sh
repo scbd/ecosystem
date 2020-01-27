@@ -1,3 +1,4 @@
+node scripts/build-static.js
 rm -rf dist/*
 
 node scripts/build-static.js

@@ -1,7 +1,7 @@
-import   DOptions                 from '@scbd/default-options'
-import { name                   } from '../../package'
-import   mainSNEs                 from '../mainSNEs'
-import   siteNavigationElements   from '../siteNavigationElements'
+import   DOptions      from '@scbd/default-options'
+import { name        } from '../../package'
+import   mainSNEs      from '../mainSNEs'
+import   topMenuSNEs   from '../pageHeaderFixedSiteNavigationElements'
 
 const validationMap = {
   host       : String,
@@ -26,7 +26,7 @@ const dev = {
   basePath   : '/',
   loginSNEs  : [],
   mainSNEs,
-  siteNavigationElements
+  siteNavigationElements: topMenuSNEs
 }
 
 const stg = { ...dev, ...{ accountsUrl: 'https://accounts.staging.cbd.int', searchUrl: 'https://www.cbd.int/kb/Results?q=', host: 'https://www.staging.cbd.int' }  }
@@ -37,4 +37,4 @@ const environments  = { prod, stg, dev }
 
 const dOptions = new DOptions({ environments, validationMap, name })
 
-export const DefaultOptions = dOptions
+export default dOptions

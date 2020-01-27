@@ -2,7 +2,7 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.63",
+  "version": "0.0.66",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
   "main": "dist/PageHeaderFixed.umd.min.js",
   "browser": {

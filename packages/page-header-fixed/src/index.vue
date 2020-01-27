@@ -19,7 +19,7 @@ import   Icons            from './components/Icons'
 import   Mobile           from './components/Mobile'
 import   Desktop          from './components/Desktop'
 import   debounce         from 'tiny-debounce'
-import { DefaultOptions } from './modules/defaultOptions'
+import   defaultOpts      from './modules/defaultOptions'
 
 export default {
   name      : 'PageHeaderFixed',
@@ -36,7 +36,7 @@ function siteNavElms(){
 }
 
 function opts(){
-  return DefaultOptions.get(this.options)
+  return defaultOpts.get(this.options)
 }
 
 function isMobile(){
@@ -53,4 +53,7 @@ function mounted(){
 <style>
   .slide-fade-enter-active { transition:  all .1s ease; }
   .slide-fade-enter, .slide-fade-leave-to { transform: translateY(-20px); opacity  : 0; }
+</style>
+<style scoped>
+#pageHeaderFixed{ position: fixed; width: 100vw; z-index: 9999999;  }
 </style>
