@@ -1,12 +1,13 @@
-const PurgecssPlugin = require('purgecss-webpack-plugin')
-const glob           = require('glob-all'               )
-const path           = require('path'                   )
+const PurgecssPlugin          = require('purgecss-webpack-plugin')
+const glob                    = require('glob-all')
+const path                    = require('path')
+const PublicPathWebpackPlugin = require('@scbd/webpack-plugin-public-path')
 
 module.exports = {
-  css       : { extract: false },
+  css                  : { extract: false },
   transpileDependencies: [ 'ky', 'ky-universal', '@scbd/default-options', 'change-case', 'check-ie', 'vue-i18n' ],
-  lintOnSave: true,
-  devServer : {
+  lintOnSave           : true,
+  devServer            : {
     port: 8884
   },
   pluginOptions: {
@@ -30,6 +31,7 @@ module.exports = {
   configureWebpack: {
     // Merged into the final Webpack config
     plugins: [
+      new PublicPathWebpackPlugin(),
       new PurgecssPlugin({
         paths: glob.sync([
           path.join(__dirname, './src/index.html'),

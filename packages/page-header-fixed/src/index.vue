@@ -55,5 +55,5 @@ function mounted(){
   .slide-fade-enter, .slide-fade-leave-to { transform: translateY(-20px); opacity  : 0; }
 </style>
 <style scoped>
-#pageHeaderFixed{ position: fixed; width: 100vw; z-index: 9999999;  }
+#pageHeaderFixed{ position: fixed; width: 100vw; z-index: 9999999; top:0;  }
 </style>

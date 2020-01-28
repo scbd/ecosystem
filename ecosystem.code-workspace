@@ -29,6 +29,9 @@
     },
     {
       "path": "packages/nuxt-scbd-sso-module"
+    },
+    {
+      "path": "packages/webpack-plugin-public-path"
     }
   ],
   "settings": {

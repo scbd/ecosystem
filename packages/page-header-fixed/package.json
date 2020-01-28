@@ -2,7 +2,7 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
   "main": "dist/PageHeaderFixed.umd.min.js",
   "browser": {
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.54",
-    "change-case": "^3.1.0",
+    "change-case": "^4.1.1",
     "check-ie": "^2.0.0",
     "ky": "^0.16.2",
     "ky-universal": "^0.3.0",
@@ -35,32 +35,22 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@kazupon/vue-i18n-loader": "^0.3.0",
-    "@rollup/plugin-alias": "^2.2.0",
-    "@rollup/plugin-buble": "^0.20.0",
-    "@rollup/plugin-replace": "^2.2.1",
+    "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-e2e-cypress": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "babel-eslint": "^10.0.3",
     "core-js": "^3.3.2",
-    "cross-env": "^6.0.3",
     "cypress-image-snapshot": "^3.1.1",
     "eslint": "^6.7.0",
     "eslint-plugin-vue": "^6.0.1",
     "glob-all": "^3.1.0",
     "minimist": "^1.2.0",
-    "purgecss-webpack-plugin": "^1.6.0",
-    "rollup": "^1.26.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-terser": "^5.1.2",
-    "rollup-plugin-vue": "5.1.1",
+    "purgecss-webpack-plugin": "^2.0.5",
     "vue": "^2.6.10",
     "vue-cli-plugin-i18n": "^0.6.0",
-    "vue-cli-plugin-s3-deploy": "^3.0.0",
-    "vue-template-compiler": "^2.6.10",
-    "webfont": "^9.0.0"
+    "vue-template-compiler": "^2.6.10"
   },
   "@ecosystem": {
     "symlinkWorkspaces": true

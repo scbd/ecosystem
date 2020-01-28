@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.54",
-    "change-case": "^3.1.0",
+    "change-case": "^4.1.1",
     "ky": "^0.16.1",
     "ky-universal": "^0.3.0",
     "vue": "^2.6.11",
@@ -33,7 +33,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@kazupon/vue-i18n-loader": "^0.3.0",
+    "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-e2e-cypress": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
@@ -43,7 +43,7 @@
     "eslint": "^6.7.0",
     "eslint-plugin-vue": "^6.0.1",
     "glob-all": "^3.1.0",
-    "purgecss-webpack-plugin": "^1.6.0",
+    "purgecss-webpack-plugin": "^2.0.5",
     "vue-cli-plugin-i18n": "^0.6.0",
     "vue-cli-plugin-s3-deploy": "^3.0.0",
     "vue-template-compiler": "^2.6.10"
