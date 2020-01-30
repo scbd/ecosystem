@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-footer",
-  "version": "0.0.58",
+  "version": "0.0.69",
   "private": false,
   "license": "MIT",
   "main": "dist/PageFooter.umd.min.js",

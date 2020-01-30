@@ -1,4 +1,4 @@
 rm -rf dist/*
 
-vue-cli-service build --mode production --name PageSideMenu  --target lib   --dest dist/  src/data-providers/Drupal.vue
+vue-cli-service build --mode production --name PageSideBar  --target lib   --dest dist/  src/index.vue
 

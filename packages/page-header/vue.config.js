@@ -1,6 +1,7 @@
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path')
+const PurgecssPlugin          = require('purgecss-webpack-plugin');
+const glob                    = require('glob-all');
+const path                    = require('path')
+const PublicPathWebpackPlugin = require('@scbd/webpack-plugin-public-path')
 
 module.exports = {
   transpileDependencies: [ 'ky', 'ky-universal', '@scbd/default-options', 'change-case', 'check-ie', 'vue-i18n' ],
@@ -27,11 +28,11 @@ module.exports = {
       .type('javascript/auto')
       .use('i18n')
       .loader('@kazupon/vue-i18n-loader')
-
   },
   configureWebpack: {
     // Merged into the final Webpack config
     plugins: [
+      new PublicPathWebpackPlugin(),
       new PurgecssPlugin({
         paths: glob.sync([
           path.join(__dirname, './src/index.html'),

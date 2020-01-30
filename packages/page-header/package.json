@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-header",
-  "version": "0.0.63",
+  "version": "0.0.69",
   "private": false,
   "license": "MIT",
   "main": "dist/PageHeader.umd.min.js",
@@ -19,12 +19,11 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
-    "release": "yarn publish --access=public --tag latest",
-    "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
-    "yarn-outdated": "yarn outdated"
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.54",
+    "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
     "ky": "^0.16.1",
     "ky-universal": "^0.3.0",

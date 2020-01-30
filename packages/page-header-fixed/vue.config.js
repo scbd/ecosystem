@@ -1,6 +1,7 @@
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path')
+const PurgecssPlugin          = require('purgecss-webpack-plugin')
+const glob                    = require('glob-all')
+const path                    = require('path')
+const PublicPathWebpackPlugin = require('@scbd/webpack-plugin-public-path')
 
 module.exports = {
   css                  : { extract: false },
@@ -41,6 +42,7 @@ module.exports = {
   configureWebpack: config => {
     // Merged into the final Webpack config
     config.output.umdNamedDefine = true
+    config.plugins.push(new PublicPathWebpackPlugin())
     config.plugins.push(
       new PurgecssPlugin({
         paths: glob.sync([

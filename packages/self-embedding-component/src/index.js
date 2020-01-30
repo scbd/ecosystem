@@ -39,7 +39,6 @@ function main (){
 }
 
 function setDefaults ({ name, version, options }){
-
   const selfId          = name.replace('@scbd/', '')
   const compName        = pascalCase(selfId)
   const url             = `https://cdn.cbd.int/${name}@${version}`
@@ -49,7 +48,7 @@ function setDefaults ({ name, version, options }){
   const i18n            = true
   const appId           = 'appId'
 
-  return { url, compName, propsData, appId, selfId, i18n, cssDependencies, vuePlugins}
+  return { url, compName, propsData, appId, selfId, i18n, cssDependencies, vuePlugins }
 }
 
 function getI18n(){

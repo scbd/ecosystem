@@ -33,7 +33,7 @@ module.exports = {
     'no-multiple-empty-lines'       : 'error',
     'no-multi-assign'               : 'error',
     'no-whitespace-before-property' : 'error',
-    'no-nested-ternary'             : 'error',
+    'no-nested-ternary'             : 'off',
     'prefer-const'                  : 'error',
     'no-useless-computed-key'       : 'error',
     'no-useless-constructor'        : 'error',
@@ -84,6 +84,7 @@ module.exports = {
       "ImportDeclaration": "first",
       "ObjectExpression": "first",
       "ArrayExpression": "first",
+      "flatTernaryExpressions": false,
       "FunctionDeclaration": {
         "parameters": "first"
       }

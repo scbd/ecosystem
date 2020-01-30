@@ -46,7 +46,7 @@ function getEnvClient(){
   return 'prod'
 }
 
-function isServer(){ return typeof window === 'undefined'}
+function isServer(){ return typeof window === 'undefined' }
 
 function validate (opts, vMap){
   for (const key in opts){
@@ -69,8 +69,8 @@ function errorUnknownType (key, rType, eType){
 }
 
 function assignEnvironments(environments){
-  const dev  = Object.assign(ENVS.dev , environments.dev )
-  const stg  = Object.assign(ENVS.stg , environments.stg )
+  const dev  = Object.assign(ENVS.dev, environments.dev)
+  const stg  = Object.assign(ENVS.stg, environments.stg)
   const prod = Object.assign(ENVS.prod, environments.prod)
 
   const development = dev

@@ -102,7 +102,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: /Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
@@ -117,7 +117,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: /Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/tslib/tslib.es6.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/tslib/tslib.es6.js
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -315,7 +315,7 @@ function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
 }
 
-// CONCATENATED MODULE: /Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/pascal-case/node_modules/lower-case/dist.es2015/index.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/lower-case/dist.es2015/index.js
 /**
  * Source: ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt
  */
@@ -364,7 +364,7 @@ function lowerCase(str) {
     return str.toLowerCase();
 }
 //# sourceMappingURL=index.js.map
-// CONCATENATED MODULE: /Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/pascal-case/node_modules/no-case/dist.es2015/index.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/no-case/dist.es2015/index.js
 
 // Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
 var DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
@@ -400,7 +400,7 @@ function replace(input, re, value) {
     return re.reduce(function (input, re) { return input.replace(re, value); }, input);
 }
 //# sourceMappingURL=index.js.map
-// CONCATENATED MODULE: /Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/pascal-case/dist.es2015/index.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/pascal-case/dist.es2015/index.js
 
 
 function pascalCaseTransform(input, index) {
@@ -419,7 +419,7 @@ function pascalCase(input, options) {
     return noCase(input, __assign({ delimiter: "", transform: pascalCaseTransform }, options));
 }
 //# sourceMappingURL=index.js.map
-// CONCATENATED MODULE: ./node_modules/camel-case/dist.es2015/index.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/camel-case/dist.es2015/index.js
 
 
 function camelCaseTransform(input, index) {
@@ -607,7 +607,7 @@ EmbedComponent.build(config); // import   EmbedComponent   from '@scbd/self-embe
 // const options   = DefaultOptions.get()
 // const config    = { name, version, options }
 // EmbedComponent.build(config)
-// CONCATENATED MODULE: /Users/randyhoulahan/projects/@scbd/ecosystem/node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
+// CONCATENATED MODULE: /Users/randyhoulahan/projects/ecosystem/node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
 
 
 

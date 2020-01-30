@@ -1,5 +1,5 @@
 import { MouseCursorStyle                      } from '@amcharts/amcharts4/core'
-import { worldLow        , langPoliticalUpdate } from './political-mapping'
+import { worldLow, langPoliticalUpdate } from './political-mapping'
 import { getUnLocale                           } from '@modules/locale'
 
 import english from '@amcharts/amcharts4-geodata/lang/EN'
@@ -107,19 +107,19 @@ export const euSeries = {
   type     : 'MapImageSeries',
   id       : 'euSeries',
   mapImages: { propertyFields,
-    children: [
-      {
-        type            : 'Image',
-        cursorOverStyle : MouseCursorStyle.pointer,
-        maxWidth        : 25,
-        width           : 25,
-        nonScaling      : true,
-        visible         : true,
-        tooltipText     : '{name}',
-        horizontalCenter: 'middle',
-        verticalCenter  : 'middle',
-        href            : 'https://cdn.cbd.int/svg-country-flags@1.2.6/svg/eu.svg'
-      } ] }
+               children: [
+                 {
+                   type            : 'Image',
+                   cursorOverStyle : MouseCursorStyle.pointer,
+                   maxWidth        : 25,
+                   width           : 25,
+                   nonScaling      : true,
+                   visible         : true,
+                   tooltipText     : '{name}',
+                   horizontalCenter: 'middle',
+                   verticalCenter  : 'middle',
+                   href            : 'https://cdn.cbd.int/svg-country-flags@1.2.6/svg/eu.svg'
+                 } ] }
 }
 
 export const series = [ grid, countryLabelSeries, countryLabelAltSeries, euSeries, countries ]

@@ -1,12 +1,17 @@
-const fs = require('fs')
+const fs   = require('fs'  )
 const path = require('path')
 
-const packagesPath = path.resolve(__dirname, '../packages/')
-const esLintConfigFile = 'module.exports = ' + JSON.stringify(require('../.eslintrc'))
-const packageNames = readPackageNames()
+const packagesPath     = path.resolve(__dirname, '../packages/')
+const esLintConfigFile = 'module.exports = ' + JSON.stringify(require('../.eslintrc')) // eslint-disable-line
+const esLintIgnore     = require('./eslint-ignore') // eslint-disable-line
+const packageNames     = readPackageNames()
 
-for (const packageName of packageNames)
-  fs.writeFileSync(`${packagesPath}/${packageName}/.eslintrc.js`, esLintConfigFile)
+for (const packageName of packageNames){
+  const writePath = `${packagesPath}/${packageName}/`
+
+  fs.writeFileSync(`${writePath}.eslintrc.js`,  esLintConfigFile)
+  fs.writeFileSync(`${writePath}.eslintignore`, esLintIgnore)
+}
 
 
 function readPackageNames(){

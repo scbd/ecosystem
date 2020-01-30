@@ -1,16 +1,29 @@
 {
   "name": "@scbd/page-side-bar",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": false,
   "license": "MIT",
+  "main": "dist/PageSideBar.umd.min.js",
+  "unpkg": "dist/PageSideBar.umd.min.js",
+  "browser": {
+    "./sfc": "src/index.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "description": "SCBD's webpage side bar",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vsh scripts/build",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e"
+    "build": "sh scripts/build.sh",
+    "lint": "vue-cli-service lint --fix",
+    "test:e2e": "vue-cli-service test:e2e",
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.54",
+    "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
     "check-ie": "^2.0.0",
     "ky": "^0.16.1",

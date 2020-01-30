@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <PageSideBar menu-identifier="portals"/>
+    <PageSideBar menu-identifier="portals" :options="{isNuxt: false}"/>
   </div>
 </template>
 
@@ -17,12 +17,6 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import "https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900";
+  @import "https://cdn.cbd.int/@scbd/www-css@0.0.18/dist/style.min.css";
 </style>
