@@ -7,12 +7,11 @@ module.exports = function (moduleOptions){
   const opts      = Object.assign(defaultOptions(forceEnv), modOpts)
 
   this.addPlugin(getPluginObj(opts))
-  this.addPlugin(getInterceptorPlugObj())
 
   moveHttpPlugin(this.options.plugins) // ensures our dependincy is loaded first
 
   this.addTemplate({
-    src     : resolve(__dirname, './middleware.js'),
+    src     : resolve(__dirname, './auth-middleware.template.js'),
     fileName: 'auth.js',
     options : opts
   })
@@ -40,15 +39,6 @@ function getPluginObj(moduleOptions){
   const options  = moduleOptions
   const src      = resolve(__dirname, 'plugin.template.js')
   const fileName = 'ssoScbd.js'
-  const mode     = 'client'
-
-  return  { src, fileName, options, mode }
-}
-
-function getInterceptorPlugObj(){
-  const options  = defaultOptions
-  const src      = resolve(__dirname, 'kronos-api-interceptor.js')
-  const fileName = 'kronos-api-interceptor.js'
   const mode     = 'client'
 
   return  { src, fileName, options, mode }
