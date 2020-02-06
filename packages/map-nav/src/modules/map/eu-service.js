@@ -4,7 +4,7 @@ import { euFlag                      } from './config'
 
 const isEuByPolitics = () => politicalMapKeys.filter((k) => countries.includes(hasMap(k)))
 
-export const countries = [ 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB' ]
+export const countries = [ 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE' ]
 
 export const name = { en: 'European Union',  fr: 'Union Européenne', es: 'Unión Europea', ru: 'Европейский союз', zh: '欧盟', ar: 'الاتحاد الأوروبي' }
 
