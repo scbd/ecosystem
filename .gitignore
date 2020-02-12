@@ -4,6 +4,7 @@ node_modules
 cypress.env.json
 /tests/e2e/videos/
 /tests/e2e/screenshots/
+-workspace
 
 # local env files
 .env.local
