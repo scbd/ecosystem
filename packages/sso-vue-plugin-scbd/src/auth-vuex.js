@@ -11,7 +11,7 @@ export default class extends AuthStore{
 
     super(vue, opts)
 
-    $store.registerModule('auth', AuthVuexModule)
+    $store.registerModule('auth', AuthVuexModule, { preserveState: false })
     options = opts
     store   = $store
   }

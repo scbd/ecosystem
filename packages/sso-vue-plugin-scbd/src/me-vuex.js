@@ -9,7 +9,7 @@ export default class MeVuex extends MeStore{
     const { $store } =  opts
 
     super(vue, opts)
-    $store.registerModule('me', MeVuexModule)
+    $store.registerModule('me', MeVuexModule, { preserveState: false })
 
     store = $store
   }
