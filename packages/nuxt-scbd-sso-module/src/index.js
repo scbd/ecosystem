@@ -4,17 +4,19 @@ const defaultOptions = require('@scbd/sso-vue-plugin-scbd/src/modules/defaultOpt
 module.exports = function (moduleOptions){
   const modOpts   = normalizeOptions(this, moduleOptions)
   const forceEnv  = modOpts.env || modOpts.ENV || process.env.NODE_ENV || 'prod'
-  const opts      = Object.assign(defaultOptions(forceEnv), modOpts)
+  const opts      = Object.assign(defaultOptions(forceEnv), modOpts, { middlewareNameSpace: 'auth' })
 
-  this.addPlugin(getPluginObj(opts))
-
-  moveHttpPlugin(this.options.plugins) // ensures our dependincy is loaded first
+  opts.middlewareNameSpacePath = `./${opts.middlewareNameSpace}`
 
   this.addTemplate({
     src     : resolve(__dirname, './auth-middleware.template.js'),
     fileName: 'auth.js',
     options : opts
   })
+
+  this.addPlugin(getPluginObj(opts))
+
+  moveHttpPlugin(this.options.plugins) // ensures our dependency is loaded first
 
   this.options.router.middleware.push('auth')
 }
@@ -39,7 +41,6 @@ function getPluginObj(moduleOptions){
   const options  = moduleOptions
   const src      = resolve(__dirname, 'plugin.template.js')
   const fileName = 'ssoScbd.js'
-  const mode     = 'client'
 
-  return  { src, fileName, options, mode }
+  return  { src, fileName, options }
 }

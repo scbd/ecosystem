@@ -9,7 +9,8 @@ const error403    = (ctx) => ctx.error({ statusCode: 403, message: `Forbidden: $
 // eslint-disable-next-line rule
 const options = <%= JSON.stringify(options, null, 2) %> // eslint-disable-line
 
-Middleware.auth = function (ctx){
+Middleware[options.middlewareNameSpace] = function (ctx){
+
   if (!routeRoles(ctx)) return // set to false to open up
 
   if (!user(ctx).isAuthenticated) return authenticate(ctx)
@@ -20,5 +21,7 @@ Middleware.auth = function (ctx){
 function authenticate({ redirect, route }){
   const { path } =  route
   
-  return redirect(200, options.login+`?returnUrl=${encodeURIComponent(path)}`)
+  if(options.login)
+    return redirect(200, options.login+`?returnUrl=${encodeURIComponent(path)}`)
 }
+
