@@ -10,9 +10,9 @@ const validationMap = {
 }
 
 const dev = {
-  host  : 'https://www.cbddev.xyz',
-  dapi  : 'https://dapi.cbd.int',
-  static: false,
+  host                 : 'https://www.cbddev.xyz',
+  dapi                 : 'https://dapi.cbd.int',
+  static               : false,
   siteNavigationElement: mainSiteNavigationElement
 }
 

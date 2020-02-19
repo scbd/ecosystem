@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-header",
-  "version": "0.0.69",
+  "version": "0.0.70",
   "private": false,
   "license": "MIT",
   "main": "dist/PageHeader.umd.min.js",
