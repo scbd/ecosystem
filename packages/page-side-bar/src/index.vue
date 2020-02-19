@@ -1,13 +1,14 @@
 <template>
-  <aside id="pageSideBar" class="desktop-only left-article-menu-container">
+  <aside :id="getHash(siteNavigationElement.url).replace('-SNE', '')" class="desktop-only left-article-menu-container">
+    <JsonLd :site-nav-elm="siteNavigationElement"/>
     <div class="block block-cbd-article block-navigation-block">
       <div class="content" >
-        <nav id="sideBarNav" class="sidebar-menu navbar-collapse" role="navigation">
-          <p>{{ menu.name }}</p>
+        <nav :id="getHash(siteNavigationElement.url)" class="sidebar-menu navbar-collapse" role="navigation">
+          <p>{{ siteNavigationElement.name }}</p>
           <ul class="list-unstyled">
-            <li  :class="{ selected: isSelected(aMenu.url) }" v-for="(aMenu,index) in menu.hasPart" :key="index"  class="level-0 no-levels" >
-              <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(baseUrl)">{{aMenu.name}}</nuxt-link>
-              <a  v-if="!opts.isNuxt" :href="aMenu.url">{{aMenu.name}}</a>
+            <li  :class="{ selected: isSelected(aMenu.url) }" v-for="(aMenu,index) in siteNavigationElement.hasPart" :key="index"  class="level-0 no-levels" >
+              <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(base)">{{aMenu.name}}</nuxt-link>
+              <a  v-if="!opts.isNuxt" :href="aMenu.url | filterBase(base)">{{aMenu.name}}</a>
             </li>
           </ul>
         </nav>
@@ -17,84 +18,60 @@
 </template>
 <script>
 import defaultOpts  from './modules/defaultOptions'
+import JsonLd       from './WPSideBarJsonLd'
 
 export default {
-  name : 'PageSideBar',
-  props: {
+  name      : 'WebPageSideBar',
+  components: { JsonLd },
+  props     : {
     siteNavigationElement: { type: Object },
-    options              : { type: Object },
-    menuIdentifier       : { type: String }
+    options              : { type: Object }
   },
-  methods : { readMenusFromApi, getSideMenu, isSelected },
-  computed: { opts, sNEs, baseUrl },
-  filters : { filterBase },
-  data,
-  mounted
+  methods : { isSelected, getHash, getRoutePath },
+  computed: { opts, base },
+  filters : { filterBase }
 }
 
-function isSelected(url){
-  const testUrl = ((url === '/portals/capacity-building')? url+'/' : url)
+function isSelected(urlString){
+  const { pathname } = (new URL(urlString))
 
-  return testUrl === this.baseUrl+this.$route.path
+  return pathname === this.getRoutePath()
 }
 
-function filterBase(url, baseUrl){
-  let filterdUrl = url.replace(baseUrl, '')
-
-  if(!filterdUrl) filterdUrl = '/'
-
-  return filterdUrl
+function getRoutePath(){
+  if(this.opts.isNuxt) return trimTrailingSlash(this.base+this.$route.path)
+  if(!this.$isServer) return trimTrailingSlash(window.location.pathname)
 }
 
-function baseUrl(){
-  return this.opts.baseUrl
+function trimTrailingSlash(urlString){
+  if(urlString.endsWith('/')) return urlString.slice(0, -1)
+  return urlString
 }
 
-function data(){
-  const menu = {}
-  
-  return { menu }
-}
+function filterBase(urlString, base){ return (new URL(urlString)).pathname.replace(base, '') || '/' }
 
-function opts(){
-  return defaultOpts.get(this.options)
-}
+function opts(){ return defaultOpts.get(this.options) }
 
-function sNEs(){
-  return this.siteNavigationElement || this.menu
-}
+function base(){ return this.opts.base }
 
-async function mounted(){
-  // console.log('isSelected', this.isSelected('/portals/capacity-building/'))
-  await this.readMenusFromApi()
-}
-
-async function readMenusFromApi(){
-  this.menu = (await this.getSideMenu(this.opts))[0]
-  this.$forceUpdate()
-}
-
-
-async function getSideMenu({ dapi }, searchMenu){
-  searchMenu = searchMenu? searchMenu : this.menuIdentifier
-
-  const data = await this.$http.get(`${dapi}/menus/${searchMenu}?postfix=WPSB`).then(res => res.json())
-
-  console.log(data)
-  return data
-}
-
+function getHash(urlWithHash){ return (new URL(urlWithHash)).hash.replace('#', '') }
 </script>
+
 <style scoped>
+#WPSideBar{
+  min-height: 100vh;
+  -webkit-flex-basis: 24%;
+	-ms-flex-preferred-size: 24%;
+	flex-basis: 20%;
+}
 .left-article-menu-container {
 	-webkit-flex-basis: 24%;
 	-ms-flex-preferred-size: 24%;
-	flex-basis: 24%;
+	flex-basis: 20%;
   padding-top: 1em;
-	/* padding-top: 175px; */
 	background: #265a4f;
   position: relative;
-  
+  min-height: 100vh;
 }
 
 .sidebar-menu {
@@ -145,13 +122,13 @@ async function getSideMenu({ dapi }, searchMenu){
 .sidebar-menu li:not(.level-0) a::before {
   content: "\00a0 >\00a0";
 }
-   nav[id$=sideBarNav] ul li.no-levels {
-        background: #009B48;
-    }
+nav[id$=-WPSB-SNE] ul li.no-levels {
+    background: #009B48;
+}
 
-    nav.sidebar-menu > ul > li.selected {
-      background: white;
-    }
+nav.sidebar-menu > ul > li.selected {
+  background: white;
+}
 @media (max-width:991px) {
 	.left-article-menu-container {
 		display: block;
