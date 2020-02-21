@@ -1,0 +1,19 @@
+<html lang="ar">
+<meta charset="utf-8">
+<title>PageHeaderFixed demo</title>
+
+<script src="../dist/MapNav.umd.js"></script>
+<script nomodule="" src="https://cdn.cbd.int/vue-i18n@8.15.3/dist/vue-i18n.min.js"></script>
+<script nomodule="" src="https://cdn.cbd.int/vue@2.6.11/dist/vue.min.js"></script>
+<script nomodule="" > Vue.use(i18n); new Vue({ i18n, components: { MapNav } }).$mount('#app') </script>
+
+
+<script type="module">
+import Vue  from 'https://cdn.cbd.int/vue@2.6.11/dist/vue.esm.browser.min.js';
+import i18n from 'https://cdn.cbd.int/vue-i18n@8.15.3/dist/vue-i18n.esm.browser.min.js';
+
+Vue.use(i18n); new Vue({ i18n, components: { MapNav } }).$mount('#nav-map-app');
+</script>
+
+<div id="nav-map-app"> <map-nav></map-nav> </div> 
+</html>
