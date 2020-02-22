@@ -8,7 +8,6 @@ export class MapBuilder extends MapBuilderBase{
   constructor(element, options){
     super(element, options)
 
-    
     pushHitEventFn(callBack)
     setCountryEvents(this)
 
@@ -19,9 +18,12 @@ export class MapBuilder extends MapBuilderBase{
 
 export const ready = (mapBuilder) => () =>  {
   initEu(mapBuilder, { callBack, countryToolTipAction: countryToolTipAction(mapBuilder), euActionToolTipAction: euActionToolTipAction(mapBuilder) })
+  
   if(getCountryFromQuery(mapBuilder.options)) return
 
   setAnimationEventsOnSeriesContainer(mapBuilder)
+
+  mapBuilder.status.ready = true
 }
 
 export const clickUrl = ({ options }, id) => {
@@ -34,10 +36,10 @@ export const clickUrl = ({ options }, id) => {
 }
 
 export const callBack =  (mapBuilder) => (ev) => {
-  console.log('ev.target.dataItem')
   const { euIdentifier } = mapBuilder.options
-  const code = ev.target.dataItem.dataContext? ev.target.dataItem.dataContext.id : euIdentifier
+  const   code           = ev.target.dataItem.dataContext? ev.target.dataItem.dataContext.id : euIdentifier
 
+  console.log('============', clickUrl(mapBuilder, code))
   window.location.href = clickUrl(mapBuilder, code)
 }
 
@@ -58,5 +60,5 @@ export const initCountryHomeSetting = (mapBuilder) => () => {
   setTimeout(() => mapHomePositionToCountry(code, mapBuilder), 1000)
 }
 
-export const countryToolTipAction = (mapBuilder) => (code) => `href="${clickUrl(mapBuilder, code)}"`
+export const countryToolTipAction  = (mapBuilder) => (code) => `href="${clickUrl(mapBuilder, code)}"`
 export const euActionToolTipAction = (mapBuilder) => (code) => `href="${clickUrl(mapBuilder, code)}"`

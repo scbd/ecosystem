@@ -1,4 +1,4 @@
-import { pushOverEventFn, hasPoliticalMappings, styleHomePolygon, politicalMapKeys, setMapHomePositionToCountryGeoPoint } from '../countries'
+import { zoomToCountry, hasPoliticalMappings, styleHomePolygon, politicalMapKeys, setMapHomePositionToCountryGeoPoint } from '../countries'
 import { euCountries, name, euToolTipTemplate   } from './config'
 
 
@@ -30,17 +30,18 @@ export const addEuLabel = ({ labelSeries, locale }, countryPolygon) => {
 }
 
 export const zoomToEu = (mapBuilder) => {
-  const { map, mapSeries } = mapBuilder
+  const { map, euSeries, animation } = mapBuilder
 
-  mapBuilder.animation.pause()
+  if(animation)
+    animation.kill()
 
   // Find extreme coordinates for all pre-zoom countries
   for (const code of euCountries){
-    const country = mapSeries.getPolygonById(code)
+    const country = euSeries.getPolygonById(code)
 
     setEuFourPoints(country)
     map.homeZoomLevel = 2.996
-    styleHomePolygon(country, false)
+    styleHomePolygon(country, true)
 
     if(code!=='CZ') continue
 
@@ -56,32 +57,33 @@ export const zoomToEu = (mapBuilder) => {
 
 // create Eu's home on the map
 export const mapHomePositionToEu = (mapBuilder) => {// eslint-disable-line
-  const { map, mapSeries } = mapBuilder
+  const { map, euSeries } = mapBuilder
   const   code             = 'CZ'
-  const   countryPolygon   = mapSeries.getPolygonById(code)
+  const   countryPolygon   = euSeries.getPolygonById(code)
 
   setMapHomePositionToCountryGeoPoint({ code, map, countryPolygon })
 
   zoomToEu(mapBuilder)
 }
 // TTAS = tool tip action string
-const countryTTAS  = code => `onclick="window.document.dispatchEvent(new CustomEvent("zoomToParty", { detail: '${code}'}))" href="#"`
-const euActionTTAS  = code => `onclick="window.document.dispatchEvent(new CustomEvent("zoomToParty", { detail: ${code}}))" href="#"`
+const toolTipActionString  = code => ` onclick="window.TTAS('${code}')" href="#" `
 
 export const euHoverToolTip =  ({ countryToolTipAction,  euActionToolTipAction }) => ({ options })  => (ev) => {
-  const code = ev.target.dataItem.dataContext.id
+  const   code                   = ev.target.dataItem.dataContext.id
   const { locale, euIdentifier } = options
 
-  const countryToolTip = countryToolTipAction? countryToolTipAction(code) :countryTTAS(code)
-  const euActionToolTip = euActionToolTipAction? euActionToolTipAction(euIdentifier) : euActionTTAS(euIdentifier)
+  const countryToolTip  = countryToolTipAction? countryToolTipAction(code) : toolTipActionString(code)
+  const euActionToolTip = euActionToolTipAction? euActionToolTipAction(euIdentifier) : toolTipActionString(euIdentifier)
 
+  //ev.target.tooltip.keepTargetHover = false
   if(!isEu(code)) return ev.target.tooltipHTML = '<span>{name}</span>'
-  
+  ev.target.tooltipPosition = 'fixed'
+ // ev.target.tooltip.keepTargetHover = true
   ev.target.tooltipHTML = euToolTipTemplate({ countryToolTip, euActionToolTip, locale })
 }
 
 export const configEuButton = (mapBuilder, clickCallBack) => {
-  const   button   = mapBuilder.euSeries.mapImages.create()
+  const   button   = mapBuilder.euButtonSeries.mapImages.create()
   const { locale } = mapBuilder.options
 
   button.latitude   = 47.241955823271525
@@ -92,13 +94,37 @@ export const configEuButton = (mapBuilder, clickCallBack) => {
   button.events.on('hit', clickCallBack)
 }
 
-export const initEu = (mapBuilder, { callBack, countryToolTipAction,  euActionToolTipAction }) => {
-  callBack = callBack? callBack(mapBuilder) : clickHandler(mapBuilder)
-  configEuButton(mapBuilder, callBack)
-  
-  pushOverEventFn(euHoverToolTip({ countryToolTipAction,  euActionToolTipAction  }))
+const zoomTo = (mapBuilder) => ({ detail }) => {
+  const { euIdentifier } = mapBuilder.options
+
+  if(detail === euIdentifier) return zoomToEu(mapBuilder)
+
+  zoomToCountry(mapBuilder)(detail)
 }
 
-export const clickHandler = (mapBuilder) => () => {
-  zoomToEu(mapBuilder)
+export const initEu = (mapBuilder, { callBack, countryToolTipAction,  euActionToolTipAction } = {}) => {
+  mapBuilder.euButtonSeries.toFront()
+  if(!countryToolTipAction &&  !euActionToolTipAction){
+    window.TTAS = (code) => window.document.dispatchEvent(new CustomEvent('zoomToParty', { detail: code }))
+    window.document.addEventListener('zoomToParty', zoomTo(mapBuilder))
+  }
+  callBack = callBack? callBack(mapBuilder) : clickHandler(mapBuilder)
+  configEuButton(mapBuilder, callBack)
+  initTooltip(mapBuilder, { countryToolTipAction,  euActionToolTipAction })
 }
+
+export const initTooltip = (mapBuilder, { countryToolTipAction, euActionToolTipAction }) => {
+  const { euSeries, options } = mapBuilder
+
+
+  for (const code of euCountries){
+    const   country                 = euSeries.getPolygonById(code)
+    const { locale, euIdentifier }  = options
+    const countryToolTip            = countryToolTipAction? countryToolTipAction(code) : toolTipActionString(code)
+    const euActionToolTip           = euActionToolTipAction? euActionToolTipAction(euIdentifier) : toolTipActionString(euIdentifier)
+  
+
+    country.tooltipHTML = euToolTipTemplate({ countryToolTip, euActionToolTip, locale })
+  }
+}
+export const clickHandler = (mapBuilder) => () => { zoomToEu(mapBuilder) }

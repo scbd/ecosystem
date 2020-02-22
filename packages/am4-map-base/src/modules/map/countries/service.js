@@ -20,15 +20,14 @@ export const setDelta = (map, { latitude, longitude }) => {
   map.deltaLongitude = -longitude
 }
 
-export const styleHomePolygon = (country, hideToolTip = true) => {
-  country.fill          = getStyle().hover
+export const styleHomePolygon = (country, { style = 'hover', hideToolTip = false }={}) => {
+  country.fill = getStyle()[style]
   if(hideToolTip){
     country.showTooltipOn = 'doNotShow'
     country.dispatch('over')
     country.dispatch('out')
   }
 }
-
 
 export const getLngLat = (code, countryPolygon) => {
   if(isCustomZoomCenter(code))

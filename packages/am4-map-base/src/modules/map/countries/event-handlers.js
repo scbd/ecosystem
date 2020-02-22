@@ -6,6 +6,11 @@ const activeCountries = new Set()
 
 export const zoomToCountryEventHandler = (mapBuilder) => (ev) => { // eslint-disable-line
   const   code             = ev.target.dataItem.dataContext.id
+
+  zoomToCountry(mapBuilder)(code)
+}
+
+export const zoomToCountry = (mapBuilder) => (code) => { // eslint-disable-line
   const { animation, map } = mapBuilder
   const   relatedCountries = getPoliticalRelations(code, mapBuilder)
   const   isLast           = (index) => relatedCountries.length-1 == index
@@ -13,7 +18,7 @@ export const zoomToCountryEventHandler = (mapBuilder) => (ev) => { // eslint-dis
   resetActiveCountries(mapBuilder)
 
   if(animation)
-    animation.pause()
+    animation.kill()
 
   for (const [ i, countryPolygon ] of relatedCountries.entries()){
     setCountryActive(countryPolygon)
@@ -25,7 +30,7 @@ export const zoomToCountryEventHandler = (mapBuilder) => (ev) => { // eslint-dis
     setDelta(map, lngLat)
     addCountryLabel(countryPolygon, mapBuilder)
     
-    ev.target.series.chart.zoomToGeoPoint(lngLat, zoomLevel, true, 2000)
+    mapBuilder.map.zoomToGeoPoint(lngLat, zoomLevel, true, 2000)
   }
 }
 

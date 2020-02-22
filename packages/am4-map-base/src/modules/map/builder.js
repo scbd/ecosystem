@@ -1,7 +1,5 @@
-import { MapBuilderBase                                     } from './builder-base'
-//import { setAnimationEventsOnSeriesContainer  } from './controls'
-//import { initEu                       } from './eu'
-//import { setAnimationEventsOnSeriesContainer  } from './controls'
+import { MapBuilderBase } from './builder-base'
+import { initAnimation, setAnimationEventsOnSeriesContainer } from './controls'
 
 import { zoomToCountryEventHandler, pushHitEventFn, setCountryEvents } from './countries'
 
@@ -13,8 +11,7 @@ export class MapBuilder extends MapBuilderBase{
     pushHitEventFn(zoomToCountryEventHandler)
     setCountryEvents(this)
 
-
-   // this.events.on('ready', ready(this))
+    this.events.on('ready', ready(this))
   }
 }
 
@@ -27,6 +24,7 @@ export const countryClick =  (mapBuilder) => (ev) => {
     mapBuilder.lastSelected = ev.target;
 }
 
-// export const ready = (mapBuilder) => () =>  {
-//   setAnimationEventsOnSeriesContainer(mapBuilder)
-// }
+export const ready = (mapBuilder) => () =>  {
+  initAnimation(mapBuilder)
+  setAnimationEventsOnSeriesContainer(mapBuilder)
+}

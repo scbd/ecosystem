@@ -1,8 +1,9 @@
 import { createFromConfig                                   } from '@amcharts/amcharts4/core'
 import { MapChart                                           } from '@amcharts/amcharts4/maps'
-//import { initEu                                             } from './eu'
+import { initEu                                             } from './eu'
 import { configureMapSeries                 } from './countries'
 import { initControls } from './controls'
+
 
 export class MapBuilderBase{
   constructor(element, options){
@@ -10,17 +11,19 @@ export class MapBuilderBase{
 
     configureMapSeries(this)
 
-    if(initControls)
-      initControls(this)
 
     this.mapSeries.toFront()
+
+    this.events.on('ready', () => this.status.ready = true)
 
     if(options.devMode) this.devMode()
   }
 
+  
   init(element, options){
     const { main }        = options.config
-    
+
+    this.element          = element
     this.map              = createFromConfig({ ...main }, element, MapChart)
     this.options          = options
     this.map.MapBuilder   = this
@@ -28,13 +31,33 @@ export class MapBuilderBase{
     this.locale           = options.locale
 
     if(this.locale === 'ar') this.map.rtl = true
-  }
 
+    const status = { ready: false }
+    const self = this
+    const statusHandler = {
+      set: (obj, prop, value) => {
+        if(prop==='ready' && value)
+          self.whenReady()
+            
+        return true
+      }
+      
+    }
+
+    this.status = new Proxy(status, statusHandler)
+  }
+  whenReady(){
+    if(this.options.initControls)
+      initControls(this)
+    initEu(this)
+  }
   get labelSeries (){ return this.getSeriesById('labelSeries') }
 
   get labelSeriesAlt (){ return this.getSeriesById('labelSeriesAlt') }
 
-  get euSeries (){ return this.getSeriesById('euSeries') }
+  get euButtonSeries (){ return this.getSeriesById('euButtonSeries') }
+
+  get euSeries (){ return this.getSeriesById('euMapSeries') }
 
   get events (){ return this.map.events }
 
