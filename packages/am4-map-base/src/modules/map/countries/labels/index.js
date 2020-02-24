@@ -25,7 +25,8 @@ export const  addCountryLabel = (p, mapBuilder) => { // eslint-disable-line
   label.children.getIndex(0).text = text
 
   label.appear()
-  labelMap.set(`L-${code}`, label)
+  if(!labelExists(code))
+    labelMap.set(`L-${code}`, label)
 
   ls.toFront()
 }

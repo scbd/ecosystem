@@ -105,7 +105,7 @@ export const setCountryHome = (id, mapBuilder) => { // eslint-disable-line
     
     if(isLast(i))
       addCountryLabel(countryPolygon, mapBuilder)
-    styleHomePolygon(countryPolygon)
+    stylePolygon(countryPolygon)
   }
   
   map.goHome(2500)

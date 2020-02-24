@@ -1,9 +1,10 @@
-import { zoomToCountry, hasPoliticalMappings, styleHomePolygon, politicalMapKeys, setMapHomePositionToCountryGeoPoint } from '../countries'
+import { setCountryState, pushHitEventFn, getLngLat, setDelta, zoomToCountry, hasPoliticalMappings, politicalMapKeys, setMapHomePositionToCountryGeoPoint } from '../countries'
 import { euCountries, name, euToolTipTemplate   } from './config'
-
+import { addCountryLabel, deleteCountryLabel } from '../countries/labels'
 
 const isEuByPoliticalMapping = politicalMapKeys.filter((k) => euCountries.includes(hasPoliticalMappings(k)))
 const euFourPoints           = { north: '', south: '', east: '', west: '' }
+const eu = {}
 
 const setEuFourPoints = (country) => {
   const { north, south, east, west } = country
@@ -16,22 +17,53 @@ const setEuFourPoints = (country) => {
 
 export const isEu = (code) => euCountries.concat(isEuByPoliticalMapping).includes(code)
 
-export const addEuLabel = ({ labelSeries, locale }, countryPolygon) => {
-  const text       = name[locale]
-  const label      = labelSeries.mapImages.create()
+export const addEuLabel = ({ labelSeries, locale, euSeries }) => {
+  const text           = name[locale]
+  const countryPolygon = euSeries.getPolygonById('CZ')
 
-  label.latitude  = countryPolygon.visualLatitude
-  label.longitude = countryPolygon.visualLongitude -1.5
-  label.text      = text
+  labelSeries.hide()
+  eu.label      = labelSeries.mapImages.create()
+  eu.label.hide()
 
-  label.children.getIndex(0).text = text
-  label.appear()
+  eu.label.latitude  = countryPolygon.visualLatitude
+  eu.label.longitude = countryPolygon.visualLongitude -1.5
+  eu.label.text      = text
+
+  eu.label.children.getIndex(0).text = text
+  
   labelSeries.toFront()
+  labelSeries.appear()
 }
+
+export const showEuLabel = (mapBuilder) => {
+  if(!eu.label) addEuLabel(mapBuilder)
+  eu.label.appear()
+  mapBuilder.labelSeries.toFront()
+}
+export const hideEuLabel = (mapBuilder) => {
+  if(!eu.label) addEuLabel(mapBuilder)
+  eu.label.hide()
+}
+export const setEuState = (state ='default') => (mapBuilder) => () => {
+  const { euSeries } = mapBuilder
+
+  if(state!=='active') hideEuLabel(mapBuilder)
+
+  for (const code of euCountries){
+    const country = euSeries.getPolygonById(code)
+
+    country.setState(state)
+    setCountryState(code, state, mapBuilder)
+    country.invalidate()
+  }
+}
+
+export const setEuActive = (mapBuilder) => setEuState('active')(mapBuilder)()
 
 export const zoomToEu = (mapBuilder) => {
   const { map, euSeries, animation } = mapBuilder
 
+  deleteCountryLabel()
   if(animation)
     animation.kill()
 
@@ -40,16 +72,16 @@ export const zoomToEu = (mapBuilder) => {
     const country = euSeries.getPolygonById(code)
 
     setEuFourPoints(country)
-    map.homeZoomLevel = 2.996
-    styleHomePolygon(country, true)
 
     if(code!=='CZ') continue
 
-    setMapHomePositionToCountryGeoPoint({ code, map, countryPolygon: country })
-    addEuLabel(mapBuilder, country)
-    country.deepInvalidate()
+    const lngLat = getLngLat(mapBuilder)(country)
+    
+    setDelta(map, lngLat)
   }
-  
+  showEuLabel(mapBuilder)
+  setEuActive(mapBuilder)
+
   const { north, south, east, west } = euFourPoints
 
   map.zoomToRectangle(north, south, east, west, 0.7, true)
@@ -62,25 +94,24 @@ export const mapHomePositionToEu = (mapBuilder) => {// eslint-disable-line
   const   countryPolygon   = euSeries.getPolygonById(code)
 
   setMapHomePositionToCountryGeoPoint({ code, map, countryPolygon })
-
+  map.homeZoomLevel = 2.996
   zoomToEu(mapBuilder)
 }
+
 // TTAS = tool tip action string
 const toolTipActionString  = code => ` onclick="window.TTAS('${code}')" href="#" `
 
-export const euHoverToolTip =  ({ countryToolTipAction,  euActionToolTipAction }) => ({ options })  => (ev) => {
-  const   code                   = ev.target.dataItem.dataContext.id
-  const { locale, euIdentifier } = options
+// export const euHoverToolTip =  ({ countryToolTipAction,  euActionToolTipAction }) => ({ options })  => (ev) => {
+//   const   code                   = ev.target.dataItem.dataContext.id
+//   const { locale, euIdentifier } = options
 
-  const countryToolTip  = countryToolTipAction? countryToolTipAction(code) : toolTipActionString(code)
-  const euActionToolTip = euActionToolTipAction? euActionToolTipAction(euIdentifier) : toolTipActionString(euIdentifier)
+//   const countryToolTip  = countryToolTipAction? countryToolTipAction(code) : toolTipActionString(code)
+//   const euActionToolTip = euActionToolTipAction? euActionToolTipAction(euIdentifier) : toolTipActionString(euIdentifier)
 
-  //ev.target.tooltip.keepTargetHover = false
-  if(!isEu(code)) return ev.target.tooltipHTML = '<span>{name}</span>'
-  ev.target.tooltipPosition = 'fixed'
- // ev.target.tooltip.keepTargetHover = true
-  ev.target.tooltipHTML = euToolTipTemplate({ countryToolTip, euActionToolTip, locale })
-}
+//   if(!isEu(code)) return ev.target.tooltipHTML = '<span>{name}</span>'
+
+//   ev.target.tooltipHTML = euToolTipTemplate({ countryToolTip, euActionToolTip, locale })
+// }
 
 export const configEuButton = (mapBuilder, clickCallBack) => {
   const   button   = mapBuilder.euButtonSeries.mapImages.create()
@@ -96,21 +127,38 @@ export const configEuButton = (mapBuilder, clickCallBack) => {
 
 const zoomTo = (mapBuilder) => ({ detail }) => {
   const { euIdentifier } = mapBuilder.options
+  const  { euSeries } = mapBuilder
 
+  deleteCountryLabel()
+  hideEuLabel(mapBuilder)
+  setEuState()(mapBuilder)()
+ 
   if(detail === euIdentifier) return zoomToEu(mapBuilder)
 
+  const countryPolygon =euSeries.getPolygonById(detail)
+
+  addCountryLabel(countryPolygon, mapBuilder)
   zoomToCountry(mapBuilder)(detail)
+  countryPolygon.setState('active')
+  setCountryState(detail, 'active', mapBuilder)
 }
 
 export const initEu = (mapBuilder, { callBack, countryToolTipAction,  euActionToolTipAction } = {}) => {
   mapBuilder.euButtonSeries.toFront()
   if(!countryToolTipAction &&  !euActionToolTipAction){
-    window.TTAS = (code) => window.document.dispatchEvent(new CustomEvent('zoomToParty', { detail: code }))
+    window.TTAS = (code) => {
+      deleteCountryLabel()
+      hideEuLabel(mapBuilder)
+      setEuState()(mapBuilder)
+      window.document.dispatchEvent(new CustomEvent('zoomToParty', { detail: code }))
+    }
     window.document.addEventListener('zoomToParty', zoomTo(mapBuilder))
   }
   callBack = callBack? callBack(mapBuilder) : clickHandler(mapBuilder)
   configEuButton(mapBuilder, callBack)
   initTooltip(mapBuilder, { countryToolTipAction,  euActionToolTipAction })
+  pushHitEventFn(setEuState())
+  addEuLabel(mapBuilder)
 }
 
 export const initTooltip = (mapBuilder, { countryToolTipAction, euActionToolTipAction }) => {
@@ -127,4 +175,4 @@ export const initTooltip = (mapBuilder, { countryToolTipAction, euActionToolTipA
     country.tooltipHTML = euToolTipTemplate({ countryToolTip, euActionToolTip, locale })
   }
 }
-export const clickHandler = (mapBuilder) => () => { zoomToEu(mapBuilder) }
+export const clickHandler = (mapBuilder) => () => zoomToEu(mapBuilder)

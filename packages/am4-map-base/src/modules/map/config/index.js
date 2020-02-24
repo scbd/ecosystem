@@ -9,7 +9,7 @@ import { geodataNames } from './geo-data-names'
 
 const userStyle = { }
 
-export const styleDefault   = { label: '#ffffff', water: '#BBDEFB', country: '#01463a', hover: '#9a5917', fontFamily: 'BenchNine, sans-serif' }
+export const styleDefault   = { label: '#ffffff', water: '#BBDEFB', default: '#01463a', country: '#01463a', hover: '#9a5917', active: '#9a5917', fontFamily: 'BenchNine, sans-serif' }
 export const getStyle       = () => ({ ...styleDefault, ...userStyle })
 export const responsive     = { enabled: true }
 export const zoomControl    = {}
@@ -44,13 +44,14 @@ export const backgroundSeries= {
 }
 
 export const countries = {
-  type       : 'MapPolygonSeries',
-  id         : 'mapSeries',
-  exclude    : euCountries,
-  useGeodata : true,
-  tooltip    : { background: { fill: getStyle().country }, getFillFromObject: false, fontFamily: getStyle().fontFamily, keepTargetHover: false },
+  type                 : 'MapPolygonSeries',
+  id                   : 'mapSeries',
+  exclude              : euCountries,
+  useGeodata           : true,
+  tooltip              : { background: { fill: getStyle().country }, getFillFromObject: false, fontFamily: getStyle().fontFamily, keepTargetHover: false },
   propertyFields,
-  mapPolygons: {
+  calculateVisualCenter: true,
+  mapPolygons          : {
     template: {
       tooltipPosition: 'pointer',
       tooltipText    : '{name}',
@@ -91,15 +92,14 @@ export const countryLabelAltSeries = {
 export const series = [ grid, countryLabelSeries, countryLabelAltSeries, euButtonSeries(propertyFields), euSeries({ getStyle, propertyFields, worldLow }), countries ]
 
 export const main = {
-  geodata              : worldLow,
-  projection           : 'Orthographic',
-  panBehavior          : 'rotateLongLat',
-  paddingTop           : 20,
-  paddingBottom        : 20,
-  paddingRight         : 20,
-  paddingLeft          : 20,
-  calculateVisualCenter: true,
-  deltaLongitude       : -10,
+  geodata       : worldLow,
+  projection    : 'Orthographic',
+  panBehavior   : 'rotateLongLat',
+  paddingTop    : 20,
+  paddingBottom : 20,
+  paddingRight  : 20,
+  paddingLeft   : 20,
+  deltaLongitude: -10,
   backgroundSeries,
   zoomControl,
   chartContainer,

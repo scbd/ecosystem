@@ -68,7 +68,7 @@ export const euHome = (mapBuilder) => {// eslint-disable-line
 
     setEuFourPoints(country)
     map.homeZoomLevel = 2.996
-    styleHomePolygon(country, false)
+    styleHomePolygon(country, { hideToolTip: false })
 
     if(code!=='CZ') continue
 

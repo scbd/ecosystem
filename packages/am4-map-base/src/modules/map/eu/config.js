@@ -34,12 +34,14 @@ export const euButtonSeries = ({ propertyFields }) => ({
 })
 
 export const euSeries = ({ getStyle, propertyFields, worldLow }) => ({
-  type       : 'MapPolygonSeries',
-  id         : 'euMapSeries',
-  exclude    : (worldLow.features.map(({ id }) => id)).filter((id  => !euCountries.includes(id))),
-  useGeodata : true,
-  tooltip    : { background: { fill: getStyle().country }, getFillFromObject: false, fontFamily: getStyle().fontFamily, keepTargetHover: true, label: { interactionsEnabled: true } }, //keepTargetHover: true, label: { interactionsEnabled: true }
-  mapPolygons: {
+  type                 : 'MapPolygonSeries',
+  id                   : 'euMapSeries',
+  exclude              : (worldLow.features.map(({ id }) => id)).filter((id  => !euCountries.includes(id))),
+  useGeodata           : true,
+  tooltip              : { background: { fill: getStyle().country }, getFillFromObject: false, fontFamily: getStyle().fontFamily, keepTargetHover: true, label: { interactionsEnabled: true } }, //keepTargetHover: true, label: { interactionsEnabled: true }
+  propertyFields,
+  calculateVisualCenter: true,
+  mapPolygons          : {
     template: {
       tooltipPosition: 'fixed', //'fixed',
       tooltipText    : '{name}',
@@ -48,6 +50,5 @@ export const euSeries = ({ getStyle, propertyFields, worldLow }) => ({
       strokeWidth    : 0.5,
       states         : { hover: { properties: { fill: getStyle().hover } }, active: { properties: { fill: getStyle().hover } }  }
     }
-  },
-  propertyFields
+  }
 })

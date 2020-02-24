@@ -23,25 +23,25 @@ export const zoomToCountry = (mapBuilder) => (code) => { // eslint-disable-line
   for (const [ i, countryPolygon ] of relatedCountries.entries()){
     setCountryActive(countryPolygon)
 
-    if(!isLast(i)) return
+    if(!isLast(i)) continue
     const { zoomLevel = 2 } = countryPolygon.dataItem
-    const lngLat            = getLngLat(code, countryPolygon)
+    const lngLat            = getLngLat(mapBuilder)(countryPolygon)
 
     setDelta(map, lngLat)
     addCountryLabel(countryPolygon, mapBuilder)
-    
+
     mapBuilder.map.zoomToGeoPoint(lngLat, zoomLevel, true, 2000)
   }
 }
 
 function setCountryActive(countryPolygon){
-  countryPolygon.isActive = true
+  countryPolygon.setState('active')
   activeCountries.add(countryPolygon)
 }
 
 function resetActiveCountries(){
   for (const countryPolygon of activeCountries)
-    countryPolygon.isActive = false
+    countryPolygon.setState('default')
     
   deleteCountryLabel()
   activeCountries.clear()
