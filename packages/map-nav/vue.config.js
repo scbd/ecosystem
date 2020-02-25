@@ -3,8 +3,9 @@ const glob           = require('glob-all');
 const path           = require('path')
 
 module.exports = {
-  css      : { extract: false },
-  devServer: {
+  css                  : { extract: false },
+  transpileDependencies: [ '@scbd/am4-map-base' ],
+  devServer            : {
     port: 8885
   },
   lintOnSave  : true,

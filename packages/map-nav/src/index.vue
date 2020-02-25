@@ -6,13 +6,8 @@
 
 <script>
 
-import { createFromConfig, useTheme } from '@amcharts/amcharts4/core'
-import { MapChart           }           from '@amcharts/amcharts4/maps'
-import { MapBuilder         }           from '@modules/map/builder'
-import   am4themes_animated             from '@amcharts/amcharts4/themes/animated'// eslint-disable-line
-import { DefaultOptions     }           from '@modules/default-options'
-
-useTheme(am4themes_animated)
+import { MapBuilder     } from './map-builder'
+import { DefaultOptions } from '@scbd/am4-map-base/src/modules/default-options'
 
 export default {
   name    : 'AmMap',
@@ -32,16 +27,12 @@ function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why
 function dispose(map){ if(map && map.dispose) map.dispose() }
 
 function constructMap(){
-  const { config }      = this.opts
-  const { main }   = config
-  const   map                   = createFromConfig({ ...main }, this.$refs.map, MapChart)
-
-  this.map = new MapBuilder(map, this.opts)
+  this.map = new MapBuilder(this.$refs.map, this.opts)
 }
 
 function errorCaptured(err, vm){
   dispose(vm.$data.map)
-  console.error(err) //eslint-disable-line
+  console.error(err)
 }
 </script>
 

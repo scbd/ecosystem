@@ -1,15 +1,19 @@
-import { MapBuilderBase                       } from './builder-base'
-import { initEu, mapHomePositionToEu          } from './eu'
-import { setAnimationEventsOnSeriesContainer  } from './controls'
+import { MapBuilderBase                       } from '@scbd/am4-map-base'
+import { initEu, mapHomePositionToEu          } from '@scbd/am4-map-base/src/modules/map/eu'
+import { initAnimation, setAnimationEventsOnSeriesContainer  } from '@scbd/am4-map-base/src/modules/map/controls'
 
-import { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } from './countries'
+import { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } from '@scbd/am4-map-base/src/modules/map/countries'
+
 
 export class MapBuilder extends MapBuilderBase{
   constructor(element, options){
-    super(element, options)
+    options.initEu = false
+    options.euIdentifier = 'eur'
 
+    super(element, options)
     pushHitEventFn(callBack)
     setCountryEvents(this)
+
 
     this.events.on('ready', ready(this))
     this.map.seriesContainer.events.on('ready', initCountryHomeSetting(this))
@@ -21,6 +25,7 @@ export const ready = (mapBuilder) => () =>  {
   
   if(getCountryFromQuery(mapBuilder.options)) return
 
+  initAnimation(mapBuilder)
   setAnimationEventsOnSeriesContainer(mapBuilder)
 
   mapBuilder.status.ready = true
@@ -39,7 +44,6 @@ export const callBack =  (mapBuilder) => (ev) => {
   const { euIdentifier } = mapBuilder.options
   const   code           = ev.target.dataItem.dataContext? ev.target.dataItem.dataContext.id : euIdentifier
 
-  console.log('============', clickUrl(mapBuilder, code))
   window.location.href = clickUrl(mapBuilder, code)
 }
 
