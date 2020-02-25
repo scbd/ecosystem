@@ -47,6 +47,7 @@ export class MapBuilderBase{
     this.status = new Proxy(status, statusHandler)
   }
   whenReady(){
+    console.log('this.map', this.map)
     if(this.options.initControls)
       initControls(this)
     if(this.options.initEu)
