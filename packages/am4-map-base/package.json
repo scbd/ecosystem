@@ -1,22 +1,15 @@
 {
   "name": "@scbd/am4-map-base",
-  "version": "0.0.29",
+  "version": "0.0.3",
   "private": false,
   "license": "MIT",
-  "main": "dist/MapNav.umd.min.js",
-  "unpkg": "dist/MapNav.umd.min.js",
-  "browser": {
-    "./sfc": "src/index.vue"
-  },
+  "main": "src/modules/map/builder-base.js",
+  "unpkg": "src/modules/map/builder-base.js",
   "files": [
-    "dist/*",
     "src/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "NODE_ENV=production sh scripts/build.sh",
-    "build-watch": "NODE_ENV=production sh scripts/build-watch.sh",
-    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
     "release": "yarn publish --access=public --tag latest"
   },

@@ -49,7 +49,8 @@ export class MapBuilderBase{
   whenReady(){
     if(this.options.initControls)
       initControls(this)
-    initEu(this)
+    if(this.options.initEu)
+      initEu(this)
   }
   get labelSeries (){ return this.getSeriesById('labelSeries') }
 
