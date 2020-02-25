@@ -6,8 +6,8 @@
 
 <script>
 
-import { MapBuilder     } from '@modules/map/builder'
-import { DefaultOptions } from '@modules/default-options'
+import { MapBuilder     } from './builder'
+import { DefaultOptions } from './default-options'
 
 export default {
   name    : 'AmMap',

@@ -1,8 +1,8 @@
 import { MapBuilderBase                       } from '@scbd/am4-map-base'
-import { initEu, mapHomePositionToEu          } from '@scbd/am4-map-base/src/modules/map/eu'
-import { initAnimation, setAnimationEventsOnSeriesContainer  } from '@scbd/am4-map-base/src/modules/map/controls'
+import { initEu, mapHomePositionToEu          } from '@scbd/am4-map-base/src/eu'
+import { initAnimation, setAnimationEventsOnSeriesContainer  } from '@scbd/am4-map-base/src/controls'
 
-import { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } from '@scbd/am4-map-base/src/modules/map/countries'
+import { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } from '@scbd/am4-map-base/src/countries'
 
 
 export class MapBuilder extends MapBuilderBase{

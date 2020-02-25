@@ -7,7 +7,7 @@
 <script>
 
 import { MapBuilder     } from './map-builder'
-import { DefaultOptions } from '@scbd/am4-map-base/src/modules/default-options'
+import { DefaultOptions } from '@scbd/am4-map-base/src/default-options'
 
 export default {
   name    : 'AmMap',

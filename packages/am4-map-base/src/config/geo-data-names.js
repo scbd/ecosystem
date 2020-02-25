@@ -1,5 +1,5 @@
 import { langPoliticalUpdate } from '../countries/political-mappings/index.js'
-import { getUnLocale         } from '../../locale'
+import { getUnLocale         } from '../locale'
 
 import  english from '@amcharts/amcharts4-geodata/lang/EN'
 import  spanish from '@amcharts/amcharts4-geodata/lang/ES'

@@ -1,6 +1,6 @@
 import   DOptions      from '@scbd/default-options'
-import { name     }    from '../../package'
-import * as config     from './map/config'
+import { name     }    from '../package'
+import * as config     from './config'
 import { getUnLocale } from './locale'
 
 const basePath      = '/countries/'

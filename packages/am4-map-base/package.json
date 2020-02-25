@@ -1,10 +1,10 @@
 {
   "name": "@scbd/am4-map-base",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "license": "MIT",
-  "main": "src/modules/map/builder-base.js",
-  "unpkg": "src/modules/map/builder-base.js",
+  "main": "src/index.js",
+  "unpkg": "src/index.js",
   "files": [
     "src/*"
   ],
