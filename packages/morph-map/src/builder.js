@@ -1,226 +1,233 @@
 
-import { parties } from './parties'
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4maps from "@amcharts/amcharts4/maps";
-import   am4themes_animated   from '@amcharts/amcharts4/themes/animated'
-import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
 
-am4core.useTheme(am4themes_animated)
+import { create, useTheme, Label, color, Slider, ease, ColorSet, Image, Button, Sprite  }  from '@amcharts/amcharts4/core'
+import { projections, MapChart, MapPolygonSeries                       }  from '@amcharts/amcharts4/maps'
+import { parties                                                       } from './parties'
+
+import   am4themes_animated   from '@amcharts/amcharts4/themes/animated'
+import   geoData              from '@amcharts/amcharts4-geodata/worldLow'
+
+const playPath  = "M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM18 14.859c0.313-0.172 0.5-0.5 0.5-0.859s-0.187-0.688-0.5-0.859l-8.5-5c-0.297-0.187-0.688-0.187-1-0.016-0.313 0.187-0.5 0.516-0.5 0.875v10c0 0.359 0.187 0.688 0.5 0.875 0.156 0.078 0.328 0.125 0.5 0.125s0.344-0.047 0.5-0.141z"
+const pausePath = "M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM12 22.5c4.688 0 8.5-3.813 8.5-8.5s-3.813-8.5-8.5-8.5-8.5 3.813-8.5 8.5 3.813 8.5 8.5 8.5zM13.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3zM7.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3z"
+
+
+
+useTheme(am4themes_animated)
+parties.sort(() => .5 - Math.random())
 
 export class MapBuilder {
-  constructor(mapElement, hiddenMapElement){
+  constructor(elements){
+    this.createMaps(elements) // this.map && this.hiddenMap
+    this.map.events.on('ready', () => this.init())
+  }
 
-    this.ready()
-    this.chart = am4core.create(mapElement, am4maps.MapChart)
+  init(){
+    this.state = { index: -1, morphToPolygon: '', countryIndex: 0 }
+    this.createSlider()
+    this.createLabel()
+    this.createFlag()
+    this.pausePlayButton()
+    this.start()
+  }
 
+  createMaps({ mapElement, hiddenMapElement }){
+    this.createMap(mapElement)
+    this.createHiddenMap(hiddenMapElement)
+  }
+
+  createHiddenMap(hiddenMapElement){
     try {
-      this.chart.geodata = am4geodata_worldHigh;
+      this.hiddenMap = create(hiddenMapElement, MapChart)
+      configMap(this.hiddenMap)
+
+      this.hiddenMapSeries            = this.hiddenMap.series.push(new MapPolygonSeries())
+      this.hiddenMapSeries.useGeodata = true
+      this.hiddenMapSeries.include    = [parties[0]]
     }
     catch (e) {
-      this.chart.raiseCriticalError(new Error("Map geodata could not be loaded. Please download the latest <a href=\"https://www.amcharts.com/download/download-v4/\">amcharts geodata</a> and extract its contents into the same directory as your amCharts files."));
+      this.hiddenMap.raiseCriticalError(new Error('Map geodata could not be loaded. Please download the latest <a href="https://www.amcharts.com/download/download-v4/">amcharts geodata</a> and extract its contents into the same directory as your amCharts files.'));
     }
-
-    this.chart.projection = new am4maps.projections.Mercator();
-    this.chart.padding(10, 20, 10, 20);
-    this.chart.minZoomLevel = 0.9;
-    this.chart.zoomLevel = 0.9;
-    this.chart.maxZoomLevel = 1;
-
-    this.polygonSeries = this.chart.series.push(new am4maps.MapPolygonSeries());
-    this.polygonSeries.useGeodata = true;
-    this.polygonSeries.include = ["AD"];
-
-    this.chart1 = am4core.create(hiddenMapElement, am4maps.MapChart);
-    this.chart1.padding(10, 20, 10, 20);
-    this.chart1.geodata = am4geodata_worldHigh;
-    this.chart1.projection = new am4maps.projections.Mercator();
-
-    this.polygonSeries1 = this.chart1.series.push(new am4maps.MapPolygonSeries());
-    this.polygonSeries1.useGeodata = true;
-    this.polygonSeries1.include = ["AD"];
-
-    this.label = this.chart.chartContainer.createChild(am4core.Label);
-    this.label.x = 100;
-    this.label.y = 100;
-    this.label.fill = am4core.color("#000000");
-    this.label.fontSize = 35;
-    this.label.fontWeight = "bold";
-    this.label.text = "Afghanistan";
-    this.label.fillOpacity = 0.2;
-
-    this.slider = this.chart.createChild(am4core.Slider);
-    this.slider.padding(0, 15, 0, 60);
-    this.slider.background.padding(0, 15, 0, 60);
-    this.slider.marginBottom = 15;
-    this.slider.valign = "bottom";
-
-
-    setInterval(()  =>{
-      let next = this.slider.start + 1 / this.parties.length;
-      if (next >= 1) {
-        next = 0;
-      }
-      this.slider.animate({ property: "start", to: next }, 300);
-    }, 2000)
-    
-    this.slider.events.on("rangechanged", () => this.changeCountry())
-
-
-   // this.mapSeries.toFront()
-   // this.events.on('ready', () => this.ready())
-
   }
-  ready(){
-    this.parties = parties
-    this.state ={ index: -1, morphToPolygon: ''}
-    //this.colorSet = ColorSet()
-    // this.createLabel()
-    // this.createSlider()
-    // this.status.ready = true
-    // this.start()
+
+  createMap(mapElement){
+    try {
+      this.map                  = create(mapElement, MapChart)
+      configMap(this.map)
+
+      this.mapSeries            = this.map.series.push(new MapPolygonSeries())
+      this.mapSeries.useGeodata = true
+      this.mapSeries.include    = [parties[0]]
+    }
+    catch (e) {
+      this.map.raiseCriticalError(new Error('Map geodata could not be loaded. Please download the latest <a href="https://www.amcharts.com/download/download-v4/">amcharts geodata</a> and extract its contents into the same directory as your amCharts files.'));
+    }
   }
+
   changeCountry(){
-      let totalCountries = this.parties.length - 1;
-      let countryIndex = Math.round(totalCountries * this.slider.start);
-    
-      let morphToPolygon;
-    
-      if (this.state.index != countryIndex) {
-        this.polygonSeries1.data = [];
-        this.polygonSeries1.include = [this.parties[countryIndex]];
-    
-        this.currentIndex = countryIndex;
-    
-        this.polygonSeries1.events.once("validated",  () => {
-    
-          morphToPolygon = this.polygonSeries1.mapPolygons.getIndex(0);
-          if(morphToPolygon){
-            let countryPolygon = this.polygonSeries.mapPolygons.getIndex(0);
-    
-            let morpher = countryPolygon.polygon.morpher;
-            let morphAnimation = morpher.morphToPolygon(morphToPolygon.polygon.points);
-    
-            let colorAnimation = countryPolygon.animate({ "property": "fill", "to": (new am4core.ColorSet()).getIndex(Math.round(Math.random() * 20)) }, 1000);
-    
-            let animation = this.label.animate({ property: "y", to: 1000 }, 300);
-    
-            animation.events.once("animationended", ()  => {
-              this.label.text = morphToPolygon.dataItem.dataContext["name"];
-              this.label.y = -50;
-              this.label.animate({ property: "y", to: 200 }, 300, am4core.ease.quadOut);
-            })
-          }
-        })
-      }
-    
+      const { length }        = parties
+      const { slider, state } = this
+
+      state.countryIndex = Math.round((length - 1) * slider.start)
+
+      if (state.index == state.countryIndex) return
+
+      this.hiddenMapSeries.data    = []
+      this.hiddenMapSeries.include = [parties[state.countryIndex]]
+      state.index                  = state.countryIndex
+
+      this.hiddenMapSeries.events.once('validated', () => this.onHiddenMapSeriesValidated())
   }
-  // start(){
-  //   const { slider } = this
-  //   setInterval(() => {
-  //     let next = slider.start + 1 / parties.length
-  //     if (next >= 1) next =0
-  //     slider.animate({ property: 'start', to: next }, 500);
-  //   }, 3000)
-  //   slider.events.on('rangechanged',() => this.changeCountry())
-  // }
 
-  // changeCountry() {
-  //   const {  state }  = this
-  //   let totalCountries = parties.length - 1;
-  //   let countryIndex = Math.round(totalCountries * this.slider.start);
+  onHiddenMapSeriesValidated(){
+    const { state } = this
+
+    state.morphToPolygon = this.hiddenMapSeries.mapPolygons.getIndex(0)
+
+    if(!state.morphToPolygon) return
+
+    const countryPolygon  = this.mapSeries.mapPolygons.getIndex(0)
+    const { morpher }     = countryPolygon.polygon
+    const randomColor     = (new ColorSet()).getIndex(Math.round(Math.random() * 20))
+
+    morpher.morphToPolygon(state.morphToPolygon.polygon.points)
+    countryPolygon.animate({ property: 'fill', to: randomColor }, 1000)
+
+    this.animateLabel()
+    this.animateFlag()
+  }
+
+  start(){
+    const { state, slider } = this
+
+    state.interval = setInterval(() => {
+    //  this.button.icon.path = pausePath
+      let next = slider.start + 1 / parties.length
+
+      if (next >= 1) next =0
+      this.button.toFront()
+      slider.animate({ property: 'start', to: next }, 500);
+    }, 4000)
+
+    slider.events.on('rangechanged',() => this.changeCountry())
+  }
+
+
+  pausePlayButton() {
+    const { state } = this
+    const button = this.map.chartContainer.createChild(Button)
   
-  //   let morphToPolygon;
-  
-  //   if (state.index != countryIndex) {
-  //     this.mapSeries2.data = [];
-  //     this.mapSeries2.include = [parties[countryIndex]];
-  
-  //     state.index = countryIndex;
-  
-  //     this.mapSeries2.events.once("validated", ()=> {
-  
-  //       morphToPolygon = this.mapSeries2.mapPolygons.getIndex(0);
-  //       if(morphToPolygon){
-  //         let countryPolygon = this.mapSeries2.mapPolygons.getIndex(0);
-  
-  //         let morpher = countryPolygon.polygon.morpher;
-  //         let morphAnimation = morpher.morphToPolygon(morphToPolygon.polygon.points);
-  
-  //         let colorAnimation = countryPolygon.animate({ "property": "fill", "to": (new ColorSet()).getIndex(Math.round(Math.random() * 20)) }, 1000);
-  
-  //         let animation = this.label.animate({ property: "y", to: 1000 }, 300);
-  
-  //         animation.events.once("animationended",  () => {
-  //           this.label.text = morphToPolygon.dataItem.dataContext["name"];
-  //           this.label.y = -50;
-  //           this.label.animate({ property: "y", to: 200 }, 300, ease.quadOut);
-  //         })
-  //       }
-  //     })
-  //   }
-  // }
-  // changeCountry1(){
-  //   const { slider, state, mapSeries2 } = this
-  //   const { length } = parties
-  //   const totalCountries = length - 1;
+    button.padding(5, 5, 5, 5)
+    button.align = 'right'
+    button.valign = 'bottom'
+    button.marginRight = 15
+    button.events.on('hit', () => {
+      console.log(state)
+      // if(!state.interval) return this.start()
+      // clearInterval(state.interval)
+      // button.icon.path = playPath
+      // state.interval = 0
+      // console.log(state.interval)
+    })
+    button.icon = new Sprite()
+    button.icon.path = pausePath
+    this.button = button
+    this.button.toFront()
+  }
 
-  //   let countryIndex = Math.round(totalCountries * slider.start);
-  
-  //   if (state.index === countryIndex) return
+  animateLabel(){
+    const { label  }      = this
+    const animationProps  = { property: 'y', to: 1000 }
+    const animation       = label.animate(animationProps, 300);
+    const { events }      = animation
 
-  //   mapSeries2.data    = []
-  //   mapSeries2.include = [parties[countryIndex]]
-  //   state.index        = countryIndex
+    events.once('animationended', () => this.labelAnimationEnded())
+  }
 
-  //   mapSeries2.events.once('validated',() => this.onValidated() )
-    
-  // }
-  // onValidated () {
-  //   const { state, mapSeries2 } = this
+  animateFlag(){
+    const { flag  }       = this
+    const animationProps  = { property: 'y', to: 750 }
+    const animation       = flag.animate(animationProps, 300);
+    const { events }      = animation
 
-  //   state.morphToPolygon = mapSeries2.mapPolygons.getIndex(0)
-  //   if(state.morphToPolygon){
-  //     const countryPolygon = mapSeries2.mapPolygons.getIndex(0)
-  //     const morpher        = countryPolygon.polygon.morpher
+    events.once('animationended', () => this.flagAnimationEnded())
+  }
 
-  //     state.morphAnimation = morpher.morphToPolygon(state.morphToPolygon.polygon.points)
+  flagAnimationEnded(){
+    const { morphToPolygon } = this.state
+    const { id:code }        = morphToPolygon.dataItem.dataContext
 
-  //     state.colorAnimation = countryPolygon.animate({ "property": "fill", "to": new ColorSet().getIndex(Math.round(Math.random() * 20)) }, 1000)
+    this.changeFlag(code.toLowerCase())
 
-  //     const animation = this.label.animate({ property: "y", to: 1000 }, 300);
+    this.flag.animate({ property: 'y', to: 125, }, 300, ease.quadOut)
+  }
 
-  //     animation.events.once("animationended", () => this.labelAnimationEnded() )
-  //   }
-  // }
+  labelAnimationEnded(){
+    const { morphToPolygon } = this.state
+    const { name }           = morphToPolygon.dataItem.dataContext
 
-  // labelAnimationEnded(){
-  //   const { morphToPolygon } = this.state
+    this.label.text = name
+    this.label.y    = -50
 
-  //   this.label.text = morphToPolygon.dataItem.dataContext["name"];
-  //   this.label.y = -50;
-  //   this.label.animate({ property: "y", to: 200 }, 300, ease.quadOut);
-  
-  // }
-  // createLabel(){
+    this.label.animate({ property: 'y', to: 250 }, 300, ease.quadOut)
+  }
 
-  //   const label = this.map.chartContainer.createChild(Label);
-  //   label.x = 100
-  //   label.y = 100
-  //   label.fill = color('#000000')
-  //   label.fontSize = 35;
-  //   label.fontWeight = 'bold'
-  //   label.text = 'Russia'
-  //   label.fillOpacity = 0.2
+  createLabel(){
+    const label       = this.map.chartContainer.createChild(Label)
 
-  //   this.label = label
-  // }
-  // createSlider(){
-  //   const slider = this.map.createChild(Slider)
-  //   slider.padding(0, 15, 0, 60)
-  //   slider.background.padding(0, 15, 0, 60)
-  //   slider.marginBottom = 15
-  //   slider.valign = 'bottom'
-  //   this.slider = slider
-  // }
-  // get mapSeries2 (){ return this.getSeriesById('mapSeries2') }
+    label.x           = 100
+    label.y           = 100
+    label.fill        = color('#000000')
+    label.fontSize    = 45
+    label.fontWeight  = 'bold'
+
+    const countryPolygon = this.mapSeries.getPolygonById(parties[0])
+    const { name }       = countryPolygon.dataItem.dataContext
+
+    label.text        = name
+    label.fillOpacity = 1
+    label.fontFamily  = 'BenchNine, sans-serif'
+    label.fill        = color('#009b48')
+    this.label        = label
+  }
+
+  createFlag(code = parties[0].toLowerCase()){
+    const flag = this.map.chartContainer.createChild(Image)
+
+    flag.href       = `https://cdn.cbd.int/svg-country-flags@1.2.7/svg/${code}.svg`
+    flag.maxHeight  = 150
+    flag.width  = 125
+    flag.height = 125
+    flag.nonScaling = true
+    flag.x          = 100
+    this.flag       = flag
+  }
+
+  changeFlag(code){
+    this.flag.href = `https://cdn.cbd.int/svg-country-flags@1.2.7/svg/${code}.svg`
+    this.flag.y    = -50
+  }
+
+  createSlider(){
+    const slider = this.map.createChild(Slider)
+
+    slider.padding(0, 70, 0, 70)
+    slider.background.padding(0, 70, 0, 70)
+    slider.marginLeft = -15
+    slider.marginBottom = 10
+    slider.valign       = 'bottom'
+    slider.percentWidth = 80
+    this.slider         = slider
+  }
+
+}
+
+function configMap(map){
+  map.projection    = new projections.Mercator()
+  map.geodata       = geoData
+
+  map.padding(10, 200, 10, 5)
+
+  map.minZoomLevel  = 0.9
+  map.zoomLevel     = 0.9
+  map.maxZoomLevel  = 1
 }

@@ -1,5 +1,5 @@
 <template>
-  <div  style="position:relative; width:100%">
+  <div  style=" width:80vw; border: red solid 1px;">
     <div id="map"  ref='map'></div>
     <div id="hidden-map"  ref='hiddenMap'></div>
   </div>
@@ -28,8 +28,10 @@ function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why
 function dispose(map){ if(map && map.dispose) map.dispose() }
 
 function constructMap(){
-  
-  this.map = new MapBuilder(this.$refs.map, this.$refs.hiddenMap)
+  const mapElement = this.$refs.map
+  const hiddenMapElement = this.$refs.hiddenMap
+
+  this.map = new MapBuilder({ mapElement, hiddenMapElement })
 }
 
 function errorCaptured(err, vm){
@@ -39,16 +41,16 @@ function errorCaptured(err, vm){
 </script>
 
 <style scoped>
-  .cont{ width: 100%; height: 450px; }
+
   #map {
     width: 100%;
-    max-width:100%;
+    max-width:100vw;
     height: 500px;
   }
 
   #hidden-map{
     width: 100%;
-    max-width:100%;
+    max-width:100vw;
     height: 500px;
     visibility:hidden;
     position:absolute;

@@ -8,9 +8,9 @@
   integrity sha512-mK31lSAuZv7EMCioxf9yaOaWgI59TQfSPzc3wBGFsGZTJT4CVFiqY6fggkn8Lpj9U5Hs8pcLIW2XPCZ6X0PVmw==
 
 "@amcharts/amcharts4@^4.7.12":
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/@amcharts/amcharts4/-/amcharts4-4.9.1.tgz#2e285fa6e5da7f2e6aeb767482b0be906c6e0f78"
-  integrity sha512-7oPbpTw55GwGsRSkI7g6TOz8bEAiOtuKlx0BKoiY8NFqNy1rn1dIjpOJTIPdGnqqXLc1jWttq4DOMW6rm5Cnjw==
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/@amcharts/amcharts4/-/amcharts4-4.9.2.tgz#35a0a577bff2fb10a7c31d20d130582ef2f615a0"
+  integrity sha512-y9LiMd0rj63hFCA6TT18FOHlKaU4MGS/op0RWzUgWqJdqEvCwB0ayWbhREhs3dgFpZ2hgrmaigs1ewBhuyZwyA==
   dependencies:
     "@types/regression" "^2.0.0"
     canvg "^2.0.0"
