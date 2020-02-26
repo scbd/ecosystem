@@ -1,14 +1,24 @@
 <template>
-  <div  style=" width:80vw; border: red solid 1px;">
-    <div id="map"  ref='map'></div>
-    <div id="hidden-map"  ref='hiddenMap'></div>
+<!-- style=" width:99vw; border: red solid 1px;" -->
+  <div  class="row" >
+
+    <div class="col-8" style="border: red solid 1px;">
+      <div id="map"  ref='map'></div>
+      <div id="hidden-map"  ref='hiddenMap'></div>
+    </div>
+    <div class="col-4">
+      <div id="spine-pictoral" ref="spinePictoral"></div>
+    </div>
   </div>
 </template>
 
 <script>
 
-import { MapBuilder     } from './builder'
-import { options } from './config'
+import { MapBuilder } from './builder'
+import { pictoral   } from './pictoral'
+import { options    } from './config'
+
+import '@scbd/www-css/dist/style.css'
 
 export default {
   name    : 'AmMap',
@@ -28,10 +38,12 @@ function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why
 function dispose(map){ if(map && map.dispose) map.dispose() }
 
 function constructMap(){
-  const mapElement = this.$refs.map
+  const mapElement       = this.$refs.map
   const hiddenMapElement = this.$refs.hiddenMap
+  const spinePictoral    = this.$refs.spinePictoral
 
-  this.map = new MapBuilder({ mapElement, hiddenMapElement })
+  this.map      = new MapBuilder({ mapElement, hiddenMapElement })
+  this.pictoral = pictoral(spinePictoral)
 }
 
 function errorCaptured(err, vm){
@@ -55,5 +67,10 @@ function errorCaptured(err, vm){
     visibility:hidden;
     position:absolute;
     top:0px;
+  }
+
+  #spine-pictoral{
+    width: 100%;
+    height: 100%;
   }
 </style>

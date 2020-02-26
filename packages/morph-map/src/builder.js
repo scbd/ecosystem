@@ -7,6 +7,8 @@ import { parties                                                       } from '.
 import   am4themes_animated   from '@amcharts/amcharts4/themes/animated'
 import   geoData              from '@amcharts/amcharts4-geodata/worldLow'
 
+import { getPictoralData } from './pictoral'
+
 const playPath  = "M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM18 14.859c0.313-0.172 0.5-0.5 0.5-0.859s-0.187-0.688-0.5-0.859l-8.5-5c-0.297-0.187-0.688-0.187-1-0.016-0.313 0.187-0.5 0.516-0.5 0.875v10c0 0.359 0.187 0.688 0.5 0.875 0.156 0.078 0.328 0.125 0.5 0.125s0.344-0.047 0.5-0.141z"
 const pausePath = "M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM12 22.5c4.688 0 8.5-3.813 8.5-8.5s-3.813-8.5-8.5-8.5-8.5 3.813-8.5 8.5 3.813 8.5 8.5 8.5zM13.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3zM7.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3z"
 
@@ -27,6 +29,7 @@ export class MapBuilder {
     this.createLabel()
     this.createFlag()
     this.pausePlayButton()
+
     this.start()
   }
 
@@ -94,6 +97,7 @@ export class MapBuilder {
 
     this.animateLabel()
     this.animateFlag()
+    getPictoralData()
   }
 
   start(){
@@ -121,12 +125,16 @@ export class MapBuilder {
     button.valign = 'bottom'
     button.marginRight = 15
     button.events.on('hit', () => {
-      console.log(state)
-      // if(!state.interval) return this.start()
-      // clearInterval(state.interval)
-      // button.icon.path = playPath
-      // state.interval = 0
-      // console.log(state.interval)
+      // console.log(state)
+      //playPath
+      if(!state.interval){
+        button.icon.path = pausePath
+        return this.start()
+      }
+      clearInterval(state.interval)
+      button.icon.path = playPath
+      state.interval = 0
+      console.log(state.interval)
     })
     button.icon = new Sprite()
     button.icon.path = pausePath
