@@ -2,22 +2,20 @@
 
 import { create, useTheme, Label, color, Slider, ease, ColorSet, Image, Button, Sprite  }  from '@amcharts/amcharts4/core'
 import { projections, MapChart, MapPolygonSeries                       }  from '@amcharts/amcharts4/maps'
-import { parties                                                       } from './parties'
+import { parties        } from '@scbd/am4-map-base/src/config/parties'
 
-import   am4themes_animated   from '@amcharts/amcharts4/themes/animated'
+import   am4themes_animated   from '@amcharts/amcharts4/themes/animated'// eslint-disable-line
 import   geoData              from '@amcharts/amcharts4-geodata/worldLow'
 
 import { getPictoralData } from './pictoral'
 
-const playPath  = "M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM18 14.859c0.313-0.172 0.5-0.5 0.5-0.859s-0.187-0.688-0.5-0.859l-8.5-5c-0.297-0.187-0.688-0.187-1-0.016-0.313 0.187-0.5 0.516-0.5 0.875v10c0 0.359 0.187 0.688 0.5 0.875 0.156 0.078 0.328 0.125 0.5 0.125s0.344-0.047 0.5-0.141z"
-const pausePath = "M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM12 22.5c4.688 0 8.5-3.813 8.5-8.5s-3.813-8.5-8.5-8.5-8.5 3.813-8.5 8.5 3.813 8.5 8.5 8.5zM13.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3zM7.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3z"
-
-
+const playPath  = 'M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM18 14.859c0.313-0.172 0.5-0.5 0.5-0.859s-0.187-0.688-0.5-0.859l-8.5-5c-0.297-0.187-0.688-0.187-1-0.016-0.313 0.187-0.5 0.516-0.5 0.875v10c0 0.359 0.187 0.688 0.5 0.875 0.156 0.078 0.328 0.125 0.5 0.125s0.344-0.047 0.5-0.141z'
+const pausePath = 'M12 2c6.625 0 12 5.375 12 12s-5.375 12-12 12-12-5.375-12-12 5.375-12 12-12zM12 22.5c4.688 0 8.5-3.813 8.5-8.5s-3.813-8.5-8.5-8.5-8.5 3.813-8.5 8.5 3.813 8.5 8.5 8.5zM13.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3zM7.5 19c-0.281 0-0.5-0.219-0.5-0.5v-9c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v9c0 0.281-0.219 0.5-0.5 0.5h-3z'
 
 useTheme(am4themes_animated)
 parties.sort(() => .5 - Math.random())
 
-export class MapBuilder {
+export class MapBuilder{
   constructor(elements){
     this.createMaps(elements) // this.map && this.hiddenMap
     this.map.events.on('ready', () => this.init())
@@ -29,7 +27,6 @@ export class MapBuilder {
     this.createLabel()
     this.createFlag()
     this.pausePlayButton()
-
     this.start()
   }
 
@@ -45,9 +42,9 @@ export class MapBuilder {
 
       this.hiddenMapSeries            = this.hiddenMap.series.push(new MapPolygonSeries())
       this.hiddenMapSeries.useGeodata = true
-      this.hiddenMapSeries.include    = [parties[0]]
+      this.hiddenMapSeries.include    = [ parties[0] ]
     }
-    catch (e) {
+    catch (e){
       this.hiddenMap.raiseCriticalError(new Error('Map geodata could not be loaded. Please download the latest <a href="https://www.amcharts.com/download/download-v4/">amcharts geodata</a> and extract its contents into the same directory as your amCharts files.'));
     }
   }
@@ -59,26 +56,26 @@ export class MapBuilder {
 
       this.mapSeries            = this.map.series.push(new MapPolygonSeries())
       this.mapSeries.useGeodata = true
-      this.mapSeries.include    = [parties[0]]
+      this.mapSeries.include    = [ parties[0] ]
     }
-    catch (e) {
+    catch (e){
       this.map.raiseCriticalError(new Error('Map geodata could not be loaded. Please download the latest <a href="https://www.amcharts.com/download/download-v4/">amcharts geodata</a> and extract its contents into the same directory as your amCharts files.'));
     }
   }
 
   changeCountry(){
-      const { length }        = parties
-      const { slider, state } = this
+    const { length }        = parties
+    const { slider, state } = this
 
-      state.countryIndex = Math.round((length - 1) * slider.start)
+    state.countryIndex = Math.round((length - 1) * slider.start)
 
-      if (state.index == state.countryIndex) return
+    if (state.index == state.countryIndex) return
 
-      this.hiddenMapSeries.data    = []
-      this.hiddenMapSeries.include = [parties[state.countryIndex]]
-      state.index                  = state.countryIndex
+    this.hiddenMapSeries.data    = []
+    this.hiddenMapSeries.include = [ parties[state.countryIndex] ]
+    state.index                  = state.countryIndex
 
-      this.hiddenMapSeries.events.once('validated', () => this.onHiddenMapSeriesValidated())
+    this.hiddenMapSeries.events.once('validated', () => this.onHiddenMapSeriesValidated())
   }
 
   onHiddenMapSeriesValidated(){
@@ -104,29 +101,26 @@ export class MapBuilder {
     const { state, slider } = this
 
     state.interval = setInterval(() => {
-    //  this.button.icon.path = pausePath
       let next = slider.start + 1 / parties.length
 
       if (next >= 1) next =0
       this.button.toFront()
       slider.animate({ property: 'start', to: next }, 500);
-    }, 4000)
+    }, 5000)
 
-    slider.events.on('rangechanged',() => this.changeCountry())
+    slider.events.on('rangechanged', () => this.changeCountry())
   }
 
 
-  pausePlayButton() {
+  pausePlayButton(){
     const { state } = this
     const button = this.map.chartContainer.createChild(Button)
   
     button.padding(5, 5, 5, 5)
     button.align = 'right'
     button.valign = 'bottom'
-    button.marginRight = 15
+    button.marginRight = -50
     button.events.on('hit', () => {
-      // console.log(state)
-      //playPath
       if(!state.interval){
         button.icon.path = pausePath
         return this.start()
@@ -134,7 +128,6 @@ export class MapBuilder {
       clearInterval(state.interval)
       button.icon.path = playPath
       state.interval = 0
-      console.log(state.interval)
     })
     button.icon = new Sprite()
     button.icon.path = pausePath
@@ -166,7 +159,7 @@ export class MapBuilder {
 
     this.changeFlag(code.toLowerCase())
 
-    this.flag.animate({ property: 'y', to: 125, }, 300, ease.quadOut)
+    this.flag.animate({ property: 'y', to: 10 }, 300, ease.quadOut)
   }
 
   labelAnimationEnded(){
@@ -176,17 +169,17 @@ export class MapBuilder {
     this.label.text = name
     this.label.y    = -50
 
-    this.label.animate({ property: 'y', to: 250 }, 300, ease.quadOut)
+    this.label.animate({ property: 'y', to: 110 }, 300, ease.quadOut)
   }
 
   createLabel(){
     const label       = this.map.chartContainer.createChild(Label)
 
-    label.x           = 100
-    label.y           = 100
+    label.x           = 20
     label.fill        = color('#000000')
     label.fontSize    = 45
     label.fontWeight  = 'bold'
+
 
     const countryPolygon = this.mapSeries.getPolygonById(parties[0])
     const { name }       = countryPolygon.dataItem.dataContext
@@ -203,10 +196,10 @@ export class MapBuilder {
 
     flag.href       = `https://cdn.cbd.int/svg-country-flags@1.2.7/svg/${code}.svg`
     flag.maxHeight  = 150
-    flag.width  = 125
-    flag.height = 125
+    flag.width  = 100
+    flag.height = 100
     flag.nonScaling = true
-    flag.x          = 100
+    flag.x          = 20
     this.flag       = flag
   }
 
@@ -218,15 +211,12 @@ export class MapBuilder {
   createSlider(){
     const slider = this.map.createChild(Slider)
 
-    slider.padding(0, 70, 0, 70)
-    slider.background.padding(0, 70, 0, 70)
-    slider.marginLeft = -15
-    slider.marginBottom = 10
+    slider.padding(0, 0, 0, 70)
+    slider.background.padding(0, 0, 0, 70)
     slider.valign       = 'bottom'
-    slider.percentWidth = 80
+    slider.percentWidth = 100
     this.slider         = slider
   }
-
 }
 
 function configMap(map){

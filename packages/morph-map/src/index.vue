@@ -1,28 +1,25 @@
 <template>
-<!-- style=" width:99vw; border: red solid 1px;" -->
   <div  class="row" >
-
-    <div class="col-8" style="border: red solid 1px;">
+    <div class="col-md-8" >
       <div id="map"  ref='map'></div>
       <div id="hidden-map"  ref='hiddenMap'></div>
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
       <div id="spine-pictoral" ref="spinePictoral"></div>
     </div>
   </div>
 </template>
 
 <script>
-
-import { MapBuilder } from './builder'
-import { pictoral   } from './pictoral'
-import { options    } from './config'
+import { DefaultOptions } from '@scbd/am4-map-base/src/default-options'
+import { MapBuilder     } from './morph-map'
+import { pictoral       } from './pictoral'
 
 import '@scbd/www-css/dist/style.css'
 
 export default {
   name    : 'AmMap',
-  props   : { options: { type: Object, required: false} },
+  props   : { options: { type: Object, required: false } },
   methods : { constructMap },
   computed: { opts },
   mounted,
@@ -32,7 +29,7 @@ export default {
 }
 
 function data (){ return { map: {} } }
-function opts(){ return Object.assign(options, this.options) }
+function opts(){ return Object.assign(DefaultOptions.get(), this.options) }
 function beforeDestroy(){ dispose(this.map) }
 function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why but map does not mount without a bit of a time out }
 function dispose(map){ if(map && map.dispose) map.dispose() }

@@ -1,20 +1,28 @@
 {
   "name": "morph-map",
   "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/MapNav.common.js",
+  "unpkg": "dist/MapNav.umd.min.js",
+  "browser": {
+    "./sfc": "src/index.vue"
+  },
+  "files": [
+    "src/*"
+  ],
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --fix ",
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
     "@scbd/am4-map-base": "^0.0.4",
-    "@scbd/www-css": "^0.0.18",
     "core-js": "^3.6.4",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@scbd/www-css": "^0.0.18",
     "@vue/cli-plugin-babel": "^4.2.0",
     "@vue/cli-plugin-e2e-cypress": "^4.2.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
