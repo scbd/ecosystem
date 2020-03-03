@@ -15,8 +15,6 @@ import { DefaultOptions } from '@scbd/am4-map-base/src/default-options'
 import { MapBuilder     } from './morph-map'
 import { pictoral       } from './pictoral'
 
-import '@scbd/www-css/dist/style.css'
-
 export default {
   name    : 'AmMap',
   props   : { options: { type: Object, required: false } },

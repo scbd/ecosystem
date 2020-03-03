@@ -1,9 +1,9 @@
 {
-  "name": "morph-map",
+  "name": "@scbd/morph-map",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "dist/MapNav.common.js",
-  "unpkg": "dist/MapNav.umd.min.js",
+  "main": "src/index.vue",
+  "unpkg": "src/index.vue",
   "browser": {
     "./sfc": "src/index.vue"
   },
