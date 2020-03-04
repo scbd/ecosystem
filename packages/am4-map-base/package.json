@@ -1,13 +1,11 @@
 {
   "name": "@scbd/am4-map-base",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
   "license": "MIT",
   "main": "src/index.js",
   "unpkg": "src/index.js",
-  "files": [
-    "src/*"
-  ],
+  "files": [ "src/*" ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
