@@ -1,5 +1,5 @@
-import   DOptions                 from '@scbd/default-options'
-import { name                   } from '../../package'
+import   DOptions   from '@scbd/default-options'
+import { name     } from '../../package'
 
 const validationMap = {
   dapi  : String,
