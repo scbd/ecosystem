@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <PageSideBar :site-navigation-element="menus" :options="{isNuxt: false}"/>
+    <PageSideBar :site-navigation-element="menus" :options="{ base:'/portals/capacity-building', isNuxt: false, menuIdentifier:'portals', canEdit:true }"/>
   </div>
 </template>
 
@@ -20,7 +20,6 @@ function data(){ return { menus: {} }}
 
 async function mounted(){
   this.menus = await getSneFromApi()
-  console.log(this.menus)
 }
 
 function getSneFromApi ( postFix='some-post-fix'){

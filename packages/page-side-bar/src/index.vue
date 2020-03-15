@@ -6,16 +6,17 @@
       <div class="content" >
         <nav :id="getHash(siteNavigationElement.url)" class="sidebar-menu navbar-collapse" role="navigation">
 
-          <p>{{ siteNavigationElement.name }}
-          <svg class="stylish" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28">
-            <title>pencil</title>
-            <path d="M5.672 24l1.422-1.422-3.672-3.672-1.422 1.422v1.672h2v2h1.672zM13.844 9.5c0-0.203-0.141-0.344-0.344-0.344-0.094 0-0.187 0.031-0.266 0.109l-8.469 8.469c-0.078 0.078-0.109 0.172-0.109 0.266 0 0.203 0.141 0.344 0.344 0.344 0.094 0 0.187-0.031 0.266-0.109l8.469-8.469c0.078-0.078 0.109-0.172 0.109-0.266zM13 6.5l6.5 6.5-13 13h-6.5v-6.5zM23.672 8c0 0.531-0.219 1.047-0.578 1.406l-2.594 2.594-6.5-6.5 2.594-2.578c0.359-0.375 0.875-0.594 1.406-0.594s1.047 0.219 1.422 0.594l3.672 3.656c0.359 0.375 0.578 0.891 0.578 1.422z"></path>
-          </svg>
-          </p>
+          <p style="display:inline-block;margin-right:5px;">{{ siteNavigationElement.name }}  </p>
+          <form  v-if="menuIdentifier && canEdit" :action="`https://www.cbd.int/admin/structure/menu/manage/${menuIdentifier}`" method="get" target="_blank" style="display:inline-block;">
+            <button ></button>
+          </form>
           <ul class="list-unstyled">
-            <li  :class="{ selected: isSelected(aMenu.url) }" v-for="(aMenu,index) in siteNavigationElement.hasPart" :key="index"  class="level-0 no-levels" >
-              <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(base)">{{aMenu.name}}</nuxt-link>
-              <a  v-if="!opts.isNuxt" :href="aMenu.url | filterBase(base)">{{aMenu.name}}</a>
+            <li  :class="{ selected: isSelected(aMenu.url), active: isActive(aMenu) }" v-for="(aMenu,index) in siteNavigationElement.hasPart" :key="index"  class="level-0" >
+              <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(opts)">{{aMenu.name}}</nuxt-link>
+              <a  v-if="!opts.isNuxt" :href="aMenu.url | filterBase(opts)">{{aMenu.name}}</a>
+              <ul  v-if="isActive(aMenu)" class="sub-menu-items list-unstyled level-1 collapse show active " >
+                <li :class="{ selected: isSelected(aSubMenu.url)}" class="level-1" v-for="(aSubMenu,i) in aMenu.hasPart" :key="i" ><a :href="aSubMenu.url | filterBase(opts)">{{aSubMenu.name}}</a></li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -34,15 +35,30 @@ export default {
     siteNavigationElement: { type: Object },
     options              : { type: Object }
   },
-  methods : { isSelected, getHash, getRoutePath },
-  computed: { opts, base },
+  methods : { isSelected, getHash, getRoutePath, isActive },
+  computed: { opts, base, menuIdentifier, canEdit },
   filters : { filterBase }
 }
 
 function isSelected(urlString){
+  if(!urlString) return false
   const { pathname } = (new URL(urlString))
 
+// console.log('selected',selected)
+// console.log('active',selected)
+console.log('base', pathname )
+
   return pathname === this.getRoutePath()
+}
+
+function isActive(aMenu){
+  const isBase = this.getRoutePath() === this.base
+  const { pathname } = aMenu.url? (new URL((aMenu.url))) : {}
+  const active   = aMenu.hasPart && aMenu.hasPart.length
+  const selected = isBase? false : this.getRoutePath().includes(pathname)
+
+
+  return active && selected
 }
 
 function getRoutePath(){
@@ -55,36 +71,48 @@ function trimTrailingSlash(urlString){
   return urlString
 }
 
-function filterBase(urlString, base){ 
+function filterBase(urlString, { base, isNuxt}){
   if(!urlString) return '/'
 
-  return (new URL(urlString)).pathname.replace(base, '') || '/'
+  const { pathname } =  new URL(urlString)
+
+  return isNuxt? (new URL(urlString)).pathname.replace(base, '') || '/' : pathname
 }
 
 function opts(){ return defaultOpts.get(this.options) }
 
 function base(){ return this.opts.base }
-
-function getHash(urlWithHash){ 
+function menuIdentifier(){ return this.opts.menuIdentifier }
+function canEdit(){ return this.opts.canEdit }
+function getHash(urlWithHash){
   if(!urlWithHash) return ''
   return (new URL(urlWithHash)).hash.replace('#', '')
 }
 </script>
 
 <style scoped>
-.stylish{
+form {display:inline-block}
+button{
   display:inline-block;
   width:26px;
   height:26px;
   border-radius:26px;
-  border:4px double #ccc;
-  color:#666;
-  line-height:35px;
-  text-align:center;
+margin: 0;
+  color:#fff;
+
+border: 1px solid #ccc;
   text-decoration:none;
-  text-shadow:0 1px 0 #fff;
-  background:#ddd}
-.stylish:hover{border:4px double #bbb;color:#aaa;text-decoration:none;background:#e6e6e6}
+
+  background:#fff;
+    background-image: url(https://www.cbd.int/core/misc/icons/bebebe/pencil.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+    cursor: pointer;
+  }
+button:hover{
+  background-image: url(https://www.cbd.int/core/misc/icons/787878/pencil.svg);
+}
 #WPSideBar{
   min-height: 100vh;
   -webkit-flex-basis: 24%;

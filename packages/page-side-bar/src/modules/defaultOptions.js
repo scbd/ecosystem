@@ -4,13 +4,16 @@ import { name     } from '../../package'
 const validationMap = {
   dapi  : String,
   isNuxt: Boolean,
-  base  : String
+  base  : String,
+  menuIdentifier: String,
+  canEdit: Boolean
 }
 
 const dev = {
-  dapi  : 'https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg',
-  isNuxt: true,
-  base  : '/'
+  dapi    : 'https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg',
+  isNuxt  : true,
+  base    : '/',
+  canEdit : false
 }
 
 const stg = { ...dev }
