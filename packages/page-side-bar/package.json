@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-side-bar",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "private": false,
   "license": "MIT",
   "main": "dist/PageSideBar.umd.min.js",
@@ -18,7 +18,6 @@
     "serve": "vue-cli-service serve",
     "build": "sh scripts/build.sh",
     "lint": "vue-cli-service lint --fix",
-    "-test:e2e": "vue-cli-service test:e2e",
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
@@ -40,8 +39,6 @@
     "ky-universal": "^0.5.0",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.10",
-    "ky": "^0.16.1",
-    "ky-universal": "^0.3.0",
     "whatwg-fetch": "^3.0.0"
   },
   "@ecosystem": {

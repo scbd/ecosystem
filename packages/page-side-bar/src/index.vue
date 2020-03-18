@@ -44,10 +44,6 @@ function isSelected(urlString){
   if(!urlString) return false
   const { pathname } = (new URL(urlString))
 
-// console.log('selected',selected)
-// console.log('active',selected)
-console.log('base', pathname )
-
   return pathname === this.getRoutePath()
 }
 
@@ -71,7 +67,7 @@ function trimTrailingSlash(urlString){
   return urlString
 }
 
-function filterBase(urlString, { base, isNuxt}){
+function filterBase(urlString, { base, isNuxt }){
   if(!urlString) return '/'
 
   const { pathname } =  new URL(urlString)
