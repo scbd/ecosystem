@@ -29,8 +29,8 @@
     "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
     "check-ie": "^2.0.0",
-    "ky": "^0.16.2",
-    "ky-universal": "^0.3.0",
+    "ky": "^0.19.0",
+    "ky-universal": "^0.5.0",
     "tiny-debounce": "^0.1.1",
     "vue-i18n": "^8.0.0",
     "whatwg-fetch": "^3.0.0"

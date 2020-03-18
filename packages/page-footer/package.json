@@ -26,8 +26,8 @@
     "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
     "check-ie": "^2.0.0",
-    "ky": "^0.16.2",
-    "ky-universal": "^0.3.0",
+    "ky": "^0.19.0",
+    "ky-universal": "^0.5.0",
     "vue-i18n": "^8.0.0",
     "whatwg-fetch": "^3.0.0"
   },
@@ -39,7 +39,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.1.2",
-    "vue-cli-plugin-s3-deploy": "^3.0.0",
+    "vue-cli-plugin-s3-deploy": "^4.0.0-rc3",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHead": "534f983ca739cdaaf1a29e473d6ba99c90a585d0"

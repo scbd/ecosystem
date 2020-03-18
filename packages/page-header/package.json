@@ -25,8 +25,8 @@
     "@scbd/default-options": "^0.0.54",
     "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
-    "ky": "^0.16.1",
-    "ky-universal": "^0.3.0",
+    "ky": "^0.19.0",
+    "ky-universal": "^0.5.0",
     "vue": "^2.6.11",
     "vue-i18n": "^8.0.0",
     "whatwg-fetch": "^3.0.0"
@@ -44,7 +44,7 @@
     "glob-all": "^3.1.0",
     "purgecss-webpack-plugin": "^2.0.5",
     "vue-cli-plugin-i18n": "^0.6.0",
-    "vue-cli-plugin-s3-deploy": "^3.0.0",
+    "vue-cli-plugin-s3-deploy": "^4.0.0-rc3",
     "vue-template-compiler": "^2.6.10"
   },
   "@ecosystem": {

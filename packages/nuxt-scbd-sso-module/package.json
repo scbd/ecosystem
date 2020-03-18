@@ -18,7 +18,7 @@
     "yarn-outdated": "yarn outdated"
   },
   "dependencies": {
-    "@scbd/sso-vue-plugin-scbd": "^0.0.13",
+    "@scbd/sso-vue-plugin-scbd": "^0.0.15"
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
   },
@@ -30,6 +30,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.1.2",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }
 }

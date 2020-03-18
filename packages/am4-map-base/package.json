@@ -5,17 +5,19 @@
   "license": "MIT",
   "main": "src/index.js",
   "unpkg": "src/index.js",
-  "files": [ "src/*" ],
+  "files": [
+    "src/*"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@amcharts/amcharts4": "^4.7.12",
+    "@amcharts/amcharts4": "^4.9.9",
     "@amcharts/amcharts4-geodata": "^4.1.9",
     "@scbd/default-options": "0.0.54",
-    "@scbd/self-embedding-component": "0.0.7",
+    "@scbd/self-embedding-component": "0.0.9",
     "bootstrap": "^4.4.1",
     "change-case": "^4.1.0",
     "core-js": "^3.4.3",
@@ -27,8 +29,8 @@
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.10"
   }
 }
