@@ -1,6 +1,6 @@
 {
   "name": "@scbd/nuxt-scbd-sso-module",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "license": "MIT",
   "main": "src/index.js",
   "unpkg": "src/index.js",
@@ -19,8 +19,6 @@
   },
   "dependencies": {
     "@scbd/sso-vue-plugin-scbd": "^0.0.15"
-    "core-js": "^3.4.4",
-    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

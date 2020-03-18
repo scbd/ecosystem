@@ -6,11 +6,11 @@ module.exports = function (moduleOptions){
   const forceEnv  = modOpts.env || modOpts.ENV || process.env.NODE_ENV || 'prod'
   const opts      = Object.assign(defaultOptions(forceEnv), modOpts, { middlewareNameSpace: 'auth' })
 
-  opts.middlewareNameSpacePath = `./${opts.middlewareNameSpace}`
+  opts.middlewareNameSpacePath = `${opts.middlewareNameSpace}.js`
 
   this.addTemplate({
-    src     : resolve(__dirname, './auth-middleware.template.js'),
-    fileName: 'auth.js',
+    src     : resolve(__dirname, `./${opts.middlewareNameSpace}-middleware.template.js`),
+    fileName: `${opts.middlewareNameSpace}.js`,
     options : opts
   })
 
@@ -23,7 +23,7 @@ module.exports = function (moduleOptions){
 
 function moveHttpPlugin(plugins){
   const i = plugins.findIndex((p) => {
-    if(!p)return false
+    if(!p) return false
     if(p.src && p.src.includes('.nuxt/http.js')) return true
     if(p.src) return false
     if(p.includes('.nuxt/http.js')) return true
