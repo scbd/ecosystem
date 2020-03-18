@@ -9,9 +9,8 @@ import AuthVuex       from './auth-vuex'
 export default { install }
 
 function install (Vue, options = {}){ // eslint-disable-line
-
   const { env, ENV }   = options
-  const opts  = { ...defaultOptions(Vue, env || ENV), ...options }
+  const opts           = { ...defaultOptions(env || ENV), ...options }
 
   const store   = initMeStore(Vue, opts)
   const auth    = initAuth(Vue, opts)
