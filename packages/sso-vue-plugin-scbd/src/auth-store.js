@@ -49,13 +49,11 @@ export default class {
 
     const event = new Event('$me', { bubbles: true })
 
-  
     event.$me   = meStore
     event.$auth = store
     elm.dispatchEvent(event)
     this.onRequestMeEvent(elm)
   }
-
 
   onRequestMeEvent(element){
     if(!elm) elm = element
@@ -67,7 +65,6 @@ export default class {
 function loadingInterval(resolve, reject){
   const timeout = setTimeout(() => {
     clearInterval(timer)
-    // if(store.me.userID) resolve(store.token)
     reject('Error loading SCBD SSO auth vue plugin')
   }, 5000)
 
@@ -80,4 +77,4 @@ function loadingInterval(resolve, reject){
   }, 100)
 }
 
-function isAccountsOrigin(event){ return event.origin===options.accountsUrl }
+function isAccountsOrigin(event){ return event.origin === options.accountsUrl }

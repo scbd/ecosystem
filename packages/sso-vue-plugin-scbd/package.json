@@ -1,24 +1,20 @@
 {
   "name": "@scbd/sso-vue-plugin-scbd",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "license": "MIT",
   "main": "dist/sso-vue-plugin-scbd.umd.min.js",
   "unpkg": "dist/sso-vue-plugin-scbd.umd.min.js",
   "private": false,
   "browser": {
-    "./sfc": "src/plugin.js"
+    "./sfc": "src/index.js"
   },
   "files": [
     "dist/*",
     "src/*"
   ],
   "scripts": {
-    "serve": "vue-cli-service --mode production serve --open ",
-    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib  src/plugin.js",
-    "deploy:dev": "vue-cli-service --mode dev s3-deploy ",
-    "deploy": "vue-cli-service s3-deploy --mode production",
-    "test:e2e": "vue-cli-service --mode stg test:e2e",
-    "test:e2e:headless-": "vue-cli-service --mode stg test:e2e --headless --url http://localhost:8883",
+    "serve": "NODE_ENV=dev vue-cli-service serve --open ",
+    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib  src/build.js",
     "lint": "vue-cli-service lint --fix",
     "release": "yarn publish --access=public --tag latest",
     "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
@@ -26,12 +22,11 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.0.54",
-    "@scbd/self-embedding-component": "^0.0.9",
-    "ky": "^0.16.1",
-    "ky-universal": "^0.3.0",
-    "vue": "^2.6.11"
+    "ky": "^0.19.0",
+    "ky-universal": "^0.5.0"
   },
   "devDependencies": {
+    "@scbd/self-embedding-component": "^0.0.9",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-e2e-cypress": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
@@ -41,7 +36,9 @@
     "core-js": "^3.3.2",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.1.2",
-    "vue-cli-plugin-s3-deploy": "^3.0.0",
+    "rollup": "^2.0.6",
+    "vue": "^2.6.11",
+    "vue-cli-plugin-s3-deploy": "^4.0.0-rc3",
     "vue-template-compiler": "^2.6.10",
     "vuex": "^3.1.2"
   },

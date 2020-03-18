@@ -2,6 +2,7 @@
   <div id="app" style="text-align: center;">
 
     <div v-if="me" class="shadow-lg p-3 mb-5 bg-white rounded">
+      <h1>ENV: {{NODE_ENV}}</h1>
       <h1>Hello <strong>{{$me.name}}</strong>.  The global $me event caught.</h1>
       <h5>$accountsUrl: {{$auth.accountsUrl}}</h5>
     </div>
@@ -34,15 +35,18 @@
       </tr>
     </table>
 
-
+  <!-- <iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none"></iframe>
+  <iframe src="https://www.cbd.int" style="display:none"></iframe> -->
   </div>
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.min.css'
+const NODE_ENV = process.env.NODE_ENV
+
 export default {
   name   : 'app',
   methods: { loadMe },
+  computed: { NODE_ENV: () => NODE_ENV},
   mounted,
   data
 }
