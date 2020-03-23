@@ -19,9 +19,9 @@ Middleware[options.middlewareNameSpace] = function (ctx){
 }
 
 function authenticate({ redirect, route }){
-  const { path } =  route
+  const { fullPath } =  route
   
   if(options.login)
-    return redirect(200, options.login+`?returnUrl=${encodeURIComponent(path)}`)
+    return redirect(200, options.login+`?returnUrl=${encodeURIComponent(fullPath)}`)
 }
 
