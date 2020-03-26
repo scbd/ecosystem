@@ -1,6 +1,6 @@
 {
   "name": "@scbd/am4-map-base",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "license": "MIT",
   "main": "src/index.js",
@@ -11,6 +11,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
+    "build": "node scripts/build-static",
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {

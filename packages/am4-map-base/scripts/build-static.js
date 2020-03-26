@@ -13,7 +13,7 @@ const writePath = path.resolve(__dirname, '../src/config/');
 })()
 
 function stringifyToJsModule(data){
-  return `export const parties = ${JSON.stringify(data)}`
+  return `export const parties = ${JSON.stringify(data)}  //eslint-disable-line \n //${new Date()}`
 }
 
 function getMain(){

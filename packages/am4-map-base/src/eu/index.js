@@ -3,17 +3,7 @@ import { euCountries, name, euToolTipTemplate   } from './config'
 import { addCountryLabel, deleteCountryLabel } from '../countries/labels'
 
 const isEuByPoliticalMapping = politicalMapKeys.filter((k) => euCountries.includes(hasPoliticalMappings(k)))
-const euFourPoints           = { north: '', south: '', east: '', west: '' }
 const eu = {}
-
-const setEuFourPoints = (country) => {
-  const { north, south, east, west } = country
-
-  if(!euFourPoints.north || north > euFourPoints.north) euFourPoints.north = north
-  if(!euFourPoints.south || south < euFourPoints.south) euFourPoints.south = south
-  if(!euFourPoints.west  || west  < euFourPoints.west) euFourPoints.west   = west
-  if(!euFourPoints.east  || east  > euFourPoints.east) euFourPoints.east   = east
-}
 
 export const isEu = (code) => euCountries.concat(isEuByPoliticalMapping).includes(code)
 
@@ -67,11 +57,10 @@ export const zoomToEu = (mapBuilder) => {
   if(animation)
     animation.kill()
 
+    
   // Find extreme coordinates for all pre-zoom countries
   for (const code of euCountries){
     const country = euSeries.getPolygonById(code)
-
-    setEuFourPoints(country)
 
     if(code!=='CZ') continue
 
@@ -82,9 +71,7 @@ export const zoomToEu = (mapBuilder) => {
   showEuLabel(mapBuilder)
   setEuActive(mapBuilder)
 
-  const { north, south, east, west } = euFourPoints
-
-  map.zoomToRectangle(north, south, east, west, 0.7, true)
+  map.goHome(2500)
 }
 
 // create Eu's home on the map
@@ -100,18 +87,6 @@ export const mapHomePositionToEu = (mapBuilder) => {// eslint-disable-line
 
 // TTAS = tool tip action string
 const toolTipActionString  = code => ` onclick="window.TTAS('${code}')" href="#" `
-
-// export const euHoverToolTip =  ({ countryToolTipAction,  euActionToolTipAction }) => ({ options })  => (ev) => {
-//   const   code                   = ev.target.dataItem.dataContext.id
-//   const { locale, euIdentifier } = options
-
-//   const countryToolTip  = countryToolTipAction? countryToolTipAction(code) : toolTipActionString(code)
-//   const euActionToolTip = euActionToolTipAction? euActionToolTipAction(euIdentifier) : toolTipActionString(euIdentifier)
-
-//   if(!isEu(code)) return ev.target.tooltipHTML = '<span>{name}</span>'
-
-//   ev.target.tooltipHTML = euToolTipTemplate({ countryToolTip, euActionToolTip, locale })
-// }
 
 export const configEuButton = (mapBuilder, clickCallBack) => {
   const   button   = mapBuilder.euButtonSeries.mapImages.create()
