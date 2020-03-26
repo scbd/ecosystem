@@ -1,8 +1,8 @@
-import { createFromConfig                                   } from '@amcharts/amcharts4/core'
-import { MapChart                                           } from '@amcharts/amcharts4/maps'
-import { initEu                                             } from './eu'
-import { configureMapSeries                 } from './countries'
-import { initControls } from './controls'
+import { createFromConfig   } from '@amcharts/amcharts4/core'
+import { MapChart           } from '@amcharts/amcharts4/maps'
+import { initEu             } from './eu'
+import { configureMapSeries } from './countries'
+import { initControls       } from './controls'
 
 
 export class MapBuilderBase{
@@ -10,7 +10,6 @@ export class MapBuilderBase{
     this.init(element, options)
 
     configureMapSeries(this)
-
 
     this.mapSeries.toFront()
 

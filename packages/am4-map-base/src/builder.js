@@ -1,4 +1,4 @@
-import { MapBuilderBase } from './builder-base'
+import { MapBuilderBase } from './index'
 import { initAnimation, setAnimationEventsOnSeriesContainer } from './controls'
 
 import { zoomToCountryEventHandler, pushHitEventFn, setCountryEvents } from './countries'
