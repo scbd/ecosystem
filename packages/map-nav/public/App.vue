@@ -11,11 +11,38 @@ import   Map              from '../src/index.vue'
 export default {
   name      : 'app',
   components: { Map },
-  computed  : { options }
+  computed  : { options, optionsTest }
 }
 
 function options(){
-  return {  }
+  return {}
+}
+
+function optionsTest(){
+  const { $isServer } = this
+  const countryToolTipAction = $isServer? '' : ' href="#" onclick="window.countryToolTipAction(event)" '
+  const euActionToolTipAction = $isServer? '' : ' href="#" onclick="window.euActionToolTipAction(event)" '
+
+  if(!$isServer) registerWindowFunctions()
+
+  return {
+    params          : { country: 'ca' },
+    countryParamName: 'country',
+    callBack        : (code) => console.log('callback ---- ', code),
+    countryToolTipAction,
+    euActionToolTipAction
+  }
+}
+
+function registerWindowFunctions(){
+  window.euActionToolTipAction = euActionToolTipAction
+  window.countryToolTipAction = countryToolTipAction
+}
+function countryToolTipAction(event){
+  console.log('========Window.countryToolTipAction called', event)
+}
+function euActionToolTipAction(){
+  console.log('========Window.euActionToolTipAction called', event)
 }
 </script>
 

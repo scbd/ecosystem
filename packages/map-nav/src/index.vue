@@ -21,7 +21,7 @@ export default {
 }
 
 function data (){ return { map: {} } }
-function opts(){ return DefaultOptions.get(this.options || {}) }
+function opts(){ return { ...DefaultOptions.get(), ...this.options } }
 function beforeDestroy(){ dispose(this.map) }
 function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why but map does not mount without a bit of a time out }
 function dispose(map){ if(map && map.dispose) map.dispose() }
