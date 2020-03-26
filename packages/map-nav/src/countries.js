@@ -3,7 +3,8 @@ import slug from 'limax'
 
 export const getCountry = (codeOrName) => getCountryByCode(codeOrName) || getCountryByName(codeOrName)
 
-export const getCountryByCode = (countryCode) => countryData.find(({ code }) => code === countryCode.toUpperCase())
+export const getCountryByCode = (countryCode) => countryData.find(({ code }) => code === countryCode? countryCode.toUpperCase() : '')
+
 
 export const getCountryByName = (countryName) => countryData.find(matchName, { countryName })
 
@@ -11,6 +12,8 @@ export const isCountry = (codeOrName) => Boolean(getCountryByCode(codeOrName)) |
 
 function matchName({ name }){
   const { countryName } = this
+
+  if(!countryName) return false
 
   for (const langCode in name)
     if(slug(name[langCode]) === slug(countryName))

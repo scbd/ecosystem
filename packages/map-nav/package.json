@@ -1,6 +1,6 @@
 {
   "name": "@scbd/map-nav",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "private": false,
   "license": "MIT",
   "main": "dist/MapNav.umd.min.js",

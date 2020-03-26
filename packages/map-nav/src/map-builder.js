@@ -55,7 +55,7 @@ export const getCountryFromQuery = (mapBuilder) => {
   const urlParams   = new URLSearchParams(location.search)
   const searchValue = urlParams.get(search)
 
-  return searchValue? searchValue.toUpperCase() : ''
+  return searchValue? searchValue.toUpperCase() : undefined
 }
 
 export const getCountryCodeFromParams = (mapBuilder) => {
@@ -65,8 +65,6 @@ export const getCountryCodeFromParams = (mapBuilder) => {
   
   const countryString                 = params[countryParamName]
   const { code }                      = getCountry(countryString) || {}
-
-  if(!code) throw new Error(`NavMap.MapBuilder.getCountryFromParams: ${countryString} is not a country`)
 
   return code
 }

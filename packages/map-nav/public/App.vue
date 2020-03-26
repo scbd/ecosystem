@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Map :options="options"/>
+    <Map :options="optionsTest"/>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ function optionsTest(){
   if(!$isServer) registerWindowFunctions()
 
   return {
-    params          : { country: 'ca' },
+    params          : { },
     countryParamName: 'country',
     callBack        : (code) => console.log('callback ---- ', code),
     countryToolTipAction,
