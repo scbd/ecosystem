@@ -15,7 +15,7 @@ export default {
 }
 
 function options(){
-  return {}
+  return { devMode: true }
 }
 
 function optionsTest(){
