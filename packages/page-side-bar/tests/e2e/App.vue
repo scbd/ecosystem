@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <PageSideBar :site-navigation-element="menus" :options="{ base:'/portals/capacity-building', isNuxt: false, menuIdentifier:'portals', canEdit:true }"/>
+    <PageSideBar :site-navigation-element="menus" :options="{ base:'/portals/capacity-building', isNuxt: false, menuIdentifier:'portals', canEdit }"/>
   </div>
 </template>
 
@@ -16,10 +16,14 @@ export default {
 
 }
 
-function data(){ return { menus: {} }}
+function data(){ return { menus: {}, canEdit: false }}
 
 async function mounted(){
   this.menus = await getSneFromApi()
+
+  setTimeout(() => this.canEdit = true, 2000)
+  setTimeout(() => this.canEdit = false, 4000)
+  setTimeout(() => this.canEdit = true, 6000)
 }
 
 function getSneFromApi ( postFix='some-post-fix'){

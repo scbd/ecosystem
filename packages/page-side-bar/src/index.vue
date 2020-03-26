@@ -7,7 +7,7 @@
         <nav :id="getHash(siteNavigationElement.url)" class="sidebar-menu navbar-collapse" role="navigation">
 
           <p style="display:inline-block;margin-right:5px;">{{ siteNavigationElement.name }}  </p>
-          <form  v-if="menuIdentifier && canEdit" :action="`https://www.cbd.int/admin/structure/menu/manage/${menuIdentifier}`" method="get" target="_blank" style="display:inline-block;">
+          <form  v-if="menuIdentifier && options.canEdit" :action="`https://www.cbd.int/admin/structure/menu/manage/${menuIdentifier}`" method="get" target="_blank" style="display:inline-block;">
             <button ></button>
           </form>
           <ul class="list-unstyled">
@@ -15,7 +15,10 @@
               <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(opts)">{{aMenu.name}}</nuxt-link>
               <a  v-if="!opts.isNuxt" :href="aMenu.url | filterBase(opts)">{{aMenu.name}}</a>
               <ul  v-if="isActive(aMenu)" class="sub-menu-items list-unstyled level-1 collapse show active " >
-                <li :class="{ selected: isSelected(aSubMenu.url)}" class="level-1" v-for="(aSubMenu,i) in aMenu.hasPart" :key="i" ><a :href="aSubMenu.url | filterBase(opts)">{{aSubMenu.name}}</a></li>
+                <li :class="{ selected: isSelected(aSubMenu.url)}" class="level-1" v-for="(aSubMenu,i) in aMenu.hasPart" :key="i" >
+                  <nuxt-link v-if="opts.isNuxt" :to="aSubMenu.url | filterBase(opts)">{{aSubMenu.name}}</nuxt-link>
+                  <a v-if="!opts.isNuxt" :href="aSubMenu.url | filterBase(opts)">{{aSubMenu.name}}</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -35,8 +38,8 @@ export default {
     siteNavigationElement: { type: Object },
     options              : { type: Object }
   },
-  methods : { isSelected, getHash, getRoutePath, isActive },
-  computed: { opts, base, menuIdentifier, canEdit },
+  methods : { isSelected, getHash, getRoutePath, isActive, canEdit },
+  computed: { opts, base, menuIdentifier },
   filters : { filterBase }
 }
 

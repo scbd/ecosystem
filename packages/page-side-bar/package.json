@@ -1,6 +1,6 @@
 {
   "name": "@scbd/page-side-bar",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "license": "MIT",
   "main": "dist/PageSideBar.umd.min.js",
