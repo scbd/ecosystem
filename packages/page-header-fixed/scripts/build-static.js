@@ -5,10 +5,9 @@ const $http     = require('ky-universal');
 const writePath = path.resolve(__dirname, '../src/')
 const dapi      = 'https://dapi.cbd.int';
 
-(async()=>{
-
+(async() => {
   const mainSNEs = stringifyToJsModule((await getMain())[0])
-  const siteNavigationElements = stringifyToJsModule( await getTopMenu())
+  const siteNavigationElements = stringifyToJsModule(await getTopMenu())
 
   fs.writeFileSync(`${writePath}/mainSNEs.js`, mainSNEs)
   fs.writeFileSync(`${writePath}/pageHeaderFixedSiteNavigationElements.js`, siteNavigationElements)
@@ -17,7 +16,7 @@ const dapi      = 'https://dapi.cbd.int';
 })()
 
 function stringifyToJsModule(data){
-  return `module.exports = ${JSON.stringify(data)}`
+  return `module.exports = ${JSON.stringify(data)} //eslint-disable-line \n // ${new Date()}`
 }
 
 function getMain(){

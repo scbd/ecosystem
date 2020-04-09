@@ -26,13 +26,15 @@ export default {
   components: { WPHeader, Icons, Mobile, Desktop },
   computed  : { opts, siteNavElms },
   methods   : { isMobile },
-  props     : { siteNavigationElements: { type: Array, required: true },
+  props     : { siteNavigationElements: { type: Array },
                 options               : { type: Object, default: () => {} } },
   mounted
 }
 
 function siteNavElms(){
-  return this.siteNavigationElements.length? this.siteNavigationElements : this.options.siteNavigationElements
+  const isStatic = (!this.siteNavigationElements || this.siteNavigationElements.length)
+
+  return isStatic? this.opts.siteNavigationElements : this.siteNavigationElements
 }
 
 function opts(){

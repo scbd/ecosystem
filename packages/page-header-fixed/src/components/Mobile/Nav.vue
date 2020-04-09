@@ -1,10 +1,7 @@
 <template functional>
   <div v-show="props.show" class="mobile-nav-wrapper ml-auto mobile-menu" style="min-width:88vw;">
-
-      
       <div  class="navbar-collapse" style="width:100%">
         <component
-            
             :is="injections.components.MainNav"
             :siteNavElms="props.opts.mainSNEs"/>
 
@@ -20,7 +17,6 @@
         </div>
       </div>
 
- 
   </div>
 </template>
 

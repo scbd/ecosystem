@@ -2,7 +2,7 @@
   "name": "@scbd/page-header-fixed",
   "private": false,
   "license": "MIT",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "unpkg": "dist/PageHeaderFixed.umd.min.js",
   "main": "dist/PageHeaderFixed.umd.min.js",
   "browser": {
@@ -13,7 +13,7 @@
     "src/*"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve --open --mode stg tests/dev/main.js",
+    "serve": "vue-cli-service serve --open --mode dev tests/dev/main.js",
     "preview": "serve -s dist",
     "build": "NODE_ENV=production sh scripts/build.sh",
     "lint": "vue-cli-service lint --fix",
@@ -25,12 +25,9 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.0.54",
+    "@scbd/default-options": "^0.0.55",
     "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
-    "check-ie": "^2.0.0",
-    "ky": "^0.19.0",
-    "ky-universal": "^0.5.0",
     "tiny-debounce": "^0.1.1",
     "vue-i18n": "^8.0.0",
     "whatwg-fetch": "^3.0.0"
