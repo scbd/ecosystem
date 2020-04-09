@@ -7,9 +7,6 @@ import { getCountry } from './countries'
 
 export class MapBuilder extends MapBuilderBase{
   constructor(element, options){
-    options.initEu       = false
-    options.euIdentifier = 'eur'
-
     super(element, options)
     pushHitEventFn(callBack)
     setCountryEvents(this)
@@ -80,5 +77,5 @@ export const initCountryHomeSetting = (mapBuilder) => () => {
 }
 
 
-export const countryToolTipAction  = (mapBuilder) => (code) => mapBuilder.options.countryToolTipAction || `href="${clickUrl(mapBuilder, code)}"`
-export const euActionToolTipAction = (mapBuilder) => (code) => mapBuilder.options.euActionToolTipAction || `href="${clickUrl(mapBuilder, code)}"`
+export const countryToolTipAction  = (mapBuilder) => (code) => mapBuilder.options.countryToolTipAction(code) || `href="${clickUrl(mapBuilder, code)}"`
+export const euActionToolTipAction = (mapBuilder) => (code) => mapBuilder.options.euActionToolTipAction(code) || `href="${clickUrl(mapBuilder, code)}"`
