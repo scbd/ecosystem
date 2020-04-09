@@ -25,7 +25,7 @@ export default class DefaultOptions{
 
   get env (){
     if(this.props.force) return this.props.force
-    if(isServer()) return process.env.NODE_ENV || 'prod'
+    if(isServer() || (process && process.env)) return process.env.NODE_ENV || 'prod'
 
     return getEnvClient()
   }
