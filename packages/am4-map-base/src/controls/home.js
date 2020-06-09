@@ -1,4 +1,4 @@
-import { Button, Sprite } from '@amcharts/amcharts4/core'
+import { Button, Sprite } from '@scbd/am4-map-lib'
 
 export const homeButton = ({ map }) => {
   const button = map.chartContainer.createChild(Button)

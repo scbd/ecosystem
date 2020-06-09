@@ -1,5 +1,4 @@
-import { Button, Sprite, percent } from '@amcharts/amcharts4/core'
-import { projections           }     from '@amcharts/amcharts4/maps'
+import { Button, Sprite, percent, projections } from '@scbd/am4-map-lib'
 
 const projection = { list: [ 'Orthographic', 'NaturalEarth1', 'Miller', 'Mercator', 'Eckert6', 'Stereographic', 'Albers', 'AzimuthalEqualArea', 'EqualEarth' ], index: 0 }
 

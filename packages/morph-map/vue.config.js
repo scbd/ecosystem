@@ -6,7 +6,7 @@ module.exports = {
   css                  : { extract: false },
   transpileDependencies: [ '@scbd/am4-map-base' ],
   devServer            : {
-    port: 8888
+    port: 8889
   },
   lintOnSave  : true,
   chainWebpack: config => {

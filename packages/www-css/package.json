@@ -1,6 +1,6 @@
 {
-  "name": "@scbd/www-css",
-  "version": "0.0.18",
+  "name": "@scbd/www-css-hide",
+  "version": "0.0.19",
   "private": false,
   "unpkg": "dist/style.min.css",
   "main": "dist/style.min.css",
@@ -11,5 +11,14 @@
     "build:local:only": "yarn scss && node scripts/index.js",
     "scss": "node-sass src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.css && node-sass  --output-style compressed src/CBD/web/themes/custom/bootstrap_sass/scss/barrio/_import.scss dist/style.min.css && cp -R src/cbd/web/themes/custom/bootstrap_sass/images/* dist/images",
     "release": "yarn publish --access=public --tag latest"
+  },
+  "devDependencies": {
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "node-sass": "^4.14.1",
+    "vue": "^2.6.11"
   }
 }

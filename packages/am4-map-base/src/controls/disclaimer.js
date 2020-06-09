@@ -1,4 +1,4 @@
-import { percent, TextLink } from '@amcharts/amcharts4/core'
+import { percent, TextLink } from '@scbd/am4-map-lib'
 
 const disclaimerI18n = {
   en: {

@@ -1,5 +1,5 @@
-import   worldGeoData   from '@amcharts/amcharts4-geodata/worldLow'
-import { politicalMap } from './config'
+import { worldGeoData }  from '@scbd/am4-map-lib'
+import { politicalMap }  from './config'
 
 export const worldLow             = geoDataPoliticalUpdate(worldGeoData)
 export const hasPoliticalMappings = (id) => politicalMap[id]

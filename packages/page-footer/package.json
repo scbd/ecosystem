@@ -22,23 +22,25 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.0.54",
+    "@scbd/default-options": "^0.1.1",
     "@scbd/webpack-plugin-public-path": "^0.0.1",
     "change-case": "^4.1.1",
     "check-ie": "^2.0.0",
     "ky": "^0.19.0",
-    "ky-universal": "^0.5.0",
+    "ky-universal": "^0.6.0",
     "vue-i18n": "^8.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
+    "@scbd/dist-builder": "^0.0.1",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-e2e-cypress": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.1.2",
+    "vue": "^2.6.11",
     "vue-cli-plugin-s3-deploy": "^4.0.0-rc3",
     "vue-template-compiler": "^2.6.10"
   },

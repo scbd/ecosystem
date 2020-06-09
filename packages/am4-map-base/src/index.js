@@ -1,8 +1,20 @@
-import { createFromConfig   } from '@amcharts/amcharts4/core'
-import { MapChart           } from '@amcharts/amcharts4/maps'
-import { initEu             } from './eu'
-import { configureMapSeries } from './countries'
-import { initControls       } from './controls'
+import { createFromConfig, MapChart } from '@scbd/am4-map-lib'
+
+import * as eu                  from './eu'
+import * as controls            from './controls'
+import * as countries           from './countries'
+import * as config              from './config'
+import      getDefaultOptionsFn from './default-options'
+
+export const MapBaseConfig     = config
+export const MapBaseEU         = eu
+export const MapBaseControls   = controls
+export const MapBaseCountries  = countries
+export const getDefaultOptions = getDefaultOptionsFn
+
+const { initEu             } = eu
+const { initControls       } = controls
+const { configureMapSeries } = countries
 
 
 export class MapBuilderBase{
@@ -46,6 +58,7 @@ export class MapBuilderBase{
     this.status = new Proxy(status, statusHandler)
   }
   whenReady(){
+    console.log('BaseNav ready called================')
     if(this.options.initControls)
       initControls(this)
     if(this.options.initEu)

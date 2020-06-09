@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <PageSideBar :site-navigation-element="menus" :options="{ base:'/portals/capacity-building', isNuxt: false, menuIdentifier:'portals', canEdit }"/>
+    <PageSideBar :site-navigation-element="menus" :options="this.pageSideBarOptions"/>
   </div>
 </template>
 
@@ -11,12 +11,24 @@ import $http from 'ky-universal'
 export default {
   name: 'app',
   components: { PageSideBar },
+  computed  : { pageSideBarOptions },
   mounted,
   data
 
 }
 
 function data(){ return { menus: {}, canEdit: false }}
+
+function pageSideBarOptions(){
+  const params = { _country: 'ca' }
+  const routeParamFunctions = { _country }
+
+  return { base:'/portals/capacity-building', isNuxt: false, menuIdentifier:'portals', canEdit: this.canEdit, params, routeParamFunctions }
+}
+
+function _country(id){
+  return 'Canada'
+}
 
 async function mounted(){
   this.menus = await getSneFromApi()
@@ -27,7 +39,7 @@ async function mounted(){
 }
 
 function getSneFromApi ( postFix='some-post-fix'){
-  return $http.get(`https://h550gxekak.execute-api.us-east-1.amazonaws.com/stg/menus/portals?postfix=${postFix}`)
+  return $http.get(`http://localhost:4000/local/menus/portals?postfix=${postFix}`)
     .then(res => res.json())
     .then(res => res[0] || {})
 }

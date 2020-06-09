@@ -13,3 +13,12 @@ detect - mobile/desktop/bandwidth for low, high or ultra
 
 - convert to functional
 https://www.amcharts.com/docs/v4/tutorials/using-web-font-loader/
+
+TODO
+
+  eu click trigger
+
+  translation of map
+  translation
+  on reload approved countries
+  loading

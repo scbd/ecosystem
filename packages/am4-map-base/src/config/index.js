@@ -1,11 +1,11 @@
-import { useTheme           } from '@amcharts/amcharts4/core'
-import   am4themes_animated   from '@amcharts/amcharts4/themes/animated'// eslint-disable-line
+import { useTheme, am4themesAnimated } from '@scbd/am4-map-lib'
 
-useTheme(am4themes_animated)
+useTheme(am4themesAnimated)
 
-import { worldLow     } from '../countries/political-mappings/index.js'
-import { euButtonSeries, euSeries, euCountries     } from '../eu/config'
-import { geodataNames } from './geo-data-names'
+import { euCountries              } from '../countries'
+import { worldLow                 } from '../countries/political-mappings/index.js'
+import { euButtonSeries, euSeries } from '../eu/config'
+import { geodataNames             } from './geo-data-names'
 
 const userStyle = { }
 

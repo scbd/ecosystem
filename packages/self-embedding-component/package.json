@@ -1,31 +1,70 @@
 {
   "name": "@scbd/self-embedding-component",
-  "version": "0.0.9",
-  "private": false,
+  "version": "0.0.23",
+  "type": "module",
+  "description": "SCBD's self embedding component service",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "license": "MIT",
-  "main": "src/index.js",
-  "unpkg": "src/index.js",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/self-embedding-component#readme",
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/self-embedding-component#readme",
+  "main": "dist/esm/index.min.js",
+  "module": "dist/esm/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "unpkg": "dist/browser/index.min.js",
+  "src": "src/index.mjs",
+  "source": "src/index.js",
+  "jsnext:main": "dist/esm/index.min.js",
+  "browser": {
+    "./umd": "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
+  },
+  "exports": {
+    ".": {
+      "require": "dist/legacy/cjs/index.common.cjs",
+      "default": "dist/esm/index.js"
+    }
+  },
   "files": [
+    "dist/*",
     "src/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/self-embedding-component"
+  },
+  "bugs": {
+    "url": "https://github.com/scbd/ecosystem/issues"
+  },
   "scripts": {
-    "serve": "sh scripts/build-test.sh && vue-cli-service serve",
-    "lint": "vue-cli-service lint --fix ",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:e2e:headless": "sh scripts/build-test.sh && vue-cli-service test:e2e --headless",
-    "release": "yarn publish --access=public --tag latest"
+    "serve": "yarn vue-cli-service serve --open",
+    "build": "DEBUG=true scbd-dist-builder",
+    "build-test-widget": "scbd-dist-builder testWidget",
+    "serve-esm-test": "COMP_ID=action-search scbd-dist-builder serveTestWidget",
+    "test:e2e": "yarn vue-cli-service test:e2e",
+    "test:e2e:headless": "yarn vue-cli-service test:e2e --headless",
+    "lint": "yarn vue-cli-service lint --fix ",
+    "release": "yarn publish --access=public --tag latest",
+    "link": "lerna link"
+  },
+  "dependencies": {
+    "@scbd/default-options": "^0.1.9",
+    "change-case": "^4.1.1"
   },
   "devDependencies": {
+    "@scbd/dist-builder": "^0.0.1",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.1.2",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "dependencies": {
-    "change-case": "^4.1.0"
+    "rollup": "^2.15.0",
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.17.3",
+    "vue-template-compiler": "^2.6.11"
   }
 }

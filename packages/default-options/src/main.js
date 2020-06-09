@@ -1,13 +1,8 @@
-
-
-//const DefaultOptions = new DOptions({ environments, validationMap, name }, force)
-
-import Vue     from 'vue'
-import App     from '../public/App.vue'
+import Vue from 'vue'
+import App from '../public/App.vue'
 
 Vue.config.productionTip = true
 Vue.config.performance = true
-
 
 new Vue({
   render: h => h(App)

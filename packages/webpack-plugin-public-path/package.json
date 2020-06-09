@@ -15,12 +15,18 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "devDependencies": {
+    "@scbd/dist-builder": "^0.0.1",
     "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.2.2",
+    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@scbd/default-options": "^0.1.1"
   }
 }

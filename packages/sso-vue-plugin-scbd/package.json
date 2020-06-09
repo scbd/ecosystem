@@ -1,46 +1,60 @@
 {
   "name": "@scbd/sso-vue-plugin-scbd",
-  "version": "0.0.15",
+  "version": "0.1.6",
   "license": "MIT",
-  "main": "dist/sso-vue-plugin-scbd.umd.min.js",
-  "unpkg": "dist/sso-vue-plugin-scbd.umd.min.js",
-  "private": false,
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/sso-vue-plugin-scbd#readme",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/sso-vue-plugin-scbd#readme",
+  "main": "dist/esm/index.min.js",
+  "unpkg": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "module": "dist/esm/index.min.js",
+  "jsnext:main": "dist/esm/index.min.js",
+  "src": "src/index.js",
+  "source": "src/index.js",
   "browser": {
-    "./sfc": "src/index.js"
+    "./umd": "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
   },
-  "files": [
-    "dist/*",
-    "src/*"
-  ],
+  "exports": {
+    ".": {
+      "require": "dist/legacy/cjs/index.common.cjs",
+      "default": "dist/esm/index.js"
+    }
+  },
+  "files": ["dist/*", "src/*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/sso-vue-plugin-scbd"
+  },
   "scripts": {
     "serve": "NODE_ENV=dev vue-cli-service serve --open ",
-    "build": "rm -rf dist/* && vue-cli-service build --mode production  --target lib  src/build.js",
+    "build": "DEBUG=true scbd-dist-builder",
     "lint": "vue-cli-service lint --fix",
-    "release": "yarn publish --access=public --tag latest",
-    "yarn-upgrade-deps": "yarn upgrade-interactive --latest",
-    "yarn-outdated": "yarn outdated"
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.0.54",
-    "ky": "^0.19.0",
-    "ky-universal": "^0.5.0"
+    "@scbd/default-options": "^0.1.10",
+    "@scbd/load-http": "^0.0.4",
+    "change-case": "^4.1.1"
   },
   "devDependencies": {
-    "@scbd/self-embedding-component": "^0.0.9",
-    "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.0.0",
-    "@vue/cli-plugin-eslint": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
-    "babel-eslint": "^10.0.3",
-    "bootstrap": "^4.3.1",
+    "@scbd/dist-builder": "^0.0.1",
     "core-js": "^3.3.2",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.1.2",
-    "rollup": "^2.0.6",
+    "rollup": "^2.7.6",
     "vue": "^2.6.11",
-    "vue-cli-plugin-s3-deploy": "^4.0.0-rc3",
-    "vue-template-compiler": "^2.6.10",
-    "vuex": "^3.1.2"
-  },
-  "gitHead": "534f983ca739cdaaf1a29e473d6ba99c90a585d0"
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  }
 }

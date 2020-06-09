@@ -1,0 +1,1 @@
+TODO: extract map geo data and lang files and maybe projections into separate lib as they won't change if lib updates.

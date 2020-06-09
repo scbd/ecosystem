@@ -1,43 +1,66 @@
 {
   "name": "@scbd/map-nav",
-  "version": "0.0.40",
-  "private": false,
+  "version": "0.0.45",
+  "description": "https://github.com/scbd/ecosystem/tree/master/packages/map-nav#readme",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/map-nav#readme",
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/map-nav#readme",
   "license": "MIT",
-  "main": "dist/MapNav.umd.min.js",
-  "unpkg": "dist/MapNav.umd.min.js",
+  "main": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "unpkg": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "module": "dist/esm/index.min.js",
+  "jsnext:main": "dist/esm/index.js",
+  "style":"dist/esm/index.min.css",
+  "src"       : "src/index.js",
+  "exports": {
+    ".": {
+      "require": "dist/legacy/cjs/index.common.cjs",
+      "default": "dist/esm/index.js"
+    }
+  },
   "browser": {
-    "./sfc": "src/index.vue"
+    "./sfc"    : "src/index.vue",
+    "./umd"    : "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./"      : "dist/browser/index.min.js"
   },
   "files": [
     "dist/*",
     "src/*"
   ],
+  "bugs": {
+    "url": "https://github.com/scbd/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/map-nav"
+  },
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "NODE_ENV=production sh scripts/build.sh",
-    "build-watch": "NODE_ENV=production sh scripts/build-watch.sh",
+    "build": "node scripts/load-countries.cjs && scbd-dist-builder && scbd-dist-builder widget",
+    "build-widget": "scbd-dist-builder widget",
+    "build-test": "scbd-dist-builder testWidget",
+    "serve-esm-test": "scbd-dist-builder serveTestWidget",
     "lint": "vue-cli-service lint --fix ",
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@amcharts/amcharts4": "^4.9.9",
-    "@amcharts/amcharts4-geodata": "^4.1.9",
-    "@scbd/am4-map-base": "^0.0.9",
-    "@scbd/default-options": "^0.0.54",
-    "@scbd/self-embedding-component": "^0.0.9",
-    "core-js": "^3.4.3",
+    "@scbd/am4-map-base": "^0.0.24",
+    "@scbd/self-embedding-component": "^0.0.16",
     "limax": "^2.0.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.1.2",
-    "superagent": "^5.2.2",
-    "vue-template-compiler": "^2.6.10"
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "superagent": "^5.2.2"
   }
 }

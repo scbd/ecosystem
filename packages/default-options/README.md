@@ -1,29 +1,3 @@
-# component-default-options
+  <p align="center"><img width="52px" height="65px" src="https://www.cbd.int/styles/ui/templates/cbd2011/images/logo-cbd-leaf-line.gif" alt="Secretariat of the Convention on Biological Diversity"><img width="148x" height="65px" src="https://www.cbd.int/styles/ui/templates/cbd2011/images/logo-cbd-text-en.gif" alt="Secretariat of the Convention on Biological Diversity"></p>
+<h1 align="center">Default Options Service</h1>
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

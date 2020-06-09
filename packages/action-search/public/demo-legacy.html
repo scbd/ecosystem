@@ -1,0 +1,28 @@
+<html lang="en">
+<meta charset="utf-8">
+<title>PageHeaderFixed demo</title>
+<head>
+<script src="../dist/legacy/umd/index.umd.js"></script>
+<script  src="https://cdn.cbd.int/vue-i18n@8.15.3/dist/vue-i18n.min.js"></script>
+<script  src="https://cdn.cbd.int/vue"></script>
+<script  src="https://cdn.cbd.int/@scbd/sso-vue-plugin-scbd"></script>
+
+</head>
+<body>
+  <div id="app"> <action-search :options="{}" force-env="dev"></action-search> </div> 
+  <script  > 
+    console.log(window)
+    Vue.config.devtools = 'development'
+    Vue.use(window['sso-vue-plugin-scbd'].default, { env: 'dev' })
+    const i18n = new VueI18n({ locale: 'en', fallbackLocale: 'en', messages: { en: {} } })
+    
+    new Vue({ i18n, components: { ActionSearch:window.ActionSearch.default } }).$mount('#app')
+
+<script   id="legacy-notice-legacy" src="https://cdn.cbd.int/@scbd/legacy-notice/dist/widget/index.umd.min.js"></script>
+<script   id="action-search-legacy" src="https://cdn.cbd.int/@scbd/action-search/dist/widget/index.umd.min.js"></script>
+
+     </script>
+  
+</body>
+
+</html>

@@ -1,9 +1,12 @@
-import { pushOutEventFn, pushOverEventFn } from './event-queues'
-import { getPoliticalRelations           } from './political-mappings'
-import { zoomLevelDataArray              } from './config'
-import { getStyle                        } from '../config'
-import { isEu } from '../eu'
+import { zoomLevelDataArray, euCountriesByPoliticalMapping } from './config'
+import { pushOutEventFn, pushOverEventFn                   } from './event-queues'
+import { getPoliticalRelations                             } from './political-mappings'
 
+const userStyle      = { }
+const styleDefault   = { label: '#ffffff', water: '#BBDEFB', default: '#01463a', country: '#01463a', hover: '#9a5917', active: '#9a5917', fontFamily: 'BenchNine, sans-serif' }
+const getStyle       = () => ({ ...styleDefault, ...userStyle })
+
+export const isEu               = (code) => euCountriesByPoliticalMapping.includes(code)
 export const isCustomZoomCenter = (code) => zoomLevelDataArray.map(({ id, zoomGeoPoint }) => zoomGeoPoint? id : '').includes(code)
 export const configureMapSeries = (mb) => { mb.mapSeries.data = zoomLevelDataArray }
 export const setHomeGeoPoint    = (map, { latitude, longitude }) => map.homeGeoPoint = { latitude, longitude }

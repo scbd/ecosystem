@@ -1,5 +1,5 @@
-import { setCountryState, setHomeGeoPoint, setDelta, stylePolygon, getVisualCenter, isCustomZoomCenter } from '../service'
-import { isEu } from '../../eu'
+import { isEu, setCountryState, setHomeGeoPoint, setDelta, stylePolygon, getVisualCenter, isCustomZoomCenter } from '../service'
+
 import { getPoliticalRelations } from '../political-mappings'
 import { addCountryLabel       } from '../labels'
 

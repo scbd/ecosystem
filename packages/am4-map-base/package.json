@@ -1,37 +1,67 @@
 {
   "name": "@scbd/am4-map-base",
-  "version": "0.0.10",
-  "private": false,
+  "version": "0.0.24",
   "license": "MIT",
-  "main": "src/index.js",
-  "unpkg": "src/index.js",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-base#readme",
+  "description": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-base#readme",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-base#readme",
+  "main": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "unpkg": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "module": "dist/esm/index.min.js",
+  "jsnext:main": "dist/esm/index.js",
+  "src": "src/index.js",
+  "exports": {
+    ".": {
+      "require": "dist/legacy/cjs/index.common.cjs",
+      "default": "dist/esm/index.js"
+    }
+  },
+  "browser": {
+    "./umd": "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
+  },
   "files": [
+    "dist/*",
     "src/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/am4-map-base"
+  },
+  "bugs": {
+    "url": "https://github.com/scbd/ecosystem/issues"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve --open",
-    "lint": "vue-cli-service lint --fix -c ../../.eslintrc.js",
-    "build": "node scripts/build-static",
-    "release": "yarn publish --access=public --tag latest"
+    "serve": "yarn vue-cli-service serve --open",
+    "local-file-server": "node tests/e2e/scaffolding/local-file-server.js",
+    "view-demo": "open -a /Applications/Google\\ Chrome.app public/demo.html",
+    "lint": "vue-cli-service lint --fix",
+    "build": "scbd-dist-builder",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "sh scripts/build-test.sh && vue-cli-service test:e2e --headless",
+    "release": "yarn publish --access=public --tag latest",
+    "yarn-upgrade-deps": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "@amcharts/amcharts4": "^4.9.9",
-    "@amcharts/amcharts4-geodata": "^4.1.9",
-    "@scbd/default-options": "0.0.54",
-    "@scbd/self-embedding-component": "0.0.9",
-    "bootstrap": "^4.4.1",
-    "change-case": "^4.1.0",
-    "core-js": "^3.4.3",
-    "vue": "^2.6.10"
+    "@scbd/am4-map-lib": "^0.0.3",
+    "@scbd/default-options": "^0.1.6",
+    "@scbd/locale": "^0.0.9"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.10"
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "cors": "^2.8.5",
+    "cypress-xpath": "^1.4.0",
+    "express": "^4.17.1",
+    "superagent": "^5.2.2",
+    "vue": "^2.6.11"
   }
 }

@@ -18,18 +18,21 @@
   },
   "dependencies": {
     "@scbd/am4-map-base": "^0.0.8",
+    "@scbd/default-options": "^0.1.1",
     "core-js": "^3.6.4",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@scbd/dist-builder": "^0.0.1",
     "@scbd/www-css": "^0.0.18",
     "@vue/cli-plugin-babel": "^4.2.0",
     "@vue/cli-plugin-e2e-cypress": "^4.2.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
     "@vue/cli-service": "^4.2.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
+    "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.1.2",
+    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   }
 }

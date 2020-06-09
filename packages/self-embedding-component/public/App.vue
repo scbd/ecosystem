@@ -1,12 +1,22 @@
 <template>
   <div id="app">
+    
+    <h1>Self Embeding Component</h1>
+    <h2><span id="num-exports">{{thelib.length}}</span> exports:</h2>
+    <div v-for="(anExport, index) in thelib" v-bind:key="index" :id="`export${index}`">{{anExport}}</div>
   </div>
 </template>
 
 <script>
+import * as SEC from '../src/index.mjs'
 
 export default {
-  name      : 'app'
+  name: 'app',
+  computed: { thelib }
+}
+
+function thelib(){
+  return Object.keys(SEC)
 }
 </script>
 

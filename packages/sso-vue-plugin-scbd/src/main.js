@@ -1,13 +1,10 @@
+//for dev only vue cli serve
 import Vue from 'vue'
-import App from '../tests/App.vue'
+import App from '../public/App.vue'
 import Auth from './index'
-import vuex from 'vuex'
 
-Vue.use(vuex)
 
-const $store = new vuex.Store({  state: { init: {} } })
-
-Vue.use(Auth, { $store, env: process.env.NODE_ENV })
+Vue.use(Auth, { forceEnv: process.env.NODE_ENV })
 
 Vue.config.productionTip = false
 

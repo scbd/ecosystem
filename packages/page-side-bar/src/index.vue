@@ -12,12 +12,12 @@
           </form>
           <ul class="list-unstyled">
             <li  :class="{ selected: isSelected(aMenu.url), active: isActive(aMenu) }" v-for="(aMenu,index) in siteNavigationElement.hasPart" :key="index"  class="level-0" >
-              <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(opts)">{{aMenu.name}}</nuxt-link>
-              <a  v-if="!opts.isNuxt" :href="aMenu.url | filterBase(opts)">{{aMenu.name}}</a>
+              <nuxt-link v-if="opts.isNuxt" :to="aMenu.url | filterBase(opts)">{{aMenu.name | routeParamFilter(opts)}}</nuxt-link>
+              <a  v-if="!opts.isNuxt" :href="aMenu.url | filterBase(opts)">{{aMenu.name | routeParamFilter(opts)}}</a>
               <ul  v-if="isActive(aMenu)" class="sub-menu-items list-unstyled level-1 collapse show active " >
                 <li :class="{ selected: isSelected(aSubMenu.url)}" class="level-1" v-for="(aSubMenu,i) in aMenu.hasPart" :key="i" >
-                  <nuxt-link v-if="opts.isNuxt" :to="aSubMenu.url | filterBase(opts)">{{aSubMenu.name}}</nuxt-link>
-                  <a v-if="!opts.isNuxt" :href="aSubMenu.url | filterBase(opts)">{{aSubMenu.name}}</a>
+                  <nuxt-link v-if="opts.isNuxt" :to="aSubMenu.url | filterBase(opts)">{{aSubMenu.name | routeParamFilter(opts)}}</nuxt-link>
+                  <a v-if="!opts.isNuxt" :href="aSubMenu.url | filterBase(opts)">{{aSubMenu.name | routeParamFilter(opts)}}</a>
                 </li>
               </ul>
             </li>
@@ -28,8 +28,8 @@
   </aside>
 </template>
 <script>
-import defaultOpts  from './modules/defaultOptions'
-import JsonLd       from './WPSideBarJsonLd'
+import getDefaultOptions  from './modules/defaultOptions'
+import JsonLd       from './WPSideBarJsonLd.vue'
 
 export default {
   name      : 'WebPageSideBar',
@@ -40,7 +40,7 @@ export default {
   },
   methods : { isSelected, getHash, getRoutePath, isActive, canEdit },
   computed: { opts, base, menuIdentifier },
-  filters : { filterBase }
+  filters : { filterBase, routeParamFilter }
 }
 
 function isSelected(urlString){
@@ -55,7 +55,6 @@ function isActive(aMenu){
   const { pathname } = aMenu.url? (new URL((aMenu.url))) : {}
   const active   = aMenu.hasPart && aMenu.hasPart.length
   const selected = isBase? false : this.getRoutePath().includes(pathname)
-
 
   return active && selected
 }
@@ -78,14 +77,36 @@ function filterBase(urlString, { base, isNuxt }){
   return isNuxt? (new URL(urlString)).pathname.replace(base, '') || '/' : pathname
 }
 
-function opts(){ return defaultOpts.get(this.options) }
+function opts(){ return getDefaultOptions(this.options) }
 
 function base(){ return this.opts.base }
 function menuIdentifier(){ return this.opts.menuIdentifier }
 function canEdit(){ return this.opts.canEdit }
+
 function getHash(urlWithHash){
   if(!urlWithHash) return ''
   return (new URL(urlWithHash)).hash.replace('#', '')
+}
+
+function routeParamFilter(routeParamName, { routeParamFunctions, params }){
+  const isStaticRoute = !isRouteParam(routeParamName) ||
+                        !hasRouteParamFunction(routeParamName, routeParamFunctions) ||
+                        !params[routeParamName]
+  
+  if(isStaticRoute) return routeParamName
+  
+  const filterFunction  = routeParamFunctions[routeParamName]
+  const routeParamValue = params[routeParamName]
+
+  return filterFunction(routeParamValue)
+}
+
+function hasRouteParamFunction(name, routeParamFunctions = {}){
+  return Object.keys(routeParamFunctions).includes(name)
+}
+
+function isRouteParam(name){
+  return name.startsWith('_')
 }
 </script>
 

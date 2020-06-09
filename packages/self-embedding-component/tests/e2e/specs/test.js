@@ -1,10 +1,34 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('Widget loads and contains amcharts map', () => {
-  it('Visits the app root url', () => {
-    cy.visit('/')
+describe('@scbd/self-embedding-component', () => {
 
-    cy.get('[transform="translate(903,0)"] > [fill="#d9d9d9"] > path')
-    .should('be.visible')
+  it('loads all data into 10 groups', () => {
+    cy.visit('/')
+    cy.wait(1000)
+    cy.get('#num-exports')
+    .should(($el) => {
+      expect($el).to.have.text('3')
+    })
+  })
+
+  it('exports buildLegacyWidget', () => {
+    cy.get('#export0')
+    .should(($el) => {
+      expect($el).to.have.text('buildLegacyWidget')
+    })
+  })
+
+  it('exports buildWidget', () => {
+    cy.get('#export1')
+    .should(($el) => {
+      expect($el).to.have.text('buildWidget')
+    })
+  })
+
+  it('exports dependencyRef', () => {
+    cy.get('#export2')
+    .should(($el) => {
+      expect($el).to.have.text('dependencyRef')
+    })
   })
 })

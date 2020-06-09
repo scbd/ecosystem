@@ -1,25 +1,14 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
-  it('Visits the app root url', () => {
+describe('Accounts for EU', () => {
+  it('has EU button and highlights eu when clicked', () => {
     cy.visit('/')
-    cy.contains('h1', 'Welcome to Your Vue.js App')
+    cy.wait(2000)
+    cy.screenshot('eu-button')
+    cy.get('image')
+      .click()
+    cy.get('#app > div > div > div > svg > g > g:nth-child(2) > g:nth-child(1) > g:nth-child(2) > g:nth-child(1) > g:nth-child(2) > g:nth-child(1) > g > g:nth-child(8) > g > g:nth-child(3) > g > g > g > text > tspan')
+    .contains('European Union')
+    cy.screenshot('eu-button-clicked')
   })
 })
-
-// async function getLocal({ locale }){
-//   switch(locale){
-//   case 'EN':
-//     return import('@amcharts/amcharts4-geodata/lang/EN')
-//   case 'ES':
-//     return import('@amcharts/amcharts4-geodata/lang/ES')
-//   case 'AR':
-//     return import('@amcharts/amcharts4-geodata/lang/AR')
-//   case 'ZH':
-//     return import('@amcharts/amcharts4-geodata/lang/cn_ZH')
-//   case 'RU':
-//     return import('@amcharts/amcharts4-geodata/lang/RU')
-//   case 'FR':
-//     return import('@amcharts/amcharts4-geodata/lang/FR')
-//   }
-// }

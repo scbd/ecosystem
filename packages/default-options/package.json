@@ -1,28 +1,52 @@
 {
   "name": "@scbd/default-options",
-  "version": "0.0.55",
-  "private": false,
+  "version": "0.1.10",
   "license": "MIT",
-  "main": "src/index.js",
-  "unpkg": "src/index.js",
-  "files": [
-    "src/*"
-  ],
+  "description": "Default options service for SCBD components and modules",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/default-options#readme",
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/default-options#readme",
+  "main": "dist/esm/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "unpkg": "dist/browser/index.min.js",
+  "module": "dist/esm/index.min.js",
+  "jsnext:main": "dist/esm/index.min.js",
+  "source": "src/index.js",
+  "src": "src/index.js",
+  "browser": {
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
+  },
+  "exports": {
+    ".": {
+      "require": "dist/legacy/cjs/index.common.cjs",
+      "default": "dist/esm/index.js"
+    }
+  },
+  "files": ["dist/*", "src/*"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/default-options"
+  },
+  "bugs": {
+    "url": "https://github.com/scbd/ecosystem/issues"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve --open",
-    "lint": "vue-cli-service lint --fix ",
+    "serve": "vue-cli-service serve",
+    "build": "scbd-dist-builder",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "lint": "vue-cli-service lint --fix",
     "release": "yarn publish --access=public --tag latest"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.1.2",
-    "vue-template-compiler": "^2.6.10"
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "vue": "^2.6.11"
   }
 }

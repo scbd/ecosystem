@@ -1,12 +1,7 @@
+import { getUnLocale         } from '@scbd/locale'
 import { langPoliticalUpdate } from '../countries/political-mappings/index.js'
-import { getUnLocale         } from '../locale'
 
-import  english from '@amcharts/amcharts4-geodata/lang/EN'
-import  spanish from '@amcharts/amcharts4-geodata/lang/ES'
-import  arabic  from '@amcharts/amcharts4-geodata/lang/AR'
-import  french  from '@amcharts/amcharts4-geodata/lang/FR'
-import  russian from '@amcharts/amcharts4-geodata/lang/RU'
-import  chinese from '@amcharts/amcharts4-geodata/lang/cn_ZH'
+import { english, french, spanish, arabic, russian, chinese } from '@scbd/am4-map-lib'
 
 const en = langPoliticalUpdate(english)
 const es = langPoliticalUpdate(spanish)

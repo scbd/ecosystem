@@ -39,62 +39,62 @@
 </template>
 
 <script>
-import   DOptions   from '../src/index'
-
+import   DOptions   from '../dist/esm/index.min.js'
 
 
 const validationMap = {
-  someString   : String,
-  someNumber   : Number,
-  someObject   : Object,
-  someArray    : Array,
-  someBoolean  : Boolean,
-  someFunction : Function
+  someString  : String,
+  someNumber  : Number,
+  someObject  : Object,
+  someArray   : Array,
+  someBoolean : Boolean,
+  someFunction: Function
 }
 
 const dev = {
-  someString   : 'dev',
-  someNumber   : 5,
-  someObject   : {},
-  someArray    : [],
-  someBoolean  : true,
-  someFunction : () => true
+  someString  : 'dev',
+  someNumber  : 5,
+  someObject  : {},
+  someArray   : [],
+  someBoolean : true,
+  someFunction: () => true
 }
 
-const stg = { ...dev, ...{someString:'stg' }  }
+const stg = { ...dev, ...{ someString: 'stg' }  }
 
-const prod = { ...dev, ...{ someString:'stg' } }
+const prod = { ...dev, ...{ someString: 'stg' } }
 
 const environments  = { prod, stg, dev }
 
 export default {
   name: 'app',
-  data:()=>({ overWrite: false, options:{}, dev:false, stg: false, prod: false, development: false, staging: false, production: false}),
+  data: () => ({ overWrite: false, options: {}, dev: false, stg: false, prod: false, development: false, staging: false, production: false }),
   mounted
 }
 
 function mounted(){
   let force = 'dev'
-  this.dev = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xdev'})}
+
+  this.dev = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xdev' }) }
 
   force = 'stg'
-  this.stg = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xstg'})}
+  this.stg = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xstg' }) }
 
 
   force = 'prod'
-  this.prod = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xprod'})}
+  this.prod = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xprod' }) }
 
-   force = 'development'
-  this.development = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xdevelopment'})}
+  force = 'development'
+  this.development = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xdevelopment' }) }
 
-     force = 'staging'
-  this.staging = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xstaging'})}
-
-       force = 'production'
-  this.production = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xproduction'})}
+  force = 'staging'
+  this.staging = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xstaging' }) }
 
   force = 'production'
-  this.overWrite = { ...(new DOptions({ environments, validationMap, force })).get({someString:'xproduction'})}
+  this.production = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xproduction' }) }
+
+  force = 'production'
+  this.overWrite = { ...(new DOptions({ environments, validationMap, force })).get({ someString: 'xproduction' }) }
 }
 
 </script>

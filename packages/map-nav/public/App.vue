@@ -1,51 +1,75 @@
 <template>
-  <div id="app">
-    <Map :options="optionsTest"/>
-  </div>
+  <header id="app" >
+    <div class="row">
+      <div class="col-12">
+        <NavMap :options="options"/>
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>
-import   Map              from '../src/index.vue'
-
-
+import NavMap from '../src/index.vue'
 export default {
-  name      : 'app',
-  components: { Map },
-  computed  : { options, optionsTest }
+  name      : 'AmNavMap',
+  components: { NavMap },
+  computed  : { options: buildOptions }
+  // methods   : { callBack, registerWindowFunctions, euActionToolTipActionListener, countryToolTipActionListener }
 }
 
-function options(){
-  return { devMode: true }
-}
-
-function optionsTest(){
-  const { $isServer } = this
-  const countryToolTipAction = $isServer? '' : ' href="#" onclick="window.countryToolTipAction(event)" '
-  const euActionToolTipAction = $isServer? '' : ' href="#" onclick="window.euActionToolTipAction(event)" '
+function buildOptions(){
+  const { $isServer, $route } = this || {}
+  const { params }            = $route || {}
+  const countryToolTipAction  = $isServer? '' : (code) => ` href="#" onclick="window.countryToolTipAction(event, '${code}')" `
+  const euActionToolTipAction = $isServer? '' : (code) => ` href="#" onclick="window.euActionToolTipAction(event, '${code}')" `
+  const euIdentifier          = 'eu'
+  const initEu                = false // false means manually init eu with custom functionality
 
   if(!$isServer) registerWindowFunctions()
 
   return {
-    params          : { },
+    params,
     countryParamName: 'country',
-    callBack        : (code) => console.log('callback ---- ', code),
+    callBack,
     countryToolTipAction,
-    euActionToolTipAction
+    euActionToolTipAction,
+    euIdentifier,
+    initEu
   }
 }
 
+function callBack(code){
+  //this.$router.push({ path: `/countries/${code.toLowerCase()}` })
+  console.log('======== main callback '+code)
+}
+
 function registerWindowFunctions(){
-  window.euActionToolTipAction = euActionToolTipAction
-  window.countryToolTipAction = countryToolTipAction
+  window.euActionToolTipAction = euActionToolTipActionListener
+  window.countryToolTipAction  = countryToolTipActionListener
 }
-function countryToolTipAction(event){
-  console.log('========Window.countryToolTipAction called', event)
+
+function countryToolTipActionListener(event, code){
+  event.preventDefault()
+  //this.$router.push({ path: `/countries/${code.toLowerCase()}` })
+  console.log('========Window.countryToolTipAction called '+code, event)
 }
-function euActionToolTipAction(){
-  console.log('========Window.euActionToolTipAction called', event)
+
+function euActionToolTipActionListener(event, code){
+  event.preventDefault()
+  // this.$router.push({ path: `/countries/${code.toLowerCase()}` })
+  console.log('========Window.euActionToolTipAction called: '+code, event)
 }
 </script>
 
-<style>
-
+<style scoped>
+#map            { width: 100%; max-width: 100vw; height: 500px; }
+#spine-pictoral { width: 100%; height: 100%; }
+#hidden-map {
+  width     : 100%;
+  height    : 500px;
+  visibility: hidden;
+  position  : absolute;
+  top       : 0px;
+  max-width : 100vw;
+}
 </style>

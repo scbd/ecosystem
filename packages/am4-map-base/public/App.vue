@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import   Map              from '../src/index.vue'
-import { DefaultOptions } from '../src/default-options'
+import Map               from './index.vue'
+import getDefaultOptions from '../src/default-options'
 
 export default {
   name      : 'app',
@@ -15,7 +15,7 @@ export default {
 }
 
 function options(){
-  return { ...DefaultOptions.get() }
+  return { ...getDefaultOptions() }
 }
 </script>
 

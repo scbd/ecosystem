@@ -1,11 +1,8 @@
-import { setCountryState, pushHitEventFn, getLngLat, setDelta, zoomToCountry, hasPoliticalMappings, politicalMapKeys, setMapHomePositionToCountryGeoPoint } from '../countries'
-import { euCountries, name, euToolTipTemplate   } from './config'
+import { euCountries, setCountryState, pushHitEventFn, getLngLat, setDelta, zoomToCountry, setMapHomePositionToCountryGeoPoint } from '../countries'
+import { name, euToolTipTemplate  } from './config'
 import { addCountryLabel, deleteCountryLabel } from '../countries/labels'
 
-const isEuByPoliticalMapping = politicalMapKeys.filter((k) => euCountries.includes(hasPoliticalMappings(k)))
 const eu = {}
-
-export const isEu = (code) => euCountries.concat(isEuByPoliticalMapping).includes(code)
 
 export const addEuLabel = ({ labelSeries, locale, euSeries }) => {
   const text           = name[locale]
@@ -24,7 +21,6 @@ export const addEuLabel = ({ labelSeries, locale, euSeries }) => {
   labelSeries.toFront()
   labelSeries.appear()
 }
-
 export const showEuLabel = (mapBuilder) => {
   if(!eu.label) addEuLabel(mapBuilder)
   eu.label.appear()
@@ -57,7 +53,6 @@ export const zoomToEu = (mapBuilder) => {
   if(animation)
     animation.kill()
 
-    
   // Find extreme coordinates for all pre-zoom countries
   for (const code of euCountries){
     const country = euSeries.getPolygonById(code)
@@ -95,7 +90,6 @@ export const configEuButton = (mapBuilder, clickCallBack) => {
   button.latitude   = 47.241955823271525
   button.longitude  = -20.103435546206896
   button.name       = name[locale]
-
   button.appear()
   button.events.on('hit', clickCallBack)
 }

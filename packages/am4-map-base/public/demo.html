@@ -2,18 +2,26 @@
 <meta charset="utf-8">
 <title>PageHeaderFixed demo</title>
 
-<script src="../dist/MapNav.umd.js"></script>
-<script nomodule="" src="https://cdn.cbd.int/vue-i18n@8.15.3/dist/vue-i18n.min.js"></script>
+<!-- <script nomodule="" src="../dist/legacy/umd/index.umd.js"></script>
 <script nomodule="" src="https://cdn.cbd.int/vue@2.6.11/dist/vue.min.js"></script>
-<script nomodule="" > Vue.use(i18n); new Vue({ i18n, components: { MapNav } }).$mount('#app') </script>
+<script nomodule="" >  new Vue({ components: { MapNav } }).$mount('#app') </script> -->
 
-
+<script   type="module" src="https://cdn.cbd.int/@scbd/am4-map-lib"></script>
 <script type="module">
-import Vue  from 'https://cdn.cbd.int/vue@2.6.11/dist/vue.esm.browser.min.js';
-import i18n from 'https://cdn.cbd.int/vue-i18n@8.15.3/dist/vue-i18n.esm.browser.min.js';
+import Vue  from 'https://cdn.cbd.int/vue/dist/vue.esm.browser.min.js'
 
-Vue.use(i18n); new Vue({ i18n, components: { MapNav } }).$mount('#nav-map-app');
+console.log('==============', window['am4-map-lib'])
+console.log('==============', window)
+
+//import { MapBuilderBase } from 'http://localhost:8080/browser/index.js'
+
+
+
+
+//import { MapChart } from 'https://cdn.cbd.int/@amcharts/amcharts4/maps';
+
+// new Vue({ components: { MapBase } }).$mount('#nav-base-app');
 </script>
 
-<div id="nav-map-app"> <map-nav></map-nav> </div> 
+<div id="nav-base-app"> <map-base></map-base> </div> 
 </html>

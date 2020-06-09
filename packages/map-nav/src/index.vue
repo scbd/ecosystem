@@ -1,5 +1,5 @@
 <template>
-  <div  style="position:relative; width:100%">
+  <div id="scbd-map-nav" style="position:relative; width:100%">
     <div class="cont" ref='map'></div>
   </div>
 </template>
@@ -7,10 +7,10 @@
 <script>
 
 import { MapBuilder     } from './map-builder'
-import { DefaultOptions } from '@scbd/am4-map-base/src/default-options'
+import { getDefaultOptions } from '@scbd/am4-map-base'
 
 export default {
-  name    : 'AmMap',
+  name    : 'ScbdMapNav',
   props   : { options: { type: Object, required: true } },
   methods : { constructMap },
   computed: { opts },
@@ -21,7 +21,7 @@ export default {
 }
 
 function data (){ return { map: {} } }
-function opts(){ return { ...DefaultOptions.get(), ...this.options } }
+function opts(){ return { ...getDefaultOptions(), ...this.options } }
 function beforeDestroy(){ dispose(this.map) }
 function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why but map does not mount without a bit of a time out }
 function dispose(map){ if(map && map.dispose) map.dispose() }
@@ -37,5 +37,5 @@ function errorCaptured(err, vm){
 </script>
 
 <style scoped>
-  .cont{ width: 100%; height: 450px; }
+  .cont { width: 100%; height: 450px; }
 </style>

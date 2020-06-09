@@ -1,13 +1,15 @@
-import { MapBuilderBase                                     } from '@scbd/am4-map-base'
-import { initEu, mapHomePositionToEu                        } from '@scbd/am4-map-base/src/eu'
-import { initAnimation, setAnimationEventsOnSeriesContainer } from '@scbd/am4-map-base/src/controls'
+import { MapBuilderBase, MapBaseEU, MapBaseControls, MapBaseCountries } from '@scbd/am4-map-base'
 
-import { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } from '@scbd/am4-map-base/src/countries'
+const { initEu, mapHomePositionToEu                        } = MapBaseEU
+const { initAnimation, setAnimationEventsOnSeriesContainer } = MapBaseControls
+const { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } = MapBaseCountries
+
 import { getCountry } from './countries'
 
 export class MapBuilder extends MapBuilderBase{
   constructor(element, options){
     super(element, options)
+
     pushHitEventFn(callBack)
     setCountryEvents(this)
 
@@ -23,8 +25,6 @@ export const ready = (mapBuilder) => () =>  {
 
   initAnimation(mapBuilder)
   setAnimationEventsOnSeriesContainer(mapBuilder)
-
-  mapBuilder.status.ready = true
 }
 
 export const clickUrl = ({ options }, id) => {
@@ -76,6 +76,5 @@ export const initCountryHomeSetting = (mapBuilder) => () => {
   setTimeout(() => mapHomePositionToCountry(code, mapBuilder), 1000)
 }
 
-
-export const countryToolTipAction  = (mapBuilder) => (code) => mapBuilder.options.countryToolTipAction(code) || `href="${clickUrl(mapBuilder, code)}"`
-export const euActionToolTipAction = (mapBuilder) => (code) => mapBuilder.options.euActionToolTipAction(code) || `href="${clickUrl(mapBuilder, code)}"`
+export const countryToolTipAction  = (mapBuilder) => (code) => mapBuilder.options.countryToolTipAction? mapBuilder.options.countryToolTipAction(code) : `href="${clickUrl(mapBuilder, code)}"`
+export const euActionToolTipAction = (mapBuilder) => (code) => mapBuilder.options.euActionToolTipAction? mapBuilder.options.euActionToolTipAction(code) : `href="${clickUrl(mapBuilder, code)}"`

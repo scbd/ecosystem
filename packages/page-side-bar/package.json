@@ -1,47 +1,63 @@
 {
   "name": "@scbd/page-side-bar",
-  "version": "0.0.6",
-  "private": false,
-  "license": "MIT",
-  "main": "dist/PageSideBar.umd.min.js",
-  "unpkg": "dist/PageSideBar.umd.min.js",
-  "browser": {
-    "./sfc": "src/index.vue"
-  },
-  "files": [
-    "dist/*",
-    "src/*"
-  ],
+  "version": "0.0.11",
   "description": "SCBD's webpage side bar",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/page-side-bar#readme",
+  "main": "dist/PageSideBar.umd.min.js",
+  "web": "dist/PageSideBar.esm.browser.min.js",
+  "unpkg": "dist/PageSideBar.umd.min.js",
+  "module": "dist/PageSideBar.esm.min.js",
+  "jsnext:main": "dist/PageSideBar.esm.min.js",
+  "style": "dist/PageSideBar.css",
+  "browser": {
+    "./src": "src/index.js",
+    "./browser": "dist/PageSideBar.esm.browser.min.js",
+    "./dev": "dist/PageSideBar.umd.min.js"
+  },
+  "source": "src/index.js",
+  "files": [
+    "src/*",
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "sh scripts/build.sh",
-    "lint": "vue-cli-service lint --fix",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "lint": "vue-cli-service lint",
     "release": "yarn publish --access=public --tag latest"
   },
-  "dependencies": {
-    "@scbd/default-options": "^0.0.54",
-    "@scbd/webpack-plugin-public-path": "^0.0.1",
-    "change-case": "^4.1.1",
-    "check-ie": "^2.0.0"
-  },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.2.3",
-    "babel-eslint": "^10.0.3",
-    "core-js": "^3.4.4",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.1.2",
-    "ky": "^0.19.0",
-    "ky-universal": "^0.5.0",
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "change-case": "^4.1.1",
+    "core-js": "^3.6.4",
+    "eslint": "^7.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "rollup": "^2.7.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^2.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-vue": "^6.0.0-alpha.7",
     "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.10",
-    "whatwg-fetch": "^3.0.0"
+    "vue-template-compiler": "^2.6.11"
   },
-  "@ecosystem": {
-    "symlinkWorkspaces": true
+  "dependencies": {
+    "@scbd/default-options": "^0.1.2",
+    "change-case": "^4.1.1"
   }
 }

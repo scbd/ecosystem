@@ -1,0 +1,60 @@
+{
+  "name": "@scbd/am4-map-lib",
+  "version": "0.0.3",
+  "license": "MIT",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "description": "@amcharts/amcharts 4.9.19 wrapper",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-lib#readme",
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-lib#readme",
+  "main": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "unpkg": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "module": "dist/esm/index.min.js",
+  "jsnext:main": "dist/esm/index.min.js",
+  "src": "src/index.js",
+  "files": ["dist/*", "src/*"],
+  "browser": {
+    "./umd": "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
+  },
+  "exports": {
+    ".": {
+      "require": "dist/legacy/cjs/index.common.cjs",
+      "default": "dist/esm/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/am4-map-lib"
+  },
+  "bugs": {
+    "url": "https://github.com/scbd/ecosystem/issues"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "lint": "vue-cli-service lint --fix",
+    "clean-am4": "sh scripts/am.sh ",
+    "build": "scbd-dist-builder",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "release": "yarn publish --access=public --tag latest"
+  },
+  "dependencies": {
+    "d3-geo": "^1.12.0",
+    "d3-geo-projection": "^2.9.0",
+    "tslib": "^1.11.2"
+  },
+  "devDependencies": {
+    "@amcharts/amcharts4": "^4.9.19",
+    "@amcharts/amcharts4-geodata": "^4.1.9",
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "vue": "^2.6.11"
+  }
+}

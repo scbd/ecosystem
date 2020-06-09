@@ -1,3 +1,11 @@
+[production]
 > 1%
 last 2 versions
 ie 10-11
+
+[modern]
+last 1 chrome version
+last 1 firefox version
+
+[ssr]
+maintained node versions
