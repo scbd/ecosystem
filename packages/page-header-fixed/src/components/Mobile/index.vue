@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import Nav  from './Nav'
-import Icon  from '../Icon'
+import Nav  from './Nav.vue'
+import Icon  from '../Icon.vue'
 export default {
   name      : 'MobileHeaderSCBD',
   components: { Nav, Icon },

@@ -21,8 +21,10 @@ export const  insertElement = (el) => {
 export const build = (options, legacy=false) => {
   if(!options.name) throw new Error('EmbedComponent requires name to be set in options')
 
+  const regX = new RegExp('(@.+/)', 'ig')
+
   opts = { ...getDefaultOptions(options), parentNode, selfElement,
-           get selfId(){ return this.id? this.id : this.name.replace('@scbd/', '') },
+           get selfId(){ return this.id? this.id : this.name.replace(regX, '') },
            set selfId(id){ this.id = id },
            get appId(){ return `appId-${this.selfId}` },
            get compName(){ return pascalCase((this.selfId)) },

@@ -1,14 +1,12 @@
-
 import   ejs          from 'ejs'
 import   express      from 'express'
 import   cors         from 'cors'
 import   consola      from 'consola'
 import   portfinder   from 'portfinder'
 import   changeCase   from 'change-case'
-import { spawnSync } from 'child_process'
+import { spawnSync }  from 'child_process'
 
-
-import { context } from '../util/context.js'
+import { context                } from '../util/context.js'
 import { pascalPkgName, pkgName } from '../util/pkg.js'
 
 const { COMP_ID }   = process.env
@@ -32,7 +30,6 @@ export const serve = async (rootName = 'testWidget') => {
   
   app.get('/demo', (req, res) => res.send(ejs.render(demoHtml({ port, rootName }))))
   app.get('/legacy', (req, res) => res.send(ejs.render(demoHtml({ port, rootName }, true))))
-
 
   app.listen(port)
   

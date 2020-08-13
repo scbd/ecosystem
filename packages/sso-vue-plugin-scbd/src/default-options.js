@@ -13,7 +13,6 @@ const dev  = { accountsUrl: allAccountUrls[0], admins, _admins, govRoles, _govRo
 const stg  = { ...dev, ...{ accountsUrl: allAccountUrls[1] } }
 const prod = { ...stg, ...{ accountsUrl: allAccountUrls[2] } }
 
-
 const environments  = { stg, dev, prod }
 const validationMap = { allAccountUrls: Array, forceEnv: String, accountsUrl: String, admins: Array, _admins: Array, govRoles: Array, _govRoles: Array   }
 

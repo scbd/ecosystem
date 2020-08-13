@@ -7,6 +7,9 @@ export const initMe = (Vue, opts) => {
   globalProps.opts           = opts
   globalProps.store          = new Vue({ data: { me, instance } })
   globalProps.store.instance = new MeStore()
+  globalProps.store.instance.set()
+
+  return globalProps.store.instance
 }
 
 export const getMe = () =>  new Promise(loadingInterval)

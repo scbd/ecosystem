@@ -1,6 +1,6 @@
 <template>
   <ul class="navbar-nav mr-auto">
-    <li @mouseover.passive="open(index)" @mouseleave="close(index)" v-on:click.capture="toggle(index)" v-for="(aMenu,index) in siteNavElms" :key="index" :id="makeSelector(aMenu, 'SNE')" class="topmenu nav-item dropdown">
+    <li @mouseover.passive="open(index)" @mouseleave="close(index)" v-on:click.capture="toggle(index)" v-for="(aMenu,index) in opts.siteNavElms" :key="index" :id="makeSelector(aMenu, 'SNE')" class="topmenu nav-item dropdown">
       <a href="#" :title="aMenu.name" class="nav-link dropdown-toggle di"  role="button" >
         {{aMenu.name}}
       </a>
@@ -20,11 +20,11 @@
 
 <script>
 import debounce from 'tiny-debounce'
-import makeSelector from '../modules/makeSelector'
+import makeSelector from './makeSelector'
 
 export default {
   name   : 'TopMenuDropDown',
-  props  : [ 'siteNavElms', 'opts' ],
+  props  : [ 'opts' ],
   methods: { toggle, open, close, initState, set, makeSelector },
   data,
   mounted

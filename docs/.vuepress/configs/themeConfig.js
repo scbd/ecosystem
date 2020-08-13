@@ -2,7 +2,7 @@ const nav = require('./nav')
 
 const themeConfig = {
   nav,
-  repo       : 'scbd/action-agenda-components',
+  repo       : 'scbd/ecosystem',
   docsDir: 'docs',
   editLinks  : true,
   lastUpdated: 'Last Updated', // string | boolean
@@ -13,8 +13,8 @@ const themeConfig = {
       selectText:   'Languages',
       editLinkText: 'Edit this page on GitHub',
       lastUpdated:  'Last Updated',
-      title:        'Action Components System',
-      description:  'Is a modular system of independent software components which together form an Action platform. The Action platform can be used to acquire, filter and showcase Actions for your initiative, programme or organization\'s environmental cause',
+      title:        'Ecosystem Monorepo for Components',
+      description:  'Is a modular system of independent software components which aim to be platform independent and functional.  Homed in a monorepo using shared dev resources and utilizing lerna\'s package linking for dependant packages',
     }
 
 

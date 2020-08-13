@@ -1,0 +1,70 @@
+{
+  "name": "@scbd/net-speed",
+  "version": "0.0.2",
+  "license": "MIT",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "description": "Detects client network speed",
+  "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/net-speed#readme",
+  "readme": "https://github.com/scbd/ecosystem/tree/master/packages/net-speed#readme",
+  "main": "dist/esm/index.js",
+  "unpkg": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "module": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.min.js",
+  "src": "src/index.js",
+  "source": "src/index.js",
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "browser": {
+    "./umd": "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
+  },
+  "exports": {
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scbd/ecosystem.git",
+    "directory": "packages/net-speed"
+  },
+  "bugs": {
+    "url": "https://github.com/scbd/ecosystem/issues"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "DEBUG=true scbd-dist-builder",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "lint": "vue-cli-service lint --fix",
+    "release": "yarn publish --access=public --tag latest"
+  },
+  "dependencies": {
+    "d3-geo": "^1.12.0",
+    "d3-geo-projection": "^2.9.0",
+    "lodash.mean": "^4.1.0",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@amcharts/amcharts4": "^4.9.30",
+    "@amcharts/amcharts4-geodata": "^4.1.9",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-strip": "^2.0.0",
+    "@scbd/dist-builder": "^0.0.6",
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-plugin-e2e-cypress": "^4.3.1",
+    "@vue/cli-plugin-eslint": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "rollup-plugin-vue": "^6.0.0-beta.9"
+  }
+}

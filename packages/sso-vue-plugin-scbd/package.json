@@ -1,15 +1,15 @@
 {
   "name": "@scbd/sso-vue-plugin-scbd",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "license": "MIT",
   "readme": "https://github.com/scbd/ecosystem/tree/master/packages/sso-vue-plugin-scbd#readme",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/sso-vue-plugin-scbd#readme",
-  "main": "dist/esm/index.min.js",
+  "main": "dist/esm/index.js",
   "unpkg": "dist/browser/index.min.js",
   "web": "dist/browser/index.min.js",
   "umd": "dist/legacy/umd/index.umd.min.js",
-  "module": "dist/esm/index.min.js",
+  "module": "dist/esm/index.js",
   "jsnext:main": "dist/esm/index.min.js",
   "src": "src/index.js",
   "source": "src/index.js",
@@ -19,12 +19,19 @@
     "./": "dist/browser/index.min.js"
   },
   "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
-  "files": ["dist/*", "src/*"],
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scbd/ecosystem.git",
@@ -40,21 +47,21 @@
   },
   "dependencies": {
     "@scbd/default-options": "^0.1.10",
-    "@scbd/load-http": "^0.0.4",
-    "change-case": "^4.1.1"
+    "@scbd/load-http": "^0.0.6",
+    "change-case": "^4.1.1",
+    "core-js": "^3.3.2",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
-    "core-js": "^3.3.2",
-    "rollup": "^2.7.6",
-    "vue": "^2.6.11",
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@scbd/dist-builder": "^0.0.6",
+    "@vue/cli-plugin-babel": "~4.4.1",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.1",
+    "@vue/cli-plugin-eslint": "~4.4.1",
+    "@vue/cli-service": "~4.4.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^7.2.0",
     "eslint-plugin-vue": "^6.2.2",
+    "rollup": "^2.7.6",
     "vue-template-compiler": "^2.6.11"
   }
 }

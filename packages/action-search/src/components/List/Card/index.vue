@@ -19,7 +19,7 @@
     </div>
 
     <!-- TAB 1 -->
-    <HorzCardAction  v-bind="{...action, actionDetails }" v-if="isActiveTab(1)" />
+    <HorzCardAction  v-bind="{...action, actionDetails }" />
 
 
     <!-- FOOTER -->
@@ -55,7 +55,7 @@ export default {
     options      : { type: Object, required: true }
   },
   computed: { status },
-  methods : { changeTab, isActiveTab, getStatusUrl, changeStatus, go, loadIcons, viewUrl },
+  methods : { getStatusUrl, changeStatus, loadIcons, viewUrl },
   filters : { dateFormat },
   data,
   created,
@@ -72,16 +72,6 @@ async function created(){
 }
 
 function status(){ return this.meta.status }
-
-function changeTab(tab){ this.activeTab=tab }
-
-function isActiveTab(tab){ return this.activeTab===tab }
-
-function go(_id){
-  const { origin, pathname } = window.location
-
-  window.location.href = `${origin}${stripTrailingSlash(pathname)}/action?action-id=${_id}`
-}
 
 function viewUrl(_id){
   const { origin, pathname } = window.location
@@ -140,7 +130,7 @@ async function loadIcons(){
 
   if(!iconData.length) return
 
-  for (const [ index, { identifier } ] of iconData.entries()){
+  for (const [ index, { identifier }={} ] of iconData.entries()){
     if(!identifier) continue
     iconData[index] = await lookUp('all', identifier, true)
     if(!iconData[index]){

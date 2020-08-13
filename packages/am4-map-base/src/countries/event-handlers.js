@@ -1,6 +1,6 @@
 import { setCountryState, getLngLat, setDelta } from './service'
 import { addCountryLabel, deleteCountryLabel  } from './labels'
-import { getPoliticalRelations                } from './political-mappings'
+import { getPoliticalRelations                } from '@scbd/am4-map-lib'
 
 const activeCountries = new Set()
 

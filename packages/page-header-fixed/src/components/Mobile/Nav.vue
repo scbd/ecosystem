@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import TopMenuDropDown from '../TopMenuDropDown'
-import LoginNav        from '../LoginNav'
-import SearchNav       from '../SearchNav'
-import MainNav         from './MainNav'
+import TopMenuDropDown from '../TopMenuDropDown.vue'
+import LoginNav        from '../LoginNav.vue'
+import SearchNav       from '../SearchNav.vue'
+import MainNav         from './MainNav.vue'
 
 const inject = { components: { default: { TopMenuDropDown, LoginNav, SearchNav, MainNav } } }
 

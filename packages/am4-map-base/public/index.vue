@@ -1,37 +1,27 @@
 <template>
-  <div  style="position:relative; width:100%">
+  <div  v-if="options" style="position:relative; width:100%">
     <div class="cont" ref='map'></div>
   </div>
 </template>
 
 <script>
-
-import { MapBuilderBase, getDefaultOptions } from '../src/index'
+import { Mixin, MapBuilderBase } from '../src/index'
 
 export default {
-  name    : 'AmMap',
-  props   : { options: { type: Object, required: true } },
-  methods : { constructMap },
-  computed: { opts },
-  mounted,
-  data,
-  beforeDestroy,
-  errorCaptured
+  name   : 'AmMap',
+  mixins : [ Mixin ],
+  methods: { constructMap },
+  mounted
 }
 
-function data (){ return { map: {} } }
-function opts(){ return { ...getDefaultOptions(), ...this.options } }
-function beforeDestroy(){ dispose(this.map) }
+
 function mounted (){ setTimeout(() => this.constructMap(), 100) }// not sure why but map does not mount without a bit of a time out }
-function dispose(map){ if(map && map.dispose) map.dispose() }
-                              
-function constructMap(){
-  this.map = new MapBuilderBase(this.$refs.map, this.opts)
-}
 
-function errorCaptured(err, vm){
-  dispose(vm.$data.map)
-  console.error(err)
+
+async function constructMap(){
+  this.opts  = await this.whenOptions()
+
+  this.map = new MapBuilderBase(this.$refs.map, this.opts)
 }
 </script>
 

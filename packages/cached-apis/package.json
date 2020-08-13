@@ -1,6 +1,6 @@
 {
   "name": "@scbd/cached-apis",
-  "version": "0.0.18",
+  "version": "0.0.22",
   "type": "module",
   "readme": "https://github.com/scbd/ecosystem/tree/master/packages/cached-apis#readme",
   "license": "MIT",
@@ -10,7 +10,7 @@
   "web": "dist/browser/index.min.js",
   "umd": "dist/legacy/umd/index.umd.min.js",
   "unpkg": "dist/browser/index.min.js",
-  "module": "dist/esm/index.min.js",
+  "module": "dist/esm/index.js",
   "jsnext:main": "dist/esm/index.min.js",
   "src": "src/index.js",
   "source": "src/index.js",
@@ -24,10 +24,14 @@
     "./": "dist/browser/index.min.js"
   },
   "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -44,21 +48,21 @@
     "link": "lerna link"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.1.10",
-    "@scbd/load-http": "^0.0.4",
-    "@scbd/locale": "^0.0.9",
+    "@scbd/default-options": "^0.1.13",
+    "@scbd/load-http": "^0.0.6",
+    "@scbd/locale": "^0.0.10",
     "localforage": "^1.7.3",
     "lodash.isnil": "^4.0.0",
     "lodash.omitby": "^4.6.0"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@scbd/dist-builder": "^0.0.6",
+    "@vue/cli-plugin-babel": "~4.4.1",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.1",
+    "@vue/cli-plugin-eslint": "~4.4.1",
+    "@vue/cli-service": "~4.4.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^7.2.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   }

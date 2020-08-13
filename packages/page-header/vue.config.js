@@ -1,16 +1,11 @@
-const PurgecssPlugin          = require('purgecss-webpack-plugin');
-const glob                    = require('glob-all');
-const path                    = require('path')
-const PublicPathWebpackPlugin = require('@scbd/webpack-plugin-public-path')
-
 module.exports = {
-  transpileDependencies: [ 'ky', 'ky-universal', '@scbd/default-options', 'change-case', 'check-ie', 'vue-i18n' ],
   lintOnSave           : true,
+  transpileDependencies: [ 'ky', 'ky-universal', 'check-ie', '@scbd/load-http', ' @scbd/locale', '@scbd/default-options', 'change-case', 'vue-i18n', '@scbd/self-embedding-component', 'change-case' ],
   devServer            : {
     port            : 8882,
     disableHostCheck: true
   },
-  css          : { extract: false },
+  css          : { extract: true },
   pluginOptions: {
     i18n: {
       locale        : 'en',
@@ -28,18 +23,5 @@ module.exports = {
       .type('javascript/auto')
       .use('i18n')
       .loader('@kazupon/vue-i18n-loader')
-  },
-  configureWebpack: {
-    // Merged into the final Webpack config
-    plugins: [
-      new PublicPathWebpackPlugin(),
-      new PurgecssPlugin({
-        paths: glob.sync([
-          path.join(__dirname, './src/index.html'),
-          path.join(__dirname, './**/*.vue'),
-          path.join(__dirname, './src/**/*.js')
-        ])
-      })
-    ]
   }
 }

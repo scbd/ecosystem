@@ -1,48 +1,60 @@
 {
   "name": "@scbd/page-footer",
-  "version": "0.0.69",
-  "private": false,
-  "license": "MIT",
-  "main": "dist/PageFooter.umd.min.js",
-  "unpkg": "dist/PageFooter.umd.min.js",
-  "browser": {
-    "./sfc": "src/data-providers/Drupal.vue"
-  },
-  "files": [
-    "dist/*",
-    "src/*"
-  ],
+  "version": "1.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve --mode stg --open",
-    "build": "NODE_ENV=production sh scripts/build.sh",
+    "serve": "vue-cli-service serve --mode dev --open",
+    "build": "scbd-dist-builder",
+    "build-widget": "scbd-dist-builder widget",
+    "build-test-widget": "DEBUG=true scbd-dist-builder testWidget",
+    "serve-widget-test": "scbd-dist-builder serveTestWidget",
+    "lint": "vue-cli-service lint --fix",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
-    "lint": "vue-cli-service lint --fix ",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "release": "yarn publish --access=public --tag latest"
   },
+  "license": "MIT",
+  "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
+  "main": "dist/esm/index.js",
+  "unpkg": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
+  "umd": "dist/legacy/umd/index.umd.min.js",
+  "module": "dist/esm/index.min.js",
+  "jsnext:main": "dist/esm/index.min.js",
+  "src": "src/index.js",
+  "browser": {
+    "./umd": "dist/legacy/umd/index.umd.min.js",
+    "./browser": "dist/browser/index.min.js",
+    "./": "dist/browser/index.min.js"
+  },
+  "files": ["dist/*", "src/*"],
+  "exports": {
+    ".": [{
+      "import": "./dist/esm/index.js",
+      "require": "./dist/legacy/cjs/index.common.cjs",
+      "default": "./dist/esm/index.js"
+    }, "./dist/legacy/umd/index.umd.min.js"]
+  },
   "dependencies": {
-    "@scbd/default-options": "^0.1.1",
-    "@scbd/webpack-plugin-public-path": "^0.0.1",
+    "@scbd/default-options": "^0.1.13",
+    "@scbd/load-http": "^0.0.6",
+    "@scbd/locale": "^0.0.10",
+    "@scbd/self-embedding-component": "^0.0.25",
     "change-case": "^4.1.1",
-    "check-ie": "^2.0.0",
-    "ky": "^0.19.0",
-    "ky-universal": "^0.6.0",
-    "vue-i18n": "^8.0.0",
-    "whatwg-fetch": "^3.0.0"
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
-    "@vue/cli-plugin-babel": "^4.0.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.0.0",
-    "@vue/cli-plugin-eslint": "^4.0.0",
-    "@vue/cli-service": "^4.0.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^7.0.0",
-    "eslint-plugin-vue": "^6.1.2",
-    "vue": "^2.6.11",
-    "vue-cli-plugin-s3-deploy": "^4.0.0-rc3",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "gitHead": "534f983ca739cdaaf1a29e473d6ba99c90a585d0"
+    "@kazupon/vue-i18n-loader": "^0.5.0",
+    "@scbd/dist-builder": "^0.0.6",
+    "@scbd/www-css": "^0.0.18",
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  }
 }

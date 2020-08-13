@@ -1,6 +1,6 @@
 import { zoomLevelDataArray, euCountriesByPoliticalMapping } from './config'
 import { pushOutEventFn, pushOverEventFn                   } from './event-queues'
-import { getPoliticalRelations                             } from './political-mappings'
+import { getPoliticalRelations                             } from '@scbd/am4-map-lib'
 
 const userStyle      = { }
 const styleDefault   = { label: '#ffffff', water: '#BBDEFB', default: '#01463a', country: '#01463a', hover: '#9a5917', active: '#9a5917', fontFamily: 'BenchNine, sans-serif' }

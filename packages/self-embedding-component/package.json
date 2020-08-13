@@ -1,14 +1,14 @@
 {
   "name": "@scbd/self-embedding-component",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "type": "module",
   "description": "SCBD's self embedding component service",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "license": "MIT",
   "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/self-embedding-component#readme",
   "readme": "https://github.com/scbd/ecosystem/tree/master/packages/self-embedding-component#readme",
-  "main": "dist/esm/index.min.js",
-  "module": "dist/esm/index.min.js",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
   "web": "dist/browser/index.min.js",
   "umd": "dist/legacy/umd/index.umd.min.js",
   "unpkg": "dist/browser/index.min.js",
@@ -21,10 +21,14 @@
     "./": "dist/browser/index.min.js"
   },
   "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
   "files": [
     "dist/*",
@@ -50,11 +54,11 @@
     "link": "lerna link"
   },
   "dependencies": {
-    "@scbd/default-options": "^0.1.9",
+    "@scbd/default-options": "^0.1.12",
     "change-case": "^4.1.1"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
+    "@scbd/dist-builder": "^0.0.6",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-e2e-cypress": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

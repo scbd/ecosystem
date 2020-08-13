@@ -26,7 +26,7 @@ export const writePkg = (pkgObj) => {
 
 export const { name, version, license, dependencies, type } = pkg
 
-export const scopeLessName  = name.replace('@scbd/', '')
+export const scopeLessName  = name.replace(new RegExp('@scbd/|@action-agenda/', 'i'), '')
 export const pascalPkgName  = changeCase.pascalCase(scopeLessName)
 export const pkgName        = changeCase.paramCase(scopeLessName)
 export const isComponent    = fs.existsSync(path.resolve(context, 'src/index.vue'))
@@ -39,9 +39,7 @@ export const defaultPkg =
   private      : false,
   license      : 'MIT',
   author       : 'Secretariat of the Convention on Biological Diversity <it@cbd.int>',
-  homepage     : `https://github.com/scbd/ecosystem/tree/master/packages/${pkgName}#readme`,
-  readme       : `https://github.com/scbd/ecosystem/tree/master/packages/${pkgName}#readme`,
-  main         : 'dist/esm/index.min.js',
+  main         : 'dist/esm/index.js',
   web          : 'dist/browser/index.min.js',
   umd          : 'dist/legacy/umd/index.umd.min.js',
   unpkg        : 'dist/browser/index.min.js',
@@ -58,14 +56,13 @@ export const defaultPkg =
     './'       : 'dist/browser/index.min.js'
   },
   exports: {
-    '.': {
-      require: 'dist/legacy/cjs/index.common.cjs',
-      default: 'dist/esm/index.js'
-    }
-  },
-  repository: {
-    type     : 'git',
-    url      : 'git+https://github.com/scbd/ecosystem.git',
-    directory: `packages/${pkgName}`
+    '.': [
+      {
+        import : './dist/esm/index.js',
+        require: './dist/legacy/cjs/index.common.cjs',
+        default: './dist/esm/index.js'
+      },
+      './dist/legacy/umd/index.umd.min.js'
+    ]
   }
 }

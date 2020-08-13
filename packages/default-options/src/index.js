@@ -1,10 +1,11 @@
-const dev   = { host: 'https://www.cbddev.xyz',      basePath: '/' }
-const stg   = { host: 'https://www.staging.cbd.int', basePath: '/' }
-const prod  = { host: 'https://www.cbd.int',         basePath: '/' }
+const dev   = { host: 'https://www.cbddev.xyz',      basePath: '/', api: 'https://api.cbddev.xyz/api' };
+const stg   = { host: 'https://www.staging.cbd.int', basePath: '/', api: 'https://api.staging.cbd.int/api' };
+const prod  = { host: 'https://www.cbd.int',         basePath: '/', api: 'https://api.cbd.int/api' };
 
 const ENVS   = { dev, stg, prod }
-const V_MAP  = { host: String, basePath: String }
+const V_MAP  = { host: String, basePath: String, api: String }
 
+export const globalDefaultOptions = {}
 
 export default class DefaultOptions{
   constructor({ environments, validationMap, forceEnv, name }){
@@ -36,10 +37,8 @@ export default class DefaultOptions{
   validate(opts){ return validate(opts, this.props.validationMap) }
 }
 
-const globalDefaultOptions = {}
-
 export const setDefaultOptions = ({ environments, validationMap, forceEnv, name }, nameSpace = name) => {
-  if(!nameSpace) throw new Error('@scbd/default-options.setDefaultOptions: no name/nameSpace passed to setDefaultOptions')
+  if(!nameSpace) throw new Error(' @scbd/default-options.setDefaultOptions: no name/nameSpace passed to setDefaultOptions')
 
   globalDefaultOptions[nameSpace] = new DefaultOptions({ environments, validationMap, forceEnv, name })
 }
@@ -82,9 +81,9 @@ function errorUnknownType (key, rType, eType){
 }
 
 function assignEnvironments(environments){
-  const dev  = Object.assign(ENVS.dev, environments.dev   || environments.development || {})
-  const stg  = Object.assign(ENVS.stg, environments.stg   || environments.staging     || {})
-  const prod = Object.assign(ENVS.prod, environments.prod || environments.production  || {})
+  const dev  = Object.assign({}, ENVS.dev, environments.dev   || environments.development || {})
+  const stg  = Object.assign({}, ENVS.stg, environments.stg   || environments.staging     || {})
+  const prod = Object.assign({}, ENVS.prod, environments.prod || environments.production  || {})
 
   const development = dev
   const staging     = stg

@@ -1,5 +1,6 @@
 const nav = [
-  { text: 'Guide', link: '/guide/' }
+  { text: 'Components', link: '/components/' },
+  { text: 'Ble', link: '/bla/' }
 ]
 
 module.exports = nav

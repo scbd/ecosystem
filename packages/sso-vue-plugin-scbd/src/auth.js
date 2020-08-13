@@ -7,10 +7,12 @@ export const initAuth = (Vue, opts) => {
   globalProps.opts           = opts
   globalProps.store          = new Vue({ data: { token, instance } })
   globalProps.store.instance = new AuthStore()
+
+  return globalProps.store.instance
 }
 
 export const getAuth = () => new Promise(loadingIntervalInstance)
-
+export const isTokenLoaded = () => new Promise(loadingInterval)
 
 class AuthStore{
   logOut(){ globalProps.store.token = '' }
@@ -41,7 +43,7 @@ class AuthStore{
     return  { Authorization: `Ticket ${globalProps.store.token}` }
   }
 
-  isAuthLoaded(){  return new Promise(loadingInterval.bind(this)) }
+  isAuthLoaded(){  return new Promise(loadingInterval) }
 
   receivePostMessage(event){
     if(!isAccountsOrigin(event)) return null

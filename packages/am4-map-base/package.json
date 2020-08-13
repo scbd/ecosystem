@@ -1,28 +1,33 @@
 {
   "name": "@scbd/am4-map-base",
-  "version": "0.0.24",
+  "version": "0.0.27",
   "license": "MIT",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "readme": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-base#readme",
   "description": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-base#readme",
   "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/am4-map-base#readme",
-  "main": "dist/browser/index.min.js",
-  "web": "dist/browser/index.min.js",
+  "main": "dist/esm/index.js",
   "unpkg": "dist/browser/index.min.js",
+  "web": "dist/browser/index.min.js",
   "umd": "dist/legacy/umd/index.umd.min.js",
-  "module": "dist/esm/index.min.js",
-  "jsnext:main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.min.js",
   "src": "src/index.js",
-  "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
-  },
+  "source": "src/index.js",
   "browser": {
     "./umd": "dist/legacy/umd/index.umd.min.js",
     "./browser": "dist/browser/index.min.js",
     "./": "dist/browser/index.min.js"
+  },
+  "exports": {
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
   "files": [
     "dist/*",
@@ -41,19 +46,20 @@
     "local-file-server": "node tests/e2e/scaffolding/local-file-server.js",
     "view-demo": "open -a /Applications/Google\\ Chrome.app public/demo.html",
     "lint": "vue-cli-service lint --fix",
-    "build": "scbd-dist-builder",
+    "build": "DEBUG=true scbd-dist-builder",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "sh scripts/build-test.sh && vue-cli-service test:e2e --headless",
     "release": "yarn publish --access=public --tag latest",
     "yarn-upgrade-deps": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "@scbd/am4-map-lib": "^0.0.3",
-    "@scbd/default-options": "^0.1.6",
-    "@scbd/locale": "^0.0.9"
+    "@scbd/am4-map-lib": "^0.0.8",
+    "@scbd/default-options": "^0.1.13",
+    "@scbd/locale": "^0.0.10",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
+    "@scbd/dist-builder": "^0.0.6",
     "@vue/cli-plugin-babel": "^4.3.1",
     "@vue/cli-plugin-e2e-cypress": "^4.3.1",
     "@vue/cli-plugin-eslint": "^4.3.1",
@@ -61,7 +67,6 @@
     "cors": "^2.8.5",
     "cypress-xpath": "^1.4.0",
     "express": "^4.17.1",
-    "superagent": "^5.2.2",
-    "vue": "^2.6.11"
+    "superagent": "^5.2.2"
   }
 }

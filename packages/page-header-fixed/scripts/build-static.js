@@ -16,7 +16,7 @@ const dapi      = 'https://dapi.cbd.int';
 })()
 
 function stringifyToJsModule(data){
-  return `module.exports = ${JSON.stringify(data)} //eslint-disable-line \n // ${new Date()}`
+  return `/* eslint-disable */ \n module.exports = ${JSON.stringify(data)} //eslint-disable-line \n // ${new Date()}`
 }
 
 function getMain(){

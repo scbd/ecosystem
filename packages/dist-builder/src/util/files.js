@@ -55,6 +55,14 @@ export async function getJsFileObjs (dir){ // eslint-disable-line
   return fileObjs
 }
 
+export function pushInFile(fileName, dataToPush){
+  const data         = (fs.readFileSync(fileName)).toString()
+
+  const newData      = `${dataToPush} \n ${data}`
+
+  return fs.writeFileSync(fileName, newData)
+}
+
 export function replaceInFile(fileName, scopeId, scopeIdReplacement){
   const data         = (fs.readFileSync(fileName)).toString()
   const scopeIdRegex = new RegExp(`${scopeId}`, 'g')

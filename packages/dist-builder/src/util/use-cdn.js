@@ -20,7 +20,10 @@ export const useCdn = async () => {
 
 export const embedCdnUrl = (fileName) => {
   for (const name in modernEmsPackageCdnMap){
-    const cdnUrl = modernEmsPackageCdnMap[name]
+    const isNotMinFile = !fileName.includes('.min')
+    const isScbd       = modernEmsPackageCdnMap[name].includes('@scbd')
+
+    const cdnUrl = isScbd && isNotMinFile? modernEmsPackageCdnMap[name].replace('.min', '') : modernEmsPackageCdnMap[name]
 
     replaceInFile(fileName, `'${name}`, `'${cdnUrl}`)
     replaceInFile(fileName, `"${name}`, `"${cdnUrl}`)
@@ -36,7 +39,7 @@ async function fixEsmChunks(){
 
     if(name.includes('.min'))
       replaceInFile(path.resolve(dirPath, './index.min.js'), `./${base}`, `${cdnUrl}/${pkgName}/dist/browser/${base}`)
-    else(name.includes('.min'))
-    replaceInFile(path.resolve(dirPath, './index.js'), `./${base}`, `${cdnUrl}/${pkgName}/dist/browser/${base}`)
+    else(!name.includes('.min'))
+      replaceInFile(path.resolve(dirPath, './index.js'), `./${base}`, `${cdnUrl}/${pkgName}/dist/browser/${base}`)
   }
 }

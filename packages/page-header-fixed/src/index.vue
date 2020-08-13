@@ -14,42 +14,68 @@
 </template>
 
 <script>
-import   WPHeader         from './components/StructuredData/WPHeader'
-import   Icons            from './components/Icons'
-import   Mobile           from './components/Mobile'
-import   Desktop          from './components/Desktop'
-import   debounce         from 'tiny-debounce'
-import   defaultOpts      from './modules/defaultOptions'
+import { get$http }        from '@scbd/load-http'
+import debounce            from 'tiny-debounce'
+import WPHeader            from './components/StructuredData/WPHeader.vue'
+import Icons               from './components/Icons.vue'
+import Mobile              from './components/Mobile/index.vue'
+import Desktop             from './components/Desktop/index.vue'
+import getDefaultOptionsFn from './default-options'
 
 export default {
   name      : 'PageHeaderFixed',
   components: { WPHeader, Icons, Mobile, Desktop },
-  computed  : { opts, siteNavElms },
-  methods   : { isMobile },
-  props     : { siteNavigationElements: { type: Array },
-                options               : { type: Object, default: () => {} } },
-  mounted
+  computed  : { opts },
+  methods   : { isMobile, readMenusFromApi, getTopMenu, getMain },
+  props     : { options: { type: Object, default: () => {} } },
+  mounted, data, created
 }
 
-function siteNavElms(){
-  const isStatic = (!this.siteNavigationElements || this.siteNavigationElements.length)
-
-  return isStatic? this.opts.siteNavigationElements : this.siteNavigationElements
+function created(){
+  if(!this.opts.static)
+    setTimeout(() => this.readMenusFromApi(), 100)
 }
+
+async function readMenusFromApi(){
+  this.mainSNEs    = (await this.getMain(this.opts))[0]
+  this.siteNavElms = (await this.getTopMenu(this.opts))
+}
+
+function data(){ return { siteNavElms: [], mainSNEs: {} } }
 
 function opts(){
-  return defaultOpts.get(this.options)
+  const defaultOpts = getDefaultOptionsFn(this.options)
+
+  defaultOpts.siteNavElms = this.siteNavElms.length? this.siteNavElms : defaultOpts.siteNavElms
+  defaultOpts.mainSNEs    = Object.keys(this.mainSNEs).length? this.mainSNEs : defaultOpts.mainSNEs
+
+  return defaultOpts
 }
 
 function isMobile(){
   if(typeof window === 'undefined') return false
   return window.matchMedia('(max-width: 990px)').matches
 }
+
 function mounted(){
   const self = this
 
   this.$nextTick(() => window.addEventListener('resize', () => debounce(self.$forceUpdate(), 500)))
 }
+
+async function getMain({ dapi }){
+  const $http = this.$http? this.$http : await get$http()
+
+  return $http.get(`${dapi}/menus/main?postfix=WPHF`).then(res => res.json())
+    .then((d) =>  [ { identifier: [ { name: 'drupalMenuName', value: 'main' } ], name: 'main', position: 3, hasPart: d } ])
+}
+
+async function getTopMenu({ dapi }){
+  const $http = this.$http? this.$http : await get$http()
+
+  return $http.get(`${dapi}/menus/topmenu?postfix=WPHF`).json()
+}
+
 </script>
 
 <style>

@@ -1,37 +1,25 @@
 <template>
   <div v-if="me" id="app" style="text-align: center;">
 
-    <div v-if="me" class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div v-if="eventMe" class="shadow-lg p-3 mb-5 bg-white rounded">
       <h1>ENV: {{NODE_ENV}}</h1>
-      <h1>Hello <strong>{{$me.name}}</strong>.  The global $me event caught.</h1>
-      <h5>$accountsUrl: {{$auth.accountsUrl}}</h5>
+      <h1>Hello <strong>{{me.name}}</strong>.  The global me event caught.</h1>
+      <h5>$accountsUrl: {{auth.accountsUrl}}</h5>
     </div>
 
-    <div v-if="!me" style="text-align: center;">
+    <div v-if="!eventMe" style="text-align: center;">
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       <small>Waiting for $me event to emit user if you are logged in.</small>
     </div>
 
     <table class="pageCenter table table-striped table-sm mt-5" style="width:25%">
-      <tr v-for="(value, name) in $me" :key="name" >
+      <tr v-for="(value, name) in me" :key="name" >
         <th class="font-weight-bold" style="text-align:right;">{{name}}:</th>
         <th style="text-align:left;">{{value}}</th>
       </tr>
       <tr >
         <th class="font-weight-bold" style="text-align:right;">hasRole('user'):</th>
-        <th style="text-align:left;">{{$me.hasRole('User')}}</th>
-      </tr>
-      <tr v-if="$me.isVuex">
-        <th class="font-weight-bold" style="text-align:right;">isAdmin:</th>
-        <th style="text-align:left;">{{$me.isAdmin}}</th>
-      </tr>
-            <tr v-if="$me.isVuex">
-        <th class="font-weight-bold" style="text-align:right;">isGov:</th>
-        <th style="text-align:left;">{{$me.isGov}}</th>
-      </tr>
-            <tr v-if="$me.isVuex">
-        <th class="font-weight-bold" style="text-align:right;">isStaff:</th>
-        <th style="text-align:left;">{{$me.isStaff}}</th>
+        <th style="text-align:left;">{{me.hasRole('User')}}</th>
       </tr>
     </table>
 
@@ -49,22 +37,21 @@ export default {
   computed: { NODE_ENV: () => NODE_ENV },
   created,
   data
+
 }
 
-function data (){
-  return { me: '' }
+function data(){
+  return { eventMe: undefined }
 }
 
-function created(){
+async function created(){
+  await this.$initSsoScbd()
   window.document.addEventListener('$me', this.loadMe)
 }
 
 function loadMe(evt){
   setTimeout(() => {
-    this.me = evt.$me
-
-    this.$forceUpdate()
-    // setTimeout(() => this.logOut(), 5000)
+    this.eventMe = evt.$me
   }, 100)
 }
 </script>

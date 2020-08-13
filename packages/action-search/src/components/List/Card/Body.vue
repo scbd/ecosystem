@@ -56,8 +56,9 @@ async function loadIcons(){
 
   if(!iconData.length) return
 
-  for (const [ index, { identifier } ] of iconData.entries())
-    iconData[index] = await lookUp('all', identifier, true)
+  for (const [ index, { identifier }={} ] of iconData.entries())
+    if(identifier)
+      iconData[index] = await lookUp('all', identifier, true)
 
   this.icons = iconData
 }

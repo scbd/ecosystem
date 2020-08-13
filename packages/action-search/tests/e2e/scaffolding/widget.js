@@ -5,9 +5,11 @@ const libName   = name.replace('https://cdn.cbd.int/', '')//hack for browser bui
 const options   = {}
 const propsData = { options, forceEnv:'dev' }
 
-const selfUrl = 'http://localhost:8089/dist/browser/index.js'
+const selfUrl = 'http://localhost:8091/dist/browser/index.js'
 
-const { VUE, VUE_I18N, SCBD_SSO_AUTH } = dependencyRef
+const { VUE, VUE_I18N } = dependencyRef
+
+const  SCBD_SSO_AUTH = { url: `https://cdn.cbd.int/@scbd/sso-vue-plugin-scbd/dist/browser/index.js`, name: 'sso-vue-plugin-scbd' }
 
 const dependencies      = { all: [VUE, VUE_I18N, SCBD_SSO_AUTH ], 
                             vuePlugins:[VUE_I18N, SCBD_SSO_AUTH], 

@@ -5,7 +5,9 @@ import * as controls            from './controls'
 import * as countries           from './countries'
 import * as config              from './config'
 import      getDefaultOptionsFn from './default-options'
+import      mixin from './vue-comp-mixin'
 
+export const Mixin = mixin
 export const MapBaseConfig     = config
 export const MapBaseEU         = eu
 export const MapBaseControls   = controls
@@ -29,15 +31,11 @@ export class MapBuilderBase{
 
     if(options.devMode) this.devMode()
   }
-
   
   init(element, options){
-    const { main }        = options.config
-
     this.element          = element
-    this.map              = createFromConfig({ ...main }, element, MapChart)
+    this.map              = createFromConfig({ ...options.config }, element, MapChart)
     this.options          = options
-    this.map.MapBuilder   = this
     this.map.maxZoomLevel = 256
     this.locale           = options.locale
 
@@ -58,7 +56,6 @@ export class MapBuilderBase{
     this.status = new Proxy(status, statusHandler)
   }
   whenReady(){
-    console.log('BaseNav ready called================')
     if(this.options.initControls)
       initControls(this)
     if(this.options.initEu)

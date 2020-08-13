@@ -11,14 +11,14 @@ export default {
 }
 
 function url(){
-  return this.$auth.accountsUrl
+  return this.auth.accountsUrl
 }
 
 function mounted (){
   if (this.$isServer) return
   if(!this.$refs || !this.$refs.authFrame) return false
   
-  window.addEventListener('message', this.$auth.receivePostMessage)
+  window.addEventListener('message', this.auth.receivePostMessage)
 
   this.$refs.authFrame.onload = () => {
     const { contentWindow } = this.$refs.authFrame

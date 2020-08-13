@@ -5,6 +5,7 @@ import consola from 'consola'
 import { startFeedback, endFeedback, startTaskInfo, endTaskInfo, taskError, context } from '../src/util/index.js'
 
 const commands = [ 'build', 'init', 'widget', 'testWidget', 'serveTestWidget', 'serveWidget' ]
+const src      = 'node_modules/@scbd/dist-builder/src/'
 
 runCommand()
 
@@ -19,16 +20,16 @@ function runCommand(){
 function runChildProcess(theCommand){
   let scriptPathToFork = ''
 
-  if(theCommand === 'init')             scriptPathToFork = '../dist-builder/src/init/run-as-child-process.js'
-  if(theCommand === 'widget')           scriptPathToFork = '../dist-builder/src/build/widget/run-as-child-process.js'
-  if(theCommand === 'testWidget')       scriptPathToFork = '../dist-builder/src/build/widget/run-as-child-process-test.js'
-  if(theCommand === 'serveTestWidget')  scriptPathToFork = '../dist-builder/src/serve-esm-local/run-as-child-process-test.js'
-  if(theCommand === 'serveWidget')      scriptPathToFork = '../dist-builder/src/serve-esm-local/run-as-child-process.js'
+  if(theCommand === 'init')             scriptPathToFork = `${src}/init/run-as-child-process.js`
+  if(theCommand === 'widget')           scriptPathToFork = `${src}/build/widget/run-as-child-process.js`
+  if(theCommand === 'testWidget')       scriptPathToFork = `${src}/build/widget/run-as-child-process-test.js`
+  if(theCommand === 'serveTestWidget')  scriptPathToFork = `${src}/serve-esm-local/run-as-child-process-test.js`
+  if(theCommand === 'serveWidget')      scriptPathToFork = `${src}/serve-esm-local/run-as-child-process.js`
 
   if(scriptPathToFork)  return forkScript(scriptPathToFork)
 
   //build
-  forkScript('../dist-builder/src/build/run-as-child-process.js')
+  forkScript(`${src}/build/run-as-child-process.js`)
 }
 
 function forkScript(scriptPathToFork){

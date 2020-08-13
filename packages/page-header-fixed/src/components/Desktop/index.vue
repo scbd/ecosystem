@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import TopMenuDropDown from '../TopMenuDropDown'
-import SearchNav       from '../SearchNav'
-import LoginNav        from '../LoginNav'
+import TopMenuDropDown from '../TopMenuDropDown.vue'
+import SearchNav       from '../SearchNav.vue'
+import LoginNav        from '../LoginNav.vue'
 
 const inject = { components: { default: { TopMenuDropDown, SearchNav, LoginNav } } }
 

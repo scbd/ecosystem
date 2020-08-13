@@ -2,7 +2,7 @@
 <template>
   <ul class="navbar-nav">
     <li v-if="!isAuthLoaded" class="nav-item">
-      <a id="accountsLink-SNE" v-if="!isAuthLoaded" class="nav-link login di" :href="`${opts.accountsUrl}/signin?returnUrl=${returnUrl}`">
+      <a id="accountsLink-SNE" v-if="!isAuthLoaded" class="nav-link login di" :href="`${opts.accountsUrl}/signin${returnUrlQuery}`">
         {{$t('Login')}}
 
         <Icon name="lock"/>
@@ -17,11 +17,11 @@
       <transition name="slide-fade">
         <div v-if="show" class="dropdown-menu show">
           <div class="dropdown-item-container">
-            <a id="profile-WPH-SNE" :href="`${opts.accountUrl}/profile?returnUrl=${returnUrl}`" :title="$t('Profile')" target="_blank" rel="noopener noreferrer" class="dropdown-item di">
+            <a id="profile-WPH-SNE" :href="`${opts.accountUrl}/profile`" :title="$t('Profile')" target="_blank" rel="noopener noreferrer" class="dropdown-item di">
               <Icon name="profile"/>
               <span class="dropdown-item-label">{{$t('Profile')}}</span>
             </a>
-            <a  id="password-WPH-SNE" :href="`${opts.accountUrl}/profile?returnUrl=${returnUrl}`" :title="$t('Password')" target="_blank" rel="noopener noreferrer" class="dropdown-item di">
+            <a  id="password-WPH-SNE" :href="`${opts.accountUrl}/password`" :title="$t('Password')" target="_blank" rel="noopener noreferrer" class="dropdown-item di">
               <Icon name="password"/>
               <span class="dropdown-item-label">{{$t('Password')}}</span>
             </a>
@@ -33,7 +33,7 @@
               </a>
               <hr/>
             </section>
-            <a  id="signOut-WPH-SNE" :href="opts.signOutUrl" :title="$t('Sign Out')" class="dropdown-item">
+            <a  id="signOut-WPH-SNE" :href="opts.signOutUrl" v-on:click.capture="if($logOut) $logOut()" :title="$t('Sign Out')" class="dropdown-item">
               <Icon name="sign-out"/>
               <span class="dropdown-item-label">{{$t('Sign Out')}}</span>
             </a>
@@ -44,8 +44,8 @@
   </ul>
 </template>
 <script>
-import Icon         from '../components/Icon'
-import makeSelector from '../modules/makeSelector'
+import Icon         from '../components/Icon.vue'
+import makeSelector from './makeSelector'
 
 export default {
   name      : 'LoginNav',
@@ -66,12 +66,12 @@ function isAuthLoaded(){
   return true
 }
 
-function data(){ return { returnUrl: '', me: {}, show: false, isMobile: false } }
+function data(){ return { returnUrlQuery: '', me: {}, show: false, isMobile: false } }
 
 function mounted(){
   this.isMobile = window.matchMedia('(max-width: 990px)').matches
   window.document.addEventListener('$me', this.loadMe)
-  this.returnUrl = window? window.location.href : ''
+  this.returnUrlQuery = window? `?returnUrl=${encodeURIComponent(window.location.href)}` : ''
 }
 
 function loadMe(evt){

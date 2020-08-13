@@ -1,15 +1,15 @@
 {
   "name": "@scbd/load-http",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/load-http#readme",
   "readme": "https://github.com/scbd/ecosystem/tree/master/packages/load-http#readme",
   "license": "MIT",
-  "main": "dist/esm/index.min.js",
+  "main": "dist/esm/index.js",
   "web": "dist/browser/index.min.js",
   "umd": "dist/legacy/umd/index.umd.min.js",
   "unpkg": "dist/browser/index.min.js",
-  "module": "dist/esm/index.min.js",
+  "module": "dist/esm/index.js",
   "jsnext:main": "dist/esm/index.min.js",
   "src": "src/index.js",
   "source": "src/index.js",
@@ -23,10 +23,14 @@
     "./": "dist/browser/index.min.js"
   },
   "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -35,7 +39,7 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "scbd-dist-builder",
+    "build": "DEBUG=true scbd-dist-builder",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:headless": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint --fix",
@@ -44,18 +48,19 @@
   "dependencies": {
     "check-ie": "^2.0.0",
     "core-js": "^3.6.4",
-    "ky": "^0.20.0",
-    "ky-universal": "^0.6.0"
+    "ky": "^0.23.0",
+    "ky-universal": "^0.8.1",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
+    "@scbd/dist-builder": "^0.0.6",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
     "babel-eslint": "^10.1.0",
     "consola": "^2.12.2",
-    "eslint": "^6.7.2",
+    "eslint": "^7.2.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   }

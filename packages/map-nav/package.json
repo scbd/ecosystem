@@ -1,30 +1,34 @@
 {
   "name": "@scbd/map-nav",
-  "version": "0.0.45",
+  "version": "0.1.0",
   "description": "https://github.com/scbd/ecosystem/tree/master/packages/map-nav#readme",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/map-nav#readme",
   "readme": "https://github.com/scbd/ecosystem/tree/master/packages/map-nav#readme",
   "license": "MIT",
-  "main": "dist/browser/index.min.js",
+  "main": "dist/esm/index.js",
   "web": "dist/browser/index.min.js",
   "unpkg": "dist/browser/index.min.js",
   "umd": "dist/legacy/umd/index.umd.min.js",
   "module": "dist/esm/index.min.js",
   "jsnext:main": "dist/esm/index.js",
-  "style":"dist/esm/index.min.css",
-  "src"       : "src/index.js",
+  "style": "dist/esm/index.min.css",
+  "src": "src/index.js",
   "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
   "browser": {
-    "./sfc"    : "src/index.vue",
-    "./umd"    : "dist/legacy/umd/index.umd.min.js",
+    "./sfc": "src/index.vue",
+    "./umd": "dist/legacy/umd/index.umd.min.js",
     "./browser": "dist/browser/index.min.js",
-    "./"      : "dist/browser/index.min.js"
+    "./": "dist/browser/index.min.js"
   },
   "files": [
     "dist/*",
@@ -40,27 +44,26 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "node scripts/load-countries.cjs && scbd-dist-builder && scbd-dist-builder widget",
+    "build": "node scripts/load-countries.cjs && DEBUG=true scbd-dist-builder && DEBUG=true scbd-dist-builder widget",
     "build-widget": "scbd-dist-builder widget",
-    "build-test": "scbd-dist-builder testWidget",
-    "serve-esm-test": "scbd-dist-builder serveTestWidget",
+    "build-test": "DEBUG=true scbd-dist-builder testWidget",
+    "serve-widget-test": "scbd-dist-builder serveTestWidget",
     "lint": "vue-cli-service lint --fix ",
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/am4-map-base": "^0.0.24",
-    "@scbd/self-embedding-component": "^0.0.16",
+    "@scbd/am4-map-base": "^0.0.27",
+    "@scbd/am4-map-lib": "^0.0.8",
+    "@scbd/self-embedding-component": "^0.0.25",
     "limax": "^2.0.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "@scbd/dist-builder": "^0.0.1",
+    "@scbd/dist-builder": "^0.0.6",
     "@vue/cli-plugin-babel": "^4.3.1",
     "@vue/cli-plugin-e2e-cypress": "^4.3.1",
     "@vue/cli-plugin-eslint": "^4.3.1",
-    "@vue/cli-service": "^4.3.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "superagent": "^5.2.2"
+    "@vue/cli-service": "^4.3.1"
   }
 }

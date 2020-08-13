@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Logo    from './Logo'
-import MainNav from './MainNav'
+import Logo    from './Logo.vue'
+import MainNav from './MainNav.vue'
 
 const inject = { components: { default: { MainNav, Logo } } }
 

@@ -9,7 +9,8 @@ import {
   dist,
   context,
   useCdn,
-  pkg
+  pkg,
+  pushInFile
 } from '../util/index.js'
 
 //spawn options
@@ -40,7 +41,7 @@ export const build = async (isForkedProcess) => {
 
 export const buildLegacyBundle = ({ formats='umd,umd-min', dest='dist/legacy/umd/', entry=getEntry(), name=fileNamePreFix }) => {
   const   env     = { ...process.env, ... { BROWSERSLIST_ENV: 'legacy' } }
-  const   args    = [ 'build', '--target lib', '--mode production', '--report', `--name ${name}`, `--formats ${formats}`, `--dest ${dest}`, '--filename index', entry ]
+  const   args    = [ 'build', '--target lib', '--mode production', '--inline-vue', '--report', `--name ${name}`, `--formats ${formats}`, `--dest ${dest}`, '--filename index', entry ]
   const   options = { ...defaultOptions, ...{ env } }
 
   if(DEBUG) options.stdio = 'inherit'
@@ -50,7 +51,7 @@ export const buildLegacyBundle = ({ formats='umd,umd-min', dest='dist/legacy/umd
 
 function getEntry(){ return (pkg.type==='module')? 'src/index.mjs' :'src/index.js' }
 function buildEsm(){ buildRollup() }
-function buildSsr(){ buildEsm(); buildEsmMin(); }
+function buildSsr(){ buildEsm(); buildEsmMin(); pushInFile(path.resolve(dist, 'esm/index.min.js'), '/* eslint-disable */'); }
 
 function buildEsmMin(){
   const BROWSERSLIST_ENV = 'ssr'

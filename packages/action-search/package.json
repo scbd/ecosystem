@@ -1,6 +1,6 @@
 {
   "name": "@scbd/action-search",
-  "version": "0.0.30",
+  "version": "0.0.34",
   "author": "Secretariat of the Convention on Biological Diversity <it@cbd.int>",
   "homepage": "https://github.com/scbd/ecosystem/tree/master/packages/search#readme",
   "license": "MIT",
@@ -20,10 +20,14 @@
     "./": "dist/browser/index.min.js"
   },
   "exports": {
-    ".": {
-      "require": "dist/legacy/cjs/index.common.cjs",
-      "default": "dist/esm/index.js"
-    }
+    ".": [
+      {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/legacy/cjs/index.common.cjs",
+        "default": "./dist/esm/index.js"
+      },
+      "./dist/legacy/umd/index.umd.min.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -37,7 +41,7 @@
   "scripts": {
     "serve": "NODE_ENV=production vue-cli-service serve --open",
     "build": "DEBUG=TRUE scbd-dist-builder && DEBUG=TRUE scbd-dist-builder widget",
-    "build-widget": "scbd-dist-builder widget",
+    "build-widget": "DEBUG=TRUE scbd-dist-builder widget",
     "build-test-widget": "DEBUG=TRUE scbd-dist-builder testWidget",
     "serve-widget-test": "scbd-dist-builder serveTestWidget",
     "serve-widget": "scbd-dist-builder serveWidget",
@@ -47,29 +51,29 @@
     "link": "lerna link"
   },
   "dependencies": {
-    "@scbd/cached-apis": "^0.0.18",
+    "@scbd/cached-apis": "^0.0.22",
     "@scbd/default-options": "^0.1.10",
-    "@scbd/load-http": "^0.0.4",
-    "@scbd/locale": "^0.0.9",
-    "@scbd/self-embedding-component": "^0.0.23",
-    "@scbd/sso-vue-plugin-scbd": "^0.1.6",
+    "@scbd/load-http": "^0.0.6",
+    "@scbd/locale": "^0.0.10",
+    "@scbd/self-embedding-component": "^0.0.25",
+    "@scbd/sso-vue-plugin-scbd": "^0.2.2",
     "vue": "^2.6.11",
     "vue-i18n": "^8.17.3",
     "vue-multiselect": "^2.1.6"
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^1.0.0",
-    "@scbd/dist-builder": "^0.0.1",
+    "@scbd/dist-builder": "^0.0.6",
     "@scbd/www-css": "^0.0.18",
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@vue/cli-plugin-babel": "~4.4.1",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.1",
+    "@vue/cli-plugin-eslint": "~4.4.1",
+    "@vue/cli-service": "~4.4.1",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.6.4",
-    "eslint": "^6.7.2",
-    "rollup": "^2.15.0",
+    "eslint": "^7.2.0",
     "eslint-plugin-vue": "^6.2.2",
+    "rollup": "^2.15.0",
     "vue-cli-plugin-i18n": "~1.0.1",
     "vue-template-compiler": "^2.6.11"
   }

@@ -1,0 +1,58 @@
+{
+  "name": "@scbd/page-header-fixed",
+  "private": false,
+  "license": "MIT",
+  "version": "0.0.74",
+  "unpkg": "dist/PageHeaderFixed.umd.min.js",
+  "main": "dist/PageHeaderFixed.umd.min.js",
+  "browser": {
+    "./sfc": "src/index.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve --open --mode dev tests/dev/main.js",
+    "preview": "serve -s dist",
+    "build": "NODE_ENV=production sh scripts/build.sh",
+    "lint": "vue-cli-service lint --fix",
+    "deploy:dev": "vue-cli-service s3-deploy --mode dev",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless",
+    "test:e2e:headless:login": "vue-cli-service test:e2e --headless -s tests/e2e/specs/login.js",
+    "release": "yarn publish --access=public --tag latest"
+  },
+  "dependencies": {
+    "@scbd/default-options": "^0.1.1",
+    "@scbd/webpack-plugin-public-path": "^0.0.1",
+    "change-case": "^4.1.1",
+    "tiny-debounce": "^0.1.1",
+    "vue-i18n": "^8.0.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@kazupon/vue-i18n-loader": "^0.5.0",
+    "@scbd/dist-builder": "^0.0.1",
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-e2e-cypress": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "core-js": "^3.3.2",
+    "cypress-image-snapshot": "^3.1.1",
+    "eslint": "^7.0.0",
+    "eslint-plugin-vue": "^6.0.1",
+    "glob-all": "^3.1.0",
+    "minimist": "^1.2.0",
+    "purgecss-webpack-plugin": "^2.0.5",
+    "vue": "^2.6.10",
+    "vue-cli-plugin-i18n": "^1.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "@ecosystem": {
+    "symlinkWorkspaces": true
+  },
+  "gitHead": "534f983ca739cdaaf1a29e473d6ba99c90a585d0"
+}

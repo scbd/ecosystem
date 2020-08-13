@@ -2,7 +2,7 @@ export { context, dist, src, pub, test                       } from './context.j
 export { pkg, defaultPkg, writePkg, pkgName, fileNamePreFix  } from './pkg.js'
 export { error                                               } from './error.js'
 export { rollupConfig                                        } from './rollup.js'
-export { forEachFileRecursive, replaceInFile, hasVue, hasCss } from './files.js'
+export { forEachFileRecursive, replaceInFile, hasVue, hasCss, pushInFile } from './files.js'
 export { modernEmsPackages, modernEmsPackageCdnMap           } from './modern-esm-packages.js'
 export { useCdn, embedCdnUrl                                 } from './use-cdn.js'
 export { syncCssScope                                        } from './sync-css-scope-ids.js'

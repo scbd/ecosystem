@@ -119,7 +119,7 @@ export const generateAll = async () => { // eslint-disable-line
     { filter: 'Regions',            data: allData[9] || [] }
   ]
 
-  const saveCache = !(allData.map( data => data.length )).includes(0)
+  const saveCache = !(allData.map(data => data.length)).includes(0)
 
   if(saveCache)
     localForage.setItem(`all-${locale}`, all)
@@ -131,7 +131,7 @@ const sanitizers = {
   jurisdictions: sanitize,
   aichis       : sanitizeAichi,
   subjects     : sanitize,
-  countries    : sanitize,
+  countries    : sanitizeCountry,
   orgTypes     : sanitizeOrgType,
   govTypes     : sanitizeGovType,
   regions      : sanitize,
@@ -145,7 +145,7 @@ async function getFromApi(apiName, orderBy='name'){
     const   locale     = getUnLocale()
     const { apisUrls } = options
 
-    const retry   = { limit: 5, methods: ['get'] }
+    const retry   = { limit: 5, methods: [ 'get' ] }
     const timeout = 20000
 
     const   data = (await (await $http.get(apisUrls[apiName], { timeout, retry })).json())
@@ -304,6 +304,15 @@ function sanitizeAichi(aDataItem){
 
   return { ...sanitize(aDataItem), image, url }
 }
+
+function sanitizeCountry(aDataItem){
+  const { identifier } = aDataItem
+  const   image        = `https://www.cbd.int/images/flags/96/flag-${identifier}-96.png`
+  const   url          = `https://www.cbd.int/countries/?country=${identifier}`
+
+  return { ...sanitize(aDataItem), image, url }
+}
+
 
 function getLocalizedNames(aDataItem){
   const { name:nameObj, title, alternateName:alternateNameObj } = aDataItem

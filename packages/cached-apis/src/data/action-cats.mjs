@@ -8,7 +8,7 @@ export const actionCategories = new Set([ {
   identifier: 'FOOD-AND-HEALTH',
   image     : `${iconBaseSrcUrl}/FOOD-AND-HEALTH.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-HH` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/food-and-health',
+  url       : 'https://www.cbd.int/action-agenda/contributions/food-and-health',
   name      : {
     en: 'Food systems and health'
   },
@@ -16,10 +16,10 @@ export const actionCategories = new Set([ {
     en: 'Food and health'
   }
 }, {
-  identifier: 'FRESHWATER-COSTAL-AND-OCEAN-ECOSYSTEMS',
+  identifier: 'FRESHWATER-COASTAL-AND-OCEAN-ECOSYSTEMS',
   image     : `${iconBaseSrcUrl}/FRESHWATER-COSTAL-AND-OCEAN-ECOSYSTEMS.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-WTR`, `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-MAR` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/freshwater-coastal-and-ocean',
+  url       : 'https://www.cbd.int/action-agenda/contributions/freshwater-coastal-and-ocean',
   name      : {
     en: 'Freshwater, coastal and ocean ecosystems'
   },
@@ -30,7 +30,7 @@ export const actionCategories = new Set([ {
   identifier: 'LAND-ECOSYSTEMS',
   image     : `${iconBaseSrcUrl}/LAND-ECOSYSTEMS.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-ECOA`, `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-ECORES` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/land-ecosystems',
+  url       : 'https://www.cbd.int/action-agenda/contributions/land-ecosystems',
   name      : {
     en: 'Conservation and restoration of land ecosystems'
   },
@@ -41,7 +41,7 @@ export const actionCategories = new Set([ {
   identifier: 'CLIMATE-MITIGATION-AND-ADAPTATION',
   image     : `${iconBaseSrcUrl}/CLIMATE-MITIGATION-AND-ADAPTATION.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-CC` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/climate-mitigation-and-adaptation',
+  url       : 'https://www.cbd.int/action-agenda/contributions/climate-mitigation-and-adaptation',
   name      : {
     en: 'Climate change mitigation and adaptation '
   },
@@ -52,7 +52,7 @@ export const actionCategories = new Set([ {
   identifier: 'SPECIES',
   image     : `${iconBaseSrcUrl}/SPECIES.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-IAS`, `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-ENDS` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/species',
+  url       : 'https://www.cbd.int/action-agenda/contributions/species',
   name      : {
     en: 'Conservation and sustainable use of species'
   },
@@ -63,21 +63,21 @@ export const actionCategories = new Set([ {
   identifier: 'SUSTAINABLE-CONSUMPTION-AND-PRODUCTION',
   image     : `${iconBaseSrcUrl}/SUSTAINABLE-CONSUMPTION-AND-PRODUCTION.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-SUSE`, `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-SDEV` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/sustainable-consumption-and-production',
+  url       : 'https://www.cbd.int/action-agenda/contributions/sustainable-consumption-and-production',
   name      : {
     en: 'Sustainable consumption and production'
   }
 }, {
   identifier: 'STEWARDSHIP',
   image     : `${iconBaseSrcUrl}/STEWARDSHIP.svg`,
-  url: 'https://www.cbd.int/action-agenda/contributions/stewardship',
+  url       : 'https://www.cbd.int/action-agenda/contributions/stewardship',
   name      : {
     en: 'Stewardship'
   }
 }, {
   identifier: 'URBAN-SUSTAINABILITY',
   image     : `${iconBaseSrcUrl}/URBAN-SUSTAINABILITY.svg`,
-  url: 'https://www.cbd.int/action-agenda/contributions/urban-sustainability',
+  url       : 'https://www.cbd.int/action-agenda/contributions/urban-sustainability',
   name      : {
     en: 'Urban sustainability'
   }
@@ -85,7 +85,7 @@ export const actionCategories = new Set([ {
   identifier: 'GREEN-FINANCE',
   image     : `${iconBaseSrcUrl}/GREEN-FINANCE.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-FIN` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/green-finance',
+  url       : 'https://www.cbd.int/action-agenda/contributions/green-finance',
   name      : {
     en: 'Green finance'
   }
@@ -93,7 +93,7 @@ export const actionCategories = new Set([ {
   identifier: 'ACCESS-TO-BENEFIT-SHARING',
   image     : `${iconBaseSrcUrl}/ACCESS-TO-BENEFIT-SHARING.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-ABS` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/access-to-benefit-sharing',
+  url       : 'https://www.cbd.int/action-agenda/contributions/access-to-benefit-sharing',
   name      : {
     en: 'Access to Benefit Sharing'
   },
@@ -104,7 +104,7 @@ export const actionCategories = new Set([ {
   identifier: 'BIOSAFETY',
   image     : `${iconBaseSrcUrl}/BIOSAFETY.svg`,
   sameAs    : [ `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-CPB`, `${scbdSubjectsTermBaseUrl}CBD-SUBJECT-BTB` ],
-  url: 'https://www.cbd.int/action-agenda/contributions/biosafety',
+  url       : 'https://www.cbd.int/action-agenda/contributions/biosafety',
   name      : {
     en: 'Biosafety'
   }

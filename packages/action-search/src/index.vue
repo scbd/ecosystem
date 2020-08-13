@@ -11,11 +11,12 @@
 
 <script>
 import { getList, getCounts, resetCache, initializeApi, updateOptions } from './components/actions-api/index.js'
-import   List                             from './components/List/index.vue'
-import   getDefaultOptions                from './default-options'
-import   FilterNav                        from './components/FilterNav.vue'
-import   Feedback from './components/Feedback.vue'
-import   Icons                            from './components/Icons.vue'
+
+import List              from './components/List/index.vue'
+import getDefaultOptions from './default-options'
+import FilterNav         from './components/FilterNav.vue'
+import Feedback          from './components/Feedback.vue'
+import Icons             from './components/Icons.vue'
 
 export default {
   name      : 'ScbdSearch',

@@ -47,7 +47,7 @@ async function query (){
     if(!type) continue
 
     if(type === '$text') q =  addTextQuery(key, q)
-    else q = { ...q, ...getMongoPropertyQuery(type, key) }
+    else q = getMongoPropertyQuery(q, type, key)
   }
 
   return q
@@ -93,14 +93,17 @@ function  getMongoFilterFields(){
 }
 
 
-function getMongoPropertyQuery(type, key){
-  const q             = {}
+function getMongoPropertyQuery(q, type, key){
   const propertyPaths = filterPropertyMap[type]
 
   propertyPaths.forEach((pPath) => {
     const noElemMatch = pPath.includes('status') || pPath.includes('identifier')
 
-    q[pPath] = noElemMatch? key : { $elemMatch: { identifier: key } }
+    if(noElemMatch) return q[pPath] = key
+
+    if(!q[pPath]) return q[pPath] = { $all: [ { identifier: key } ] }
+
+    if (q[pPath].$all) return q[pPath].$all.push({ identifier: key })
   })
 
   return q

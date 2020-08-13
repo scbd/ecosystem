@@ -5,8 +5,7 @@ const $http     = require('ky-universal');
 const writePath = path.resolve(__dirname, '../src/')
 const dapi      = 'https://dapi.cbd.int';
 
-(async()=>{
-
+(async() => {
   const siteNavigationElements = stringifyToJsModule((await getFooter()))
 
   fs.writeFileSync(`${writePath}/footerSiteNavigationElements.js`, siteNavigationElements)
@@ -15,7 +14,7 @@ const dapi      = 'https://dapi.cbd.int';
 })()
 
 function stringifyToJsModule(data){
-  return `module.exports = ${JSON.stringify(data)}`
+  return `/* eslint-disable */ \n module.exports = ${JSON.stringify(data)} \n // ${new Date()}`
 }
 
 function getFooter(){

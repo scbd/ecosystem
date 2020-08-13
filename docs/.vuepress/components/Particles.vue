@@ -2,24 +2,20 @@
 <section>
     <div aria-labelledby="main-title" class="home">
         <header class="hero"><img src="https://attachments.cbd.int/cbd-logo-en.svg" alt="hero">
-          <h1 id="main-title">Action Components </h1>
+          <h1 id="main-title">Ecosystem Monorepo for Components </h1>
           <p class="description">
-            Is a modular system of independent <b>(copy and paste)</b> software components which together form an Action platform. <i>Installed in the same manner as an embeded youtube video.</i> The Action platform can be used to acquire, filter and showcase Actions for your initiative, programme or organization's environmental cause
+            Is a modular system of independent software components which aim to be platform independent and functional.  Homed in a monorepo using shared dev resources and utilizing lerna's package linking for dependant packages'
           </p>
-          <p class="action"><a href="/action-agenda-components/guide/" class="nav-link action-button">Get Started →</a></p>
+          <p class="action"><a href="/ecosystem/guide/" class="nav-link action-button">Get Started →</a></p>
         </header>
         <div class="features">
           <div class="feature">
-            <h2>Simplicity First</h2>
-            <p>Set up your own platform, in minutes without any technical knowledge.  As easy as a couple of facebook posts.</p>
+            <h2>Build</h2>
+            <p>Build for the modern browser, nodejs, legacy umd,cjs and or self embeding component called widget</p>
           </div>
           <div class="feature">
-            <h2>Open Source</h2>
-            <p>Need a new feature?  Contribute to the open source project, instead of developing an entire platform to suit one need. </p>
-          </div>
-          <div class="feature">
-            <h2>Efficiency &amp; Sustainability</h2>
-            <p>Thousans of organizations are aquiring Actions for thier environmental causes.  100's have created thier own tools and displays.  Lets utalize the same tool saving resources and reducing waiste.</p>
+            <h2>E2E testing utalizing cypress and CircleCi</h2>
+            <p>Test using cypress's ui during dev and headless for ci</p>
           </div>
         </div>
     </div>
@@ -158,8 +154,8 @@ margin-right: auto;
 .home .feature {
   -webkit-box-flex: 1;
           flex-grow: 1;
-  flex-basis: 30%;
-  max-width: 30%;
+  flex-basis: 40%;
+  max-width: 45%;
 }
 .home .feature h2 {
   font-size: 1.4rem;

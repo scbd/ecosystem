@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from '../tests/App.vue'
+import App from '../public/App.vue'
 import i18n from '../tests/e2e/scaffolding/i18n'
 
 Vue.config.productionTip = true

@@ -1,11 +1,9 @@
-import { useTheme, am4themesAnimated } from '@scbd/am4-map-lib'
+import { useTheme, am4themesAnimated, getWorldGeoData, ar, en, es, fr, ru, zh } from '@scbd/am4-map-lib'
+import { getUnLocale         } from '@scbd/locale'
+import { euButtonSeries, euSeries } from '../eu/config'
+import { euCountries              } from '../countries'
 
 useTheme(am4themesAnimated)
-
-import { euCountries              } from '../countries'
-import { worldLow                 } from '../countries/political-mappings/index.js'
-import { euButtonSeries, euSeries } from '../eu/config'
-import { geodataNames             } from './geo-data-names'
 
 const userStyle = { }
 
@@ -89,10 +87,10 @@ export const countryLabelAltSeries = {
   mapImages: { propertyFields, children: [ labelTemplateAlt ] }
 }
 
-export const series = [ grid, countryLabelSeries, countryLabelAltSeries, euButtonSeries(propertyFields), euSeries({ getStyle, propertyFields, worldLow }), countries ]
+export const getSeries = async (mapName) => [ grid, countryLabelSeries, countryLabelAltSeries, euButtonSeries(propertyFields), euSeries({ getStyle, propertyFields, geoData: (await getWorldGeoData(mapName)).default }), countries ]
 
-export const main = {
-  geodata       : worldLow,
+export const getJsonConfig = async (mapName) => ({
+  geodata       : (await getWorldGeoData(mapName)).default,
   projection    : 'Orthographic',
   panBehavior   : 'rotateLongLat',
   paddingTop    : 20,
@@ -103,7 +101,14 @@ export const main = {
   backgroundSeries,
   zoomControl,
   chartContainer,
-  series,
+  series        : await getSeries(mapName),
   responsive,
-  geodataNames
+  geodataNames  : getGeodataNames()
+})
+
+function getGeodataNames(){
+  const locale = getUnLocale()
+  const langs  = { ar, en, es, fr, ru, zh }
+
+  return langs[locale]
 }

@@ -42,7 +42,7 @@
     "release": "yarn publish --access=public --tag latest"
   },
   "dependencies": {
-    "@scbd/self-embedding-component": "^0.0.22",
+    "@scbd/self-embedding-component": "^0.0.25",
     "check-ie": "^2.0.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
@@ -50,14 +50,14 @@
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^1.0.0",
-    "@scbd/dist-builder": "^0.0.1",
+    "@scbd/dist-builder": "^0.0.6",
     "@scbd/www-css": "^0.0.18",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "eslint": "^7.2.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-cli-plugin-i18n": "~1.0.1",
     "vue-template-compiler": "^2.6.11"

@@ -22,7 +22,7 @@ function buildOptions(){
   const { params }            = $route || {}
   const countryToolTipAction  = $isServer? '' : (code) => ` href="#" onclick="window.countryToolTipAction(event, '${code}')" `
   const euActionToolTipAction = $isServer? '' : (code) => ` href="#" onclick="window.euActionToolTipAction(event, '${code}')" `
-  const euIdentifier          = 'eu'
+  const euIdentifier          = 'eur'
   const initEu                = false // false means manually init eu with custom functionality
 
   if(!$isServer) registerWindowFunctions()
@@ -30,9 +30,9 @@ function buildOptions(){
   return {
     params,
     countryParamName: 'country',
-    callBack,
-    countryToolTipAction,
-    euActionToolTipAction,
+    // callBack,
+    // countryToolTipAction,
+    // euActionToolTipAction,
     euIdentifier,
     initEu
   }

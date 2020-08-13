@@ -1,8 +1,9 @@
 import { MapBuilderBase, MapBaseEU, MapBaseControls, MapBaseCountries } from '@scbd/am4-map-base'
+import { hasPoliticalMappings } from '@scbd/am4-map-lib'
 
 const { initEu, mapHomePositionToEu                        } = MapBaseEU
 const { initAnimation, setAnimationEventsOnSeriesContainer } = MapBaseControls
-const { pushHitEventFn, hasPoliticalMappings, mapHomePositionToCountry, setCountryEvents } = MapBaseCountries
+const { pushHitEventFn, mapHomePositionToCountry, setCountryEvents } = MapBaseCountries
 
 import { getCountry } from './countries'
 
@@ -23,17 +24,20 @@ export const ready = (mapBuilder) => () =>  {
   
   if(getCountryCode(mapBuilder)) return
 
-  initAnimation(mapBuilder)
-  setAnimationEventsOnSeriesContainer(mapBuilder)
+  setTimeout(() => {
+    initAnimation(mapBuilder)
+    setAnimationEventsOnSeriesContainer(mapBuilder)
+  }, 1000)
+  console.log(mapBuilder)
 }
 
 export const clickUrl = ({ options }, id) => {
-  const { basePath, search, devMode } = options
+  const { basePath, countryParamName, devMode } = options
   const host                          = devMode? window.location.origin : options.host
   const hasParent                     = hasPoliticalMappings(id)
   const code                          = hasParent? hasParent : id
 
-  return `${host}${basePath}?${search}=${code}`
+  return `${host}${basePath}?${countryParamName}=${code}`
 }
 
 export const callBack =  (mapBuilder) => (ev) => {
@@ -48,9 +52,9 @@ export const callBack =  (mapBuilder) => (ev) => {
 export const getCountryCode = (mapBuilder) => getCountryFromQuery(mapBuilder) || getCountryCodeFromParams(mapBuilder)
 
 export const getCountryFromQuery = (mapBuilder) => {
-  const { search }  = mapBuilder.options
+  const { countryParamName }  = mapBuilder.options
   const urlParams   = new URLSearchParams(location.search)
-  const searchValue = urlParams.get(search)
+  const searchValue = urlParams.get(countryParamName)
 
   return searchValue? searchValue.toUpperCase() : undefined
 }
