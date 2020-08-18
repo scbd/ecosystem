@@ -8,6 +8,7 @@ export const politicalMap = {
   BQ: 'NL', //Bonaire, Saint Eustachius and Saba
   BV: 'NO', //Bouvet Island
   CC: 'AU', //Cocos (Keeling) Islands
+  CK: 'NZ', //Cook Island
   CW: 'NL', //Curaçao
   CX: 'AU', //Christmas Island
   FK: 'GB', //Falkland Islands
