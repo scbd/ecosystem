@@ -1,0 +1,11 @@
+{
+  "name": "@scbd/add-to-calendar",
+  "version": "0.0.1",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "init": "scbd-dist-builder init"
+  },
+  "dependencies": {
+    "@scbd/dist-builder": "^0.0.6"
+  }
+}
